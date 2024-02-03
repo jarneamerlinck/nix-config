@@ -13,7 +13,7 @@
 
     ./hardware-configuration.nix
 
-    # ../common/global
+    ../common/base
     # ../common/users/misterio
 
     # ../common/optional/ckb-next.nix
