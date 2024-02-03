@@ -3,6 +3,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./zsh.nix
     ./nix.nix
+    ./openssh.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 

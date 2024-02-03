@@ -1,4 +1,6 @@
 { lib, ... }:
 {
-  imports = [ ./common ];
+  imports = [
+    ./common
+  ];
 }
