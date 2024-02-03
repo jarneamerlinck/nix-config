@@ -7,12 +7,19 @@
   imports =
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
-
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
+  boot = {
+    loader.grub = {
+      enable = true;
+      device = "/dev/vda";
+      useOSProber = true;
+    };
+    initrd = {
+      availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/561d7879-2de3-49c7-b647-f6153dbe2e6f";
       fsType = "ext4";
