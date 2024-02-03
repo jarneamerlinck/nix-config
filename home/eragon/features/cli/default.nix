@@ -25,6 +25,7 @@
     # Monitor tools
     btop
     htop
+    neofetch
 
     # ncdu # TUI disk usage
     ripgrep # Better grep
@@ -37,6 +38,7 @@
 
     # terminals
     kitty
+
 
   ];
 }
