@@ -74,12 +74,10 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      # FIXME replace with your username@hostname
-              # Desktops
+      # VM
       "eragon@vm1" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/vm1.nix ];
-          # pkgs = pkgsFor.x86_64-linux;
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };
     };
