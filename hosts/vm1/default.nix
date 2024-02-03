@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
 
     ../common/base
-    # ../common/users/misterio
+    ../common/users/eragon
 
     # ../common/optional/ckb-next.nix
     # ../common/optional/greetd.nix
