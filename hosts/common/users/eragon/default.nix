@@ -19,7 +19,7 @@ in
       "deluge"
     ];
 
-    # openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/eragon/ssh.pub) ];
+    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/eragon/ssh.pub) ];
     # hashedPasswordFile = config.sops.secrets.eragon-password.path;
     packages = [ pkgs.home-manager ];
   };
