@@ -3,7 +3,7 @@
     # ./bash.nix
     # ./bat.nix
     # ./direnv.nix
-    # ./fish.nix
+    ./zsh.nix
     # ./gh.nix
     # ./git.nix
     # ./gpg.nix
