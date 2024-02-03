@@ -60,10 +60,10 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # FIXME replace with your hostname
-        vm1 =  lib.nixosSystem {
+        vm1 =  nixpkgs.lib.nixosSystem {
           modules = [ ./hosts/vm1 ];
           specialArgs = { inherit inputs outputs; };
-        };    };
+        };
     };
 
     # Standalone home-manager configuration entrypoint
