@@ -62,8 +62,16 @@
     home-manager.enable = true;
     git.enable = true;
     neovim.enable = true;
-    zsh.enable = true;
-  };
+    programs.zsh = {
+      enable = true;
+      shellAliases = {
+        ll = "ls -l";
+        update = "sudo nixos-rebuild switch";
+      };
+      histSize = 10000;
+      histFile = "${config.xdg.dataHome}/zsh/history";
+    };
+};
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
