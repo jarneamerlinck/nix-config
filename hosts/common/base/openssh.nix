@@ -28,16 +28,16 @@ in
     # }];
   };
 
-  programs.ssh = {
-    # Each hosts public key
-    knownHosts = builtins.mapAttrs
-      (name: _: {
-        # publicKeyFile = pubKey name;
-        extraHostNames =
-          (lib.optional (name == hostName) "localhost") ++ # Alias for localhost if it's the same host
-      })
-      hosts;
-  };
+  # programs.ssh = {
+  #   # Each hosts public key
+  #   knownHosts = builtins.mapAttrs
+  #     (name: _: {
+  #       # publicKeyFile = pubKey name;
+  #       extraHostNames =
+  #         (lib.optional (name == hostName) "localhost") ++ # Alias for localhost if it's the same host
+  #     })
+  #     hosts;
+  # };
 
   # Passwordless sudo when SSH'ing with keys
   security.pam.enableSSHAgentAuth = true;
