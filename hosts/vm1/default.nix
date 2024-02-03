@@ -62,13 +62,6 @@
     })
     config.nix.registry;
 
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
-  };
-
   services.openssh = { # should go to a server config
     enable = true;
     settings = {
