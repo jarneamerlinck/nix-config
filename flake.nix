@@ -28,6 +28,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    lib = nixpkgs.lib // home-manager.lib;
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
@@ -60,7 +61,7 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # FIXME replace with your hostname
-        vm1 =  nixpkgs.lib.nixosSystem {
+        vm1 =  lib.nixosSystem {
           modules = [ ./hosts/vm1 ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -70,7 +71,7 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       # FIXME replace with your username@hostname
-      "eragon@vm1" = home-manager.lib.homeManagerConfiguration {
+      "eragon@vm1" = lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
