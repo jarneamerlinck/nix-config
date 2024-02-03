@@ -3,6 +3,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./zsh.nix
     ./nix.nix
+
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
@@ -21,7 +22,6 @@
   };
 
   hardware.enableRedistributableFirmware = true;
-  networking.domain = "m7.rs";
 
   # Increase open file limit for sudoers
   security.pam.loginLimits = [
