@@ -11,6 +11,7 @@
     go
     shellcheck
     nodejs
+    gcc
 
   ];
   programs.neovim.extraConfig = ''
