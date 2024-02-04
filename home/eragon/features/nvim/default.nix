@@ -12,6 +12,8 @@
     shellcheck
     nodejs
     gcc
+    clang
+    python39
 
   ];
   programs.neovim.extraConfig = ''
