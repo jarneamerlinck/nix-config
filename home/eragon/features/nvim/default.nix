@@ -12,7 +12,7 @@
     shellcheck
     nodejs
     gcc
-    clang
+    clangStdenv
     python39
 
   ];
