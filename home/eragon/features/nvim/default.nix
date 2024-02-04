@@ -5,6 +5,14 @@
 }: {
   home.packages = with pkgs; [
     neovim
+    ripgrep
+    xclip
+    python3-venv
+    luarocks
+    golang-go
+    shellcheck
+    nodejs
+
   ];
   programs.neovim.extraConfig = ''
       mkdir -p ~/.config
