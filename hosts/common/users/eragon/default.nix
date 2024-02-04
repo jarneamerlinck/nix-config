@@ -2,7 +2,7 @@
 let ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
-  # users.mutableUsers = false;
+  # users.mutableUsers = false; # Only enable if you set password from sops or from nix-config
   users.users.eragon = {
     isNormalUser = true;
     shell = pkgs.zsh;
