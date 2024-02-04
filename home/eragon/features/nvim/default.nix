@@ -7,6 +7,7 @@
     neovim
     ripgrep
     xclip
+    lua
     luarocks
     go
     shellcheck
@@ -14,6 +15,11 @@
     gcc
     clangStdenv
     python39
+    fzf
+    zoxide
+
+    vimPlugins.telescope-fzf-native-nvim
+    lazygit
 
   ];
   programs.neovim.extraConfig = ''
