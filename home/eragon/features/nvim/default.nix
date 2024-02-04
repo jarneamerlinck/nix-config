@@ -7,9 +7,8 @@
     neovim
     ripgrep
     xclip
-    python3-venv
     luarocks
-    golang-go
+    go
     shellcheck
     nodejs
 
