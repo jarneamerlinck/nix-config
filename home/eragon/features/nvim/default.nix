@@ -3,6 +3,20 @@
   lib,
   ...
 }: {
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+  programs.zsh = {
+    initExtraBeforeCompInit = ''
+    eval "$(zoxide init zsh)"
+    '';
+
+  home.shellAliases = {
+    v="nvim";
+    z="zoxide";
+  };
+
   home.packages = with pkgs; [
     neovim
     ripgrep
