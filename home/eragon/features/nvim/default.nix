@@ -12,5 +12,6 @@
   xdg.configFile."nvim" = {
     source = "git+https://github.com/jarneamerlinck/kickstart.nvim";
     target = ".config/nvim";
+    type = "git";
   };
 }
