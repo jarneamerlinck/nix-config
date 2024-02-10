@@ -11,7 +11,6 @@ with import <nixpkgs> {}; {
       rm -rf ./nix-config
       git clone --recurse-submodules https://github.com/jarneamerlinck/nix-config
       cd nix-config
-      git checkout dev
       git submodule update --init --recursive
       ./deploy.sh $HOST
     '';
