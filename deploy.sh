@@ -7,8 +7,7 @@ hosts="$1"
 shift
 
 if [ -z "$hosts" ]; then
-    echo "No hosts to deploy"
-    exit 2
+    read -p "Host name: " hosts
 fi
 
 for host in ${hosts//,/ }; do
