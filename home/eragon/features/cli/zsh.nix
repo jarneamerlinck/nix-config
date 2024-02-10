@@ -17,4 +17,8 @@
     [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
     '';
   };
+  programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+  };
 }
