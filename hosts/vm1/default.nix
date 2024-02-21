@@ -10,18 +10,14 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd
     # inputs.hardware.nixosModules.common-pc-ssd
+    inputs.disko.nixosModules.disko
+    (import ./disks.nix { })
 
     ./hardware-configuration.nix
 
     ../common/base
     ../common/users/eragon
 
-    # ../common/optional/ckb-next.nix
-    # ../common/optional/greetd.nix
-    # ../common/optional/pipewire.nix
-    # ../common/optional/quietboot.nix
-    # ../common/optional/lol-acfix.nix
-    # ../common/optional/starcitizen-fixes.nix
   ];
 
   nixpkgs = { # should go to global
@@ -30,17 +26,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
+      # outputs.overlays.unstable-packages
     ];
     # Configure your nixpkgs instance
   };
