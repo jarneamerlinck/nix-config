@@ -1,4 +1,4 @@
-{ disks ? [ "/dev/sda" ], ... }: {
+{ disks ? [ "/dev/disk/by-uuid/561d7879-2de3-49c7-b647-f6153dbe2e6f" ], ... }: {
   disko.devices = {
     disk = {
       sda = {
