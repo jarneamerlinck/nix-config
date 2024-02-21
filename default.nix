@@ -1,11 +1,12 @@
 #default.nix
 with import <nixpkgs> {}; {
   pullapiEnv = stdenv.mkDerivation {
-    name = "update";
+    name = "eragon1442-flake";
     buildInputs = [
       neovim
       git
     ];
+    NIX_CONFIG = "experimental-features = nix-command flakes";
     shellHook = ''
       cd ~
       rm -rf ./nix-config
