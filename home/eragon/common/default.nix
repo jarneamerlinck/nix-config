@@ -9,8 +9,7 @@
     # inputs.nix-colors.homeManagerModule
     ../features/cli
     ../features/nvim
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
-
+  ];
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
