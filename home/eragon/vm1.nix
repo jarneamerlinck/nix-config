@@ -2,5 +2,6 @@
 {
   imports = [
     ./common
+    ./features/desktop/gnome
   ];
 }
