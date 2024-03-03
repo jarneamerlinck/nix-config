@@ -55,3 +55,9 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 1. Make a new folder under ´./hosts´
 2. Copy the harware config and adjust
 3. Create a new file under `/home/username`
+
+
+
+## Desktops
+
+- desktops can be changed in ´hosts/{hostname}/default.nix´
