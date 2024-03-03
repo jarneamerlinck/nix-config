@@ -2,4 +2,5 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   # example = pkgs.callPackage ./example { };
+  sddm-sugar-dark = pkgs.callPackage ./sddm-sugar-dark { };
 }
