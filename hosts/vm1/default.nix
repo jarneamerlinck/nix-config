@@ -16,9 +16,15 @@
     ../common/base
     ../common/users/eragon
 
+    # ../common/optional/qemu-host.nix
+    ../common/optional/xserver.nix
+    ../common/optional/gdm.nix
+
     # ../common/optional/ckb-next.nix
-    # ../common/optional/greetd.nix
-    # ../common/optional/pipewire.nix
+    # ../common/optional/sddm.nix
+
+    ../common/optional/pipewire.nix
+    ../common/optional/gnome.nix
     # ../common/optional/quietboot.nix
     # ../common/optional/lol-acfix.nix
     # ../common/optional/starcitizen-fixes.nix
