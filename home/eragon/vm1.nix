@@ -3,6 +3,7 @@
   imports = [
     ./common
     ./features/desktop/gnome
+    ./features/services/nixarr
   ];
   # monitors = [{
   #   name = "eDP-1";
