@@ -6,11 +6,4 @@
     yt-dlp
     audacity
   ];
-  services.fluidsynth = {
-    enable = true;
-    soundService = "pipewire-pulse";
-    extraOptions = [
-      "-g 2"
-    ];
-  };
 }
