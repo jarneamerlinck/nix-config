@@ -29,6 +29,7 @@
     # ../common/optional/starcitizen-fixes.nix
     ../common/optional/services/virtualization
 
+    # ../common/optional/qemu-guest.nix
   ];
 
   nixpkgs = { # should go to global
