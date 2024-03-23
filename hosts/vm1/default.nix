@@ -16,7 +16,6 @@
     ../common/base
     ../common/users/eragon
 
-    # ../common/optional/qemu-host.nix
     ../common/optional/xserver.nix
     ../common/optional/gdm.nix
 
@@ -29,6 +28,7 @@
     # ../common/optional/lol-acfix.nix
     # ../common/optional/starcitizen-fixes.nix
     ../common/optional/services/virtualization
+
   ];
 
   nixpkgs = { # should go to global
