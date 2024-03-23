@@ -1,4 +1,4 @@
-{ outputs, lib, ... }:
+{ outputs, lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
     gh
