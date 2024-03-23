@@ -1,14 +1,16 @@
+{ pkgs, lib, config, ... }:
+
 {
-  systemd.timers."nix-auto-rebuild" = {
+  systemd.timers."auto-nix-rebuild" = {
     wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = "Sat 2:00";
         Persistent = true;
-        Unit = "nix-auto-rebuild.service";
+        Unit = "auto-nix-rebuild.service";
       };
   };
 
-  systemd.services."nix-auto-rebuild" = {
+  systemd.services."auto-nix-rebuild" = {
     script = ''
       set -eu
       ${pkgs.coreutils}/bin/bash "cd /home/eragon/nix-config && ./deploy.sh"
