@@ -13,7 +13,8 @@
   systemd.services."auto-nix-rebuild" = {
     script = ''
       set -eu
-      ${pkgs.coreutils}/bin/bash "cd /home/eragon/nix-config && ./deploy.sh"
+      cd /home/eragon/nix-config
+      ./deploy.sh
     '';
     serviceConfig = {
       Type = "oneshot";
