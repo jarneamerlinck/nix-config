@@ -28,6 +28,7 @@
     # ../common/optional/quietboot.nix
     # ../common/optional/lol-acfix.nix
     # ../common/optional/starcitizen-fixes.nix
+    ../common/optional/services/virtualization
   ];
 
   nixpkgs = { # should go to global
