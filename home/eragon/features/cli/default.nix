@@ -5,7 +5,7 @@
     # ./direnv.nix
     ./zsh.nix
     # ./gh.nix
-    # ./git.nix
+    ./git.nix
     # ./gpg.nix
     # ./jujutsu.nix
     # ./lyrics.nix
