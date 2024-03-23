@@ -2,7 +2,6 @@
 {
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
     aliases = {
       graph = "log --decorate --oneline --graph";
     };
