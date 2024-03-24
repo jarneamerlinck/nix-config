@@ -16,11 +16,10 @@
     ../common/base
     ../common/users/eragon
 
-    # ../common/optional/qemu-host.nix
     ../common/optional/xserver.nix
     ../common/optional/gdm.nix
 
-    # ../common/optional/ckb-next.nix
+    # ../common/optional/auto-rebuild.nix
     # ../common/optional/sddm.nix
 
     ../common/optional/pipewire.nix
@@ -29,6 +28,8 @@
     # ../common/optional/lol-acfix.nix
     # ../common/optional/starcitizen-fixes.nix
     ../common/optional/services/virtualization
+
+    # ../common/optional/qemu-guest.nix
   ];
 
   nixpkgs = { # should go to global

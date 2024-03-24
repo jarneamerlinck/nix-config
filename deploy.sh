@@ -7,7 +7,8 @@ hosts="$1"
 shift
 
 if [ -z "$hosts" ]; then
-    read -p "Host name: " hosts
+    # read -p "Host name: " hosts
+    hosts=$(cat /etc/hostname)
 fi
 
 for host in ${hosts//,/ }; do

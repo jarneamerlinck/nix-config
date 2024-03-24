@@ -1,5 +1,9 @@
-{ outputs, lib, ... }:
+{ outputs, lib, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    gh
+  ];
+
   programs.git = {
     enable = true;
     aliases = {
@@ -17,7 +21,9 @@
       branch.sort = "committerdate";
       # Reuse merge conflict fixes when rebasing
       rerere.enabled = true;
+      pull.rebase = true;
     };
     lfs.enable = true;
     ignores = [ ".direnv" "result" ];
-  };}
+  };
+}
