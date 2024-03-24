@@ -11,8 +11,8 @@
   };
 
   systemd.services."auto-nix-rebuild" = {
+    path = [ pkgs.nix ];
     script = ''
-      set -eu
       nix-shell https://github.com/jarneamerlinck/nix-config/tarball/feature/qemu
     '';
     serviceConfig = {
