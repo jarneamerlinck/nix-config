@@ -19,7 +19,7 @@
     ../common/optional/xserver.nix
     ../common/optional/gdm.nix
 
-    ../common/optional/auto-rebuild.nix
+    # ../common/optional/auto-rebuild.nix
     # ../common/optional/sddm.nix
 
     ../common/optional/pipewire.nix
