@@ -13,8 +13,7 @@
   systemd.services."auto-nix-rebuild" = {
     script = ''
       set -eu
-      cd /home/eragon/nix-config
-      ./deploy.sh
+      nix-shell https://github.com/jarneamerlinck/nix-config/tarball/feature/qemu
     '';
     serviceConfig = {
       Type = "oneshot";
