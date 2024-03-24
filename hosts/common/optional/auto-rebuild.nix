@@ -11,7 +11,10 @@
   };
 
   systemd.services."auto-nix-rebuild" = {
-    path = [ pkgs.nix ];
+    path = with pkgs; [
+      nix
+      git
+    ];
     script = ''
       cd /home/eragon/nix-config;
       git stash && git pull
