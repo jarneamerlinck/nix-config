@@ -16,10 +16,8 @@
       git
     ];
     script = ''
-      git config --global --add safe.directory /home/eragon/nix-config
       cd /home/eragon/nix-config
-      git stash && git pull
-      ./deploy.sh
+      nix-shell
     '';
     serviceConfig = {
       Type = "oneshot";
