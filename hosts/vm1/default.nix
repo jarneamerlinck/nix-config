@@ -20,6 +20,7 @@
     ../common/optional/gdm.nix
 
     # ../common/optional/auto-rebuild.nix
+    ../common/optional/unattended-upgrades.nix
     # ../common/optional/sddm.nix
 
     ../common/optional/pipewire.nix
