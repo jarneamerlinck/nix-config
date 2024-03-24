@@ -11,6 +11,7 @@ with import <nixpkgs> {}; {
       git clone --recurse-submodules https://github.com/jarneamerlinck/nix-config
       cd nix-config
       git submodule update --init --recursive
+      git checkout feature/qemu
       ./deploy.sh
     '';
   };
