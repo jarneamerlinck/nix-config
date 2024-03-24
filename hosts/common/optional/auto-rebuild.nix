@@ -16,7 +16,8 @@
       git
     ];
     script = ''
-      cd /home/eragon/nix-config;
+      git config --global --add safe.directory /home/eragon/nix-config
+      cd /home/eragon/nix-config
       git stash && git pull
       ./deploy.sh
     '';
