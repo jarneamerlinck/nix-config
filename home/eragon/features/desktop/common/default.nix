@@ -4,6 +4,7 @@
     ./discord.nix
     # ./dragon.nix
     ./firefox.nix
+    ./mediaPlayer.nix
     # ./font.nix
     # ./gtk.nix
     # ./kdeconnect.nix
