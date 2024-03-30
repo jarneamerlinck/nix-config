@@ -5,9 +5,9 @@
     # ./direnv.nix
     ./zsh.nix
     # ./gh.nix
-    # ./git.nix
+    ./git.nix
     # ./gpg.nix
-    # ./jujutsu.nix
+    ./kitty.nix
     # ./lyrics.nix
     # ./nix-index.nix
     # ./pfetch.nix
@@ -20,7 +20,6 @@
   ];
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
-    distrobox # Nice escape hatch, integrates docker images with my environment
 
     # Monitor tools
     btop

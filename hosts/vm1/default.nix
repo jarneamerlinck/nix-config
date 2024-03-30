@@ -16,13 +16,21 @@
     ../common/base
     ../common/users/eragon
 
-    # Desktop
     ../common/optional/xserver.nix
-    ../common/optional/sddm.nix
-    ../common/optional/gnome.nix
+    ../common/optional/gdm.nix
+
+    # ../common/optional/auto-rebuild.nix
+    ../common/optional/unattended-upgrades.nix
+    # ../common/optional/sddm.nix
 
     ../common/optional/pipewire.nix
+    ../common/optional/gnome.nix
+    # ../common/optional/quietboot.nix
+    # ../common/optional/lol-acfix.nix
+    # ../common/optional/starcitizen-fixes.nix
+    ../common/optional/services/virtualization
 
+    # ../common/optional/qemu-guest.nix
   ];
 
   nixpkgs = { # should go to global
