@@ -8,7 +8,6 @@
     ./git.nix
     # ./gpg.nix
     ./kitty.nix
-    ./fonts.nix
     # ./lyrics.nix
     # ./nix-index.nix
     # ./pfetch.nix
