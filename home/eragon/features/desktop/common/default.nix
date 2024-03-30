@@ -2,7 +2,7 @@
   imports = [
     # ./deluge.nix
     ./discord.nix
-    # ./dragon.nix
+    ./dragon.nix
     ./firefox.nix
     ./mediaPlayer.nix
     ./font.nix
