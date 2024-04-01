@@ -8,8 +8,23 @@
 nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ```
 
-## Directory structure
+## Devices
 
+| Hostname |      Board       |                  CPU                  |  RAM  |       Primary GPU       | Secondary GPU | Role  |  OS   | State |
+| :------: | :--------------: | :-----------------------------------: | :---: | :---------------------: | :-----------: | :---: | :---: | :---: |
+|  `ash`   | [Raspberry pi 4] |       [BCM2835 (4) @ 1.800GHz]        |  8GB  |                         |               |   🖥️  |   ❄️  |   ✅   |
+|  `zima`  | [Zimaboard 832]  | [Intel Celeron N3450 (4) @ 2.200GHz ] |  8GB  | [Intel HD Graphics 500] |               |   🖥️  |   🐧 |   ✅   |
+||
+|  `vm1`   |                  |                                       |       |                         |               |   📦  |   ❄️  |   ✅   |
+
+
+Virtual machine: 📦
+Linux: 🐧
+NixOS: ❄️
+Desktop: 🖥️
+Laptop: 💻️
+
+## Directory structure
 
 ```
 |-- home                    <-- home-manager configuration for each user
@@ -22,7 +37,7 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 |       |   |   |-- gnome
 |       |   |   |-- hyprland
 |       |   `-- nvim        <-- configuration for nvim (from the repo kickstart.nvim)
-|       |-- desktop1.nix    <-- home-manager for host desktop1
+|       |-- ash.nix         <-- home-manager for host desktop1
 |       |-- ssh.pub
 |       `-- vm1.nix         <-- home-manager for host vm1
 |-- hosts                   <-- All configuration on host level
@@ -31,7 +46,7 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 |   |   |-- optional        <-- optional configurations (like gnome, sddm, gdm, ...) on system level
 |   |   `-- users           <-- configuration for each user (to call home-manager)
 |   |       `-- eragon
-|   |-- desktop1            <-- configuration for the host desktop1
+|   |-- ash                 <-- configuration for the host desktop1
 |   |   |-- default.nix
 |   |   `-- hardware-configuration.nix
 |   |-- vm1                 <-- configuration for the host vm1
@@ -50,13 +65,11 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 `-- README.md               <-- This README
 ```
 
-
 ## Add a new host
+
 1. Make a new folder under ´./hosts´
 2. Copy the harware config and adjust
 3. Create a new file under `/home/username`
-
-
 
 ## Desktops
 
