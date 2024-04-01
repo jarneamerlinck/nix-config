@@ -25,9 +25,6 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/gnome.nix
-    # ../common/optional/quietboot.nix
-    # ../common/optional/lol-acfix.nix
-    # ../common/optional/starcitizen-fixes.nix
     ../common/optional/services/virtualization
 
     # ../common/optional/qemu-guest.nix
