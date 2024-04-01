@@ -80,6 +80,10 @@
           modules = [ ./hosts/vm1 ];
           specialArgs = { inherit inputs outputs; };
         };
+        ash =  lib.nixosSystem {
+          modules = [ ./hosts/ash ];
+          specialArgs = { inherit inputs outputs; };
+        };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -89,6 +93,11 @@
       "eragon@vm1" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/vm1.nix ];
           pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+      "eragon@ash" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/ash.nix ];
+          pkgs = pkgsFor.aarch64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };
     };
