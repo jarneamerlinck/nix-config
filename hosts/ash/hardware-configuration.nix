@@ -5,7 +5,7 @@
 
 {
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linuxrpi4;
+    kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
@@ -29,7 +29,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   hardware.enableRedistributableFirmware = true;
 
 }
