@@ -20,7 +20,7 @@
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
-    # ../common/optional/services/virtualization
+    ../common/optional/services/virtualization/docker.nix
 
   ];
 
