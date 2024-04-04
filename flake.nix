@@ -71,12 +71,11 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
-        vm1 =  lib.nixosSystem {
+        vm1 = lib.nixosSystem {
           modules = [ ./hosts/vm1 ];
           specialArgs = { inherit inputs outputs; };
         };
-        ash =  lib.nixosSystem {
+        ash = lib.nixosSystem {
           modules = [ ./hosts/ash ];
           specialArgs = { inherit inputs outputs; };
         };
