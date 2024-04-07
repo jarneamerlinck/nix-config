@@ -24,7 +24,7 @@
     ../common/optional/sddm.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/gnome.nix
+    # ../common/optional/gnome.nix
     ../common/optional/services/virtualization
 
     # ../common/optional/qemu-guest.nix
