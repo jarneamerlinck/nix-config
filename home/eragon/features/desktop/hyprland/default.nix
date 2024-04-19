@@ -1,11 +1,20 @@
-{ lib, config, pkgs, ... }: {
-  imports = [
-    # ../common
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  hyprland = pkgs.inputs.hyprland.hyprland.override { wrapRuntimeDeps = false; };
+  xdph = pkgs.inputs.hyprland.xdg-desktop-portal-hyprland.override { inherit hyprland; };
+in
+{
+  imports =   [
+    ../common
   ];
-
   xdg.portal = {
-    extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
-    configPackages = [ pkgs.inputs.hyprland.hyprland ];
+    extraPortals = [ xdph ];
+    configPackages = [ hyprland ];
   };
 
   home.packages = with pkgs; [
@@ -14,33 +23,16 @@
     hyprpicker
   ];
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = pkgs.inputs.hyprland.hyprland.override { wrapRuntimeDeps = false; };
-    systemd = {
-      enable = true;
-      # Same as default, but stop graphical-session too
-      extraCommands = lib.mkBefore [
-        "systemctl --user stop graphical-session.target"
-        "systemctl --user start hyprland-session.target"
-      ];
-    };
-
-    settings = let
-      # active = "0xaa${config.colorscheme.colors.base0C}";
-      # inactive = "0xaa${config.colorscheme.colors.base02}";
-    in {
-
-     };
-
-
-    # This is order sensitive, so it has to come here.
-    extraConfig = ''
-      # Passthrough mode (e.g. for VNC)
-      bind=SUPER,P,submap,passthrough
-      submap=passthrough
-      bind=SUPER,P,submap,reset
-      submap=reset
-    '';
-  };
+  # wayland.windowManager.hyprland = {
+  #   enable = true;
+  #   package = hyprland;
+  #   systemd = {
+  #     enable = true;
+  #     # Same as default, but stop graphical-session too
+  #     extraCommands = lib.mkBefore [
+  #       "systemctl --user stop graphical-session.target"
+  #       "systemctl --user start hyprland-session.target"
+  #     ];
+  #   };
+  # };
 }

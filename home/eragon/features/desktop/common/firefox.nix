@@ -35,6 +35,10 @@
           DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
           DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
           SearchBar = "unified"; # alternative: "separate"
+          SearchEngine = {
+            Default = "DuckDuckGo";
+            PreventInstalls =  true;
+          };
 
           /* ---- EXTENSIONS ---- */
           ExtensionSettings = {

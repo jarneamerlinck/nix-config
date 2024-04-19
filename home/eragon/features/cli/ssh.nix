@@ -3,7 +3,7 @@ let
   hostnames = builtins.attrNames outputs.nixosConfigurations;
 in
 {
-  programs.ssh = {
-    enable = true;
-  };
+  # programs.ssh = {
+  #   enable = true;
+  # };
 }

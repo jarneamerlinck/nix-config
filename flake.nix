@@ -9,33 +9,34 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # Hardware
+    hardware = {
+      url = "github:nixos/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Home manager
     home-manager = {
-      # url = "github:nix-community/home-manager";
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hyprland = {
-    #   url = "github:hyprwm/hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # hyprwm-contrib = {
-    #   url = "github:hyprwm/contrib";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
 
-    nixarr = {
-      url = "github:rasmus-kirk/nixarr";
+    hyprland = {
+      url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    hyprwm-contrib = {
+      url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # nixarr = {
+    #   url = "github:rasmus-kirk/nixarr";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -48,6 +49,7 @@
     self,
     nixpkgs,
     home-manager,
+    hyprland,
     ...
   } @ inputs:
   let
@@ -75,9 +77,12 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
-        vm1 =  lib.nixosSystem {
+        vm1 = lib.nixosSystem {
           modules = [ ./hosts/vm1 ];
+          specialArgs = { inherit inputs outputs; };
+        };
+        ash = lib.nixosSystem {
+          modules = [ ./hosts/ash ];
           specialArgs = { inherit inputs outputs; };
         };
     };
@@ -89,6 +94,11 @@
       "eragon@vm1" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/vm1.nix ];
           pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+      "eragon@ash" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/ash.nix ];
+          pkgs = pkgsFor.aarch64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };
     };
