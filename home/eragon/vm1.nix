@@ -2,7 +2,7 @@
 {
   imports = [
     ./common
-    ./features/desktop/hyprland
+    ./features/desktop/gnome
     ./features/music
   ];
   monitors = [{
