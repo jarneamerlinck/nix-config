@@ -6,7 +6,6 @@
     volatility3
     enum4linux
     nikto
-    seclists
     wpscan
     exploitdb
     netcat
@@ -17,5 +16,6 @@
     saleae-logic-2
     binwalk
     mosquitto
-    mediamtx  ];
+    mediamtx
+  ];
 }
