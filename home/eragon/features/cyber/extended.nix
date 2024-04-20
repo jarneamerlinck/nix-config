@@ -11,7 +11,7 @@
     netcat
     cyberchef
     upx
-    wireshark
+    # wireshark-qt
     tshark
     saleae-logic-2
     binwalk
