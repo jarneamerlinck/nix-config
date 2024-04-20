@@ -4,6 +4,8 @@
     ./common
     ./features/desktop/gnome
     ./features/music
+    ./features/cyber
+    ./features/cyber/extended.nix
   ];
   monitors = [{
     name = "eDP-1";
