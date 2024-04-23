@@ -1,4 +1,7 @@
 { outputs, lib, pkgs,config,  ... }:
+let
+    uid_user = ''${config.users.users.eragon.uid}'';
+in
 {
   environment.systemPackages = [ pkgs.cifs-utils ];
   fileSystems."/mnt/share" = {
@@ -8,7 +11,7 @@
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
-    in ["${automount_opts},credentials=/home/eragon/.smbcredentials,uid=${config.users.users.eragon.uid}"];
+    in ["${automount_opts},credentials=/home/eragon/.smbcredentials,uid=${uid_user}"];
   };
 
 }
