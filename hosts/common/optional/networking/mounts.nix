@@ -1,6 +1,7 @@
 { outputs, lib, pkgs,config,  ... }:
 let
-    uid_user = ''${config.users.users.eragon.uid}'';
+    uid_int = config.users.users.eragon.uid;
+    uid_user = ''${uid_int}'';
 in
 {
   environment.systemPackages = [ pkgs.cifs-utils ];
