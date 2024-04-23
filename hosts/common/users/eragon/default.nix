@@ -12,6 +12,7 @@ in
       "wheel"
       "video"
       "audio"
+      "mounts"
     ] ++ ifTheyExist [
       "network"
       "i2c"
