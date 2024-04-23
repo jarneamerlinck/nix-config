@@ -2,5 +2,6 @@
 {
   imports = [
     ./common
+    ./features/cli/mount.nix
   ];
 }
