@@ -33,6 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    compose2nix = {
+      url = "github:aksiksi/compose2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixarr = {
     #   url = "github:rasmus-kirk/nixarr";
     #   inputs.nixpkgs.follows = "nixpkgs";
