@@ -21,6 +21,7 @@
   ];
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
+    direnv
 
     # Monitor tools
     btop
