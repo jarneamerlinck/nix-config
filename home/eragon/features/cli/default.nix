@@ -30,6 +30,7 @@
     # ncdu # TUI disk usage
     ripgrep # Better grep
     fd # Better find
+    wget
 
     nil # Nix LSP
     nixfmt # Nix formatter
