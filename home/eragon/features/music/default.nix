@@ -5,5 +5,7 @@
     alsa-utils
     yt-dlp
     audacity
+    picard
+
   ];
 }

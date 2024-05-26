@@ -26,7 +26,6 @@
     ../common/optional/pipewire.nix
     ../common/optional/gnome.nix
     ../common/optional/services/virtualization
-    ../common/optional/services/music
 
     # ../common/optional/qemu-guest.nix
   ];
