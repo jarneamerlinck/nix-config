@@ -3,7 +3,7 @@
 {
 
   environment.systemPackages = with pkgs; [
-    perl538Packages.MusicBrainz
+    picard
   ];
 
 }
