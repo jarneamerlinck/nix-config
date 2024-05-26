@@ -2,8 +2,8 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    perl538Packages.MusicBrainz
-  ];
+  # environment.systemPackages = with pkgs; [
+    # perl538Packages.MusicBrainz
+  # ];
 
 }
