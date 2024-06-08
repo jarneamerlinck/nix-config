@@ -2,7 +2,7 @@
 {
   imports = [
     ./common
-    ./features/desktop/gnome
+    ./features/desktop/sway
     ./features/music
     ./features/cyber
     ./features/cyber/extended.nix
