@@ -22,6 +22,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/services/virtualization/docker.nix
 
+    ../common/optional/compose2nix.nix
   ];
 
   networking = {

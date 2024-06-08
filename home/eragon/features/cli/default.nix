@@ -8,6 +8,7 @@
     ./git.nix
     # ./gpg.nix
     ./kitty.nix
+    ./tmux.nix
     # ./lyrics.nix
     # ./nix-index.nix
     # ./pfetch.nix
@@ -20,6 +21,7 @@
   ];
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
+    direnv
 
     # Monitor tools
     btop
@@ -29,6 +31,7 @@
     # ncdu # TUI disk usage
     ripgrep # Better grep
     fd # Better find
+    wget
 
     nil # Nix LSP
     nixfmt # Nix formatter
