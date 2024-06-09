@@ -16,18 +16,26 @@
     ../common/base
     ../common/users/eragon
 
+    ## Display server
     # ../common/optional/xserver.nix
-    ../common/optional/sway.nix
-    # ../common/optional/gdm.nix
-    ../common/optional/greetd.nix
+    ../common/optional/wayland.nix
 
-    # ../common/optional/auto-rebuild.nix
-    ../common/optional/unattended-upgrades.nix
+    ## Display Managers
+    ../common/optional/greetd.nix
     # ../common/optional/sddm.nix
 
-    ../common/optional/pipewire.nix
+
+    ## Desktop environments / Window Managers
     # ../common/optional/gnome.nix
     # ../common/optional/hyprland.nix
+
+
+
+    ## Common items
+    # ../common/optional/auto-rebuild.nix
+    ../common/optional/unattended-upgrades.nix
+
+    ../common/optional/pipewire.nix
     ../common/optional/services/virtualization
 
     # ../common/optional/qemu-guest.nix
