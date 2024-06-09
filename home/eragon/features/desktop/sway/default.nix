@@ -1,14 +1,16 @@
 { inputs, lib, pkgs, config, outputs, ... }:
 let
   monitor = lib.head (lib.filter (m: m.primary) config.monitors);
+  s_modifier = "Mod4";
+  s_terminal = "${pkgs.coreutils}/bin/kitty";
 in
 {
   imports = [ ../common ];
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      modifier = "Mod4"; # Super key
-      terminal = "${pkgs.coreutils}/bin/kitty";
+      modifier = s_modifier; # Super key
+      terminal = s_terminal;
       output = {
         "Virtual-1" = {
           mode = "${toString monitor.width}x${toString monitor.height}@60Hz";
@@ -16,7 +18,7 @@ in
       };
     };
     extraConfig = ''
-      bindsym ${modifier}+t exec ${terminal}
+      bindsym ${s_modifier}+t exec ${s_terminal}
     '';
   };
 }
