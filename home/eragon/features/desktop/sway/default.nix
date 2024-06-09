@@ -10,7 +10,7 @@ in
       modifier = "Mod4"; # Super key
       output = {
         "Virtual-1" = {
-          mode = "1920x1080@60Hz";
+          mode = "${toString monitor.width}x${toString monitor.height}@60Hz";
         };
       };
     };
