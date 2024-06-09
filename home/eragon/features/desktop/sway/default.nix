@@ -8,11 +8,15 @@ in
     enable = true;
     config = rec {
       modifier = "Mod4"; # Super key
+      terminal = "${pkgs.coreutils}/bin/kitty";
       output = {
         "Virtual-1" = {
           mode = "${toString monitor.width}x${toString monitor.height}@60Hz";
         };
       };
     };
+    extraConfig = ''
+      bindsym ${modifier}+t exec ${terminal}
+    '';
   };
 }
