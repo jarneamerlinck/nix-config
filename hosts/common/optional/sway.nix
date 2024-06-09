@@ -8,7 +8,7 @@
 
   sound.enable = true;
   security.polkit.enable = true;
-  # hardware.opengl.enable = true; # Only enable inside VM
+  hardware.opengl.enable = true; # Only enable inside VM
   # nixpkgs.config.pulseaudio = true;
   # hardware.pulseaudio.enable = true;
 }
