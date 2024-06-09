@@ -17,7 +17,7 @@
     ../common/users/eragon
 
     # ../common/optional/xserver.nix
-    ../common/optional/sway.nix
+    # ../common/optional/sway.nix
     # ../common/optional/gdm.nix
 
     # ../common/optional/auto-rebuild.nix

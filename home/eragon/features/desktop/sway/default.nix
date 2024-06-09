@@ -1,4 +1,7 @@
 { inputs, lib, pkgs, config, outputs, ... }:
+let
+  monitor = lib.head (lib.filter (m: m.primary) config.monitors);
+in
 {
   imports = [ ../common ];
   wayland.windowManager.sway = {
