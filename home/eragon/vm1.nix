@@ -2,6 +2,7 @@
 {
   imports = [
     ./common
+    ./features/cli/debugging.nix
     ./features/desktop/sway
     ./features/music
     ./features/cyber
