@@ -6,7 +6,12 @@ let
   i_keyboard = "be";
 in
 {
-  imports = [ ../common ];
+  imports = [
+    ../common
+    ./shotman.nix
+    ./notifications.nix
+    ./wayland-common.nix
+  ];
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
@@ -20,7 +25,7 @@ in
     };
     extraConfig = ''
       bindsym ${i_modifier}+t exec ${i_terminal}
-
+      bindsym Print exec shotman -c output
 
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
