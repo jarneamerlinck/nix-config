@@ -19,6 +19,11 @@ in
     };
     extraConfig = ''
       bindsym ${s_modifier}+t exec ${s_terminal}
+
+
+      input "type:keyboard" {
+        xkb_layout be
+      }
     '';
   };
 }
