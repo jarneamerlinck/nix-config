@@ -17,7 +17,7 @@
     ../common/users/eragon
 
     ## Display server
-    # ../common/optional/xserver.nix
+    ../common/optional/xserver.nix
     ../common/optional/wayland.nix
 
     ## Display Managers
