@@ -3,7 +3,6 @@ let
   monitor = lib.head (lib.filter (m: m.primary) config.monitors);
   s_modifier = "Mod4";
   s_terminal = "kitty";
-  # s_terminal = "${pkgs.coreutils}/bin/kitty";
 in
 {
   imports = [ ../common ];
