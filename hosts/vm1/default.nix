@@ -38,7 +38,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/services/virtualization
 
-    # ../common/optional/qemu-guest.nix
+    ../common/optional/qemu-guest.nix
   ];
 
   networking = {
