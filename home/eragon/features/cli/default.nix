@@ -11,7 +11,7 @@
     ./tmux.nix
     # ./lyrics.nix
     # ./nix-index.nix
-    # ./pfetch.nix
+    ./fetch.nix
     # ./ranger.nix
     # ./screen.nix
     # ./shellcolor.nix
