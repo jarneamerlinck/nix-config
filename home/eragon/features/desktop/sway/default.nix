@@ -9,6 +9,7 @@ in
   imports = [
     ../common
     ./shotman.nix
+    ./waybar.nix
     ./notifications.nix
     ./wayland-common.nix
   ];
@@ -26,10 +27,12 @@ in
     extraConfig = ''
       bindsym ${i_modifier}+t exec ${i_terminal}
       bindsym Print exec shotman -c output
+      bindsym ${i_modifier}+d exec "wofi --show drun"
 
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
       }
+      exec_always --no-startup-id waybar
     '';
   };
 }
