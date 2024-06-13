@@ -26,9 +26,10 @@ in
     };
     extraConfig = ''
       bindsym ${i_modifier}+t exec ${i_terminal}
-      bindsym Print exec shotman -c output
       bindsym ${i_modifier}+d exec "wofi --show drun"
+      bindsym ${i_modifier}+q kill
 
+      bindsym Print exec shotman -c output
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
       }
