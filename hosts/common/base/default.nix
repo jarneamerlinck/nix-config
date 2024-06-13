@@ -12,6 +12,7 @@
     ./zsh.nix
     ./nix.nix
     ./openssh.nix
+    ./package-list.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 

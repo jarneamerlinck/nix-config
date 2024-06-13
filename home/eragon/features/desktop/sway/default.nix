@@ -15,7 +15,6 @@ in
   ];
   wayland.windowManager.sway = {
     enable = true;
-    enableBar = false;
     config = rec {
       modifier = i_modifier; # Super key
       terminal = i_terminal;
