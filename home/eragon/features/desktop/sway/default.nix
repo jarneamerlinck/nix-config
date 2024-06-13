@@ -15,6 +15,7 @@ in
   ];
   wayland.windowManager.sway = {
     enable = true;
+    enableBar = false;
     config = rec {
       modifier = i_modifier; # Super key
       terminal = i_terminal;
@@ -27,13 +28,9 @@ in
     # extraSessionCommands = ''
     #   set $menu wofi
     # '';
-    extraPackages = with pkgs; [
-      # other packages you might want
-      waybar
-    ];
     extraConfig = ''
       bindsym ${i_modifier}+t exec ${i_terminal}
-      bindsym ${i_modifier}+d exec ${pkgs.wofi}/bin/wofi
+      bindsym ${i_modifier} exec ${pkgs.wofi}/bin/wofi
       bindsym ${i_modifier}+q kill
 
       bindsym Print exec shotman -c output
