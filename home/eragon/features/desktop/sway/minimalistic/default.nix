@@ -43,7 +43,6 @@ in
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
       }
-      exec_always --no-startup-id waybar
     '';
   };
 }
