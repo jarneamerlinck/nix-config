@@ -19,7 +19,19 @@ in
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
         "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
-        "${cfg.modifier}+q" = "exec kill";
+        "${cfg.modifier}+q" = "kill";
+        "${cfg.modifier}+b" = "exec firefox";
+
+        "${cfg.modifier}+${cfg.left}" = "focus left";
+        "${cfg.modifier}+${cfg.down}" = "focus down";
+        "${cfg.modifier}+${cfg.up}" = "focus up";
+        "${cfg.modifier}+${cfg.right}" = "focus right";
+
+        "${cfg.modifier}+Shift+${cfg.left}" = "move left";
+        "${cfg.modifier}+Shift+${cfg.down}" = "move down";
+        "${cfg.modifier}+Shift+${cfg.up}" = "move up";
+        "${cfg.modifier}+Shift+${cfg.right}" = "move right";
+        "${cfg.modifier}+f" = "fullscreen toggle";
       };
       modes = {
         workspace_mode =
