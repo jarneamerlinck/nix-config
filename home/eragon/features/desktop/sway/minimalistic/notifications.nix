@@ -1,5 +1,7 @@
 { pkgs, ... }: {
-  home = {
-    packages = with pkgs; [ mako ];
+  config.services.mako = {
+    enable = true;
+    anchor = "top-center";
+    defaultTimeout = 2750;
   };
 }
