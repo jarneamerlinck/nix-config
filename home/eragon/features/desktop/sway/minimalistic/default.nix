@@ -15,13 +15,13 @@ in
     enable = true;
     config = rec {
       modifier = "Mod4"; # super key
-      terminal = "kitty";
+      terminal = "${pkgs.kitty}/bin/kitty";
       bars = [];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
         "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
         "${cfg.modifier}+q" = "kill";
-        "${cfg.modifier}+b" = "exec firefox";
+        "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
         "${cfg.modifier}+${cfg.left}" = "focus left";
         "${cfg.modifier}+${cfg.down}" = "focus down";
