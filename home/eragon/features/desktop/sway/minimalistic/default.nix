@@ -16,6 +16,7 @@ in
     config = rec {
       modifier = "Mod4"; # super key
       terminal = "kitty";
+      bars = [];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
         "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
