@@ -1,8 +1,8 @@
 { inputs, lib, pkgs, config, outputs, ... }:
 let
-  i_modifier = "Mod4";
-  i_terminal = "kitty";
   i_keyboard = "be";
+  cfg = config.wayland.windowManager.sway.config;
+
 in
 {
   imports = [
@@ -14,18 +14,36 @@ in
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      modifier = i_modifier; # Super key
-      terminal = i_terminal;
+      modifier = "Mod4"; # super key
+      terminal = "kitty";
+      keybindings = {
+        "${cfg.modifier}+t" = "exec ${cfg.terminal}";
+        "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+        "${cfg.modifier}+q" = "exec kill";
+      };
+      modes = {
+        workspace_mode =
+        {
+          "0" = "workspace 0";
+          "1" = "workspace 1";
+          "2" = "workspace 2";
+          "3" = "workspace 3";
+          "4" = "workspace 4";
+          "5" = "workspace 5";
+          "6" = "workspace 6";
+          "7" = "workspace 7";
+          "8" = "workspace 8";
+          "9" = "workspace 9";
+          "${cfg.right}" = "workspace next";
+          "${cfg.left}" = "workspace prev";
+        };
+      };
     };
     extraConfig = ''
-      bindsym ${i_modifier}+t exec ${i_terminal}
-      bindsym ${i_modifier} exec ${pkgs.wofi}/bin/wofi
-      bindsym ${i_modifier}+q kill
-
-      bindsym Print exec shotman -c output
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
       }
+      exec_always --no-startup-id waybar
     '';
   };
 }
