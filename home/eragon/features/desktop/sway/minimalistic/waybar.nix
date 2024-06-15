@@ -1,36 +1,21 @@
 { pkgs, ... }: {
-  home = {
-    packages = with pkgs; [
-      # waybar
-      wofi
-    ];
+  programs.wofi = {
+      enable = true;
+      settings = {
+        image_size = 48;
+        columns = 3;
+        allow_images = true;
+        insensitive = true;
+        run-always_parse_args = true;
+        run-cache_file = "/dev/null";
+        run-exec_search = true;
+        matching = "multi-contains";
+    };
   };
+
   programs.waybar = {
       enable = true;
       systemd.enable = true;
       style = builtins.readFile ./waybar_style.css;
-      settings = [{
-        mainBar = {
-          layer = "top";
-          position = "top";
-          height = 30;
-          modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-          modules-center = [ "sway/window" "custom/hello-from-waybar" ];
-          modules-right = [ "mpd" "custom/mymodule#with-css-id" "temperature" ];
-
-          "sway/workspaces" = {
-            disable-scroll = true;
-            all-outputs = true;
-          };
-          "custom/hello-from-waybar" = {
-            format = "hello {}";
-            max-length = 40;
-            interval = "once";
-            exec = pkgs.writeShellScript "hello-from-waybar" ''
-              echo "from within waybar"
-            '';
-          };
-        };
-      }];
-    };
+  };
 }
