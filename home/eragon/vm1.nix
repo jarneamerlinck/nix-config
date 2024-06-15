@@ -3,7 +3,7 @@
   imports = [
     ./common
     ./features/cli/debugging.nix
-    ./features/desktop/sway
+    ./features/desktop/sway/minimalistic
     ./features/music
     ./features/cyber
     ./features/cyber/extended.nix
