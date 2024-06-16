@@ -3,4 +3,7 @@
 { pkgs ? import <nixpkgs> { } }: rec {
   sddm-themes = pkgs.callPackage ./sddm-themes.nix { };
   hyprslurp = pkgs.callPackage ./hyprslurp { };
+  wallpapers = import ./wallpapers {inherit pkgs;};
+  allWallpapers = pkgs.linkFarmFromDrvs "wallpapers" (pkgs.lib.attrValues wallpapers);
+
 }
