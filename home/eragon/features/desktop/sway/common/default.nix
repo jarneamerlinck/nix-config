@@ -11,7 +11,7 @@ in
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      output."*".bg = "${config.wallpaper}";
+      # output."*".bg = "${config.wallpaper}";
       output = {
         "Virtual-1" = {
           mode = "${toString monitor.width}x${toString monitor.height}@${toString monitor.refreshRate}Hz";
