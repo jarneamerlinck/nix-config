@@ -10,6 +10,7 @@ in
     ./shotman.nix
     ./waybar.nix
     ./notifications.nix
+    ./darkmode-theme.nix
   ];
   wayland.windowManager.sway = {
     enable = true;
