@@ -8,7 +8,7 @@
     ./features/cyber
     ./features/cyber/extended.nix
   ];
-  wallpaper = lib.mkDefault pkgs.wallpapers.temple-fantasy-blue;
+  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
 
   monitors = [{
     name = "eDP-1";
