@@ -46,7 +46,7 @@
       "ctrl+shift+down" = "decrease_font_size";
       "ctrl+shift+backspace" = "restore_font_size";
     };
-  	settings = {
+    settings = {
       font_family = "FiraCode Nerd Font Mono";
       italic_font = "auto";
       bold_font = "auto";
@@ -54,6 +54,7 @@
       font_size = 12;
       foreground = "#c0b18b";
       background = "#262626";
+      background_opacity = "0.9";
       selection_foreground = "#2f2f2f";
       selection_background = "#d75f5f";
       cursor = "#8fee96";
