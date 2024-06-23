@@ -11,7 +11,11 @@ in
    grub2
   ];
   boot.loader.grub = {
-    extraConfig = lib.mkIf grubEnabled "set theme=${fullTheme}/share/grub/themes/${grubTheme}/theme.txt";
+    useOSProber = lib.mkDefault false;
+    extraConfig = lib.mkIf grubEnabled ''
+      set theme=${fullTheme}/share/grub/themes/${grubTheme}/theme.txt
+      GRUB_RECORDFAIL_TIMEOUT=0
+    '';
     # splashImage = null;
   };
 }

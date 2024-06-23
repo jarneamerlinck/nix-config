@@ -32,4 +32,19 @@
      };
    };
 
+   xenlism-grub-nixos = stdenv.mkDerivation rec {
+     pname = "xenlism-grub-nixos";
+     version = "40ac048df9aacfc053c515b97fcd24af1a06762f";
+     dontBuild = true;
+     installPhase = ''
+       mkdir -p $out/share/grub/themes/${pname}
+       cp -aR xenlism-grub-1080p-nixos/Xenlism-Nixos/* $out/share/grub/themes/${pname}
+     '';
+     src = fetchFromGitHub {
+       owner = "xenlism";
+       repo = "Grub-themes";
+       rev = "${version}";
+       sha256 = "sha256-ProTKsFocIxWAFbYgQ46A+GVZ7mUHXxZrvdiPJqZJ6I=";
+     };
+   };
 }
