@@ -5,7 +5,7 @@ pkgs.lib.listToAttrs (
     value = pkgs.fetchurl {
       inherit (wallpaper) sha256;
       name = "${wallpaper.name}.${wallpaper.ext}";
-      url = "https://i.imgur.com/${wallpaper.id}.${wallpaper.ext}";
+      url = "https://${wallpaper.website}/${wallpaper.id}.${wallpaper.ext}";
     };
   }) (pkgs.lib.importJSON ./list.json)
 )

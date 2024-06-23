@@ -1,20 +1,23 @@
 [
-  {
-    "ext": "jpeg",
-    "id": "iOIuN69",
-    "name": "temple-fantasy-blue",
-    "sha256": "0q8z4j4xchk0kmcpniyyqj8nkiqh97d90gzk7b7gv196vhxldhq3"
-  },
-  {
-    "ext": "jpeg",
-    "id": "oqwTh85",
-    "name": "towers-ice",
-    "sha256": "0cqm4ish4yzrww7v0whmv8ckxcdwzppfm0gkpyfflpgm8xakyykf"
-  },
-  {
-    "ext": "jpeg",
-    "id": "u2T7X4I",
-    "name": "watercolor-beach",
-    "sha256": "00kcswwv9p14vs7ym0fmanzv8729i1gagk6gpl42icd93mmhlmd4"
-  }
+   {
+      "name": "temple-fantasy-blue",
+      "ext": "jpeg",
+      "id": "iOIuN69",
+      "website": "i.imgur.com",
+      "sha256": "0q8z4j4xchk0kmcpniyyqj8nkiqh97d90gzk7b7gv196vhxldhq3"
+   },
+   {
+      "name": "towers-ice",
+      "ext": "jpeg",
+      "id": "oqwTh85",
+      "website": "i.imgur.com",
+      "sha256": "0cqm4ish4yzrww7v0whmv8ckxcdwzppfm0gkpyfflpgm8xakyykf"
+   },
+   {
+      "name": "watercolor-beach",
+      "ext": "jpeg",
+      "id": "u2T7X4I",
+      "website": "i.imgur.com",
+      "sha256": "00kcswwv9p14vs7ym0fmanzv8729i1gagk6gpl42icd93mmhlmd4"
+   }
 ]
