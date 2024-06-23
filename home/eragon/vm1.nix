@@ -8,7 +8,7 @@
     ./features/cyber
     ./features/cyber/extended.nix
   ];
-  wallpaper = lib.mkDefault pkgs.wallpapers.aenami-lost-in-between;
+  wallpaper = lib.mkDefault pkgs.wallpapers.temple-fantasy-blue;
 
   monitors = [{
     name = "eDP-1";
