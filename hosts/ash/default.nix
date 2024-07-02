@@ -16,13 +16,10 @@
     ../common/base
     ../common/users/eragon
 
-    # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
     ../common/optional/services/virtualization/docker.nix
-
-    ../common/optional/compose2nix.nix
   ];
 
   networking = {

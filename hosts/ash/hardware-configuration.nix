@@ -12,7 +12,10 @@
     };
     initrd = {
       availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+      kernelModules = [ ];
     };
+    extraModulePackages = [ ];
+
   };
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXOS_SD";
