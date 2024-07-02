@@ -32,7 +32,8 @@
     wget
 
     nil # Nix LSP
-    nixfmt # Nix formatter
+    nixfmt-rfc-style # Nix formatter
+    # nixfmt-classic # Prev formater
     nvd # Differ
     nix-output-monitor
 

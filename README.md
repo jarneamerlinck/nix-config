@@ -74,3 +74,14 @@ Laptop: 💻️
 ## Desktops
 
 - desktops can be changed in ´hosts/{hostname}/default.nix´
+
+## Usefull commands
+
+### Cleaning up space
+
+```bash
+nix-store --gc
+nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/proc)"
+
+sudo nix-collect-garbage --delete-older-than 20d
+```
