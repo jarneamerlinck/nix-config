@@ -1,0 +1,52 @@
+[
+   {
+      "name": "abstract-cubes",
+      "ext": "jpeg",
+      "id": "IaRtDwa",
+      "website": "i.imgur.com",
+      "sha256": "4417fbc58662b8f8decbeebcd665c655b09a3fd0021eef5739c7d4b70a29ec5b"
+   },
+   {
+      "name": "nixos-logo",
+      "ext": "jpg",
+      "id": "linux-nixos-7q",
+      "website": "images.hdqwalls.com/wallpapers",
+      "sha256": "eeb39abc3fc9b2ebe0b59a4550055c70a358db23ef2298bc31567e5741157de4"
+   },
+   {
+      "name": "eclipse-abstract",
+      "ext": "jpg",
+      "id": "eclipse-abstract-5k-9d",
+      "website": "images.hdqwalls.com/wallpapers",
+      "sha256": "7a9d19fbf1430f1f2f70fecf75212b320747eb929824dedc2a22b7980da3a96e"
+   },
+   {
+      "name": "sci-fi-holographic-abstract",
+      "ext": "jpg",
+      "id": "sci-fi-holographic-abstract-an",
+      "website": "images.hdqwalls.com/wallpapers",
+      "sha256": "2bc0a8eeb40e131d4fb8456a3482504ef1aa3f4936d7256645e6e944b7dc3281"
+   },
+   {
+      "name": "cute-astronaut",
+      "ext": "jpg",
+      "id": "cute-astronaut-8k-8333x8333-17123",
+      "website": "4kwallpapers.com/images/wallpapers",
+      "sha256": "a4cc83b124c2db0feb4b21bbcb402b1b3713acba653d4aa1e95fdd13427dc077"
+   },
+   {
+      "name": "rick-and-morty-abstact",
+      "ext": "png",
+      "id": "rick-and-morty-rick-5120x2880-9494",
+      "website": "4kwallpapers.com/images/wallpapers",
+      "sha256": "5def1214472b9a4f28ba489940f262cddb22ae829daee9200c25710300ee14f2"
+   },
+   {
+      "name": "moon-forest-dark",
+      "ext": "jpg",
+      "id": "full-moon-forest-night-dark-starry-sky-5k-8k-7952x5304-1684",
+      "website": "4kwallpapers.com/images/wallpapers",
+      "sha256": "ea3442db2ce365304f6bf688df9d9bb2feab29b14f632b97e7f76d182cb8fb58"
+   }
+
+]

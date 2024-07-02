@@ -2,16 +2,20 @@
 {
   imports = [
     ./common
-    ./features/desktop/gnome
+    ./features/cli/debugging.nix
+    ./features/desktop/sway/minimalistic
     ./features/music
     ./features/cyber
     ./features/cyber/extended.nix
   ];
+  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
+
   monitors = [{
     name = "eDP-1";
-    width = 1920;
-    height = 1080;
+    width = 1600;
+    height = 900;
     workspace = "1";
     primary = true;
   }];
+
 }
