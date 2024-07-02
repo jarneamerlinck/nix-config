@@ -14,7 +14,16 @@
       useOSProber = true;
     };
     initrd = {
-      availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+      availableKernelModules = [
+        "btrfs"         # Needed for btrfs storage
+        "ahci"          # Used for SATA (Advanced Host Controller Interface)
+        "xhci_pci"      # Controller for USB (eXtensible Host Controller Interface)
+        "usbhid"        # Needed for USB devices
+        "usb_storage"   # For USB storage devices
+        "virtio_pci"    # PCI for virtio, only needed if VM is needed
+        "virtio_blk"    # Block for virtio, only needed if VM is needed
+        "sr_mod"        # Used for CD-ROM
+      ];
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-intel" ];
