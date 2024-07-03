@@ -17,5 +17,9 @@
     binwalk
     mosquitto
     mediamtx
+
+    # Wrapped python packages
+    wrapped-python.spiderfoot
+
   ];
 }
