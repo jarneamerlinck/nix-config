@@ -4,6 +4,7 @@
   sddm-themes = pkgs.callPackage ./sddm-themes.nix { };
   grub-themes = pkgs.callPackage ./grub-themes.nix { };
   hyprslurp = pkgs.callPackage ./hyprslurp { };
+  wrapped-python = pkgs.callPackage ./python { };
   wallpapers = import ./wallpapers {inherit pkgs;};
   allWallpapers = pkgs.linkFarmFromDrvs "wallpapers" (pkgs.lib.attrValues wallpapers);
 
