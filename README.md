@@ -35,9 +35,9 @@ Laptop: 💻️
 |       |   |-- desktop     <-- user configuration for desktop tools
 |       |   |   |-- common
 |       |   |   |-- gnome
-|       |   |   |-- hyprland
+|       |   |   |-- sway
 |       |   `-- nvim        <-- configuration for nvim (from the repo kickstart.nvim)
-|       |-- ash.nix         <-- home-manager for host desktop1
+|       |-- ash.nix         <-- home-manager for host ash
 |       |-- ssh.pub
 |       `-- vm1.nix         <-- home-manager for host vm1
 |-- hosts                   <-- All configuration on host level
@@ -46,7 +46,7 @@ Laptop: 💻️
 |   |   |-- optional        <-- optional configurations (like gnome, sddm, gdm, ...) on system level
 |   |   `-- users           <-- configuration for each user (to call home-manager)
 |   |       `-- eragon
-|   |-- ash                 <-- configuration for the host desktop1
+|   |-- ash                 <-- configuration for the host ash
 |   |   |-- default.nix
 |   |   `-- hardware-configuration.nix
 |   |-- vm1                 <-- configuration for the host vm1
