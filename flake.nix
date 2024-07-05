@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Nixos configurations for all used devices.";
 
   inputs = {
     # Nixpkgs

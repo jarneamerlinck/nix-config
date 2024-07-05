@@ -10,12 +10,13 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 
 ## Devices
 
-| Hostname |      Board       |                  CPU                  |  RAM  |       Primary GPU       | Secondary GPU | Role  |  OS   | State |
-| :------: | :--------------: | :-----------------------------------: | :---: | :---------------------: | :-----------: | :---: | :---: | :---: |
-|  `ash`   | [Raspberry pi 4] |       [BCM2835 (4) @ 1.800GHz]        |  8GB  |                         |               |   🖥️  |   ❄️  |   ✅   |
-|  `zima`  | [Zimaboard 832]  | [Intel Celeron N3450 (4) @ 2.200GHz ] |  8GB  | [Intel HD Graphics 500] |               |   🖥️  |   🐧 |   ✅   |
+| Hostname  |      Board       |                  CPU                  |  RAM  |       Primary GPU       | Secondary GPU | Role  |  OS   | State |
+| :-------: | :--------------: | :-----------------------------------: | :---: | :---------------------: | :-----------: | :---: | :---: | :---: |
+|  `ash`    | [Raspberry pi 4] |       [BCM2835 (4) @ 1.800GHz]        |  8GB  |                         |               |   🖥️  |   ❄️  |   ✅   |
+|  `zima`   | [Zimaboard 832]  | [Intel Celeron N3450 (4) @ 2.200GHz ] |  8GB  | [Intel HD Graphics 500] |               |   🖥️  |   🐧 |   ✅   |
 ||
-|  `vm1`   |                  |                                       |       |                         |               |   📦  |   ❄️  |   ✅   |
+|  `vm1`    |                  |                                       |       |                         |               |   📦  |   ❄️  |   ✅   |
+|  `atlas`  |                  |                                       |       |                         |               |   📦  |   ❄️  |   ✅   |
 
 
 Virtual machine: 📦
@@ -40,6 +41,7 @@ Laptop: 💻️
 |       |-- ash.nix         <-- home-manager for host ash
 |       |-- ssh.pub
 |       `-- vm1.nix         <-- home-manager for host vm1
+|
 |-- hosts                   <-- All configuration on host level
 |   |-- common
 |   |   |-- base            <-- base configuration for all hosts
@@ -54,9 +56,11 @@ Laptop: 💻️
 |-- modules                 <-- modules for home-manager and nixos
 |   |-- home-manager
 |   `-- nixos
-|-- overlays                <-- Overlays directory to be able to run pkgs
+|
+|-- overlays/               <-- Overlays to modify pkgs
 |
 |-- pkgs                    <-- Custom packages
+|   `-- wallpapers          <-- Package for custom wallpapers
 |
 |-- default.nix             <-- Nix dev file to be able to run the flake
 |-- deploy.sh               <-- Shell file to run the flake and update the system
