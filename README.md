@@ -89,3 +89,12 @@ nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/pr
 
 sudo nix-collect-garbage --delete-older-than 20d
 ```
+
+## Installation with minimal installer
+
+1. Get UUID of the disk to install it on
+
+
+```bash
+
+```

@@ -37,6 +37,7 @@
     self,
     nixpkgs,
     home-manager,
+    disko,
     ...
   } @ inputs:
   let
@@ -72,6 +73,10 @@
           modules = [ ./hosts/ash ];
           specialArgs = { inherit inputs outputs; };
         };
+        atlas = lib.nixosSystem {
+          modules = [ ./hosts/atlas disko.nixosModules.disko];
+          specialArgs = { inherit inputs outputs; };
+        };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -86,6 +91,11 @@
       "eragon@ash" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/ash.nix ];
           pkgs = pkgsFor.aarch64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+      "eragon@atlas" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/atlas.nix ];
+          pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };
     };
