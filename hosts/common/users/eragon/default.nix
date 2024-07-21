@@ -3,7 +3,7 @@ let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
-  # users.mutableUsers = false; # Only enable if you set password from sops or from nix-config
+  users.mutableUsers = false; # Only enable if you set password from sops or from nix-config
   users.users.eragon = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -23,7 +23,7 @@ in
     ];
 
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/eragon/ssh.pub) ];
-    # hashedPasswordFile = config.sops.secrets.eragon-password.path;
+    hashedPasswordFile = "$y$j9T$ghKhfM4DOlwURfSFWVEfh/$JNdHgmPlu9RrEQZ7FU.RWT6.eeg5uKOLR5JAVqJq6c1";
     packages = [ pkgs.home-manager ];
   };
 
