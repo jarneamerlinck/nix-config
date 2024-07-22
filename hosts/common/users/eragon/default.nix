@@ -23,7 +23,7 @@ in
     ];
 
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/eragon/ssh.pub) ];
-    hashedPasswordFile = "$y$j9T$ghKhfM4DOlwURfSFWVEfh/$JNdHgmPlu9RrEQZ7FU.RWT6.eeg5uKOLR5JAVqJq6c1";
+    initialPassword = ""; # TODO change password after first boot
     packages = [ pkgs.home-manager ];
   };
 
