@@ -47,6 +47,9 @@
     QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
   };
 
+  # Set default console keyboard
+  console.keyMap = "be-latin1";
+
   hardware.enableRedistributableFirmware = true;
 
   # Increase open file limit for sudoers
