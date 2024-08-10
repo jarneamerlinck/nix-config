@@ -66,7 +66,11 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
         vm1 = lib.nixosSystem {
-          modules = [ ./hosts/vm1 ];
+          modules = [
+            ./hosts/vm1
+            disko.nixosModules.disko
+            { disko.devices.disk.disk1.device = "/dev/vda"; }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
         ash = lib.nixosSystem {
