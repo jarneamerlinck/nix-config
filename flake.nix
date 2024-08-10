@@ -74,7 +74,11 @@
           specialArgs = { inherit inputs outputs; };
         };
         ash = lib.nixosSystem {
-          modules = [ ./hosts/ash ];
+          modules = [
+            ./hosts/ash
+            disko.nixosModules.disko
+            { disko.devices.disk.disk1.device = "/dev/vda"; }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
         atlas = lib.nixosSystem {
