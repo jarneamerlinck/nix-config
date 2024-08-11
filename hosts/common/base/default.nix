@@ -10,6 +10,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./zsh.nix
+    ./nvim.nix
     ./nix.nix
     ./openssh.nix
     ./package-list.nix
