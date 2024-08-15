@@ -12,6 +12,14 @@ in
     ./notifications.nix
     ./darkmode-theme.nix
   ];
+
+  home.packages = with pkgs; [
+    procps
+    jq
+    playerctl
+    pavucontrol
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
