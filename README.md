@@ -90,7 +90,38 @@ nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/pr
 sudo nix-collect-garbage --delete-older-than 20d
 ```
 
+## Installation with minimal iso and nixos-anywhere
+
+1. Boot live installer
+2. Check disks and adapt the config
+3. Set root password and get IP
+4. Test configuration (for host vm1)
+
+```bash
+nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
+```
+
+5. Run the install commando from an other device with nix (change Ip and hostname)
+
+```bash
+nix run github:nix-community/nixos-anywhere -- --flake .#vm1 root@ip
+```
+
+
+## Create password hash
+
+To create a password hash run the following command
+
+```bash
+mkpasswd -m sha-512
+```
+
+
 ## Installation with minimal installer
+
+
+
+
 
 ### Create partitions
 

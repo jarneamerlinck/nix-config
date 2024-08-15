@@ -34,6 +34,7 @@
       url = "github:misterio77/nix-colors";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
 
   outputs = {
@@ -69,11 +70,19 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
         vm1 = lib.nixosSystem {
-          modules = [ ./hosts/vm1 ];
+          modules = [
+            ./hosts/vm1
+            disko.nixosModules.disko
+            { disko.devices.disk.disk1.device = "/dev/vda"; }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
         ash = lib.nixosSystem {
-          modules = [ ./hosts/ash ];
+          modules = [
+            ./hosts/ash
+            disko.nixosModules.disko
+            { disko.devices.disk.disk1.device = "/dev/vda"; }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
         atlas = lib.nixosSystem {

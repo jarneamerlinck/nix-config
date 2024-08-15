@@ -12,6 +12,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
+    ./disko.nix
 
     ../common/base
     ../common/users/eragon

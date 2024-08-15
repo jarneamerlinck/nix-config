@@ -9,8 +9,8 @@
     ];
   boot = {
     loader.grub = {
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
     };
     initrd = {
       availableKernelModules = [

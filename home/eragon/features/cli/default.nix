@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    # ./bash.nix
     # ./bat.nix
     ./direnv.nix
     ./zsh.nix
@@ -18,28 +17,42 @@
     # ./starship.nix
     # ./xpo.nix
   ];
-  home.packages = with pkgs; [
-    comma # Install and run programs by sticking a , before them
+  home = {
+    shellAliases = {
+      v="nvim";
+    };
 
-    # Monitor tools
-    btop
-    htop
-    neofetch
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
 
-    # ncdu # TUI disk usage
-    ripgrep # Better grep
-    fd # Better find
-    wget
+    packages = with pkgs; [
+      comma # Install and run programs by sticking a , before them
 
-    nil # Nix LSP
-    nixfmt-rfc-style # Nix formatter
-    # nixfmt-classic # Prev formater
-    nvd # Differ
-    nix-output-monitor
+      # Monitor tools
+      btop
+      htop
+      neofetch
 
-    # terminals
-    kitty
+      # ncdu # TUI disk usage
+      ripgrep # Better grep
+      fd # Better find
+      wget
+
+      zoxide
+      fzf
+
+      nil # Nix LSP
+      nixfmt-rfc-style # Nix formatter
+      # nixfmt-classic # Prev formater
+      nvd # Differ
+      nix-output-monitor
+
+      # terminals
+      kitty
 
 
-  ];
+    ];
+  };
 }
