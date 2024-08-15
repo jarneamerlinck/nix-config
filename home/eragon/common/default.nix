@@ -51,6 +51,7 @@ in
   };
 
   # Set default wallpaper and colorscheme
+  # Available color schemes can be found at https://tinted-theming.github.io/base16-gallery/
   colorScheme = lib.mkDefault inputs.nix-colors.colorSchemes.atelier-heath;
   wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
 
