@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
-
+let
+  rmHash = lib.removePrefix "#";
+  inherit (config.colorscheme) colors harmonized;
+in
 {
   programs.kitty = {
     enable = true;
@@ -52,11 +55,11 @@
       bold_font = "auto";
       bold_italic_font = "auto";
       font_size = 12;
-      foreground = "#c0b18b";
-      background = "#262626";
+      foreground = "#${config.colorscheme.palette.base05}";
+      # background = "${rmHash colors.surface}";
       background_opacity = "0.9";
-      selection_foreground = "#2f2f2f";
-      selection_background = "#d75f5f";
+      # selection_foreground = "${rmHash colors.on_primary_container}";
+      # selection_background = "${rmHash colors.primary_container}";
       cursor = "#8fee96";
       cursor_shape = "block";
       cursor_stop_blinking_after = 15;
