@@ -6,5 +6,8 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [ inputs.nvim.packages.x86_64-linux.default ];
+  environment.systemPackages =  [
+    inputs.nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+
 }
