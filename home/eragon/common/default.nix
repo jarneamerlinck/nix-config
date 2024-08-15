@@ -49,7 +49,9 @@
       FLAKE = "$HOME/nix-config";
     };
   };
-  # colorSchemes.mode = lib.mkOverride 1499 "dark";
+  # colorscheme.mode = lib.mkOverride 1499 "dark";
+
+  colorScheme = inputs.nix-colors.colorSchemes.dracula;
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
   #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
