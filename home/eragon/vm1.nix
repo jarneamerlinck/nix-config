@@ -8,7 +8,7 @@
     ./features/cyber
     ./features/cyber/extended.nix
   ];
-  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
+  wallpaper = pkgs.wallpapers.nixos-logo;
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 

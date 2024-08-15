@@ -4,7 +4,7 @@
     ./common
     ./features/cyber
   ];
-  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
+  wallpaper = pkgs.wallpapers.nixos-logo;
 
   monitors = [{
     name = "eDP-1";

@@ -50,6 +50,10 @@ in
     };
   };
 
+  # Set default wallpaper and colorscheme
+  colorScheme = lib.mkDefault inputs.nix-colors.colorSchemes.atelier-heath;
+  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
+
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
   #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
