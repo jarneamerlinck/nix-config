@@ -1,4 +1,4 @@
-{ lib, pkgs,  ... }:
+{ lib, pkgs, inputs,  ... }:
 {
   imports = [
     ./common
@@ -9,6 +9,8 @@
     ./features/cyber/extended.nix
   ];
   wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
+
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
   monitors = [{
     name = "eDP-1";

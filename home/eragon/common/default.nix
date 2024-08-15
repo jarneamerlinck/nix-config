@@ -50,7 +50,6 @@
       FLAKE = "$HOME/nix-config";
     };
   };
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
