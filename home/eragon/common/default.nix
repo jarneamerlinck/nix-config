@@ -14,6 +14,7 @@
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.nix-colors.homeManagerModule
+    inputs.nix-colors.homeManagerModules.default
     ../features/cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
@@ -49,9 +50,8 @@
       FLAKE = "$HOME/nix-config";
     };
   };
-  # colorscheme.mode = lib.mkOverride 1499 "dark";
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
-  colorScheme = inputs.nix-colors.colorSchemes.dracula;
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
   #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
