@@ -107,6 +107,16 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
 nix run github:nix-community/nixos-anywhere -- --flake .#vm1 root@ip
 ```
 
+
+## Create password hash
+
+To create a password hash run the following command
+
+```bash
+mkpasswd -m sha-512
+```
+
+
 ## Installation with minimal installer
 
 

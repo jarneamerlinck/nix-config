@@ -1,3 +1,0 @@
-[submodule "home/eragon/features/nvim"]
-	path = home/eragon/features/nvim
-	url = https://github.com/jarneamerlinck/kickstart.nvim

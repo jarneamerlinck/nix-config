@@ -31,6 +31,7 @@
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
+    nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
 
   outputs = {
@@ -74,7 +75,11 @@
           specialArgs = { inherit inputs outputs; };
         };
         ash = lib.nixosSystem {
-          modules = [ ./hosts/ash ];
+          modules = [
+            ./hosts/ash
+            disko.nixosModules.disko
+            { disko.devices.disk.disk1.device = "/dev/vda"; }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
         atlas = lib.nixosSystem {
