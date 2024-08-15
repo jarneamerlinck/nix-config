@@ -76,13 +76,34 @@
         "type": "github"
       }
     },
+    "nixCats": {
+      "inputs": {
+        "nixpkgs": [
+          "nvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1723223900,
+        "narHash": "sha256-6v/KETFQ2gQ3ifCmILwww0dA6yHW60PN1Zm0w9iLzKI=",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "rev": "4160805cffc594d993487129ebd0eab52e436232",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1719956923,
-        "narHash": "sha256-nNJHJ9kfPdzYsCOlHOnbiiyKjZUW5sWbwx3cakg3/C4=",
+        "lastModified": 1723556749,
+        "narHash": "sha256-+CHVZnTnIYRLYsARInHYoWkujzcRkLY/gXm3s5bE52o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "706eef542dec88cc0ed25b9075d3037564b2d164",
+        "rev": "4a92571f9207810b559c9eac203d1f4d79830073",
         "type": "github"
       },
       "original": {
@@ -92,13 +113,49 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1723221148,
+        "narHash": "sha256-7pjpeQlZUNQ4eeVntytU3jkw9dFK3k1Htgk2iuXjaD8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "154bcb95ad51bc257c2ce4043a725de6ca700ef6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nvim": {
+      "inputs": {
+        "nixCats": "nixCats",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1723651665,
+        "narHash": "sha256-0bZ/z7s68E7HldCMvdAn8cpjWnXODSwsMahZC9U9z3o=",
+        "owner": "jarneamerlinck",
+        "repo": "kickstart.nvim",
+        "rev": "07c4b82f0cb3450d31f52abe6cb5b6bbab74be32",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jarneamerlinck",
+        "repo": "kickstart.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "compose2nix": "compose2nix",
         "disko": "disko",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvim": "nvim"
       }
     }
   },
