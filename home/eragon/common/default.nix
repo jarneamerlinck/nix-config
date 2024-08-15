@@ -6,14 +6,13 @@
   outputs,
   ...
 }:
-# let
-#   inherit (nix-colors) colorSchemes;
-#   inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
-# in
+let
+  inherit (inputs.nix-colors) colorSchemes;
+  # inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
+in
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
-    # inputs.nix-colors.homeManagerModule
     inputs.nix-colors.homeManagerModules.default
     ../features/cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);

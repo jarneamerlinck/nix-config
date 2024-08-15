@@ -2,6 +2,7 @@
 let
   rmHash = lib.removePrefix "#";
   inherit (config.colorscheme) colors harmonized;
+  c = config.colorscheme;
 in
 {
   programs.kitty = {
@@ -55,12 +56,12 @@ in
       bold_font = "auto";
       bold_italic_font = "auto";
       font_size = 12;
-      foreground = "#${config.colorscheme.palette.base05}";
-      # background = "${rmHash colors.surface}";
+      foreground = "#${c.palette.base05}";
+      background = "#${c.palette.base00}";
       background_opacity = "0.9";
-      # selection_foreground = "${rmHash colors.on_primary_container}";
-      # selection_background = "${rmHash colors.primary_container}";
-      cursor = "#8fee96";
+      selection_foreground = "#${c.palette.base00}";
+      selection_background = "#${c.palette.base0B}";
+      cursor = "#${c.palette.base0E}";
       cursor_shape = "block";
       cursor_stop_blinking_after = 15;
       scrollback_lines = 2000;
@@ -77,22 +78,23 @@ in
       term = "xterm-kitty";
       window_border_width = 0;
       window_margin_width = 15;
-      color0 = "#2f2f2f";
-      color8 = "#656565";
-      color1 = "#d75f5f";
-      color9 = "#d75f5f";
-      color2 = "#d4d232";
-      color10 = "#8fee96";
-      color3 = "#af865a";
-      color11 = "#cd950c";
-      color4 = "#22c3a1";
-      color12 = "#22c3a1";
-      color5 = "#775759";
-      color13 = "#775759";
-      color6 = "#84edb9";
-      color14 = "#84edb9";
-      color7 = "#c0b18b";
-      color15 = "#d8d8d8";
+      color0 = "#${c.palette.base00}";
+      color1 = "#${c.palette.base01}";
+      color2 = "#${c.palette.base02}";
+      color3 = "#${c.palette.base03}";
+      color4 = "#${c.palette.base04}";
+      color5 = "#${c.palette.base05}";
+      color6 = "#${c.palette.base06}";
+      color7 = "#${c.palette.base07}";
+      color8 = "#${c.palette.base08}";
+      color9 = "#${c.palette.base09}";
+      color10 = "#${c.palette.base0A}";
+      color11 = "#${c.palette.base0B}";
+      color12 = "#${c.palette.base0C}";
+      color13 = "#${c.palette.base0D}";
+      color14 = "#${c.palette.base0E}";
+      color15 = "#${c.palette.base0F}";
+
       hide_window_decorations = "yes";
       macos_option_as_alt = false;
       initial_window_width = 2500;

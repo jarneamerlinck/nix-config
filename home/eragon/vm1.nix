@@ -10,7 +10,7 @@
   ];
   wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
 
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   monitors = [{
     name = "eDP-1";
