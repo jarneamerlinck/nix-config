@@ -14,7 +14,7 @@
     ./nix.nix
     ./openssh.nix
     ./package-list.nix
-    ./bootloader.nix
+    # ./bootloader.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 

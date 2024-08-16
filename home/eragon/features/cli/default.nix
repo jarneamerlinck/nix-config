@@ -20,6 +20,9 @@
   home = {
     shellAliases = {
       v="nvim";
+      rebuild="cd ~/nix-config && git stash &&  git pull && ./deploy.sh";
+      rebuildf="cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
+
     };
 
     sessionVariables = {
