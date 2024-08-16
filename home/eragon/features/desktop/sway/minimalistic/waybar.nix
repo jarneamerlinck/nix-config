@@ -206,31 +206,6 @@ in
           exec = "echo $USER@$HOSTNAME";
           # on-click = "${systemctl} --user restart waybar";
         };
-        "custom/unread-mail" = {
-          interval = 5;
-          return-type = "json";
-          exec = jsonOutput "unread-mail" {
-            pre = ''
-              count=$(${find} ~/Mail/*/Inbox/new -type f | ${wc} -l)
-              if ${pgrep} mbsync &>/dev/null; then
-                status="syncing"
-              else if [ "$count" == "0" ]; then
-                status="read"
-              else
-                status="unread"
-              fi
-              fi
-            '';
-            text = "$count";
-            alt = "$status";
-          };
-          format = "{icon}  ({})";
-          format-icons = {
-            "read" = "󰇯";
-            "unread" = "󰇮";
-            "syncing" = "󰁪";
-          };
-        };
       };
     };
   };

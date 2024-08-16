@@ -42,6 +42,8 @@ in
         "${cfg.modifier}+Shift+${cfg.up}" = "move up";
         "${cfg.modifier}+Shift+${cfg.right}" = "move right";
         "${cfg.modifier}+f" = "fullscreen toggle";
+        "${cfg.modifier}+Shift+Escape" = "exec swaymsg exit";
+        "${cfg.modifier}+Shift+c" = "exec swaymsg reload";
       };
       modes = {
         workspace_mode =
