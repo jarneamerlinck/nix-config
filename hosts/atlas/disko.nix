@@ -23,34 +23,17 @@
               mountpoint = "/boot";
             };
           };
-          root = {
-            name = "root";
-            size = "100%";
-            content = {
-              type = "lvm_pv";
-              vg = "pool";
+            root = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                mountpoint = "/";
+                mountOptions = [ "compress=zstd" "noatime" ];
+              };
             };
           };
         };
       };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          root = {
-            size = "100%FREE";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [
-                "defaults"
-              ];
-            };
-          };
-        };
-      };
-    };
   };
 }
