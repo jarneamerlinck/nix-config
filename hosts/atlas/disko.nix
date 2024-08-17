@@ -1,4 +1,3 @@
-# Example to create a bios compatible gpt partition
 { lib, ... }:
 {
   disko.devices = {
@@ -24,13 +23,25 @@
                 mountpoint = "/boot";
               };
             };
+
             root = {
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
-                mountpoint = "/";
-                mountOptions = [ "compress=zstd" "noatime" ];
+                extraArgs = [ "-f" ]; # Override existing partition
+                subvolumes = {
+                  "/rootfs" = {
+                    mountpoint = "/";
+                  };
+                  "/home" = {
+                    mountOptions = [ "compress=zstd" ];
+                    mountpoint = "/home";
+                  };
+                  "/nix" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/nix";
+                  };
+                };
               };
             };
           };
