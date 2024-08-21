@@ -12,7 +12,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
-    ./disko.nix
+    ../common/disko/boot_btrfs.nix
 
     ../common/base
     ../common/users/eragon
