@@ -12,7 +12,8 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
-    ../common/disko/boot_btrfs.nix
+    ../common/disko/raid_ext4.nix
+    # ../common/disko/boot_custom_nas.nix
 
     ../common/base
     ../common/users/eragon

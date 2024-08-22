@@ -6,7 +6,6 @@
     ./features/desktop/sway/minimalistic
     ./features/music
     ./features/cyber
-    ./features/cyber/extended.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 

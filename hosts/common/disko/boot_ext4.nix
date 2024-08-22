@@ -2,7 +2,7 @@
 { lib, ... }:
 {
   disko.devices = {
-    disk.disk1 = {
+    disk.boot_disk = {
       device = lib.mkDefault "/dev/sda";
       type = "disk";
       content = {

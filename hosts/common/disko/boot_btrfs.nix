@@ -4,7 +4,7 @@
 {
   disko.devices = {
     disk = {
-      disk1 = {
+      boot_disk = {
         device = lib.mkDefault "/dev/sda";
         type = "disk";
         content = {

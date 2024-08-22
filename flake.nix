@@ -75,7 +75,7 @@
           modules = [
             ./hosts/vm1
             disko.nixosModules.disko
-            { disko.devices.disk.disk1.device = "/dev/vda"; }
+            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -83,7 +83,7 @@
           modules = [
             ./hosts/ash
             disko.nixosModules.disko
-            { disko.devices.disk.disk1.device = "/dev/vda"; }
+            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -91,7 +91,23 @@
           modules = [
             ./hosts/atlas
             disko.nixosModules.disko
-            { disko.devices.disk.disk1.device = "/dev/vda"; }
+            {
+              disko.devices.disk.boot_disk.device = "/dev/vda";
+              disko.devices.disk.nvme1.device = "/dev/sda";
+              disko.devices.disk.raid_d1.device = "/dev/sdb";
+              disko.devices.disk.raid_d2.device = "/dev/sdc";
+              disko.devices.disk.raid_d3.device = "/dev/sdd";
+              disko.devices.disk.raid_d4.device = "/dev/sde";
+              disko.devices.disk.raid_d5.device = "/dev/sdf";
+              disko.devices.disk.raid_d6.device = "/dev/sdg";
+              # disko.devices.disk.raid10_array.device = [
+              #   "/dev/sdb"
+              #   "/dev/sdc"
+              #   "/dev/sdd"
+              #   "/dev/sde"
+              #   "/dev/sdf"
+              #   "/dev/sdg" ];
+            }
           ];
           specialArgs = { inherit inputs outputs; };
         };
