@@ -32,7 +32,6 @@
         };
       };
 
-      # Boot disk 2
       boot_two = {
         type = "disk";
         device = lib.mkDefault "/dev/sdb";
@@ -62,8 +61,7 @@
         };
       };
 
-      # Additional disks for RAID 5
-      data_one = {
+      raid_d1 = {
         type = "disk";
         device = lib.mkDefault "/dev/sdc";
         content = {
@@ -79,7 +77,8 @@
           };
         };
       };
-      data_two = {
+
+      raid_d2 = {
         type = "disk";
         device = lib.mkDefault "/dev/sdd";
         content = {
@@ -95,7 +94,8 @@
           };
         };
       };
-      data_three = {
+
+      raid_d3 = {
         type = "disk";
         device = lib.mkDefault "/dev/sde";
         content = {
@@ -111,7 +111,8 @@
           };
         };
       };
-      data_four = {
+
+      raid_d4 = {
         type = "disk";
         device = lib.mkDefault "/dev/sdf";
         content = {
@@ -127,6 +128,42 @@
           };
         };
       };
+
+      raid_d5 = {
+        type = "disk";
+        device = lib.mkDefault "/dev/sdg";
+        content = {
+          type = "gpt";
+          partitions = {
+            mdadm = {
+              size = "100%";
+              content = {
+                type = "mdraid";
+                name = "raid_data";
+              };
+            };
+          };
+        };
+      };
+
+      raid_d6 = {
+        type = "disk";
+        device = lib.mkDefault "/dev/sdh";
+        content = {
+          type = "gpt";
+          partitions = {
+            mdadm = {
+              size = "100%";
+              content = {
+                type = "mdraid";
+                name = "raid_data";
+              };
+            };
+          };
+        };
+      };
+
+
     };
 
     # RAID configurations
@@ -160,7 +197,6 @@
       raid_data = {
         type = "mdadm";
         level = 10;
-        # devices = [ "/dev/sdc1" "/dev/sdd1" "/dev/sde1" "/dev/sdf1" ];
         content = {
           type = "btrfs";
           extraArgs = [ "-f" ];

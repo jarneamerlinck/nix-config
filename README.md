@@ -88,7 +88,7 @@ sudo nix-collect-garbage --delete-older-than 20d
 
 1. Boot live installer
 2. Check disks and adapt the config
-3. Set root password and get IP
+3. Set nixos password and get IP
 4. Test configuration (for host vm1)
 
 ```bash
@@ -98,7 +98,7 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
 5. Run the install commando from an other device with nix (change Ip and hostname)
 
 ```bash
-nix run github:nix-community/nixos-anywhere -- --flake .#vm1 root@ip
+nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
 ```
 
 ## Build iso and attach shell to it
