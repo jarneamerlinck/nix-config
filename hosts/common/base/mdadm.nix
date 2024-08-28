@@ -5,7 +5,7 @@
     MAILADDR eragon@localhost
   '';
   environment.systemPackages =  [
-    mailutils
+    # mailutils
   ];
 
 }

@@ -27,6 +27,8 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
+    proton-bridge = addPatches prev.proton-bridge [ ./docker-proton-mail.diff ];
+
 
     # pfetch = prev.pfetch.overrideAttrs (oldAttrs: {
     #   version = "unstable-2021-12-10";
