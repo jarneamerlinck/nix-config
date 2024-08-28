@@ -1,9 +1,12 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  btrfs_devices = "${config.disko.devices.disk.raid_d1.device}1 ${config.disko.devices.disk.raid_d2.device}1 ${config.disko.devices.disk.raid_d3.device}1 ${config.disko.devices.disk.raid_d4.device}1";
+in
 {
   disko.devices = {
     disk = {
       # Boot disk 1
-      boot_one = {
+      boot = {
         type = "disk";
         device = lib.mkDefault "/dev/sda";
         content = {
@@ -14,47 +17,22 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
+              name = "ESP";
               size = "500M";
               type = "EF00";
               content = {
-                type = "mdraid";
-                name = "boot";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
               };
             };
-            mdadm = {
+            root = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid_boot";
-              };
-            };
-          };
-        };
-      };
-
-      boot_two = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdb";
-        content = {
-          type = "gpt";
-          partitions = {
-            BOOT = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-            };
-            ESP = {
-              size = "500M";
-              type = "EF00";
-              content = {
-                type = "mdraid";
-                name = "boot";
-              };
-            };
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_boot";
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                mountpoint = "/";
+                mountOptions = [ "compress=zstd" "noatime" ];
               };
             };
           };
@@ -67,11 +45,11 @@
         content = {
           type = "gpt";
           partitions = {
-            mdadm = {
+            data = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid_data";
+                extraArgs = [ "-f" ];
+                type = "btrfs";
               };
             };
           };
@@ -84,11 +62,11 @@
         content = {
           type = "gpt";
           partitions = {
-            mdadm = {
+            data = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid_data";
+                extraArgs = [ "-f" ];
+                type = "btrfs";
               };
             };
           };
@@ -101,11 +79,11 @@
         content = {
           type = "gpt";
           partitions = {
-            mdadm = {
+            data = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid_data";
+                extraArgs = [ "-f" ];
+                type = "btrfs";
               };
             };
           };
@@ -118,92 +96,25 @@
         content = {
           type = "gpt";
           partitions = {
-            mdadm = {
+            data = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid_data";
+                extraArgs = [ "-f" ];
+                type = "btrfs";
               };
             };
           };
-        };
-      };
-
-      raid_d5 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdg";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-      raid_d6 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdh";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-
-    };
-
-    # RAID configurations
-    mdadm = {
-      boot = {
-        type = "mdadm";
-        level = 1;
-        metadata = "1.0";
-        content = {
-          type = "filesystem";
-          format = "vfat";
-          mountpoint = "/boot";
-        };
-      };
-      raid_boot = {
-        type = "mdadm";
-        level = 1;
-        content = {
-          type = "gpt";
-          partitions.primary = {
-            size = "100%";
-            content = {
-              type = "btrfs";
-              extraArgs = [ "-f" ];
-              mountpoint = "/";
-              mountOptions = [ "compress=zstd" "noatime" ];
-            };
-          };
-        };
-      };
-      raid_data = {
-        type = "mdadm";
-        level = 10;
-        content = {
-          type = "btrfs";
-          extraArgs = [ "-f" ];
-          mountpoint = "/home";
-          mountOptions = [ "compress=zstd"  ];
         };
       };
     };
   };
+
+  # To be mounted after the system boots
+  # To be mounted after the system boots
+  fileSystems."/data" = {
+    device = btrfs_devices;
+    fsType = "btrfs";
+    options = [ "compress=zstd" "noatime" "nofail" ];
+  };
+
 }

@@ -96,13 +96,13 @@
               # disko.devices.disk.boot_two.device = "/dev/vdb";
 
               disko.devices.disk.boot.device = "/dev/vda";
-              disko.devices.disk.nvme1.device = "/dev/sda";
+              # disko.devices.disk.nvme1.device = "/dev/sda";
               disko.devices.disk.raid_d1.device = "/dev/sdb";
               disko.devices.disk.raid_d2.device = "/dev/sdc";
               disko.devices.disk.raid_d3.device = "/dev/sdd";
               disko.devices.disk.raid_d4.device = "/dev/sde";
-              disko.devices.disk.raid_d5.device = "/dev/sdf";
-              disko.devices.disk.raid_d6.device = "/dev/sdg";
+              # disko.devices.disk.raid_d5.device = "/dev/sdf";
+              # disko.devices.disk.raid_d6.device = "/dev/sdg";
             }
           ];
           specialArgs = { inherit inputs outputs; };

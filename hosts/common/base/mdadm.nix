@@ -1,10 +1,10 @@
-{ outputs, lib, config, ... }:
+{ outputs, lib, pkgs, ... }:
 {
   # needed for https://github.com/nix-community/disko/issues/451
   boot.swraid.mdadmConf = ''
     MAILADDR eragon@localhost
   '';
-  environment.systemPackages =  [
+  environment.systemPackages = with pkgs; [
     mailutils
   ];
 
