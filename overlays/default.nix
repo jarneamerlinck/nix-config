@@ -3,6 +3,18 @@ let
   addPatches = pkg: patches: pkg.overrideAttrs (oldAttrs: {
     patches = (oldAttrs.patches or [ ]) ++ patches;
   });
+  removeGUI = pkg: pkg.overrideAttrs (oldAttrs: rec {
+    # Assuming 'noGUI' is the flag to disable the GUI (this may vary based on the build system).
+    # Add or modify build flags/environment variables to disable the GUI.
+    buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
+      # Add necessary dependencies if required for no-GUI build.
+    ];
+
+    # You might need to adjust the flags or environment variables that control the GUI build.
+    configureFlags = (oldAttrs.configureFlags or [ ]) ++ [
+      "--disable-gui"
+    ];
+  });
 in
 {
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
@@ -27,7 +39,8 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
-    proton-bridge = addPatches prev.proton-bridge [ ./docker-proton-mail.diff ];
+    proton-bridge = removeGUI (addPatches prev.proton-bridge [ ./docker-proton-mail.diff ]);
+
 
 
     # pfetch = prev.pfetch.overrideAttrs (oldAttrs: {
