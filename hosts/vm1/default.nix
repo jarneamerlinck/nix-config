@@ -38,6 +38,7 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/services/virtualization
+    ../common/optional/services/proton-bridge
 
     ../common/optional/qemu-guest.nix
   ];

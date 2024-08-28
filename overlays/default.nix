@@ -3,17 +3,18 @@ let
   addPatches = pkg: patches: pkg.overrideAttrs (oldAttrs: {
     patches = (oldAttrs.patches or [ ]) ++ patches;
   });
-  removeGUI = pkg: pkg.overrideAttrs (oldAttrs: rec {
-    # Assuming 'noGUI' is the flag to disable the GUI (this may vary based on the build system).
-    # Add or modify build flags/environment variables to disable the GUI.
-    buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
-      # Add necessary dependencies if required for no-GUI build.
-    ];
 
-    # You might need to adjust the flags or environment variables that control the GUI build.
-    configureFlags = (oldAttrs.configureFlags or [ ]) ++ [
-      "--disable-gui"
-    ];
+  buildNoGUI = pkg: pkg.overrideAttrs (oldAttrs: rec {
+    # Override the build phase to use `make build-nogui`
+    buildPhase = ''
+      make build-nogui
+    '';
+
+    # Optionally, override the install phase if needed
+    installPhase = ''
+      mkdir -p $out/bin
+      cp -v bridge $out/bin/
+    '';
   });
 in
 {
@@ -39,7 +40,7 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
-    proton-bridge = removeGUI (addPatches prev.proton-bridge [ ./docker-proton-mail.diff ]);
+    protonmail-bridge = buildNoGUI (addPatches prev.protonmail-bridge [ ./docker-proton-mail.diff ]);
 
 
 
