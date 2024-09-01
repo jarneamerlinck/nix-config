@@ -2,7 +2,7 @@
 {
   imports = [
     ./common
-    # ./features/desktop/sway/minimalistic
+    ./features/desktop/sway/minimalistic
     ./features/cyber
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
