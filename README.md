@@ -101,6 +101,22 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
 nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
 ```
 
+### RAID
+
+As btrfs raid 10 is not supported from just disko run the following command after running btrfs
+
+add disk `/dev/sdd` to `/data`
+
+```bash
+btrfs device add /dev/sdd /data
+```
+
+and after you have added all the disks run
+
+```bash
+btrfs balance start -v -dconvert=raid10,soft /data
+```
+
 ## Build iso and attach shell to it
 
 - select another user if you want to test the ssh connection

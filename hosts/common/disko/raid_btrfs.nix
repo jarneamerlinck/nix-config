@@ -1,7 +1,10 @@
-{ lib, ... }:
+{ lib,config,pkgs, ... }:
 let
 
-  btrfs_devices = "${config.disko.devices.disk.raid_d1.device}1 ${config.disko.devices.disk.raid_d2.device}1 ${config.disko.devices.disk.raid_d3.device}1 ${config.disko.devices.disk.raid_d4.device}1";
+  # btrfs_devices = "${config.disko.devices.disk.raid_d1.device}1 ${config.disko.devices.disk.raid_d2.device}1 ${config.disko.devices.disk.raid_d3.device}1 ${config.disko.devices.disk.raid_d4.device}1";
+  # btrfs_devices = " ${config.disko.devices.disk.raid_d2.device} ${config.disko.devices.disk.raid_d3.device} ${config.disko.devices.disk.raid_d4.device}";
+  btrfs_first_disk = "/dev/sdb";
+  btrfs_devices = "/dev/sdc /dev/sdd /dev/sde";
 in
 {
   disko.devices = {
@@ -40,86 +43,49 @@ in
         };
       };
 
+      nvme1 = {
+        device = lib.mkDefault "/dev/sdb";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+
+            root = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                subvolumes = {
+                  "/home" = {
+                    mountOptions = [ "compress=zstd" "noatime"];
+                    mountpoint = "/home";
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
       # Data disks for Btrfs RAID
-      raid_d1 = {
+     data  = {
         type = "disk";
-        device = lib.mkDefault "/dev/sdc";
+        device = lib.mkDefault "${btrfs_first_disk}";
         content = {
           type = "gpt";
           partitions = {
             btrfs_data = {
               size = "100%";
+              label= "data";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
-              };
-            };
-          };
-        };
-      };
-
-      raid_d2 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdd";
-        content = {
-          type = "gpt";
-          partitions = {
-            btrfs_data = {
-              size = "100%";
-              content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
-              };
-            };
-          };
-        };
-      };
-
-      raid_d3 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sde";
-        content = {
-          type = "gpt";
-          partitions = {
-            btrfs_data = {
-              size = "100%";
-              content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
-              };
-            };
-          };
-        };
-      };
-
-      raid_d4 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdf";
-        content = {
-          type = "gpt";
-          partitions = {
-            btrfs_data = {
-              size = "100%";
-              content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
+                mountpoint = "/data";
+                mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                # extraArgs = [ "-f" "-m raid10 -d raid10" "${btrfs_devices}" ];
               };
             };
           };
         };
       };
     };
-  };
-
-  # Additional commands to configure Btrfs RAID
-  systemd.services.setup-btrfs-raid = {
-    wantedBy = [ "multi-user.target" ];
-    script = ''
-      btrfs device add ${btrfs_devices} /data
-      btrfs balance start -dconvert=raid10 -mconvert=raid10 /data
-    '';
-    serviceConfig.ExecStartPre = [ "${pkgs.util-linux}/bin/mkdir -p /data" ];
-    serviceConfig.ExecStartPost = [ "${pkgs.btrfs-progs}/bin/btrfs filesystem sync /data" ];
-    serviceConfig.Restart = "on-failure";
   };
 }
