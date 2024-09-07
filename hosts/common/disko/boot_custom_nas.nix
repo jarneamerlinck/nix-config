@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib,config,pkgs, ... }:
 {
   disko.devices = {
     disk = {
@@ -59,121 +59,40 @@
           };
         };
       };
-      raid_d1 = {
+      # Data disks for Btrfs RAID
+     data  = {
         type = "disk";
         device = lib.mkDefault "/dev/sdc";
         content = {
           type = "gpt";
           partitions = {
-            mdadm = {
+            btrfs_data = {
               size = "100%";
+              label= "data";
               content = {
-                type = "mdraid";
-                name = "raid_data";
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                subvolumes = {
+                  "/data" = {
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                    mountpoint = "/data";
+                  };
+                  "/backup" = {
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                    mountpoint = "/data/backup";
+                  };
+                  "/sync" = {
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                    mountpoint = "/data/sync";
+                  };
+                  "/ml" = {
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                    mountpoint = "/data/ml";
+                  };
+                };
               };
             };
           };
-        };
-      };
-
-      raid_d2 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdd";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-      raid_d3 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sde";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-      raid_d4 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdf";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-      raid_d5 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdg";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-      raid_d6 = {
-        type = "disk";
-        device = lib.mkDefault "/dev/sdh";
-        content = {
-          type = "gpt";
-          partitions = {
-            mdadm = {
-              size = "100%";
-              content = {
-                type = "mdraid";
-                name = "raid_data";
-              };
-            };
-          };
-        };
-      };
-
-
-    };
-
-    # RAID configurations
-    mdadm = {
-      raid_data = {
-        type = "mdadm";
-        level = 10;
-        content = {
-          type = "btrfs";
-          extraArgs = [ "-f" ];
-          mountpoint = "/data";
-          mountOptions = [ "compress=zstd" "noatime" "nofail" ];
         };
       };
     };
