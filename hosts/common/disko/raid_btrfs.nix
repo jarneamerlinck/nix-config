@@ -1,11 +1,8 @@
 { lib,config,pkgs, ... }:
-let
-
-  # btrfs_devices = "${config.disko.devices.disk.raid_d1.device}1 ${config.disko.devices.disk.raid_d2.device}1 ${config.disko.devices.disk.raid_d3.device}1 ${config.disko.devices.disk.raid_d4.device}1";
-  # btrfs_devices = " ${config.disko.devices.disk.raid_d2.device} ${config.disko.devices.disk.raid_d3.device} ${config.disko.devices.disk.raid_d4.device}";
-  btrfs_first_disk = "/dev/sdb";
-  btrfs_devices = "/dev/sdc /dev/sdd /dev/sde";
-in
+# let
+#   btrfs_first_disk = "/dev/sdb";
+#   btrfs_devices = "/dev/sdc /dev/sdd /dev/sde";
+# in
 {
   disko.devices = {
     disk = {
@@ -69,7 +66,8 @@ in
       # Data disks for Btrfs RAID
      data  = {
         type = "disk";
-        device = lib.mkDefault "${btrfs_first_disk}";
+        # device = lib.mkDefault "${btrfs_first_disk}";
+        device = lib.mkDefault "/dev/sdc";
         content = {
           type = "gpt";
           partitions = {
@@ -80,7 +78,6 @@ in
                 type = "btrfs";
                 mountpoint = "/data";
                 mountOptions = [ "compress=zstd" "noatime" "nofail" ];
-                # extraArgs = [ "-f" "-m raid10 -d raid10" "${btrfs_devices}" ];
               };
             };
           };
