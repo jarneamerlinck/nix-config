@@ -146,3 +146,10 @@ mkpasswd -m sha-512
 ```bash
 nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ```
+
+
+## Troubleshooting
+
+### RAID root disk is gone
+
+mount -o degraded,usebackuproot /data

@@ -27,9 +27,20 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
-                mountpoint = "/";
-                mountOptions = [ "compress=zstd" "noatime" ];
+                extraArgs = [ "-f" ]; # Override existing partition
+                subvolumes = {
+                  "/rootfs" = {
+                    mountpoint = "/";
+                  };
+                  ".snapshots" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/.snapshots";
+                  };
+                  "/nix" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/nix";
+                  };
+                };
               };
             };
           };
@@ -53,6 +64,10 @@
                     mountOptions = [ "compress=zstd" "noatime"];
                     mountpoint = "/home";
                   };
+                  ".snapshots" = {
+                    mountOptions = [ "compress=zstd" "noatime"];
+                    mountpoint = "/home/.snapshots";
+                  };
                 };
               };
             };
@@ -75,7 +90,7 @@
                 subvolumes = {
                   ".snapshots" = {
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
-                    mountpoint = "/.snapshots";
+                    mountpoint = "/data/.snapshots";
                   };
                   "/data" = {
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
