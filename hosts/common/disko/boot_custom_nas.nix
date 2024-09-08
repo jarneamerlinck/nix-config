@@ -73,6 +73,10 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
+                  ".snapper" = {
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                    mountpoint = "/snapshots";
+                  };
                   "/data" = {
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data";
