@@ -153,3 +153,12 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ### RAID root disk is gone
 
 mount -o degraded,usebackuproot /data
+
+
+
+## Quick tips
+### Snapper on btrfs
+
+Snapper is used for snapshotting and recovery.
+
+see [snapper](https://github.com/jarneamerlinck/cheatsheet/blob/main/linux/snapper.md) for more info.
