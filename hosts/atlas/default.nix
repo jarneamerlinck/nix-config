@@ -57,7 +57,9 @@
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
 
-    ../common/optional/qemu-guest.nix
+    ../common/optional/services/homebox.nix
+
+    # ../common/optional/qemu-guest.nix
   ];
 
   networking = {
