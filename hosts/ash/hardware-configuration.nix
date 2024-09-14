@@ -7,12 +7,15 @@
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
+      grub = {
+        efiSupport = false;
+        efiInstallAsRemovable = false;
+      };
+      efi.canTouchEfiVariables = false;
     };
     initrd = {
       availableKernelModules = [
-        # "btrfs"         # Needed for btrfs storage
+        "btrfs"         # Needed for btrfs storage
         # "ahci"          # Used for SATA (Advanced Host Controller Interface)
         "xhci_pci"      # Controller for USB (eXtensible Host Controller Interface)
         "usbhid"        # Needed for USB devices
@@ -27,12 +30,6 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXOS_SD";
-      fsType = "ext4";
-      options = [ "noatime" ];
-    };
 
   swapDevices = [ ];
 

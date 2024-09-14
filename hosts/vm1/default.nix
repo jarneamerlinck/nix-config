@@ -13,6 +13,9 @@
 
     ./hardware-configuration.nix
 
+    ../common/optional/btrfs.nix
+    ../common/disko/boot_1d_btrfs.nix
+
     ../common/base
     ../common/users/eragon
 
@@ -36,7 +39,7 @@
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/services/virtualization
+    ../common/optional/virtualization
 
     ../common/optional/qemu-guest.nix
   ];

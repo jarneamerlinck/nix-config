@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Nixos configurations for all used devices.";
 
   inputs = {
     # Nixpkgs
@@ -20,41 +20,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprwm-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     compose2nix = {
       url = "github:aksiksi/compose2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nixarr = {
-    #   url = "github:rasmus-kirk/nixarr";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    hyprland,
+    disko,
     ...
   } @ inputs:
   let
@@ -83,11 +72,32 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
         vm1 = lib.nixosSystem {
-          modules = [ ./hosts/vm1 ];
+          modules = [
+            ./hosts/vm1
+            disko.nixosModules.disko
+            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
         ash = lib.nixosSystem {
-          modules = [ ./hosts/ash ];
+          modules = [
+            ./hosts/ash
+            disko.nixosModules.disko
+            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
+        atlas = lib.nixosSystem {
+          modules = [
+            ./hosts/atlas
+            disko.nixosModules.disko
+            {
+              disko.devices.disk.boot.device = "/dev/nvme2n1";
+              disko.devices.disk.data.device = "/dev/sda";
+              disko.devices.disk.nvme_home.device = "/dev/nvme0n1";
+              disko.devices.disk.nvme_var.device = "/dev/nvme1n1";
+            }
+          ];
           specialArgs = { inherit inputs outputs; };
         };
     };
@@ -104,6 +114,11 @@
       "eragon@ash" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/ash.nix ];
           pkgs = pkgsFor.aarch64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+      "eragon@atlas" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/atlas.nix ];
+          pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };
     };

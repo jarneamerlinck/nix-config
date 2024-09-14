@@ -10,10 +10,12 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./zsh.nix
+    ./nvim.nix
     ./nix.nix
     ./openssh.nix
     ./package-list.nix
-    ./bootloader.nix
+    ./mdadm.nix
+    # ./bootloader.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
@@ -46,6 +48,9 @@
   environment.profileRelativeSessionVariables = {
     QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
   };
+
+  # Set default console keyboard
+  console.keyMap = "be-latin1";
 
   hardware.enableRedistributableFirmware = true;
 

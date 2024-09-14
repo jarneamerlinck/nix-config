@@ -14,7 +14,10 @@
       }
       ];
     initExtraBeforeCompInit = ''
-    [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
+      [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
+    '';
+    initExtra = ''
+      eval "$(zoxide init zsh)"
     '';
   };
   programs.fzf = {

@@ -87,22 +87,8 @@
           isDefault = true;     # can be omitted; true if profile ID is 0
           settings = {          # specify profile-specific preferences here; check about:config for options
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
-            "browser.startup.homepage" = "https://nixos.org";
-            "browser.newtabpage.pinned" = [{
-              title = "NixOS";
-              url = "https://nixos.org";
-            }];
+            "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
             # add preferences for profile_0 here...
-          };
-        };
-        profile_1 = {
-          id = 1;
-          name = "profile_1";
-          isDefault = false;
-          settings = {
-            "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
-            "browser.startup.homepage" = "https://ecosia.org";
-            # add preferences for profile_1 here...
           };
         };
       # add profiles here...
