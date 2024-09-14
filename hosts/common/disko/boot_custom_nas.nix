@@ -92,6 +92,10 @@
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data/.snapshots";
                   };
+                  "/var" = {
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
+                    mountpoint = "/var";
+                  };
                   "/data" = {
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data";
