@@ -6,9 +6,12 @@
 {
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    loader.grub = {
-      efiSupport = true;
-      efiInstallAsRemovable = true;
+    loader = {
+      grub = {
+        efiSupport = false;
+        efiInstallAsRemovable = false;
+      };
+      efi.canTouchEfiVariables = false;
     };
     initrd = {
       availableKernelModules = [
