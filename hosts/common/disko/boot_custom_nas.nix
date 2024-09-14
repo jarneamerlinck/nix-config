@@ -93,7 +93,7 @@
                   };
                   ".snapshots" = {
                     mountOptions = [ "compress=zstd" "noatime"];
-                    mountpoint = "/home/.snapshots";
+                    mountpoint = "/var/.snapshots";
                   };
                 };
               };

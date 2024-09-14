@@ -92,10 +92,10 @@
             ./hosts/atlas
             disko.nixosModules.disko
             {
-              disko.devices.disk.boot.device = "/dev/vda";
-              disko.devices.disk.data.device = "/dev/sdb";
-              disko.devices.disk.nvme_home.device = "/dev/sda";
-              disko.devices.disk.nvme_var.device = "/dev/sda";
+              disko.devices.disk.boot.device = "/dev/nvme2n1";
+              disko.devices.disk.data.device = "/dev/sda";
+              disko.devices.disk.nvme_home.device = "/dev/nvme0n1";
+              disko.devices.disk.nvme_var.device = "/dev/nvme1n1";
             }
           ];
           specialArgs = { inherit inputs outputs; };
