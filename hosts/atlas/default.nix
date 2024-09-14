@@ -55,7 +55,7 @@
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/services/virtualization
+    ../common/optional/virtualization
 
     ../common/optional/qemu-guest.nix
   ];
