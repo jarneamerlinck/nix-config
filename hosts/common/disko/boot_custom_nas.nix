@@ -47,7 +47,7 @@
         };
       };
 
-      nvme1 = {
+      nvme_home = {
         device = lib.mkDefault "/dev/sdb";
         type = "disk";
         content = {
@@ -63,6 +63,33 @@
                   "/home" = {
                     mountOptions = [ "compress=zstd" "noatime"];
                     mountpoint = "/home";
+                  };
+                  ".snapshots" = {
+                    mountOptions = [ "compress=zstd" "noatime"];
+                    mountpoint = "/home/.snapshots";
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+      nvme_var = {
+        device = lib.mkDefault "/dev/sdb";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+
+            root = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                subvolumes = {
+                  "/var" = {
+                    mountOptions = [ "compress=zstd" "noatime"];
+                    mountpoint = "/var";
                   };
                   ".snapshots" = {
                     mountOptions = [ "compress=zstd" "noatime"];
@@ -91,10 +118,6 @@
                   ".snapshots" = {
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data/.snapshots";
-                  };
-                  "/var" = {
-                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
-                    mountpoint = "/var";
                   };
                   "/data" = {
                     mountOptions = [ "compress=zstd" "noatime" "nofail" ];
