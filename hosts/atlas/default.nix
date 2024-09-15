@@ -58,6 +58,7 @@
     ../common/optional/virtualization
 
     ../common/optional/services/homebox.nix
+    ../common/optional/services/syncthing.nix
 
     # ../common/optional/qemu-guest.nix
   ];
