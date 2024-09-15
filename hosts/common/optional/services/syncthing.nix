@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.2.3-pre.
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   # Runtime
@@ -20,7 +20,7 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--hostname=atlas"
+      "--hostname=${config.networking.hostName}"
       "--network-alias=syncthing"
       "--network=syncthing_default"
     ];
