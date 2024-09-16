@@ -6,8 +6,7 @@
   # Runtime
   # Containers
   virtualisation.oci-containers.containers."freshrss" = {
-    image = "lscr.io/linuxserver/freshrss:1.24.3-ls244
-";
+    image = "lscr.io/linuxserver/freshrss:1.24.3-ls244";
     environment = {
       "PGID" = "100";
       "PUID" = "1442";
@@ -28,7 +27,7 @@
       "--memory-reservation=83886080b"
       "--memory=314572800b"
       "--network-alias=freshrss"
-      "--network=frontend"
+      # "--network=frontend"
       "--network=rss"
     ];
   };
@@ -63,7 +62,7 @@
       "--memory-reservation=83886080b"
       "--memory=314572800b"
       "--network-alias=full-test-rss"
-      "--network=frontend"
+      # "--network=frontend"
       "--network=rss"
     ];
   };
