@@ -59,6 +59,7 @@
 
     ../common/optional/services/homebox.nix
     ../common/optional/services/syncthing.nix
+    ../common/optional/services/rss-feed.nix
 
     # ../common/optional/qemu-guest.nix
   ];
