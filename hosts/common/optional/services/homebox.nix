@@ -20,7 +20,7 @@
     log-driver = "journald";
     extraOptions = [
       "--network-alias=homebox"
-      "--network=homebox_caddy_net"
+      "--network=homebox"
     ];
   };
   systemd.services."docker-homebox-homebox" = {
@@ -31,10 +31,10 @@
       RestartSteps = lib.mkOverride 500 9;
     };
     after = [
-      "docker-network-homebox_caddy_net.service"
+      "docker-network-homebox.service"
     ];
     requires = [
-      "docker-network-homebox_caddy_net.service"
+      "docker-network-homebox.service"
     ];
     partOf = [
       "docker-compose-homebox-root.target"
@@ -45,15 +45,15 @@
   };
 
   # Networks
-  systemd.services."docker-network-homebox_caddy_net" = {
+  systemd.services."docker-network-homebox" = {
     path = [ pkgs.docker ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStop = "docker network rm -f homebox_caddy_net";
+      ExecStop = "docker network rm -f homebox";
     };
     script = ''
-      docker network inspect homebox_caddy_net || docker network create homebox_caddy_net
+      docker network inspect homebox || docker network create homebox
     '';
     partOf = [ "docker-compose-homebox-root.target" ];
     wantedBy = [ "docker-compose-homebox-root.target" ];

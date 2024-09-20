@@ -1,4 +1,3 @@
-
 # Auto-generated using compose2nix v0.2.3-pre.
 { pkgs, lib, ... }:
 
@@ -16,10 +15,6 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--cpu-quota=0.2"
-      "--cpus=0.01"
-      "--memory-reservation=83886080b"
-      "--memory=314572800b"
       "--network-alias=freshrss"
       "--network=frontend"
       "--network=rss"
@@ -54,10 +49,6 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--cpu-quota=0.05"
-      "--cpus=0.01"
-      "--memory-reservation=83886080b"
-      "--memory=314572800b"
       "--network-alias=full-test-rss"
       "--network=rss"
     ];
