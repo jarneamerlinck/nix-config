@@ -3,7 +3,6 @@
 { pkgs, lib, ... }:
 
 {
-  # Runtime
   # Containers
   virtualisation.oci-containers.containers."freshrss" = {
     image = "lscr.io/linuxserver/freshrss:1.24.3-ls244";
@@ -19,15 +18,10 @@
     extraOptions = [
       "--cpu-quota=0.2"
       "--cpus=0.01"
-      "--health-cmd=curl --fail http://localhost:80 || exit 1"
-      "--health-interval=1m0s"
-      "--health-retries=5"
-      "--health-start-period=20s"
-      "--health-timeout=10s"
       "--memory-reservation=83886080b"
       "--memory=314572800b"
       "--network-alias=freshrss"
-      # "--network=frontend"
+      "--network=frontend"
       "--network=rss"
     ];
   };
@@ -38,6 +32,14 @@
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
+    after = [
+      "docker-network-frontend.service"
+      "docker-network-rss.service"
+    ];
+    requires = [
+      "docker-network-frontend.service"
+      "docker-network-rss.service"
+    ];
     partOf = [
       "docker-compose-rss-root.target"
     ];
@@ -54,15 +56,9 @@
     extraOptions = [
       "--cpu-quota=0.05"
       "--cpus=0.01"
-      "--health-cmd=curl --fail http://localhost:80 || exit 1"
-      "--health-interval=1m0s"
-      "--health-retries=5"
-      "--health-start-period=20s"
-      "--health-timeout=10s"
       "--memory-reservation=83886080b"
       "--memory=314572800b"
       "--network-alias=full-test-rss"
-      # "--network=frontend"
       "--network=rss"
     ];
   };
@@ -73,6 +69,12 @@
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
+    after = [
+      "docker-network-rss.service"
+    ];
+    requires = [
+      "docker-network-rss.service"
+    ];
     partOf = [
       "docker-compose-rss-root.target"
     ];
@@ -82,19 +84,33 @@
   };
 
   # Networks
-  systemd.services."docker-network-full-test-rss" = {
+  systemd.services."docker-network-frontend" = {
     path = [ pkgs.docker ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStop = "docker network rm -f full-test-rss";
+      ExecStop = "docker network rm -f frontend";
     };
     script = ''
-      docker network inspect full-test-rss || docker network create full-test-rss
+      docker network inspect frontend || docker network create frontend
     '';
     partOf = [ "docker-compose-rss-root.target" ];
     wantedBy = [ "docker-compose-rss-root.target" ];
   };
+  systemd.services."docker-network-rss" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f rss";
+    };
+    script = ''
+      docker network inspect rss || docker network create rss
+    '';
+    partOf = [ "docker-compose-rss-root.target" ];
+    wantedBy = [ "docker-compose-rss-root.target" ];
+  };
+
   # Root service
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.
