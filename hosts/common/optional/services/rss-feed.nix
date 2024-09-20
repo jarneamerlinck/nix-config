@@ -81,6 +81,20 @@
     ];
   };
 
+  # Networks
+  systemd.services."docker-network-full-test-rss" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f full-test-rss";
+    };
+    script = ''
+      docker network inspect full-test-rss || docker network create full-test-rss
+    '';
+    partOf = [ "docker-compose-rss-root.target" ];
+    wantedBy = [ "docker-compose-rss-root.target" ];
+  };
   # Root service
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.
