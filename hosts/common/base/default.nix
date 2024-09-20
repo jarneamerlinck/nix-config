@@ -15,7 +15,6 @@
     ./openssh.nix
     ./package-list.nix
     ./mdadm.nix
-    # ./bootloader.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
