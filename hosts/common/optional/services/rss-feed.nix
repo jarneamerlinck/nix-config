@@ -1,13 +1,5 @@
 # Auto-generated using compose2nix v0.2.3-pre.
 { pkgs, lib, ... }:
-let
-  serviceConfig = {
-      Restart = lib.mkOverride 500 "always";
-      RestartMaxDelaySec = lib.mkOverride 500 "1m";
-      RestartSec = lib.mkOverride 500 "100ms";
-      RestartSteps = lib.mkOverride 500 9;
-    };
-in
 
 {
   # Containers
@@ -29,7 +21,12 @@ in
     ];
   };
   systemd.services."docker-freshrss" = {
-    serviceConfig = serviceConfig;
+    serviceConfig = {
+      Restart = lib.mkOverride 500 "always";
+      RestartMaxDelaySec = lib.mkOverride 500 "1m";
+      RestartSec = lib.mkOverride 500 "100ms";
+      RestartSteps = lib.mkOverride 500 9;
+    };
     after = [
       "docker-network-frontend.service"
       "docker-network-rss.service"
@@ -57,7 +54,12 @@ in
     ];
   };
   systemd.services."docker-full-test-rss" = {
-    serviceConfig = serviceConfig;
+    serviceConfig = {
+      Restart = lib.mkOverride 500 "always";
+      RestartMaxDelaySec = lib.mkOverride 500 "1m";
+      RestartSec = lib.mkOverride 500 "100ms";
+      RestartSteps = lib.mkOverride 500 9;
+    };
     after = [
       "docker-network-rss.service"
     ];
