@@ -5,7 +5,7 @@
     openFirewall = true;
 
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  # networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.zabbixWeb = {
     enable = true;
     virtualHost = {
