@@ -53,6 +53,8 @@
     ../common/optional/services/syncthing.nix
     ../common/optional/services/rss-feed.nix
     ../common/optional/services/portainer.nix
+    ../common/optional/services/zabbix_server.nix
+    ../common/optional/services/zabbix_client.nix
 
     # ../common/optional/qemu-guest.nix
   ];
