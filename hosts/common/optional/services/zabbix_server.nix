@@ -8,15 +8,11 @@
   # networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.zabbixWeb = {
     enable = true;
+    frontend = "httpd";
     virtualHost = {
       hostName = "zabbix.localhost";
       adminAddr = "webmaster@localhost";
-      networking = {
-        networkConfig = {
-          # Add the Zabbix web to the frontend Docker network
-          docker.networks.frontend.connect = [ config.services.zabbixWeb ];
-        };
-      };
+      listen."default".port = "10049";
     };
   };
 
