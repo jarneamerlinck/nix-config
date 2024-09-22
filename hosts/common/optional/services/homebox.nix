@@ -14,9 +14,9 @@
     volumes = [
       "/data/docker/homebox:/data:rw"
     ];
-    ports = [
-      "3100:7745/tcp"
-    ];
+    # ports = [
+    #   "3100:7745/tcp"
+    # ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=homebox"
