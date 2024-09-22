@@ -11,6 +11,12 @@
     virtualHost = {
       hostName = "zabbix.localhost";
       adminAddr = "webmaster@localhost";
+      networking = {
+        networkConfig = {
+          # Add the Zabbix web to the frontend Docker network
+          docker.networks.frontend.connect = [ config.services.zabbixWeb ];
+        };
+      };
     };
   };
 
