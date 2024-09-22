@@ -8,11 +8,9 @@
   # networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.zabbixWeb = {
     enable = true;
-    frontend = "httpd";
     virtualHost = {
-      hostName = "zabbix.localhost";
+      hostName = "zabbix.local";
       adminAddr = "webmaster@localhost";
-      listen."default".port = "10049";
     };
   };
 
