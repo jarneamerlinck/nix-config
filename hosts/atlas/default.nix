@@ -49,9 +49,10 @@
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
 
+    ../common/optional/services/cloudflare_tunnel.nix
     ../common/optional/services/homebox.nix
     ../common/optional/services/syncthing.nix
-    ../common/optional/services/rss-feed.nix
+    ../common/optional/services/rss_feed.nix
     ../common/optional/services/portainer.nix
     ../common/optional/services/zabbix_server.nix
     ../common/optional/services/zabbix_client.nix
