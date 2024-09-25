@@ -56,7 +56,7 @@
     ../common/optional/services/portainer.nix
     ../common/optional/services/zabbix_server.nix
     ../common/optional/services/zabbix_client.nix
-    ../common/optional/services/zabbix_web.nix
+    # ../common/optional/services/zabbix_web.nix
 
     # ../common/optional/qemu-guest.nix
   ];
