@@ -5,18 +5,19 @@
   # Runtime
   virtualisation.oci-containers.containers."zabbix-web" = {
     image = "zabbix/zabbix-web-nginx-mysql:alpine-6.4.19";
-    environment = {
-      "HBOX_LOG_FORMAT" = "text";
-      "HBOX_LOG_LEVEL" = "info";
-      "HBOX_OPTIONS_ALLOW_REGISTRATION" = "false";
-      "HBOX_WEB_MAX_UPLOAD_SIZE" = "10";
-    };
     # volumes = [
     #   "/data/docker/zabbix-web:/data:rw"
     # ];
-    # ports = [
-    #   "3100:7745/tcp"
-    # ];
+
+    environmentFiles = [
+      "/data/docker/envs/.env_zabbix_web"
+    ];
+
+
+
+    ports = [
+      "8080:8080/tcp"
+    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=zabbix"
