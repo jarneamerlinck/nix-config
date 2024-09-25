@@ -72,8 +72,8 @@
     script = ''
       docker network inspect frontend || docker network create frontend
     '';
-    partOf = [ "docker-compose-rss-root.target" ];
-    wantedBy = [ "docker-compose-rss-root.target" ];
+    partOf = [ "docker-compose-homebox-root.target" ];
+    wantedBy = [ "docker-compose-homebox-root.target" ];
   };
   # Root service
   # When started, this will automatically create all resources and start
