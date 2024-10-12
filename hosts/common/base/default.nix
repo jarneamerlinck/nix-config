@@ -15,7 +15,6 @@
     ./openssh.nix
     ./package-list.nix
     ./mdadm.nix
-    # ./bootloader.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
@@ -73,7 +72,6 @@
     name = "mounts";
     gid = 1442; # Group ID, you can choose a suitable ID
   };
-
     # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
   nix.nixPath = ["/etc/nix/path"];
