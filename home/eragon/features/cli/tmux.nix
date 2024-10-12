@@ -3,7 +3,7 @@ let
   tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux.nvim";
-      version = "unstable-2023-01-06";
+      # version = "unstable-2023-01-06";
       src = pkgs.fetchFromGitHub {
         owner = "aserowy";
         repo = "tmux.nvim/";
