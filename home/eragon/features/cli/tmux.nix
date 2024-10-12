@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  plugin-version = "unstable-2023-01-06";
+  plugin-version = "unstable-2024-01-06";
   tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux.nvim";
