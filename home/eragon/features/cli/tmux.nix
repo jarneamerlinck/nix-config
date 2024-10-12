@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  plugin-version = "unstable-2024-01-06";
+  plugin-version = "stable-2024-06-06";
   tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux.nvim";
@@ -19,27 +19,26 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "ofirgall";
         repo = "tmux-browser";
-        rev = "c3e115f9ebc5ec6646d563abccc6cf89a0feadb8";
+        rev = "6d65a851534d5a26ab0e70b991abfc072061ad42";
         sha256 = "sha256-ngYZDzXjm4Ne0yO6pI+C2uGO/zFDptdcpkL847P+HCI=";
       };
     };
-
-  tmux-super-fingers = pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "tmux-super-fingers";
-      version = "${plugin-version}";
-      src = pkgs.fetchFromGitHub {
-        owner = "artemave";
-        repo = "tmux_super_fingers";
-        rev = "2c12044984124e74e21a5a87d00f844083e4bdf7";
-        sha256 = "sha256-cPZCV8xk9QpU49/7H8iGhQYK6JwWjviL29eWabuqruc=";
-      };
-    };
+  # Looks usefull still need to implement in in the workflow
+  # tmux-super-fingers = pkgs.tmuxPlugins.mkTmuxPlugin
+  #   {
+  #     pluginName = "tmux-super-fingers";
+  #     version = "${plugin-version}";
+  #     src = pkgs.fetchFromGitHub {
+  #       owner = "artemave";
+  #       repo = "tmux_super_fingers";
+  #       rev = "2c12044984124e74e21a5a87d00f844083e4bdf7";
+  #       sha256 = "sha256-cPZCV8xk9QpU49/7H8iGhQYK6JwWjviL29eWabuqruc=";
+  #     };
+  #   };
 
 
 in
 {
-  # TODO: what if this is defined in another file? Merge it!
 
   home.packages = with pkgs; [
     lsof
@@ -58,12 +57,12 @@ in
     plugins = with pkgs;
       [
         tmux-nvim
-        tmuxPlugins.tmux-thumbs
-        # TODO: why do I have to manually set this
-        {
-          plugin = tmux-super-fingers;
-          extraConfig = "set -g @super-fingers-key f";
-        }
+        # tmuxPlugins.tmux-thumbs
+        # # TODO: why do I have to manually set this
+        # {
+        #   plugin = tmux-super-fingers;
+        #   # extraConfig = "set -g @super-fingers-key f";
+        # }
         {
           plugin = tmux-browser;
           extraConfig = ''
