@@ -12,17 +12,17 @@ let
         sha256 = "sha256-zpg7XJky7PRa5sC7sPRsU2ZOjj0wcepITLAelPjEkSI=";
       };
     };
-  tmux-browser = pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "tmux-browser";
-      version = "${plugin-version}";
-      src = pkgs.fetchFromGitHub {
-        owner = "ofirgall";
-        repo = "tmux-browser";
-        rev = "6d65a851534d5a26ab0e70b991abfc072061ad42";
-        sha256 = "sha256-ngYZDzXjm4Ne0yO6pI+C2uGO/zFDptdcpkL847P+HCI=";
-      };
-    };
+  # tmux-browser = pkgs.tmuxPlugins.mkTmuxPlugin
+  #   {
+  #     pluginName = "tmux-browser";
+  #     version = "${plugin-version}";
+  #     src = pkgs.fetchFromGitHub {
+  #       owner = "ofirgall";
+  #       repo = "tmux-browser";
+  #       rev = "6d65a851534d5a26ab0e70b991abfc072061ad42";
+  #       sha256 = "sha256-ngYZDzXjm4Ne0yO6pI+C2uGO/zFDptdcpkL847P+HCI=";
+  #     };
+  #   };
   # Looks usefull still need to implement in in the workflow
   # tmux-super-fingers = pkgs.tmuxPlugins.mkTmuxPlugin
   #   {
@@ -63,12 +63,12 @@ in
         #   plugin = tmux-super-fingers;
         #   # extraConfig = "set -g @super-fingers-key f";
         # }
-        {
-          plugin = tmux-browser;
-          extraConfig = ''
-            set -g @browser_close_on_deattach '1'
-          '';
-        }
+        # {
+        #   plugin = tmux-browser;
+        #   extraConfig = ''
+        #     set -g @browser_close_on_deattach '1'
+        #   '';
+        # }
 
         tmuxPlugins.sensible
         # must be before continuum edits right status bar
