@@ -1,9 +1,10 @@
 { pkgs, ... }:
 let
+  plugin-version = "unstable-2023-01-06";
   tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux.nvim";
-      # version = "unstable-2023-01-06";
+      version = "${plugin-version}";
       src = pkgs.fetchFromGitHub {
         owner = "aserowy";
         repo = "tmux.nvim/";
@@ -14,7 +15,7 @@ let
   tmux-browser = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux-browser";
-      version = "unstable-2023-01-06";
+      version = "${plugin-version}";
       src = pkgs.fetchFromGitHub {
         owner = "ofirgall";
         repo = "tmux-browser";
@@ -26,7 +27,7 @@ let
   tmux-super-fingers = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux-super-fingers";
-      version = "unstable-2023-01-06";
+      version = "${plugin-version}";
       src = pkgs.fetchFromGitHub {
         owner = "artemave";
         repo = "tmux_super_fingers";
