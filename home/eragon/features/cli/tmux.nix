@@ -1,17 +1,5 @@
 { pkgs, ... }:
 let
-  t-smart-manager = pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "t-smart-tmux-session-manager";
-      version = "unstable-2023-01-06";
-      rtpFilePath = "t-smart-tmux-session-manager.tmux";
-      src = pkgs.fetchFromGitHub {
-        owner = "joshmedeski";
-        repo = "t-smart-tmux-session-manager";
-        rev = "a1e91b427047d0224d2c9c8148fb84b47f651866";
-        sha256 = "sha256-HN0hJeB31MvkD12dbnF2SjefkAVgtUmhah598zAlhQs=";
-      };
-    };
   tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux.nvim";
@@ -19,7 +7,7 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "aserowy";
         repo = "tmux.nvim/";
-        rev = "57220071739c723c3a318e9d529d3e5045f503b8";
+        rev = "65ee9d6e6308afcd7d602e1320f727c5be63a947";
         sha256 = "sha256-zpg7XJky7PRa5sC7sPRsU2ZOjj0wcepITLAelPjEkSI=";
       };
     };
@@ -72,13 +60,6 @@ in
         tmuxPlugins.tmux-thumbs
         # TODO: why do I have to manually set this
         {
-          plugin = t-smart-manager;
-          extraConfig = ''
-            set -g @t-fzf-prompt '  '
-            set -g @t-bind "T"
-          '';
-        }
-        {
           plugin = tmux-super-fingers;
           extraConfig = "set -g @super-fingers-key f";
         }
@@ -121,10 +102,6 @@ in
     extraConfig = ''
       set -g default-terminal "tmux-256color"
       set -ag terminal-overrides ",xterm-256color:RGB"
-
-      set-option -g prefix C-a
-      unbind-key C-b
-      bind-key C-a send-prefix
 
       set -g mouse on
 
