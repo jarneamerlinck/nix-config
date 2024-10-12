@@ -133,12 +133,6 @@ in
       unbind p
       bind p paste-buffer
 
-      # Bind Keys
-      bind-key -T prefix C-g split-window \
-        "$SHELL --login -i -c 'navi --print | head -c -1 | tmux load-buffer -b tmp - ; tmux paste-buffer -p -t {last} -b tmp -d'"
-      bind-key -T prefix C-l switch -t notes
-      bind-key -T prefix C-d switch -t dotfiles
-      bind-key e send-keys "tmux capture-pane -p -S - | nvim -c 'set buftype=nofile' +" Enter
     '';
   };
 }
