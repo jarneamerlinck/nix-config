@@ -25,8 +25,7 @@ in {
       net = {
         host = lib.concatStringsSep " " (lib.flatten (map (host: [
             host
-            # "${host}.m7.rs"
-            # "${host}.ts.m7.rs"
+            "${host}.m7.rs"
           ])
           hostnames));
         forwardAgent = true;
