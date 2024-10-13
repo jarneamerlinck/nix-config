@@ -20,7 +20,7 @@ in {
   programs.ssh = {
     enable = true;
     # See above
-    userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
+    # userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
     matchBlocks = {
       net = {
         host = lib.concatStringsSep " " (lib.flatten (map (host: [
