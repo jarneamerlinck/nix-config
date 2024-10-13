@@ -3,16 +3,14 @@
 let
   inherit (config.networking) hostName;
   hosts = outputs.nixosConfigurations;
-  # pubKey = host: ../../${host}/ssh_host_ed25519_key.pub;
-  # gitHost = hosts."alcyone".config.networking.hostName;
 
   # Sops needs acess to the keys before the persist dirs are even mounted; so
   # just persisting the keys won't work, we must point at /persist
   hasOptinPersistence = false;
   # hasOptinPersistence = config.environment.persistence ? "/persist";
-  knownHosts = builtins.mapAttrs (name: config: {
-    extraHostNames = [ "${name}.mydomain.com" ];
-    publicKeyFile = ../../../home/eragon/ssh.pub;  # Adjust if public key file paths are specific to each host
+  knownHosts = builtins.mapAttrs (host: config: {
+    extraHostNames = [ "${host}.ko0.net" ];
+    publicKeyFile = ../../${host}/ssh_host_ed25519_key.pub;  # Adjust if public key file paths are specific to each host
   }) hosts;
 in
 {
