@@ -12,7 +12,7 @@ let
   # hasOptinPersistence = config.environment.persistence ? "/persist";
   knownHosts = builtins.mapAttrs (name: config: {
     extraHostNames = [ "${name}.mydomain.com" ];
-    publicKeyFile = ./pubkeys/ssh_host_dsa_key.pub;  # Adjust if public key file paths are specific to each host
+    publicKeyFile = ../../../home/eragon/ssh.pub;  # Adjust if public key file paths are specific to each host
   }) hosts;
 in
 {
