@@ -10,6 +10,10 @@ let
   # just persisting the keys won't work, we must point at /persist
   hasOptinPersistence = false;
   # hasOptinPersistence = config.environment.persistence ? "/persist";
+  knownHosts = builtins.mapAttrs (name: config: {
+    extraHostNames = [ "${name}.mydomain.com" ];
+    publicKeyFile = ./pubkeys/ssh_host_dsa_key.pub;  # Adjust if public key file paths are specific to each host
+  }) hosts;
 in
 {
   services.openssh = {
@@ -39,21 +43,7 @@ in
     setXAuthLocation = true;
     # Each hosts public key
 
-    knownHosts = lib.genAttrs hosts (hostname: {
-      publicKeyFile = ../../${hostname}/ssh_host_ed25519_key.pub;
-      extraHostNames =
-        [
-          "${hostname}.m7.rs"
-        ]
-        ++
-        # Alias for localhost if it's the same host
-        (lib.optional (hostname == config.networking.hostName) "localhost")
-        # Alias to m7.rs and git.m7.rs if it's alcyone
-        ++ (lib.optionals (hostname == "alcyone") [
-          "m7.rs"
-          "git.m7.rs"
-        ]);
-    });
+    knownHosts = knownHosts;
     # knownHosts = lib.genAttrs hosts (hostname: {
     #   publicKeyFile = ../../${hostname}/ssh_host_ed25519_key.pub;
       # extraHostNames =
