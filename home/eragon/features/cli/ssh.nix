@@ -25,20 +25,10 @@ in {
       net = {
         host = lib.concatStringsSep " " (lib.flatten (map (host: [
             host
-            "${host}.m7.rs"
+            "${host}.ko0.net"
           ])
           hostnames));
         forwardAgent = true;
-        # remoteForwards = [
-        #   {
-        #     bind.address = ''/%d/.gnupg-sockets/S.gpg-agent'';
-        #     host.address = ''/%d/.gnupg-sockets/S.gpg-agent.extra'';
-        #   }
-        #   {
-        #     bind.address = ''/%d/.waypipe/server.sock'';
-        #     host.address = ''/%d/.waypipe/client.sock'';
-        #   }
-        # ];
         forwardX11 = true;
         forwardX11Trusted = true;
         setEnv.WAYLAND_DISPLAY = "wayland-waypipe";
@@ -48,7 +38,7 @@ in {
   };
 
   # Compatibility with programs that don't respect SSH configurations (e.g. jujutsu's libssh2)
-  systemd.user.tmpfiles.rules = [
-    "L ${config.home.homeDirectory}/.ssh/known_hosts - - - - ${config.programs.ssh.userKnownHostsFile}"
-  ];
+  # systemd.user.tmpfiles.rules = [
+  #   "L ${config.home.homeDirectory}/.ssh/known_hosts - - - - ${config.programs.ssh.userKnownHostsFile}"
+  # ];
 }
