@@ -79,6 +79,15 @@
           ];
           specialArgs = { inherit inputs outputs; };
         };
+        testing = lib.nixosSystem {
+          modules = [
+            ./hosts/testing
+            disko.nixosModules.disko
+            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
+
         ash = lib.nixosSystem {
           modules = [
             ./hosts/ash
@@ -108,6 +117,11 @@
       # VM
       "eragon@vm1" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/vm1.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+      "eragon@testing" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/testing.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };

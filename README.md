@@ -86,20 +86,55 @@ sudo nix-collect-garbage --delete-older-than 20d
 
 ## Installation with minimal iso and nixos-anywhere
 
+### Prep
+
+> [!IMPORTANT]
+> code below uses `vm1` as the example host
+
+1. Generate a ssh key for the new host
+
+or get it from a vault (see [nixos-anywhere vaults](https://nix-community.github.io/nixos-anywhere/howtos/secrets.html#example-decrypting-an-openssh-host-key-with-pass))
+
+```bash
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C root@vm1
+```
+
+2. Put the ssh key in the following folder structure on the host
+
+`"$temp/etc/ssh/ssh_host_ed25519_key"´
+
+3. Set the correct permissions for the host
+
+```bash
+# Set the correct permissions so sshd will accept the key
+chmod 600 "$temp/etc/ssh/ssh_host_ed25519_key"
+```
+
+### Instalation
+
 1. Boot live installer
 2. Check disks and adapt the config
 3. Set nixos password and get IP
-4. Test configuration (for host vm1)
+4. Test configuration
+
 
 ```bash
 nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
 ```
 
+
 5. Run the install commando from an other device with nix (change Ip and hostname)
 
 ```bash
-nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
+nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
 ```
+
+(without extra temp files)
+
+```bash
+nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
+```
+
 
 ### RAID
 
