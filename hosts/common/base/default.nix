@@ -15,6 +15,7 @@
     ./openssh.nix
     ./package-list.nix
     ./mdadm.nix
+    ./sops.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
