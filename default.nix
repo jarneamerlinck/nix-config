@@ -5,13 +5,13 @@ with import <nixpkgs> {}; {
     buildInputs = [
       neovim
       git
+      age
+      sops
     ];
     NIX_CONFIG = "experimental-features = nix-command flakes";
     shellHook = ''
-      git clone --recurse-submodules https://github.com/jarneamerlinck/nix-config
-      cd nix-config
-      git submodule update --init --recursive
-      ./deploy.sh
+      git clone  https://github.com/jarneamerlinck/nix-config ~/nix-config;
+      cd ~/nix-config
     '';
   };
 }
