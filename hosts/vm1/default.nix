@@ -19,6 +19,7 @@
     ../common/base
     ../common/users/eragon
 
+    ../common/optional/wireless.nix
     ## Display server
     ../common/optional/xserver.nix
     ../common/optional/wayland.nix
