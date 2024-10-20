@@ -1,17 +1,23 @@
 {
   config,
   ...
-}: {
+}: let
+  sops_settings = {
+    sopsFile = ../secrets.yml;
+    neededForUsers = true;
+  };
+in  {
   # Wireless secrets stored through sops
-  sops.secrets.wireless_kightofzero = {
-    sopsFile = ../secrets.yml;
-    neededForUsers = true;
-  };
-  sops.secrets.wireless = {
-    sopsFile = ../secrets.yml;
-    neededForUsers = true;
-  };
-  environment.etc."wireless-debug.txt".text =  toString config.sops.secrets.wireless.path;
+  # sops.secrets.wireless_kightofzero = {
+  #   sopsFile = ../secrets.yml;
+  #   neededForUsers = true;
+  # };
+  sops.secrets."wireless/home/ssid" = {sopsFile = ../secrets.yml;neededForUsers = true;};
+  sops.secrets."wireless/home/psw" = sops_settings;
+  sops.secrets."wireless/iotHome/ssid" = {sopsFile = ../secrets.yml;neededForUsers = true;};
+  sops.secrets."wireless/iotHome/psw" = sops_settings;
+  # environment.etc."wireless-debug.txt".text =  toString config.sops.secrets.wireless.path;
+  # environment.etc."wireless-debug.txt".text =  toString config.sops.secrets.wireless.path;
   networking.networkmanager.enable = false;
   networking.wireless = {
     enable = true;
