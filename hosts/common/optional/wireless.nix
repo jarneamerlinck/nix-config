@@ -3,20 +3,25 @@
   ...
 }: {
   # Wireless secrets stored through sops
-  sops.secrets.wireless = {
+  sops.secrets.wireless_kightofzero = {
     sopsFile = ../secrets.yml;
     neededForUsers = true;
   };
+  #   sops.secrets.wireless.home.PSW = {
+  #   sopsFile = ../secrets.yml;
+  #   neededForUsers = true;
+  # };
+
   networking.wireless = {
     networks.home = {
-      ssid = config.sops.secrets.wireless[0].home.SSID;
-      psk = config.sops.secrets.wireless[0].home.PSW;
+      ssid = "knightofzero";
+      psk = config.sops.secrets.wireless.kightofzero;
     };
 
-    networks.iothome = {
-      ssid = config.sops.secrets.wireless[1].iothome.SSID;
-      psk = config.sops.secrets.wireless[1].iothome.PSW;
-    };
+    # networks.iothome = {
+    #   ssid = config.sops.secrets.wireless[1].iothome.SSID;
+    #   psk = config.sops.secrets.wireless[1].iothome.PSW;
+    # };
   };
     # Imperative
   #   allowAuxiliaryImperativeNetworks = true;
