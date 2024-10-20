@@ -1,10 +1,11 @@
 { pkgs, config, ... }:
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+  username = "eragon";
 in
 {
   users.mutableUsers = false; # Only enable if you set password from sops or from nix-config
-  users.users.eragon = {
+  users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
     uid=1442;
@@ -22,17 +23,17 @@ in
       "deluge"
     ];
 
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/eragon/ssh.pub) ];
-    hashedPasswordFile = config.sops.secrets.psw_eragon.path;
+    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/ssh.pub) ];
+    hashedPasswordFile = config.sops.secrets."users/${username}".path;
     packages = [ pkgs.home-manager ];
   };
 
- sops.secrets.psw_eragon = {
+ sops.secrets."users/${username}" = {
    sopsFile = ../../secrets.yml;
    neededForUsers = true;
  };
 
-  home-manager.users.eragon = import ../../../../home/eragon/${config.networking.hostName}.nix;
+  home-manager.users."${username}" = import ../../../../home/${username}/${config.networking.hostName}.nix;
 
   # services.geoclue2.enable = true;
   # security.pam.services = { swaylock = { }; };
