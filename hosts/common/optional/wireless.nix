@@ -4,7 +4,7 @@
 }: {
   # Wireless secrets stored through sops
   sops.secrets.wireless = {
-    sopsFile = ../secrets.yaml;
+    sopsFile = ../secrets.yml;
     neededForUsers = true;
   };
 
@@ -12,13 +12,13 @@
     enable = true;
     fallbackToWPA2 = false;
     # Declarative
-    secretsFile = config.sops.secrets.wireless.path;
+    # secretsFile = config.sops.secrets.wireless.path;
     networks = {
-      "ext:home_ssid" = {
-        pskRaw = "ext:home_psw";
+      "ext:home.ssid" = {
+        pskRaw = "ext:home.psw";
       };
-      "ext:iothome_ssid" = {
-        pskRaw = "ext:iothome_psw";
+      "ext:iothome.ssid" = {
+        pskRaw = "ext:iothome.psw";
       };
 
 
