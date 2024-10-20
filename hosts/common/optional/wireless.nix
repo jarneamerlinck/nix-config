@@ -7,24 +7,17 @@
     sopsFile = ../secrets.yml;
     neededForUsers = true;
   };
-
   networking.wireless = {
-    enable = true;
-    fallbackToWPA2 = false;
-    # Declarative
-    # secretsFile = config.sops.secrets.wireless.path;
-    networks = {
-      "ext:home.ssid" = {
-        pskRaw = "ext:home.psw";
-      };
-      "ext:iothome.ssid" = {
-        pskRaw = "ext:iothome.psw";
-      };
+    networks.home = {
+      ssid = config.sops.secrets.wireless[0].home.SSID;
+      psk = config.sops.secrets.wireless[0].home.PSW;
+    };
 
-
+    networks.iothome = {
+      ssid = config.sops.secrets.wireless[1].iothome.SSID;
+      psk = config.sops.secrets.wireless[1].iothome.PSW;
     };
   };
-
     # Imperative
   #   allowAuxiliaryImperativeNetworks = true;
   #   userControlled = {
