@@ -4,7 +4,7 @@ let
   username = "eragon";
 in
 {
-  users.mutableUsers = false; # Only enable if you set password from sops or from nix-config
+  users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
   users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
