@@ -43,3 +43,11 @@ creation_rules:
       - *atlas
       - *testing
       - *vm1
+
+  - path_regex: hosts/common/users/eragon/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *ash
+      - *atlas
+      - *vm1
