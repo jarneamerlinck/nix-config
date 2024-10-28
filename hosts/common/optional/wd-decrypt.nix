@@ -9,10 +9,9 @@ in
   environment.systemPackages = with pkgs; [
     sg3_utils
   ];
-  services.udisks2 = {
-    enable = true;
-
-  };
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   sops.secrets."${sops_decrypt_key}" = {
     sopsFile = ../users/eragon/secrets.yml;
