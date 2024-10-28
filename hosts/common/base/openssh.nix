@@ -42,45 +42,7 @@ in
     # Each hosts public key
 
     knownHosts = knownHosts;
-    # knownHosts = lib.genAttrs hosts (hostname: {
-    #   publicKeyFile = ../../${hostname}/ssh_host_ed25519_key.pub;
-      # extraHostNames =
-      #   [
-      #     "${hostname}.m7.rs"
-      #   ]
-      #   ++
-      #   # Alias for localhost if it's the same host
-      #   (lib.optional (hostname == config.networking.hostName) "localhost")
-      #   # Alias to m7.rs and git.m7.rs if it's alcyone
-      #   ++ (lib.optionals (hostname == "alcyone") [
-      #     "m7.rs"
-      #     "git.m7.rs"
-      #   ]);
-      # extraHostNames =
-      #   [
-      #     "${hostname}.ko0.net"
-      #   ];
-        # ++
-        # # Alias for localhost if it's the same host
-        # (lib.optional (hostname == config.networking.hostName) "localhost")
-        # Alias to m7.rs and git.m7.rs if it's alcyone
-        # ++ (lib.optionals (hostname == "alcyone") [
-        #   "m7.rs"
-        #   "git.m7.rs"
-        # ])
-
-    # });
   };
-  # programs.ssh = {
-  #   # Each hosts public key
-  #   knownHosts = builtins.mapAttrs
-  #     (name: _: {
-  #       # publicKeyFile = pubKey name;
-  #       extraHostNames =
-  #         (lib.optional (name == hostName) "localhost") ++ # Alias for localhost if it's the same host
-  #     })
-  #     hosts;
-  # };
 
   # Passwordless sudo when SSH'ing with keys
   security.pam.sshAgentAuth.enable = true;

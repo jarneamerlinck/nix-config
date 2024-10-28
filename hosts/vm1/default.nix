@@ -19,6 +19,8 @@
     ../common/base
     ../common/users/eragon
 
+    ../common/optional/wireless.nix
+    ../common/optional/wd-decrypt.nix
     ## Display server
     ../common/optional/xserver.nix
     ../common/optional/wayland.nix

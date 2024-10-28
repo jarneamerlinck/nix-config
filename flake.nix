@@ -28,6 +28,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
 

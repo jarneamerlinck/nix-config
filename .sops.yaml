@@ -1,0 +1,53 @@
+# .sops.yaml
+keys:
+  # Users
+  - &users:
+    - &eragon age1683w3al5uvzfg4jn6jzmuwtcxjq0vrmlhzs8k90khta5ahcuvpvqg6fqky
+  - &hosts:
+    - &ash age1r0qn4lklaq0zcrc0wqrsw9fjzw835ag6spp5pjh8zz7sds5rcfqs94wt2f
+    - &atlas age1zsurvq9f9jkfgmx5w38pl3g94m894azexnjgd5pynhj2m7mntpeqrzwcfj
+    - &testing age1v9eu0t6crm766jn22nj5n473t646w5c09dwja5et9fpy3xe7cfzqgjuykw
+    - &vm1 age1aykstl5ugcl5u5gwwvllq3ysgdhxs6zv4hp62v42j93tfu9nycsq0z04vt
+
+creation_rules:
+  - path_regex: hosts/vm1/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *vm1
+
+  - path_regex: hosts/ash/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *ash
+
+  - path_regex: hosts/atlas/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *atlas
+
+
+  - path_regex: hosts/testing/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *testing
+
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *ash
+      - *atlas
+      - *testing
+      - *vm1
+
+  - path_regex: hosts/common/users/eragon/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *ash
+      - *atlas
+      - *vm1

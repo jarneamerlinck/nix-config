@@ -14,6 +14,7 @@ in
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.nix-colors.homeManagerModules.default
+    inputs.sops-nix.homeManagerModule
     ../features/cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
