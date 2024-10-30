@@ -6,6 +6,7 @@
     ./features/desktop/sway/minimalistic
     ./features/music
     ./features/cyber
+    ./features/desktop/common/discord.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
