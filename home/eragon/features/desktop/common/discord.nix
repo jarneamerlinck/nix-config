@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  c = config.colorscheme.palette;
+  inherit (config.colorscheme) palette;
 in {
   home.packages = with pkgs; [vesktop];
 
@@ -23,10 +23,10 @@ in {
       --corner-text: 'Nord';
 
       /* color of status indicators and window controls */
-      --online-indicator: #${c.base0A}; /* change to #23a55a for default green */
-      --dnd-indicator: #${c.base0B}; /* change to #f13f43 for default red */
-      --idle-indicator: #${c.base0C}; /* change to #f0b232 for default yellow */
-      --streaming-indicator: #${c.base0D}; /* change to #593695 for default purple */
+      --online-indicator: #${palette.base0A}; /* change to #23a55a for default green */
+      --dnd-indicator: #${palette.base0B}; /* change to #f13f43 for default red */
+      --idle-indicator: #${palette.base0C}; /* change to #f0b232 for default yellow */
+      --streaming-indicator: #${palette.base0D}; /* change to #593695 for default purple */
 
       /* accent colors */
       --accent-1: hsl(179, 25%, 65%); /* links */
@@ -38,18 +38,18 @@ in {
       --mention-hover: hsla(193, 43%, 51%, 0.05); /* mentions & mention messages when hovered */
 
       /* text colors */
-      --text-0: #${c.base04}; /* text on colored elements */
-      --text-1: #${c.base05}; /* other normally white text */
-      --text-2: #${c.base04}; /* headings and important text */
-      --text-3: #${c.base05}; /* normal text */
-      --text-4: #${c.base05}; /* icon buttons and channels */
-      --text-5: #${c.base04}; /* muted channels/chats and timestamps */
+      --text-0: #${palette.base04}; /* text on colored elements */
+      --text-1: #${palette.base05}; /* other normally white text */
+      --text-2: #${palette.base04}; /* headings and important text */
+      --text-3: #${palette.base05}; /* normal text */
+      --text-4: #${palette.base05}; /* icon buttons and channels */
+      --text-5: #${palette.base04}; /* muted channels/chats and timestamps */
 
       /* background and dark colors */
-      --bg-1: #${c.base01}; /* dark buttons when clicked */
-      --bg-2: #${c.base02}; /* dark buttons */
-      --bg-3: #${c.base00}; /* spacing, secondary elements */
-      --bg-4: #${c.base01}; /* main background color */
+      --bg-1: #${palette.base01}; /* dark buttons when clicked */
+      --bg-2: #${palette.base02}; /* dark buttons */
+      --bg-3: #${palette.base00}; /* spacing, secondary elements */
+      --bg-4: #${palette.base01}; /* main background color */
       --hover: hsla(220, 17%, 32%, 0.3); /* buttons when hovered */
       --active: hsla(220, 17%, 32%, 0.5); /* channels and buttons when clicked or selected */
       --message-hover: hsla(0, 0%, 19%, 1); /* messages when hovered */

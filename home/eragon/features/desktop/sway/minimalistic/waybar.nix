@@ -8,8 +8,7 @@
 }:
 let
   rmHash = lib.removePrefix "#";
-  inherit (config.colorscheme) colors harmonized;
-  c = config.colorscheme.palette;
+  inherit (config.colorscheme) palette harmonized;
 
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
@@ -28,7 +27,6 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  wofi = "${pkgs.wofi}/bin/wofi";
 
   # Function to simplify making waybar outputs
   jsonOutput =
@@ -85,7 +83,7 @@ in
   }
   window#waybar {
     background-color: transparent;
-    color: #${c.base04};
+    color: #${palette.base04};
   }
   #workspaces button {
     padding: 0 5px;
@@ -121,9 +119,8 @@ in
         ];
 
         clock = {
-          # color = "#${c.base04}";
           border = true;
-          border-color = "#${c.base0D}";
+          border-color = "#${palette.base0D}";
           interval = 1;
           format = "{:%d/%m/%Y %H:%M:%S}";
           # on-click-left = "mode";
@@ -210,14 +207,12 @@ in
             return-type = "json";
             exec = jsonOutput "menu" {
               text = "";
-              tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
-              class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
             };
-            on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+            on-click = "${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
           };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
-          # on-click = "${systemctl} --user restart waybar";
+          on-click = "${systemctl} --user restart waybar";
         };
       };
     };

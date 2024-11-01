@@ -45,7 +45,7 @@ in {
     colors = mkOption {
       readOnly = true;
       type = types.attrsOf hexColor;
-      default = cfg.rawColorscheme.colors.${cfg.mode};
+      default = cfg.rawColorscheme.palette.${cfg.mode};
     };
     harmonized = mkOption {
       readOnly = true;
