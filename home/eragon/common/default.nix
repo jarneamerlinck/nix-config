@@ -7,7 +7,8 @@
   ...
 }:
 let
-  inherit (inputs.nix-colors) colorSchemes;
+  inherit (inputs.nix-colors) colorSchemes ;
+  inherit (inputs.nix-colors.lib-contrib) gtkThemeFromScheme;
   # inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
 in
 {
@@ -63,6 +64,14 @@ in
   # };
   home.file = {
     ".colorscheme.json".text = builtins.toJSON config.colorscheme;
+  };
+
+
+  gtk = {
+    enable = true;
+    theme.package = gtkThemeFromScheme {
+      scheme = config.colorScheme.atelier-heath.palette;
+    };
   };
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
