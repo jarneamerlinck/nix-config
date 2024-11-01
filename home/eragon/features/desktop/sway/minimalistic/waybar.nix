@@ -9,7 +9,7 @@
 let
   rmHash = lib.removePrefix "#";
   inherit (config.colorscheme) colors harmonized;
-  c = config.colorscheme;
+  c = config.colorscheme.palette;
 
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
@@ -77,6 +77,21 @@ in
       mesonFlags = (oa.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
     });
     systemd.enable = true;
+    style = ''
+  * {
+    border: none;
+    border-radius: 0;
+    font-family: Source Code Pro;
+  }
+  window#waybar {
+    background-color: transparent;
+    # background: #${c.base00};
+    color: #${c.base04};
+  }
+  #workspaces button {
+    padding: 0 5px;
+  }
+'';
     settings = {
       primary = {
         mode = "dock";
