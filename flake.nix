@@ -74,44 +74,53 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-        vm1 = lib.nixosSystem {
+      vm1 = lib.nixosSystem {
+        modules = [
+          ./hosts/vm1
+          disko.nixosModules.disko
+          { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+        ];
+        specialArgs = { inherit inputs outputs; };
+      };
+      testing = lib.nixosSystem {
+        modules = [
+          ./hosts/testing
+          disko.nixosModules.disko
+          { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+        ];
+        specialArgs = { inherit inputs outputs; };
+      };
+
+      ash = lib.nixosSystem {
+        modules = [
+          ./hosts/ash
+          disko.nixosModules.disko
+          { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+        ];
+        specialArgs = { inherit inputs outputs; };
+      };
+      atlas = lib.nixosSystem {
+        modules = [
+          ./hosts/atlas
+          disko.nixosModules.disko
+          {
+            disko.devices.disk.boot.device = "/dev/nvme2n1";
+            disko.devices.disk.data.device = "/dev/sda";
+            disko.devices.disk.nvme_home.device = "/dev/nvme0n1";
+            disko.devices.disk.nvme_var.device = "/dev/nvme1n1";
+          }
+        ];
+        specialArgs = { inherit inputs outputs; };
+      };
+      banshee = lib.nixosSystem {
           modules = [
-            ./hosts/vm1
-            disko.nixosModules.disko
-            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
-          ];
-          specialArgs = { inherit inputs outputs; };
-        };
-        testing = lib.nixosSystem {
-          modules = [
-            ./hosts/testing
+            ./hosts/banshee
             disko.nixosModules.disko
             { disko.devices.disk.boot_disk.device = "/dev/vda"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
 
-        ash = lib.nixosSystem {
-          modules = [
-            ./hosts/ash
-            disko.nixosModules.disko
-            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
-          ];
-          specialArgs = { inherit inputs outputs; };
-        };
-        atlas = lib.nixosSystem {
-          modules = [
-            ./hosts/atlas
-            disko.nixosModules.disko
-            {
-              disko.devices.disk.boot.device = "/dev/nvme2n1";
-              disko.devices.disk.data.device = "/dev/sda";
-              disko.devices.disk.nvme_home.device = "/dev/nvme0n1";
-              disko.devices.disk.nvme_var.device = "/dev/nvme1n1";
-            }
-          ];
-          specialArgs = { inherit inputs outputs; };
-        };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -135,6 +144,12 @@
       };
       "eragon@atlas" = lib.homeManagerConfiguration {
           modules = [ ./home/eragon/atlas.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+
+      "eragon@banshee" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/banshee.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };
