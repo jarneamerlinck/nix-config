@@ -85,7 +85,6 @@ in
   }
   window#waybar {
     background-color: transparent;
-    # background: #${c.base00};
     color: #${c.base04};
   }
   #workspaces button {
@@ -122,10 +121,12 @@ in
         ];
 
         clock = {
+          # color = "#${c.base04}";
+          border = true;
+          border-color = "#${c.base0D}";
           interval = 1;
-          format = "{:%d/%m %H:%M:%S}";
-          format-alt = "{:%Y-%m-%d %H:%M:%S %z}";
-          on-click-left = "mode";
+          format = "{:%d/%m/%Y %H:%M:%S}";
+          # on-click-left = "mode";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
