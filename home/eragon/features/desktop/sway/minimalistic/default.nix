@@ -8,6 +8,7 @@ in
   imports = [
     ../common
     ./shotman.nix
+    ./wofi.nix
     ./waybar.nix
     ./notifications.nix
     ./darkmode-theme.nix
