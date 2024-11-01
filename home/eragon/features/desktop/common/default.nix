@@ -1,4 +1,12 @@
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}:
+{
   imports = [
     # ./deluge.nix
     ./discord.nix
@@ -12,4 +20,5 @@
     # ./pavucontrol.nix
 
   ];
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 }
