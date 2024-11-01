@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: let
+    inherit (config.colorscheme) palette harmonized;
+in {
 
   home = {
     packages = with pkgs; [
@@ -6,11 +8,9 @@
       xdg-desktop-portal-gtk
     ];
   };
-  xdg = {
-    gtk = {
-      enable = true;
-      theme = "Adwaita-dark";  # Or another dark GTK theme you prefer
-    };
-    iconTheme = "Papirus-Dark";  # Optional, for a matching dark icon theme
-  };
+  xdg.configFile."gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-theme-name = "${config.colorScheme}";
+    gtk-application-prefer-dark-theme = true
+  '';
 }

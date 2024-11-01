@@ -15,7 +15,7 @@
     ./font.nix
     ./xdg.nix
     ./qt.nix
-
+    ./audio.nix
   ];
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 }
