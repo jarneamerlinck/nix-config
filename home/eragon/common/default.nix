@@ -67,21 +67,21 @@ in
   };
 
  # look at /home/eragon/repos/cloning/misterio77-nix-config/home/gabriel/features/desktop/common/gtk.nix
-  gtk = {
-    enable = true;
-    font = {
-      name = config.fontProfiles.regular.family;
-      size = 12;
-    };
-    theme = let
-      inherit (config.colorscheme) mode colors;
-      name = "generated-${hashString "md5" (toJSON colors)}-${mode}";
-    in {
-      inherit name;
-      package = materiaTheme name (
-        lib.mapAttrs (_: v: lib.removePrefix "#" v) colors
-      );
-    };
+  # gtk = {
+  #   enable = true;
+  #   font = {
+  #     name = config.fontProfiles.regular.family;
+  #     size = 12;
+  #   };
+  #   theme = let
+  #     inherit (config.colorscheme) mode colors;
+  #     name = "generated-${hashString "md5" (toJSON colors)}-${mode}";
+  #   in {
+  #     inherit name;
+  #     package = materiaTheme name (
+  #       lib.mapAttrs (_: v: lib.removePrefix "#" v) colors
+  #     );
+  #   };
     # iconTheme = {
     #   name = "Papirus-${
     #     if config.colorscheme.mode == "dark"
@@ -90,7 +90,7 @@ in
     #   }";
     #   package = pkgs.papirus-icon-theme;
     # };
-  };
+  # };
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
   #     profiles="$HOME/.local/state/nix/profiles"
