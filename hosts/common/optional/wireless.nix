@@ -3,7 +3,7 @@
   ...
 }: let
   sops_settings = {
-    sopsFile = ../secrets.yml;
+    sopsFile = ../users/eragon/secrets.yml;
     neededForUsers = true;
   };
   wifi_networks = ["home" "iotHome"];

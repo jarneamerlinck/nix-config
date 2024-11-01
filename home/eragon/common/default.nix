@@ -66,12 +66,30 @@ in
     ".colorscheme.json".text = builtins.toJSON config.colorscheme;
   };
 
-
+ # look at /home/eragon/repos/cloning/misterio77-nix-config/home/gabriel/features/desktop/common/gtk.nix
   gtk = {
     enable = true;
-    theme.package = gtkThemeFromScheme {
-      scheme = config.colorScheme.atelier-heath.palette;
+    font = {
+      name = config.fontProfiles.regular.family;
+      size = 12;
     };
+    theme = let
+      inherit (config.colorscheme) mode colors;
+      name = "generated-${hashString "md5" (toJSON colors)}-${mode}";
+    in {
+      inherit name;
+      package = materiaTheme name (
+        lib.mapAttrs (_: v: lib.removePrefix "#" v) colors
+      );
+    };
+    # iconTheme = {
+    #   name = "Papirus-${
+    #     if config.colorscheme.mode == "dark"
+    #     then "Dark"
+    #     else "Light"
+    #   }";
+    #   package = pkgs.papirus-icon-theme;
+    # };
   };
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
