@@ -91,6 +91,7 @@ in
 '';
     settings = {
       primary = {
+        spacing = 12;
         mode = "dock";
         layer = "top";
         height = 40;
@@ -113,17 +114,14 @@ in
         ];
 
         modules-right = [
-          "network"
           "tray"
+          "network"
           "custom/hostname"
         ];
 
         clock = {
-          border = true;
-          border-color = "#${palette.base0D}";
           interval = 1;
           format = "{:%d/%m/%Y %H:%M:%S}";
-          # on-click-left = "mode";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';

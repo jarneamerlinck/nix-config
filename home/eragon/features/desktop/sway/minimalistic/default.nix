@@ -17,7 +17,6 @@ in
     procps
     jq
     playerctl
-    pavucontrol
   ];
 
   wayland.windowManager.sway = {
