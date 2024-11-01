@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   rmHash = lib.removePrefix "#";
-  inherit (config.colorscheme) colors ;
+  # inherit (config.colorscheme) colors ;
   c = config.colorscheme.palette;
 in
 {
