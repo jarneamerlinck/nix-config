@@ -23,10 +23,10 @@ in {
       --corner-text: 'Nord';
 
       /* color of status indicators and window controls */
-      --online-indicator: #a3be8c; /* change to #23a55a for default green */
-      --dnd-indicator: #bf616a; /* change to #f13f43 for default red */
-      --idle-indicator: #ebcb8b; /* change to #f0b232 for default yellow */
-      --streaming-indicator: #b48ead; /* change to #593695 for default purple */
+      --online-indicator: #${c.base0A}; /* change to #23a55a for default green */
+      --dnd-indicator: #${c.base0B}; /* change to #f13f43 for default red */
+      --idle-indicator: #${c.base0C}; /* change to #f0b232 for default yellow */
+      --streaming-indicator: #${c.base0D}; /* change to #593695 for default purple */
 
       /* accent colors */
       --accent-1: hsl(179, 25%, 65%); /* links */
