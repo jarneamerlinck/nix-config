@@ -76,7 +76,7 @@ in {
       /* change to block to show, none to hide */
       --discord-icon: none; /* discord icon */
       --moon-icon: block; /* moon icon */
-      --moon-icon-url: url('https://upload.wikimedia.org/wikipedia/commons/7/7b/Ubuntu-logo-no-wordmark-solid-o-2022.svg'); /* custom icon url */
+      # --moon-icon-url: url('https://upload.wikimedia.org/wikipedia/commons/3/35/Nix_Snowflake_Logo.svg'); /* custom icon url */
       --moon-icon-size: auto;
 
       /* filter uncolorable elements to fit theme */
