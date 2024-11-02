@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (config.colorscheme) palette harmonized;
+  inherit (config.colorscheme) palette;
 in {
   programs.wofi = {
       enable = true;

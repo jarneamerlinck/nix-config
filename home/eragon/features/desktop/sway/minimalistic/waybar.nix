@@ -8,7 +8,7 @@
 }:
 let
   rmHash = lib.removePrefix "#";
-  inherit (config.colorscheme) palette harmonized;
+  inherit (config.colorscheme) palette;
 
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
