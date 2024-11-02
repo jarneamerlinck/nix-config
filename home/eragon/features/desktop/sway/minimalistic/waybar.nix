@@ -74,6 +74,23 @@ in
   }
   #workspaces button {
     padding: 0 5px;
+    color: #${palette.base05};
+    border-bottom: none;
+  }
+  #workspaces button.focused {
+    border-top: 3px solid #${palette.base05};
+    border-bottom: none;
+  }
+  #workspaces button.urgent {
+    border-bottom: none;
+  }
+  #workspaces button.visible {
+    color:      #${palette.base05};
+    border-bottom: none;
+  }
+  #workspaces button:hover {
+    background: #${palette.base02};
+    border-bottom: none;
   }
 '';
     settings = {

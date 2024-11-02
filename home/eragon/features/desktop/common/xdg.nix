@@ -1,6 +1,4 @@
-{ pkgs, config, ... }: let
-    inherit (config.colorscheme) palette harmonized;
-in {
+{ pkgs, config, ... }: {
 
   home = {
     packages = with pkgs; [
