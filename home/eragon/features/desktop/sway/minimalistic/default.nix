@@ -32,38 +32,37 @@ in
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
-        "${cfg.modifier}+${cfg.left}" = "focus left";
-        "${cfg.modifier}+${cfg.down}" = "focus down";
-        "${cfg.modifier}+${cfg.up}" = "focus up";
-        "${cfg.modifier}+${cfg.right}" = "focus right";
+        "${cfg.modifier}+Left" = "focus left";
+        "${cfg.modifier}+Down" = "focus down";
+        "${cfg.modifier}+Up" = "focus up";
+        "${cfg.modifier}+Right" = "focus right";
 
-        "${cfg.modifier}+Shift+${cfg.left}" = "move left";
-        "${cfg.modifier}+Shift+${cfg.down}" = "move down";
-        "${cfg.modifier}+Shift+${cfg.up}" = "move up";
-        "${cfg.modifier}+Shift+${cfg.right}" = "move right";
+        "${cfg.modifier}+Shift+Left" = "move left";
+        "${cfg.modifier}+Shift+Down" = "move down";
+        "${cfg.modifier}+Shift+Up" = "move up";
+        "${cfg.modifier}+Shift+Right" = "move right";
         "${cfg.modifier}+f" = "fullscreen toggle";
         "${cfg.modifier}+Shift+Escape" = "exec swaymsg exit";
         "${cfg.modifier}+Shift+c" = "exec swaymsg reload";
-      };
-      modes = {
-        workspace_mode =
-        {
-          "0" = "workspace 0";
-          "1" = "workspace 1";
-          "2" = "workspace 2";
-          "3" = "workspace 3";
-          "4" = "workspace 4";
-          "5" = "workspace 5";
-          "6" = "workspace 6";
-          "7" = "workspace 7";
-          "8" = "workspace 8";
-          "9" = "workspace 9";
-          "${cfg.right}" = "workspace next";
-          "${cfg.left}" = "workspace prev";
-        };
+
+        "Ctrl+Alt+Right" = "workspace next";
+        "Ctrl+Alt+Left" = "workspace prev";
+        "Ctrl+Alt+1" = "workspace 1";
+        "Ctrl+Alt+2" = "workspace 2";
+        "Ctrl+Alt+3" = "workspace 3";
+        "Ctrl+Alt+4" = "workspace 4";
       };
     };
     extraConfig = ''
+      for_window [app_id="firefox"] move to workspace 2
+      # for_window [app_id="kitty"] move to workspace 3
+      for_window [app_id="vesktop"] move to workspace 4
+      for_window [title=".*Discord.*"] move to workspace 4
+
+      exec swaymsg workspace 4
+      exec swaymsg workspace 3
+      exec swaymsg workspace 2
+      exec swaymsg workspace 1
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
       }
