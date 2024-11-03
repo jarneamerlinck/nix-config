@@ -9,12 +9,8 @@
 let
   inherit (inputs.nix-colors) colorSchemes;
   inherit (config.colorscheme) palette;
-  inherit (inputs.nix-colors.lib-contrib) colorSchemeFromPicture gtkThemeFromScheme;
+  # inherit (inputs.nix-colors.lib-contrib) colorSchemeFromPicture gtkThemeFromScheme;
   # inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
-  colorScheme = colorSchemeFromPicture {
-    path = "https://images.hdqwalls.com/wallpapers/linux-nixos-7q.jpg";
-    variant = "dark";
-  };
 
 in
 {
@@ -72,63 +68,7 @@ in
     ".colorscheme.json".text = builtins.toJSON config.colorscheme;
   };
 
- # look at /home/eragon/repos/cloning/misterio77-nix-config/home/gabriel/features/desktop/common/gtk.nix
-  #  gtk = {
-  #   enable = true;
-  #   theme = {
-  #   };
-  # };
-  gtk = {
-    enable = true;
 
-    # Set the GTK theme colors based on nix-colors
-    theme = {
-      name = "${config.colorScheme.slug}";
-      package = gtkThemeFromScheme { scheme = colorScheme; };
-    };
-
-    # Apply custom colors from nix-colors to GTK
-    # colors = {
-    #   gtk.background = "#${palette.base00}";
-    #   gtk.foreground = "#${palette.base01}";
-    #   gtk.selected_bg_color = "#${palette.base04}";
-    #   gtk.selected_fg_color = "#${palette.base05}";
-    #   gtk.tooltip_bg_color = "#${palette.base04}";
-    #   gtk.tooltip_fg_color = "#${palette.base05}";
-    #
-    #   # Additional colors if available, adjust based on color scheme details
-    #   gtk.text_bg_color = "#${palette.base04}";
-    #   gtk.text_fg_color = "#${palette.base06}";
-    #   gtk.button_bg_color = "#${palette.base02}";
-    #   gtk.button_fg_color = "#${palette.base03}";
-    #   gtk.header_bg_color = "#${palette.base02}";
-    #   gtk.header_fg_color = "#${palette.base03}";
-    # };
-  };
-  # gtk = {
-  #   enable = true;
-  #   font = {
-  #     name = config.fontProfiles.regular.family;
-  #     size = 12;
-  #   };
-  #   theme = let
-  #     inherit (config.colorscheme) mode colors;
-  #     name = "generated-${hashString "md5" (toJSON colors)}-${mode}";
-  #   in {
-  #     inherit name;
-  #     package = materiaTheme name (
-  #       lib.mapAttrs (_: v: lib.removePrefix "#" v) colors
-  #     );
-  #   };
-    # iconTheme = {
-    #   name = "Papirus-${
-    #     if config.colorscheme.mode == "dark"
-    #     then "Dark"
-    #     else "Light"
-    #   }";
-    #   package = pkgs.papirus-icon-theme;
-    # };
-  # };
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
   #     profiles="$HOME/.local/state/nix/profiles"
