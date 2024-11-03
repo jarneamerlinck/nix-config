@@ -5,6 +5,7 @@ let
 in {
   programs.vscode = {
     enable = true;
+    package = pkgs.vscodium;
     userSettings = {
       "workbench.colorCustomizations" = {
         "editor.background" = "#${palette.base00}";
