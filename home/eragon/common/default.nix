@@ -9,9 +9,6 @@
 let
   inherit (inputs.nix-colors) colorSchemes;
   inherit (config.colorscheme) palette;
-  # inherit (inputs.nix-colors.lib-contrib) colorSchemeFromPicture gtkThemeFromScheme;
-  # inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
-
 in
 {
   imports = [
