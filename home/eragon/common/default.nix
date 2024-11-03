@@ -8,7 +8,7 @@
 }:
 let
   inherit (inputs.nix-colors) colorSchemes;
-  # inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
+  inherit (config.colorscheme) palette;
 in
 {
   imports = [
@@ -64,6 +64,8 @@ in
   home.file = {
     ".colorscheme.json".text = builtins.toJSON config.colorscheme;
   };
+
+
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
   #     profiles="$HOME/.local/state/nix/profiles"

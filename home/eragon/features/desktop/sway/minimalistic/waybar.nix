@@ -8,8 +8,7 @@
 }:
 let
   rmHash = lib.removePrefix "#";
-  inherit (config.colorscheme) colors harmonized;
-  c = config.colorscheme;
+  inherit (config.colorscheme) palette;
 
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
@@ -28,7 +27,6 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  wofi = "${pkgs.wofi}/bin/wofi";
 
   # Function to simplify making waybar outputs
   jsonOutput =
@@ -57,19 +55,6 @@ let
   sway = config.wayland.windowManager.sway.package;
 in
 {
-  programs.wofi = {
-      enable = true;
-      settings = {
-        image_size = 48;
-        columns = 3;
-        allow_images = true;
-        insensitive = true;
-        run-always_parse_args = true;
-        run-cache_file = "/dev/null";
-        run-exec_search = true;
-        matching = "multi-contains";
-    };
-  };
 
   programs.waybar = {
     enable = true;
@@ -77,8 +62,40 @@ in
       mesonFlags = (oa.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
     });
     systemd.enable = true;
+    style = ''
+  * {
+    border: none;
+    border-radius: 0;
+    font-family: Source Code Pro;
+  }
+  window#waybar {
+    background-color: transparent;
+    color: #${palette.base04};
+  }
+  #workspaces button {
+    padding: 0 5px;
+    color: #${palette.base05};
+    border-bottom: none;
+  }
+  #workspaces button.focused {
+    border-top: 3px solid #${palette.base05};
+    border-bottom: none;
+  }
+  #workspaces button.urgent {
+    border-bottom: none;
+  }
+  #workspaces button.visible {
+    color:      #${palette.base05};
+    border-bottom: none;
+  }
+  #workspaces button:hover {
+    background: #${palette.base02};
+    border-bottom: none;
+  }
+'';
     settings = {
       primary = {
+        spacing = 12;
         mode = "dock";
         layer = "top";
         height = 40;
@@ -101,16 +118,14 @@ in
         ];
 
         modules-right = [
-          "network"
           "tray"
+          "network"
           "custom/hostname"
         ];
 
         clock = {
           interval = 1;
-          format = "{:%d/%m %H:%M:%S}";
-          format-alt = "{:%Y-%m-%d %H:%M:%S %z}";
-          on-click-left = "mode";
+          format = "{:%d/%m/%Y %H:%M:%S}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
@@ -194,14 +209,12 @@ in
             return-type = "json";
             exec = jsonOutput "menu" {
               text = "";
-              tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
-              class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
             };
-            on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+            on-click = "${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
           };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
-          # on-click = "${systemctl} --user restart waybar";
+          on-click = "${systemctl} --user restart waybar";
         };
       };
     };

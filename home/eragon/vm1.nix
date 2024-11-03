@@ -6,10 +6,13 @@
     ./features/desktop/sway/minimalistic
     ./features/music
     ./features/cyber
+    ./features/desktop/common/discord.nix
+    ./features/desktop/common/matrix.nix
+    ./features/desktop/common/vscode.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
-  colorScheme = inputs.nix-colors.colorSchemes.brewer;
+  colorScheme = inputs.nix-colors.colorSchemes.bright;
 
   monitors = [{
     name = "eDP-1";

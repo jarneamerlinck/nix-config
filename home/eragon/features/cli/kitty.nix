@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   rmHash = lib.removePrefix "#";
-  inherit (config.colorscheme) colors harmonized;
-  c = config.colorscheme;
+  inherit (config.colorscheme) palette;
 in
 {
   programs.kitty = {
@@ -56,12 +55,12 @@ in
       bold_font = "auto";
       bold_italic_font = "auto";
       font_size = 12;
-      foreground = "#${c.palette.base05}";
-      background = "#${c.palette.base00}";
+      foreground = "#${palette.base05}";
+      background = "#${palette.base00}";
       background_opacity = "0.9";
-      selection_foreground = "#${c.palette.base00}";
-      selection_background = "#${c.palette.base0B}";
-      cursor = "#${c.palette.base0E}";
+      selection_foreground = "#${palette.base00}";
+      selection_background = "#${palette.base0B}";
+      cursor = "#${palette.base0E}";
       cursor_shape = "block";
       cursor_stop_blinking_after = 15;
       scrollback_lines = 2000;
@@ -78,22 +77,22 @@ in
       term = "xterm-kitty";
       window_border_width = 0;
       window_margin_width = 15;
-      color0 = "#${c.palette.base00}";
-      color1 = "#${c.palette.base01}";
-      color2 = "#${c.palette.base02}";
-      color3 = "#${c.palette.base03}";
-      color4 = "#${c.palette.base04}";
-      color5 = "#${c.palette.base05}";
-      color6 = "#${c.palette.base06}";
-      color7 = "#${c.palette.base07}";
-      color8 = "#${c.palette.base08}";
-      color9 = "#${c.palette.base09}";
-      color10 = "#${c.palette.base0A}";
-      color11 = "#${c.palette.base0B}";
-      color12 = "#${c.palette.base0C}";
-      color13 = "#${c.palette.base0D}";
-      color14 = "#${c.palette.base0E}";
-      color15 = "#${c.palette.base0F}";
+      color0 = "#${palette.base00}";
+      color1 = "#${palette.base01}";
+      color2 = "#${palette.base02}";
+      color3 = "#${palette.base03}";
+      color4 = "#${palette.base04}";
+      color5 = "#${palette.base05}";
+      color6 = "#${palette.base06}";
+      color7 = "#${palette.base07}";
+      color8 = "#${palette.base08}";
+      color9 = "#${palette.base09}";
+      color10 = "#${palette.base0A}";
+      color11 = "#${palette.base0B}";
+      color12 = "#${palette.base0C}";
+      color13 = "#${palette.base0D}";
+      color14 = "#${palette.base0E}";
+      color15 = "#${palette.base0F}";
 
       hide_window_decorations = "yes";
       macos_option_as_alt = false;
