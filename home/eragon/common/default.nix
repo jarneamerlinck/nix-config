@@ -9,8 +9,13 @@
 let
   inherit (inputs.nix-colors) colorSchemes;
   inherit (config.colorscheme) palette;
-  inherit (inputs.nix-colors.lib-contrib) gtkThemeFromScheme;
+  inherit (inputs.nix-colors.lib-contrib) colorSchemeFromPicture gtkThemeFromScheme;
   # inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
+  colorScheme = colorSchemeFromPicture {
+    path = "https://images.hdqwalls.com/wallpapers/linux-nixos-7q.jpg";
+    variant = "dark";
+  };
+
 in
 {
   imports = [
@@ -68,13 +73,18 @@ in
   };
 
  # look at /home/eragon/repos/cloning/misterio77-nix-config/home/gabriel/features/desktop/common/gtk.nix
+  #  gtk = {
+  #   enable = true;
+  #   theme = {
+  #   };
+  # };
   gtk = {
     enable = true;
 
     # Set the GTK theme colors based on nix-colors
     theme = {
-      name = "Adwaita"; # Use a base GTK theme here (or another installed theme)
-      # fontName = "Sans 10"; # Optional: specify the font
+      name = "${config.colorScheme.slug}";
+      package = gtkThemeFromScheme { scheme = colorScheme; };
     };
 
     # Apply custom colors from nix-colors to GTK
