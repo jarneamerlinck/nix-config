@@ -33,6 +33,7 @@
 
   swapDevices = [ ];
 
+  disko.devices.disk.boot_disk.device = "/dev/vda";
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 

@@ -78,7 +78,6 @@
           modules = [
             ./hosts/vm1
             disko.nixosModules.disko
-            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -86,7 +85,6 @@
           modules = [
             ./hosts/testing
             disko.nixosModules.disko
-            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -95,7 +93,6 @@
           modules = [
             ./hosts/ash
             disko.nixosModules.disko
-            { disko.devices.disk.boot_disk.device = "/dev/vda"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -103,12 +100,6 @@
           modules = [
             ./hosts/atlas
             disko.nixosModules.disko
-            {
-              disko.devices.disk.boot.device = "/dev/nvme2n1";
-              disko.devices.disk.data.device = "/dev/sda";
-              disko.devices.disk.nvme_home.device = "/dev/nvme0n1";
-              disko.devices.disk.nvme_var.device = "/dev/nvme1n1";
-            }
           ];
           specialArgs = { inherit inputs outputs; };
         };

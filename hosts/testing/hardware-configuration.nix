@@ -29,6 +29,7 @@
     extraModulePackages = [ ];
   };
 
+  disko.devices.disk.boot_disk.device = "/dev/vda";
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;
