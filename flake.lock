@@ -240,11 +240,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1731154759,
-        "narHash": "sha256-+/+naH62ljVc5jKtUV91H1e9IwMLnzbY+jKnjrQLLcM=",
+        "lastModified": 1731315742,
+        "narHash": "sha256-elnAho6RXJ0lYxtDG/j2K9vc2yr9A+dR1hIxZZpNzBA=",
         "owner": "jarneamerlinck",
         "repo": "kickstart.nvim",
-        "rev": "f16fae24f9c1490b1143b22e2dc3ccca9e342132",
+        "rev": "e444000e64b11d1f5fc01a110067566692fa3ae7",
         "type": "github"
       },
       "original": {
