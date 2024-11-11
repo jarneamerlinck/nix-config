@@ -8,8 +8,8 @@
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     loader = {
       grub = {
-        efiSupport = false;
-        efiInstallAsRemovable = false;
+        efiSupport = true;
+        efiInstallAsRemovable = true;
       };
       efi.canTouchEfiVariables = false;
     };
@@ -37,7 +37,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  nixpkgs.hostPlatform = lib.mkForce "aarch64-linux";
   hardware.enableRedistributableFirmware = true;
 
 }
