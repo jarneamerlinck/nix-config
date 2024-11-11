@@ -8,6 +8,7 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader.grub = {
       efiSupport = true;
       efiInstallAsRemovable = true;
