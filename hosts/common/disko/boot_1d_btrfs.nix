@@ -42,6 +42,14 @@
                     mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
+                  "/home" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/home";
+                  };
+                  ".snapshots_home" = {
+                    mountOptions = [ "compress=zstd" "noatime"];
+                    mountpoint = "/home/.snapshots";
+                  };
                 };
               };
             };
