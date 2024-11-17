@@ -17,7 +17,7 @@
     ./mdadm.nix
     ./mount_points.nix
     ./sops.nix
-
+    ./vpn.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
