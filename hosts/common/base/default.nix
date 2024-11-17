@@ -10,8 +10,13 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./zsh.nix
+    ./nvim.nix
     ./nix.nix
     ./openssh.nix
+    ./package-list.nix
+    ./mdadm.nix
+    ./mount_points.nix
+    ./sops.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
@@ -45,6 +50,9 @@
     QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
   };
 
+  # Set default console keyboard
+  console.keyMap = "be-latin1";
+
   hardware.enableRedistributableFirmware = true;
 
   # Increase open file limit for sudoers
@@ -62,7 +70,10 @@
       value = "1048576";
     }
   ];
-
+  users.groups.mounts = {
+    name = "mounts";
+    gid = 1442; # Group ID, you can choose a suitable ID
+  };
     # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
   nix.nixPath = ["/etc/nix/path"];

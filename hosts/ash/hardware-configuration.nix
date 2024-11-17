@@ -7,25 +7,32 @@
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
+      grub = {
+        efiSupport = false;
+        efiInstallAsRemovable = false;
+      };
+      efi.canTouchEfiVariables = false;
     };
     initrd = {
-      availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+      availableKernelModules = [
+        "btrfs"         # Needed for btrfs storage
+        # "ahci"          # Used for SATA (Advanced Host Controller Interface)
+        "xhci_pci"      # Controller for USB (eXtensible Host Controller Interface)
+        "usbhid"        # Needed for USB devices
+        "usb_storage"   # For USB storage devices
+        # "virtio_pci"    # PCI for virtio, only needed if VM is needed
+        # "virtio_blk"    # Block for virtio, only needed if VM is needed
+        # "sr_mod"        # Used for CD-ROM
+      ];
+
+      kernelModules = [ ];
     };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXOS_SD";
-      fsType = "ext4";
-      options = [ "noatime" ];
-    };
 
   swapDevices = [ ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 

@@ -1,43 +1,63 @@
 { pkgs, ... }: {
   imports = [
-    # ./bash.nix
     # ./bat.nix
-    # ./direnv.nix
+    ./direnv.nix
     ./zsh.nix
-    # ./gh.nix
     ./git.nix
     # ./gpg.nix
     ./kitty.nix
+    ./tmux.nix
     # ./lyrics.nix
-    # ./nix-index.nix
-    # ./pfetch.nix
+    ./fetch.nix
     # ./ranger.nix
     # ./screen.nix
     # ./shellcolor.nix
     ./ssh.nix
+    ./docker.nix
     # ./starship.nix
     # ./xpo.nix
   ];
-  home.packages = with pkgs; [
-    comma # Install and run programs by sticking a , before them
+  home = {
+    shellAliases = {
+      v="nvim";
+      rebuild="cd ~/nix-config && git stash &&  git pull && ./deploy.sh";
+      rebuildf="cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
+      rebuildl="cd ~/nix-config &&  ./deploy.sh";
+      homef="cd ~/nix-config && git stash && git pull -f && home-manager --flake .#$USER@$HOST switch";
+      homel="cd ~/nix-config &&  home-manager --flake .#$USER@$HOST switch";
+    };
 
-    # Monitor tools
-    btop
-    htop
-    neofetch
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
 
-    # ncdu # TUI disk usage
-    ripgrep # Better grep
-    fd # Better find
+    packages = with pkgs; [
+      comma # Install and run programs by sticking a , before them
 
-    nil # Nix LSP
-    nixfmt # Nix formatter
-    nvd # Differ
-    nix-output-monitor
+      # Monitor tools
+      btop
+      htop
+      neofetch
 
-    # terminals
-    kitty
+      # ncdu # TUI disk usage
+      ripgrep # Better grep
+      fd # Better find
+      wget
+
+      zoxide
+      fzf
+
+      nil # Nix LSP
+      nixfmt-rfc-style # Nix formatter
+      # nixfmt-classic # Prev formater
+      nvd # Differ
+      nix-output-monitor
+
+      # terminals
+      kitty
 
 
-  ];
+    ];
+  };
 }

@@ -13,21 +13,37 @@
 
     ./hardware-configuration.nix
 
+    ../common/optional/btrfs.nix
+    ../common/disko/boot_1d_btrfs.nix
+
     ../common/base
     ../common/users/eragon
 
+    ../common/optional/wireless.nix
+    ../common/optional/wd-decrypt.nix
+    ## Display server
     ../common/optional/xserver.nix
-    # ../common/optional/gdm.nix
+    ../common/optional/wayland.nix
 
+    ## Display Managers
+    ../common/optional/greetd.nix
+    # ../common/optional/sddm.nix
+
+
+    ## Desktop environments / Window Managers
+    # ../common/optional/gnome.nix
+    # ../common/optional/hyprland.nix
+
+
+
+    ## Common items
     # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
-    ../common/optional/sddm.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/gnome.nix
-    ../common/optional/services/virtualization
+    ../common/optional/virtualization
 
-    # ../common/optional/qemu-guest.nix
+    ../common/optional/qemu-guest.nix
   ];
 
   networking = {
@@ -35,5 +51,5 @@
     useDHCP = true;
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

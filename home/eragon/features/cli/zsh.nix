@@ -12,13 +12,31 @@
         src = lib.cleanSource ./p10k.zsh;
         file = "p10k.zsh";
       }
+      {
+        name = "shell-func-config";
+        src = lib.cleanSource ./shell_func.sh;
+        file = "shell_func.sh";
+      }
       ];
     initExtraBeforeCompInit = ''
-    [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
+      [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
+    '';
+    initExtra = ''
+      eval "$(zoxide init zsh)"
+      [[ ! -f ${./shell_func.sh} ]] || source ${./shell_func.sh}
     '';
   };
   programs.fzf = {
       enable = true;
       enableZshIntegration = true;
   };
+  home.shellAliases = {
+      de="fzf-docker-exec";
+      dl="fzf-docker-full-log";
+      dfl="fzf-docker-full-log";
+      dll="fzf-docker-live-log";
+      gl="fzf-git-log";
+      fssh="fzf-ssh";
+    };
+
 }

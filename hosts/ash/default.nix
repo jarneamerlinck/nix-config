@@ -13,15 +13,16 @@
 
     ./hardware-configuration.nix
 
+    ../common/optional/btrfs.nix
+    ../common/disko/boot_1d_btrfs.nix
+
     ../common/base
     ../common/users/eragon
 
-    # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/services/virtualization/docker.nix
-
+    ../common/optional/virtualization/docker.nix
   ];
 
   networking = {
@@ -29,5 +30,5 @@
     useDHCP = true;
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

@@ -1,14 +1,21 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
-# let
-#   inherit (inputs.nix-colors) colorSchemes;
-#   inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
-# in
+{
+  inputs,
+  lib,
+  pkgs,
+  config,
+  outputs,
+  ...
+}:
+let
+  inherit (inputs.nix-colors) colorSchemes;
+  inherit (config.colorscheme) palette;
+in
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
-    # inputs.nix-colors.homeManagerModule
+    inputs.nix-colors.homeManagerModules.default
+    inputs.sops-nix.homeManagerModule
     ../features/cli
-    ../features/nvim
   ] ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
@@ -44,12 +51,27 @@
     };
   };
 
+  # Set default wallpaper and colorscheme
+  # Available color schemes can be found at
+  # https://tinted-theming.github.io/base16-gallery/
+  colorScheme = lib.mkDefault inputs.nix-colors.colorSchemes.atelier-heath;
+  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
+
+  # specialisation = {
+  #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
+  #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
+  # };
+  home.file = {
+    ".colorscheme.json".text = builtins.toJSON config.colorscheme;
+  };
+
+
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
   #     profiles="$HOME/.local/state/nix/profiles"
   #     current="$profiles/home-manager"
   #     base="$profiles/home-manager-base"
-
+  #
   #     # If current contains specialisations, link it as base
   #     if [ -d "$current/specialisation" ]; then
   #       echo >&2 "Using current profile as base"
@@ -61,12 +83,12 @@
   #       echo >&2 "No suitable base config found. Try 'home-manager switch' again."
   #       exit 1
   #     fi
-
+  #
   #     if [ "$1" = "list" ] || [ "$1" = "-l" ] || [ "$1" = "--list" ]; then
   #       find "$base/specialisation" -type l -printf "%f\n"
   #       exit 0
   #     fi
-
+  #
   #     echo >&2 "Switching to ''${1:-base} specialisation"
   #     if [ -n "$1" ]; then
   #       "$base/specialisation/$1/activate"

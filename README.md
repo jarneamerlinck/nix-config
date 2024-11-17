@@ -1,21 +1,16 @@
 # Nixos with flakes
 
-## Deploy on current host
-
-- run following command on a nixos host:
-
-```bash
-nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
-```
 
 ## Devices
 
-| Hostname |      Board       |                  CPU                  |  RAM  |       Primary GPU       | Secondary GPU | Role  |  OS   | State |
-| :------: | :--------------: | :-----------------------------------: | :---: | :---------------------: | :-----------: | :---: | :---: | :---: |
-|  `ash`   | [Raspberry pi 4] |       [BCM2835 (4) @ 1.800GHz]        |  8GB  |                         |               |   🖥️  |   ❄️  |   ✅   |
-|  `zima`  | [Zimaboard 832]  | [Intel Celeron N3450 (4) @ 2.200GHz ] |  8GB  | [Intel HD Graphics 500] |               |   🖥️  |   🐧 |   ✅   |
-||
-|  `vm1`   |                  |                                       |       |                         |               |   📦  |   ❄️  |   ✅   |
+| Hostname  |     Board      | CPU                                                 |  RAM  | Primary GPU                                    | Secondary GPU | Role  |  OS   | State |
+| :-------: | :------------: | :-------------------------------------------------- | :---: | :--------------------------------------------- | :------------ | :---: | :---: | :---: |
+|   `ash`   | Raspberry pi 4 | BCM2835 (4) @ 1.800GHz                              |  8GB  |                                                |               |   🖥️   |   ❄️   |   ✅   |
+|  `atlas`  |    ZimaCube    | 12th Gen Intel(R) Core(TM) i5-1235U (12) @ 4.40 GHz |  64G  | Intel Iris Xe Graphics @ 1.20 GHz [Integrated] |               |   🖥️   |   ❄️   |   ✅   |
+|  `zima`   | Zimaboard 832  | Intel Celeron N3450 (4) @ 2.200GHz                  |  8GB  | Intel HD Graphics 500                          |               |   🖥️   |   🐧   |   ✅   |
+|           |
+|   `vm1`   |                |                                                     |       |                                                |               |   📦   |   ❄️   |   ✅   |
+| `testing` |                |                                                     |       |                                                |               |   📦   |   ❄️   |   ✅   |
 
 
 Virtual machine: 📦
@@ -35,18 +30,20 @@ Laptop: 💻️
 |       |   |-- desktop     <-- user configuration for desktop tools
 |       |   |   |-- common
 |       |   |   |-- gnome
-|       |   |   |-- hyprland
+|       |   |   |-- sway
 |       |   `-- nvim        <-- configuration for nvim (from the repo kickstart.nvim)
-|       |-- ash.nix         <-- home-manager for host desktop1
+|       |-- ash.nix         <-- home-manager for host ash
 |       |-- ssh.pub
 |       `-- vm1.nix         <-- home-manager for host vm1
-|-- hosts                   <-- All configuration on host level
+|
+|-- hosts                   <-- all configuration on host level
 |   |-- common
 |   |   |-- base            <-- base configuration for all hosts
+|   |   |-- disko           <-- disko configs to set disk partitions on nix-anywhere install
 |   |   |-- optional        <-- optional configurations (like gnome, sddm, gdm, ...) on system level
 |   |   `-- users           <-- configuration for each user (to call home-manager)
 |   |       `-- eragon
-|   |-- ash                 <-- configuration for the host desktop1
+|   |-- ash                 <-- configuration for the host ash
 |   |   |-- default.nix
 |   |   `-- hardware-configuration.nix
 |   |-- vm1                 <-- configuration for the host vm1
@@ -54,9 +51,11 @@ Laptop: 💻️
 |-- modules                 <-- modules for home-manager and nixos
 |   |-- home-manager
 |   `-- nixos
-|-- overlays                <-- Overlays directory to be able to run pkgs
+|
+|-- overlays/               <-- Overlays to modify pkgs
 |
 |-- pkgs                    <-- Custom packages
+|   `-- wallpapers          <-- Package for custom wallpapers
 |
 |-- default.nix             <-- Nix dev file to be able to run the flake
 |-- deploy.sh               <-- Shell file to run the flake and update the system
@@ -74,3 +73,128 @@ Laptop: 💻️
 ## Desktops
 
 - desktops can be changed in ´hosts/{hostname}/default.nix´
+
+## Usefull commands
+
+### Cleaning up space
+
+```bash
+nix-store --gc
+nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/proc)"
+
+sudo nix-collect-garbage --delete-older-than 20d
+```
+
+## Installation with minimal iso and nixos-anywhere
+
+### Prep
+
+> [!IMPORTANT]
+> code below uses `vm1` as the example host
+
+1. Generate a ssh key for the new host
+
+or get it from a vault (see [nixos-anywhere vaults](https://nix-community.github.io/nixos-anywhere/howtos/secrets.html#example-decrypting-an-openssh-host-key-with-pass))
+
+```bash
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C root@vm1
+```
+
+2. Put the ssh key in the following folder structure on the host
+
+`"$temp/etc/ssh/ssh_host_ed25519_key"´
+
+3. Set the correct permissions for the host
+
+```bash
+# Set the correct permissions so sshd will accept the key
+chmod 600 "$temp/etc/ssh/ssh_host_ed25519_key"
+```
+
+### Instalation
+
+1. Boot live installer
+2. Check disks and adapt the config
+3. Set nixos password and get IP
+4. Test configuration
+
+
+```bash
+nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
+```
+
+
+5. Run the install commando from an other device with nix (change Ip and hostname)
+
+```bash
+nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
+```
+
+(without extra temp files)
+
+```bash
+nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
+```
+
+
+### RAID
+
+As btrfs raid 10 is not supported from just disko run the following command after running btrfs
+
+add disk `/dev/sdd` to `/data`
+
+```bash
+btrfs device add /dev/sdd /data
+```
+
+and after you have added all the disks run
+
+```bash
+btrfs balance start -v -dconvert=raid10,soft /data
+```
+
+## Build iso and attach shell to it
+
+- select another user if you want to test the ssh connection
+
+```bash
+QEMU_NET_OPTS="hostfwd=tcp::2222-:22" nix --impure run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
+
+ssh -p 2222 eragon@localhost
+
+```
+
+
+## Create password hash
+
+To create a password hash run the following command
+
+```bash
+mkpasswd -m sha-512
+```
+
+
+
+## Deploy on current host
+
+- run following command on a nixos host:
+
+```bash
+nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
+```
+
+
+## Troubleshooting
+
+### RAID root disk is gone
+
+mount -o degraded,usebackuproot /data
+
+
+
+## Quick tips
+### Snapper on btrfs
+
+Snapper is used for snapshotting and recovery.
+
+see [snapper](https://github.com/jarneamerlinck/cheatsheet/blob/main/linux/snapper.md) for more info.
