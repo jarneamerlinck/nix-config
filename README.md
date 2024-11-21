@@ -117,7 +117,8 @@ chmod 600 "$temp/etc/ssh/ssh_host_ed25519_key"
 2. Check disks and adapt the config
 3. Set nixos password and get IP
 4. Test configuration
-
+5. Deploy
+6. ssh to host and generate age key
 
 ```bash
 nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
@@ -135,6 +136,8 @@ nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#v
 ```bash
 nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
 ```
+
+
 
 
 ### RAID

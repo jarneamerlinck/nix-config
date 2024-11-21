@@ -16,27 +16,33 @@ in
     sopsFile = ../../${config.networking.hostName}/secrets.yaml;
     neededForUsers = true;
   };
-  # Netbird configuration
-  systemd.services.netbird = {
-    description = "Netbird VPN Service";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+  # systemd.services.netbird-autoconnect = {
+  #   description = "Automatic connection to Netbird";
+  #
+  #   # make sure netbird is running before trying to connect to netbird
+  #   after = [ "network-pre.target" "netbird.service" ];
+  #   wants = [ "network-pre.target" "netbird.service" "run-agenix.d.mount" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #
+  #   # set this service as a oneshot job
+  #   serviceConfig.Type = "oneshot";
+  #
+  #   # have the job run this shell script
+  #   script = with pkgs; ''
+  #     # wait for netbird to settle
+  #     sleep 2
+  #
+  #     # check if we are already authenticated to netbird
+  #     set +e
+  #     ${netbird}/bin/netbird status | grep -e LoginFailed
+  #     if [ $? -gt 0 ]; then # if so, then do nothing
+  #       exit 0
+  #     fi
+  #     set -e
+  #
+  #     # otherwise authenticate with netbird
+  #     # ${netbird}/bin/netbird up -m "$(sudo cat ${config.sops.secrets."netbird_server_url".path})" -k "$(sudo cat ${config.sops.secrets."netbird_api_key".path})
+  #   '';
+  # };
 
-    serviceConfig = {
-      ExecStart = "${pkgs.netbird}/bin/netbird service";
-      Restart = "always";
-      RestartSec = "5s";
-      User = "root";
-    };
-
-    # Automatically configure Netbird with the API key
-    # Replace `<YOUR_API_KEY>` with your actual Netbird API key.
-    # preStart = ''
-    #   if ! [ -f /etc/netbird/config.json ]; then
-    #     ${pkgs.netbird}/bin/netbird up --management-url $(sudo cat ${config.sops.secrets."netbird_server_url".path}) --api-key $(sudo cat ${config.sops.secrets."netbird_api_key".path})
-    #   fi
-    # '';
-
-    wantedBy = [ "multi-user.target" ];
-  };
 }
