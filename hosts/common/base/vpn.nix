@@ -31,11 +31,11 @@ in
 
     # Automatically configure Netbird with the API key
     # Replace `<YOUR_API_KEY>` with your actual Netbird API key.
-    preStart = ''
-      if ! [ -f /etc/netbird/config.json ]; then
-        ${pkgs.netbird}/bin/netbird up --management-url $(sudo cat ${config.sops.secrets."netbird_server_url".path}) --api-key $(sudo cat ${config.sops.secrets."netbird_api_key".path})
-      fi
-    '';
+    # preStart = ''
+    #   if ! [ -f /etc/netbird/config.json ]; then
+    #     ${pkgs.netbird}/bin/netbird up --management-url $(sudo cat ${config.sops.secrets."netbird_server_url".path}) --api-key $(sudo cat ${config.sops.secrets."netbird_api_key".path})
+    #   fi
+    # '';
 
     wantedBy = [ "multi-user.target" ];
   };
