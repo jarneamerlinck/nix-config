@@ -137,21 +137,6 @@ nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#v
 ```
 
 
-### RAID
-
-As btrfs raid 10 is not supported from just disko run the following command after running btrfs
-
-add disk `/dev/sdd` to `/data`
-
-```bash
-btrfs device add /dev/sdd /data
-```
-
-and after you have added all the disks run
-
-```bash
-btrfs balance start -v -dconvert=raid10,soft /data
-```
 
 ## Build iso and attach shell to it
 
@@ -182,19 +167,3 @@ mkpasswd -m sha-512
 ```bash
 nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ```
-
-
-## Troubleshooting
-
-### RAID root disk is gone
-
-mount -o degraded,usebackuproot /data
-
-
-
-## Quick tips
-### Snapper on btrfs
-
-Snapper is used for snapshotting and recovery.
-
-see [snapper](https://github.com/jarneamerlinck/cheatsheet/blob/main/linux/snapper.md) for more info.
