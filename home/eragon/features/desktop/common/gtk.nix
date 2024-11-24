@@ -44,7 +44,7 @@ let
 @define-color view_fg_color #${palette.base05};
 @define-color headerbar_bg_color #${palette.base01};
 @define-color headerbar_fg_color #${palette.base05};
-@define-color headerbar_border_color ${palette.base01};
+@define-color headerbar_border_color #${palette.base01};
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_shade_color rgba(0, 0, 0, 0.07);
 @define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.07);
