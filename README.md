@@ -70,10 +70,6 @@ Laptop: 💻️
 2. Copy the harware config and adjust
 3. Create a new file under `/home/username`
 
-## Desktops
-
-- desktops can be changed in ´hosts/{hostname}/default.nix´
-
 ## Usefull commands
 
 ### Cleaning up space
