@@ -68,6 +68,16 @@ nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#v
 nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
 ```
 
+6. Test ssh connection to new host
+
+7. Copy the user specific ssh keys for sops to the user
+
+see [sops](./sops.md#new-device-user)
+
+8. Rebuild to apply the ssh keys
+
+> Make sure ssh-agent is not addded in the ssh config
+
 ## Deploy on current host
 
 - run following command on a nixos host:
@@ -75,4 +85,3 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
 ```bash
 nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ```
-
