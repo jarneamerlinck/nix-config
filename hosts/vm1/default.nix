@@ -42,6 +42,7 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
+    ../common/optional/services/traefik.nix
 
     ../common/optional/qemu-guest.nix
   ];
