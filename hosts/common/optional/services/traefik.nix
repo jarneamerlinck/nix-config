@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 {
-  
+
   sops.secrets."traefik/env" = {
     sopsFile = ../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -24,8 +24,8 @@
       "--api.insecure=true"
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
-      "--entryPoints.web.address=:80"
-      "--entryPoints.websecure.address=:443"
+      "--entryPoints.http.address=:80"
+      "--entryPoints.https.address=:443"
       "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
       "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
       "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
@@ -37,16 +37,23 @@
       "traefik.enable"="true";
       # "traefik.http.routers.traefik_https.rule"="Host(`vm1.ko0.net`)";
       # "traefik.http.routers.traefik_https.entrypoints"="websecure";
-      # "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare"; 
+      # "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare";
       # "traefik.http.routers.traefik_https.tls"="false";
       # "traefik.http.services.traefik_https.loadbalancer.server.port"="8080";
       # "traefik.http.services.traefik_https.loadbalancer.server.scheme"="http";
 
       "traefik.http.routers.traefik_https.rule"="Host(`vm1.ko0.net`)";
-      "traefik.http.routers.traefik_https.entrypoints"="websecure";
-      "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare"; 
+      "traefik.http.routers.traefik_https.entrypoints"="https";
+      "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare";
       "traefik.http.routers.traefik_https.tls"="false";
       "traefik.http.services.calibre.loadbalancer.server.port"="8080";
+
+      # "traefik.http.middlewares.https_redirect.redirectscheme.scheme"="https";
+      # "traefik.http.middlewares.https_redirect.redirectscheme.permanent"="true";
+      # "traefik.http.routers.http_catchall.rule"="HostRegexp(`{any:.+}`) && !PathPrefix(`/.well-known/acme-challenge/`)";
+      #
+      # "traefik.http.routers.http_catchall.entrypoints"="http";
+      # "traefik.http.routers.http_catchall.middlewares"="https_redirect";
 
     };
     log-driver = "journald";

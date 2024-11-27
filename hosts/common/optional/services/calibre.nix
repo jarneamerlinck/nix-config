@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 {
-  
+
   # Containers
   virtualisation.oci-containers.containers."calibre" = {
   image = "lscr.io/linuxserver/calibre-web:0.6.24";
@@ -13,13 +13,48 @@
       "/data/docker/calibre/config:/config"
       "/data/docker/calibre/library:/books"
     ];
+
+    ports = [
+      "8083:8083/tcp"
+    ];
+
     labels = {
+      # "traefik.enable"="true";
+      # "traefik.http.routers.calibre-rtr.entrypoints"="https";
+      # "traefik.http.routers.calibre-rtr.rule"="Host(`calibre.ko0.net`)";
+      # "traefik.http.routers.calibre-rtr.tls"="true";
+      # "traefik.http.routers.calibre-rtr.service"="calibre-svc";
+      # "traefik.http.services.calibre-svc.loadbalancer.server.port"="8080";
+      # "traefik.http.routers.calibre-rtr.middlewares"="chain-oauth@file";
+      # "traefik.enable"="true";
+      # "traefik.http.routers.calibreweb-rtr.entrypoints"="https";
+      # "traefik.http.routers.calibre-web-rtr.entrypoints"="websecure";
+      # "traefik.http.routers.calibre-web-rtr.rule"="Host(`ebooks.ko0.net`)";
+      # "traefik.http.routers.calibre-web-rtr.service"="calibre-web-svc";
+      # "traefik.http.services.calibre-web-svc.loadbalancer.server.port"="8083";
+      # "traefik.http.routers.calibreweb-rtr.tls"="true";
+
       "traefik.enable"="true";
-      "traefik.http.routers.calibre.rule"="Host(`ebooks.ko0.net`)";
-      "traefik.http.routers.calibre.entrypoints"="websecure";
-      "traefik.http.routers.calibre.tls.certresolver"="cloudflare"; 
-      "traefik.http.routers.calibre.tls"="true";
-      "traefik.http.services.calibre.loadbalancer.server.port"="8083";
+      "traefik.http.routers.calibreweb-rtr.entrypoints"="https";
+      "traefik.http.routers.calibreweb-rtr.rule"="Host(`ebooks.ko0.net`)";
+      "traefik.http.routers.calibreweb-rtr.tls"="true";
+      "traefik.http.routers.calibreweb-rtr.tls.resolver"="cloudflare";
+      "traefik.http.routers.calibreweb-rtr.service"="calibreweb-svc";
+      "traefik.http.services.calibreweb-svc.loadbalancer.server.port"="8083";
+
+      # "traefik.enable"="true";
+      # # "traefik.http.routers.calibre-web.entrypoints"="http";
+      # # "traefik.http.routers.calibre-web.rule"="Host(`calibre.ko0.net`)";
+      # "traefik.http.middlewares.calibre-web-https-redirect.redirectscheme.scheme"="https";
+      # # "traefik.http.routers.calibre-web.middlewares"="calibre-web-https-redirect";
+      # # "traefik.http.routers.calibre-web.entrypoints"="calibre";
+      # "traefik.http.routers.calibre-web.rule"="Host(`calibre.ko0.net`)";
+      # "traefik.http.routers.calibre-web.tls"="true";
+      # "traefik.http.routers.calibre-web.tls.certresolver"="letsencrypt";
+      # "traefik.http.routers.calibre-web.service"="calibre-web";
+      # "traefik.http.routers.calibre-web.middlewares"="secureHeaders@file";
+      # "traefik.http.services.calibre-web.loadbalancer.server.port"="8083";
+      # "traefik.http.services.calibre-web.loadbalancer.server.scheme"="http";
     };
     log-driver = "journald";
     extraOptions = [
