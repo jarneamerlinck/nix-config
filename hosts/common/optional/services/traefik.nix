@@ -1,33 +1,47 @@
-# Auto-generated using compose2nix v0.2.3-pre.
-{ pkgs, lib, ... }:
-
+{ pkgs, lib, config, ... }:
 {
+  
+  sops.secrets."traefik/env" = {
+    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
   # Containers
   virtualisation.oci-containers.containers."traefik" = {
-    image = "traefik:v3.2.1";
-
+  image = "traefik:v3.2.1";
+    environmentFiles = [
+      "/run/secrets-for-users/traefik/env"
+    ];
     volumes = [
-      "/data/docker/traefik:/etc/traefik:rw"
-      "/var/run/docker.sock:/var/run/docker.sock"
+      "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
+      "/var/run/docker.sock:/var/run/docker.sock:ro"
     ];
-    
     ports = [
-      "8080:8080"
-      "80:80"
-      "443:443"
+      "80:80/tcp"
+      "443:443/tcp"
     ];
-
+    cmd = [
+      "--api.insecure=true"
+      "--providers.docker=true"
+      "--providers.docker.exposedbydefault=false"
+      "--entryPoints.web.address=:80"
+      "--entryPoints.websecure.address=:443"
+      "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
+      "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
+      "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
+      "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
+      "traefik.http.routers.dash.rule=Host(`dash.vm1.ko0.net`)"
+      "traefik.http.routers.dash.entrypoints=websecure"
+      "traefik.http.routers.dash.tls.certresolver=cloudflare" 
+    ];
     log-driver = "journald";
     extraOptions = [
+      "--network-alias=traefik"
       "--network=frontend"
     ];
   };
   systemd.services."docker-traefik" = {
     serviceConfig = {
-      Restart = lib.mkOverride 500 "always";
-      RestartMaxDelaySec = lib.mkOverride 500 "1m";
-      RestartSec = lib.mkOverride 500 "100ms";
-      RestartSteps = lib.mkOverride 500 9;
+      Restart = lib.mkOverride 90 "no";
     };
     after = [
       "docker-network-frontend.service"
@@ -67,5 +81,4 @@
     };
     wantedBy = [ "multi-user.target" ];
   };
-
 }
