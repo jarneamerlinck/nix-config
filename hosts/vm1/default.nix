@@ -51,6 +51,7 @@
   networking = {
     hostName = "vm1";
     useDHCP = true;
+    nameservers = [ "1.1.1.1" ];
   };
 
   system.stateVersion = "24.05";
