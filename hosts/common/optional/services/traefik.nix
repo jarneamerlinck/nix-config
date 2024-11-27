@@ -18,6 +18,7 @@
     ports = [
       "80:80/tcp"
       "443:443/tcp"
+      "8080:8080/tcp"
     ];
     cmd = [
       "--api.insecure=true"
@@ -29,10 +30,25 @@
       "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
       "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
       "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
-      "traefik.http.routers.dash.rule=Host(`dash.vm1.ko0.net`)"
-      "traefik.http.routers.dash.entrypoints=websecure"
-      "traefik.http.routers.dash.tls.certresolver=cloudflare" 
     ];
+
+
+    labels = {
+      "traefik.enable"="true";
+      # "traefik.http.routers.traefik_https.rule"="Host(`vm1.ko0.net`)";
+      # "traefik.http.routers.traefik_https.entrypoints"="websecure";
+      # "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare"; 
+      # "traefik.http.routers.traefik_https.tls"="false";
+      # "traefik.http.services.traefik_https.loadbalancer.server.port"="8080";
+      # "traefik.http.services.traefik_https.loadbalancer.server.scheme"="http";
+
+      "traefik.http.routers.traefik_https.rule"="Host(`vm1.ko0.net`)";
+      "traefik.http.routers.traefik_https.entrypoints"="websecure";
+      "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare"; 
+      "traefik.http.routers.traefik_https.tls"="false";
+      "traefik.http.services.calibre.loadbalancer.server.port"="8080";
+
+    };
     log-driver = "journald";
     extraOptions = [
       "--network-alias=traefik"

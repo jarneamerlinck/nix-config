@@ -14,9 +14,11 @@
       "/data/docker/calibre/library:/books"
     ];
     labels = {
+      "traefik.enable"="true";
       "traefik.http.routers.calibre.rule"="Host(`ebooks.ko0.net`)";
       "traefik.http.routers.calibre.entrypoints"="websecure";
       "traefik.http.routers.calibre.tls.certresolver"="cloudflare"; 
+      "traefik.http.routers.calibre.tls"="true";
       "traefik.http.services.calibre.loadbalancer.server.port"="8083";
     };
     log-driver = "journald";
