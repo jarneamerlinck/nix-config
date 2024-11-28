@@ -35,26 +35,12 @@
 
     labels = {
       "traefik.enable"="true";
-      # "traefik.http.routers.traefik_https.rule"="Host(`vm1.ko0.net`)";
-      # "traefik.http.routers.traefik_https.entrypoints"="websecure";
-      # "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare";
-      # "traefik.http.routers.traefik_https.tls"="false";
-      # "traefik.http.services.traefik_https.loadbalancer.server.port"="8080";
-      # "traefik.http.services.traefik_https.loadbalancer.server.scheme"="http";
-
-      "traefik.http.routers.traefik_https.rule"="Host(`vm1.ko0.net`)";
-      "traefik.http.routers.traefik_https.entrypoints"="https";
-      "traefik.http.routers.traefik_https.tls.certresolver"="cloudflare";
-      "traefik.http.routers.traefik_https.tls"="false";
-      "traefik.http.services.calibre.loadbalancer.server.port"="8080";
-
-      # "traefik.http.middlewares.https_redirect.redirectscheme.scheme"="https";
-      # "traefik.http.middlewares.https_redirect.redirectscheme.permanent"="true";
-      # "traefik.http.routers.http_catchall.rule"="HostRegexp(`{any:.+}`) && !PathPrefix(`/.well-known/acme-challenge/`)";
-      #
-      # "traefik.http.routers.http_catchall.entrypoints"="http";
-      # "traefik.http.routers.http_catchall.middlewares"="https_redirect";
-
+      "traefik.http.routers.traefik-dash.entrypoints"="https";
+      "traefik.http.routers.traefik-dash.rule"="Host(`vm1.ko0.net`)";
+      "traefik.http.routers.traefik-dash.tls"="true";
+      "traefik.http.routers.traefik-dash.tls.certresolver"="cloudflare";
+      "traefik.http.routers.traefik-dash.service"="traefik-dash";
+      "traefik.http.services.traefik-dash.loadbalancer.server.port"="8080";
     };
     log-driver = "journald";
     extraOptions = [
