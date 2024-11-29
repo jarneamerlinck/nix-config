@@ -36,7 +36,7 @@
     labels = {
       "traefik.enable"="true";
       "traefik.http.routers.traefik-dash.entrypoints"="https";
-      "traefik.http.routers.traefik-dash.rule"="Host(`vm1.ko0.net`)";
+      "traefik.http.routers.traefik-dash.rule"="Host(`${config.networking.hostName}.ko0.net`)";
       "traefik.http.routers.traefik-dash.tls"="true";
       "traefik.http.routers.traefik-dash.tls.certresolver"="cloudflare";
       "traefik.http.routers.traefik-dash.service"="traefik-dash";
