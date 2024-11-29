@@ -18,7 +18,6 @@
     ports = [
       "80:80/tcp"
       "443:443/tcp"
-      "8080:8080/tcp"
     ];
     cmd = [
       "--api.insecure=true"
