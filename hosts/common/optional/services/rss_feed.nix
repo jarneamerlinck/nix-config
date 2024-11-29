@@ -74,20 +74,6 @@
     ];
   };
 
-  # Networks
-  systemd.services."docker-network-frontend" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f frontend";
-    };
-    script = ''
-      docker network inspect frontend || docker network create frontend
-    '';
-    partOf = [ "docker-compose-rss-root.target" ];
-    wantedBy = [ "docker-compose-rss-root.target" ];
-  };
   systemd.services."docker-network-rss" = {
     path = [ pkgs.docker ];
     serviceConfig = {

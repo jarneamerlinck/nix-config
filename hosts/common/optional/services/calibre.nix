@@ -80,20 +80,6 @@
     ];
   };
 
-  # Networks
-  # systemd.services."docker-network-frontend" = {
-  #   path = [ pkgs.docker ];
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     RemainAfterExit = true;
-  #     ExecStop = "docker network rm -f frontend";
-  #   };
-  #   script = ''
-  #     docker network inspect frontend || docker network create calibre_default
-  #   '';
-  #   partOf = [ "docker-compose-calibre-root.target" ];
-  #   wantedBy = [ "docker-compose-calibre-root.target" ];
-  # };
 
   # Root service
   # When started, this will automatically create all resources and start

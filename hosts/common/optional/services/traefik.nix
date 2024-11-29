@@ -32,7 +32,6 @@
       "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
     ];
 
-
     labels = {
       "traefik.enable"="true";
       "traefik.http.routers.traefik-dash.entrypoints"="https";
