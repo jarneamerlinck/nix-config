@@ -20,6 +20,11 @@
 
 3. Create a new file under `/home/username`
 
+4. (optional) docker
+
+if docker will be enabled on the host make sure that the `hostname.domain` resolves to the host.
+As docker will automaticly add traefik
+
 ## Installation with minimal iso and nixos-anywhere
 
 ### Prep
