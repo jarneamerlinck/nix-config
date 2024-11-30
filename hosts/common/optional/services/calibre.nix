@@ -2,7 +2,57 @@
 {
 
   # Containers
-  virtualisation.oci-containers.containers."calibre" = {
+
+  virtualisation.oci-containers.containers."calibre-server" = {
+    image = "lscr.io/linuxserver/calibre:7.22.0";
+    environment = {
+      "TZ" = "Europe/Brussels";
+      "UMASK" = "022";
+      "DOCKER_MODS"="linuxserver/calibre-web:calibre";
+    };
+
+    volumes = [
+      "/data/docker/calibre/server_config:/config"
+    ];
+
+    # ports = [
+    #   "8083:8083/tcp"
+    # ];
+    labels = {
+      "traefik.enable" = "true";
+      "traefik.http.routers.calibre-rtr.entrypoints" = "https";
+      "traefik.http.routers.calibre-rtr.rule" = "Host(`books.ko0.net`)";
+      "traefik.http.routers.calibre-rtr.service" = "calibre-svc";
+      "traefik.http.routers.calibre-rtr.tls" = "true";
+      "traefik.http.routers.calibre-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.calibre-svc.loadbalancer.server.port" = "8080";
+    };
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=calibre"
+      "--network=frontend"
+      "--security-opt=no-new-privileges:true"
+    ];
+  };
+  systemd.services."docker-calibre-server" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "no";
+    };
+    after = [
+      # "docker-network-frontend.service"
+    ];
+    requires = [
+      # "docker-network-frontend.service"
+    ];
+    partOf = [
+      "docker-compose-calibre-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-calibre-root.target"
+    ];
+  };
+
+  virtualisation.oci-containers.containers."calibre-web" = {
   image = "lscr.io/linuxserver/calibre-web:0.6.24";
     environment = {
       "TZ" = "Europe/Brussels";
@@ -13,64 +63,32 @@
       "/data/docker/calibre/config:/config"
       "/data/docker/calibre/library:/books"
     ];
-
-    ports = [
-      "8083:8083/tcp"
-    ];
-
     labels = {
-      # "traefik.enable"="true";
-      # "traefik.http.routers.calibre-rtr.entrypoints"="https";
-      # "traefik.http.routers.calibre-rtr.rule"="Host(`calibre.ko0.net`)";
-      # "traefik.http.routers.calibre-rtr.tls"="true";
-      # "traefik.http.routers.calibre-rtr.service"="calibre-svc";
-      # "traefik.http.services.calibre-svc.loadbalancer.server.port"="8080";
-      # "traefik.http.routers.calibre-rtr.middlewares"="chain-oauth@file";
-      # "traefik.enable"="true";
-      # "traefik.http.routers.calibreweb-rtr.entrypoints"="https";
-      # "traefik.http.routers.calibre-web-rtr.entrypoints"="websecure";
-      # "traefik.http.routers.calibre-web-rtr.rule"="Host(`ebooks.ko0.net`)";
-      # "traefik.http.routers.calibre-web-rtr.service"="calibre-web-svc";
-      # "traefik.http.services.calibre-web-svc.loadbalancer.server.port"="8083";
-      # "traefik.http.routers.calibreweb-rtr.tls"="true";
-
-      "traefik.enable"="true";
-      "traefik.http.routers.calibreweb-rtr.entrypoints"="https";
-      "traefik.http.routers.calibreweb-rtr.rule"="Host(`ebooks.ko0.net`)";
-      "traefik.http.routers.calibreweb-rtr.tls"="true";
-      "traefik.http.routers.calibreweb-rtr.tls.resolver"="cloudflare";
-      "traefik.http.routers.calibreweb-rtr.service"="calibreweb-svc";
-      "traefik.http.services.calibreweb-svc.loadbalancer.server.port"="8083";
-
-      # "traefik.enable"="true";
-      # # "traefik.http.routers.calibre-web.entrypoints"="http";
-      # # "traefik.http.routers.calibre-web.rule"="Host(`calibre.ko0.net`)";
-      # "traefik.http.middlewares.calibre-web-https-redirect.redirectscheme.scheme"="https";
-      # # "traefik.http.routers.calibre-web.middlewares"="calibre-web-https-redirect";
-      # # "traefik.http.routers.calibre-web.entrypoints"="calibre";
-      # "traefik.http.routers.calibre-web.rule"="Host(`calibre.ko0.net`)";
-      # "traefik.http.routers.calibre-web.tls"="true";
-      # "traefik.http.routers.calibre-web.tls.certresolver"="letsencrypt";
-      # "traefik.http.routers.calibre-web.service"="calibre-web";
-      # "traefik.http.routers.calibre-web.middlewares"="secureHeaders@file";
-      # "traefik.http.services.calibre-web.loadbalancer.server.port"="8083";
-      # "traefik.http.services.calibre-web.loadbalancer.server.scheme"="http";
+      "traefik.enable" = "true";
+      "traefik.http.routers.calibreweb-rtr.entrypoints" = "https";
+      "traefik.http.routers.calibreweb-rtr.rule" = "Host(`ebooks.ko0.net`)";
+      "traefik.http.routers.calibreweb-rtr.service" = "calibreweb-svc";
+      "traefik.http.routers.calibreweb-rtr.tls" = "true";
+      "traefik.http.routers.calibreweb-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.calibreweb-svc.loadbalancer.server.port" = "8083";
     };
     log-driver = "journald";
     extraOptions = [
       "--network-alias=calibre"
       "--network=frontend"
+      "--security-opt=no-new-privileges:true"
     ];
   };
+
   systemd.services."docker-calibre" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "no";
     };
     after = [
-      # "docker-network-frontend.service"
+      "docker-network-frontend.service"
     ];
     requires = [
-      # "docker-network-frontend.service"
+      "docker-network-frontend.service"
     ];
     partOf = [
       "docker-compose-calibre-root.target"
