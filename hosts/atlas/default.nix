@@ -59,6 +59,8 @@
     ../common/optional/services/zabbix_client.nix
     # ../common/optional/services/zabbix_web.nix
 
+    ../common/optional/services/music.nix
+
     # ../common/optional/qemu-guest.nix
   ];
 
