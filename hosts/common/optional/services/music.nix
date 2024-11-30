@@ -1,15 +1,17 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config,  ... }:
 
 {
+  sops.secrets."music/env" = {
+    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
   # Containers
   virtualisation.oci-containers.containers."music-navidrome" = {
     image = "deluan/navidrome:0.53.3";
-    environment = {
-      "ND_BASEURL" = "https://music.ko0.net";
-      "ND_LOGLEVEL" = "info";
-      "ND_SCANSCHEDULE" = "1h";
-      "ND_SESSIONTIMEOUT" = "24h";
-    };
+
+    environmentFiles = [
+      "/run/secrets-for-users/music/env"
+    ];
     volumes = [
       "/data/docker/navidrome/:/data:rw"
       "/data/sync/Music/:/music:ro"
