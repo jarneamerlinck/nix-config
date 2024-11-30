@@ -26,6 +26,7 @@
 
     ../common/base
     ../common/users/eragon
+    ../common/optional/wd-decrypt.nix
 
     ## Display server
     ../common/optional/xserver.nix
