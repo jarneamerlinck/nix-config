@@ -13,6 +13,7 @@
 
     volumes = [
       "/data/docker/calibre/server_config:/config"
+      "/data/docker/calibre/library:/books"
     ];
 
     # ports = [
@@ -61,7 +62,7 @@
 
     volumes = [
       "/data/docker/calibre/config:/config"
-      "/data/docker/calibre/library:/books"
+      "/data/docker/calibre/server_config/Calibre Library:/books"
     ];
     labels = {
       "traefik.enable" = "true";
