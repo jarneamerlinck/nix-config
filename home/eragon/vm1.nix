@@ -2,6 +2,7 @@
 {
   imports = [
     ./common
+    ./features/other/git-config.nix
     ./features/cli/debugging.nix
     ./features/desktop/sway/minimalistic
     ./features/music

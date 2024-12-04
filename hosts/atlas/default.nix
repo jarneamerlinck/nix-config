@@ -26,6 +26,7 @@
 
     ../common/base
     ../common/users/eragon
+    ../common/optional/wd-decrypt.nix
 
     ## Display server
     ../common/optional/xserver.nix
@@ -57,6 +58,10 @@
     ../common/optional/services/zabbix_server.nix
     ../common/optional/services/zabbix_client.nix
     # ../common/optional/services/zabbix_web.nix
+
+    ../common/optional/services/calibre.nix
+    ../common/optional/services/music.nix
+    ../common/optional/services/recipes.nix
 
     # ../common/optional/qemu-guest.nix
   ];
