@@ -16,6 +16,8 @@
 
     3. Set the correct permissions for the host
 
+    4. [sops new host](./sops.md#new-host)
+
 2. Copy the harware config and adjust
 
 3. Create a new file under `/home/username`
