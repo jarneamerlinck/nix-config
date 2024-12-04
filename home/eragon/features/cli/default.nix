@@ -45,6 +45,8 @@
       fd # Better find
       wget
 
+      dig
+
       zoxide
       fzf
 

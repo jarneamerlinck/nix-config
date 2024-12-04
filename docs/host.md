@@ -16,9 +16,25 @@
 
     3. Set the correct permissions for the host
 
+    4. [sops new host](./sops.md#new-host)
+
 2. Copy the harware config and adjust
 
 3. Create a new file under `/home/username`
+
+4. (optional) docker
+
+if docker will be enabled on the host make sure that the `hostname.domain` resolves to the host.
+As docker will automaticly add traefik
+
+This also needs a few params in the sops file for the host (under `./hosts/{hostname}/secrets.yml`)
+
+```yml
+traefik:
+    env: |
+        CF_API_EMAIL=email
+        CF_DNS_API_TOKEN=token
+```
 
 ## Installation with minimal iso and nixos-anywhere
 

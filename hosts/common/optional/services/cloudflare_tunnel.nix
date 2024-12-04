@@ -36,21 +36,6 @@
     ];
   };
 
-  # Networks
-  systemd.services."docker-network-frontend" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f frontend";
-    };
-    script = ''
-      docker network inspect frontend || docker network create frontend
-    '';
-    partOf = [ "docker-compose-cloudflare-tunnel-root.target" ];
-    wantedBy = [ "docker-compose-cloudflare-tunnel-root.target" ];
-  };
-
   # Root service
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.

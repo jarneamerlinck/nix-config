@@ -64,11 +64,7 @@ Laptop: 💻️
 `-- README.md               <-- This README
 ```
 
-## Add a new host
-
-1. Make a new folder under ´./hosts´
-2. Copy the harware config and adjust
-3. Create a new file under `/home/username`
+## [Add a new host](./docs/host.md)
 
 ## Usefull commands
 

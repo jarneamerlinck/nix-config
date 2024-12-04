@@ -42,13 +42,16 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
+    # ../common/optional/services/calibre.nix
 
+    ../common/optional/services/portainer.nix
     ../common/optional/qemu-guest.nix
   ];
 
   networking = {
     hostName = "vm1";
     useDHCP = true;
+    nameservers = [ "1.1.1.1" ];
   };
 
   system.stateVersion = "24.05";

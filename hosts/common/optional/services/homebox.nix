@@ -62,19 +62,6 @@
     wantedBy = [ "docker-compose-homebox-root.target" ];
   };
 
-  systemd.services."docker-network-frontend" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      # ExecStop = "docker network rm -f frontend";
-    };
-    script = ''
-      docker network inspect frontend || docker network create frontend
-    '';
-    partOf = [ "docker-compose-homebox-root.target" ];
-    wantedBy = [ "docker-compose-homebox-root.target" ];
-  };
   # Root service
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.
