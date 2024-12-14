@@ -3,16 +3,20 @@
 
 {
 
-  sops.secrets."images/env" = {
+  sops.secrets."photos/env" = {
     sopsFile = ../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 
+  sops.secrets."photos/db" = {
+    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
 
   virtualisation.oci-containers.containers."immich_server" = {
     image = "ghcr.io/immich-app/immich-server:v1.122.3";
     environmentFiles = [
-      "/run/secrets-for-users/images/env"
+      "/run/secrets-for-users/photos/env"
     ];
     volumes = [
       "/data/docker/immich/data:/usr/src/app/upload:rw"
@@ -65,7 +69,7 @@
   virtualisation.oci-containers.containers."immich_machine_learning" = {
     image = "ghcr.io/immich-app/immich-machine-learning:v1.122.3";
     environmentFiles = [
-      "/run/secrets-for-users/images/env"
+      "/run/secrets-for-users/photos/env"
     ];
     volumes = [
       "photos_model-cache:/cache:rw"
@@ -101,7 +105,7 @@
   virtualisation.oci-containers.containers."immich_postgres" = {
     image = "docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0";
     environmentFiles = [
-      "/run/secrets-for-users/images/env"
+      "/run/secrets-for-users/photos/db"
     ];
     volumes = [
       "/data/docker/immich/postgress:/var/lib/postgresql/data:rw"
