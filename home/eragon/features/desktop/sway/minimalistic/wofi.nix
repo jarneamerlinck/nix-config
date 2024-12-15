@@ -68,13 +68,14 @@ in {
     settings = {
       allow_markup = true;
       image_size = 20;
-      columns = 3;
+      columns = 1;
       allow_images = true;
       insensitive = true;
-      run-always_parse_args = true;
-      run-cache_file = "/dev/null";
-      run-exec_search = true;
+      always_parse_args = true;
+      cache_file = "/dev/null";
+      exec_search = true;
       matching = "multi-contains";
+      gtk_dark = true;
     };
     style = wofiStyle;
   };
