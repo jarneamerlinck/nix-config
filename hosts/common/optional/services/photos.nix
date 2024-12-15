@@ -23,9 +23,8 @@
     volumes = [
       "/data/docker/photoprism/original:/photoprism/originals:rw"
       "/data/docker/photoprism/storage:/photoprism/storage:rw"
-      "/data/docker/photoprism/import:/photoprism/import:ro"
-      # "/data/sync/photos/pixel_8:/photoprism/import/photos/jarne/pixel:ro"
-      # "/data/sync/photos/zte_axon:/photoprism/import/photos/jarne/zte:ro"
+      # "/data/docker/photoprism/import:/photoprism/import:rw"
+      "/data/sync/photos/:/photoprism/import/photos/jarne:ro"
     ];
     labels = {
       "traefik.enable" = "true";
