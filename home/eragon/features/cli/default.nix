@@ -25,6 +25,7 @@
       rebuildl="cd ~/nix-config &&  ./deploy.sh";
       homef="cd ~/nix-config && git stash && git pull -f && home-manager --flake .#$USER@$HOST switch";
       homel="cd ~/nix-config &&  home-manager --flake .#$USER@$HOST switch";
+      homen="cd ~/nix-config &&  home-manager --flake .#$USER@$HOST news";
     };
 
     sessionVariables = {
