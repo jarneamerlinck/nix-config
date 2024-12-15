@@ -28,56 +28,83 @@ let
       set -euo pipefail
       ${pre}
       ${jq} -cn \
-        --arg text "${text}" \
-        --arg tooltip "${tooltip}" \
-        --arg alt "${alt}" \
-        --arg class "${class}" \
-        --arg percentage "${percentage}" \
+        --arg text \"${text}\" \
+        --arg tooltip \"${tooltip}\" \
+        --arg alt \"${alt}\" \
+        --arg class \"${class}\" \
+        --arg percentage \"${percentage}\" \
         '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
     ''}/bin/waybar-${name}";
 
   hasSway = config.wayland.windowManager.sway.enable;
   sway = config.wayland.windowManager.sway.package;
+
+  waybarStyle = ''
+  /* Waybar theme using nix-colors */
+  * {
+    border: none;
+    border-radius: 0;
+    font-family: Source Code Pro;
+    color: #${palette.base05};
+    background-color: #${palette.base00};
+  }
+
+  window#waybar {
+    background-color: #${palette.base00};
+  }
+
+  #workspaces button {
+    padding: 0 5px;
+    color: #${palette.base05};
+    border-bottom: none;
+  }
+
+  #workspaces button.focused {
+    border-top: 3px solid #${palette.base0D};
+    border-bottom: none;
+    color: #${palette.base07};
+  }
+
+  #workspaces button.urgent {
+    border-bottom: none;
+    color: #${palette.base09};
+  }
+
+  #workspaces button.visible {
+    border-bottom: none;
+    color: #${palette.base05};
+  }
+
+  #workspaces button:hover {
+    border-bottom: none;
+    color: #${palette.base06};
+  }
+
+  #clock {
+    color: #${palette.base0A};
+  }
+
+  #cpu {
+    color: #${palette.base0B};
+  }
+
+  #memory {
+    color: #${palette.base0C};
+  }
+
+  #battery {
+    color: #${palette.base08};
+  }
+  '';
 in
 {
-
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
       mesonFlags = (oa.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
     });
     systemd.enable = true;
-    style = ''
-  * {
-    border: none;
-    border-radius: 0;
-    font-family: Source Code Pro;
-  }
-  window#waybar {
-    background-color: transparent;
-    color: #${palette.base04};
-  }
-  #workspaces button {
-    padding: 0 5px;
-    color: #${palette.base05};
-    border-bottom: none;
-  }
-  #workspaces button.focused {
-    border-top: 3px solid #${palette.base05};
-    border-bottom: none;
-  }
-  #workspaces button.urgent {
-    border-bottom: none;
-  }
-  #workspaces button.visible {
-    color:      #${palette.base05};
-    border-bottom: none;
-  }
-  #workspaces button:hover {
-    background: #${palette.base02};
-    border-bottom: none;
-  }
-'';
+    style = waybarStyle;
     settings = {
       primary = {
         spacing = 12;
@@ -205,3 +232,4 @@ in
     };
   };
 }
+
