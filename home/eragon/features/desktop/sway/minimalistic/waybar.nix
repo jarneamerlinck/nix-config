@@ -81,11 +81,11 @@ let
   }
 
   #clock {
-    color: #${palette.base0A};
+    color: #${palette.base0C};
   }
 
   #cpu {
-    color: #${palette.base0B};
+    color: #${palette.base0C};
   }
 
   #memory {
@@ -93,7 +93,7 @@ let
   }
 
   #battery {
-    color: #${palette.base08};
+    color: #${palette.base0C};
   }
   '';
 in
