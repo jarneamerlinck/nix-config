@@ -38,13 +38,16 @@ let
       border-color: @base03;
     }
 
+    window, dialog, popover {
+      background-color: @base00;
+      color: @base05;
+    }
     /* Additional GTK styling can be customized here */
   '';
 in {
   home.file.".themes/${themeName}/gtk-2.0/gtk.css".text = colorPalette;
   home.file.".themes/${themeName}/gtk-3.0/gtk.css".text = colorPalette;
   home.file.".themes/${themeName}/gtk-4.0/gtk.css".text = colorPalette;
-
 
   gtk = {
     enable = true;
