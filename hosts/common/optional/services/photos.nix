@@ -25,7 +25,7 @@
       "/data/docker/photoprism/storage:/photoprism/storage:rw"
       # "/data/docker/photoprism/import:/photoprism/import:rw"
       "/data/sync/photos/:/photoprism/import/photos/jarne:ro"
-      "/data/backup/google_photos:/photoprism/import/photos/google_photos:rw"
+      "/data/backup/google_photos:/photoprism/import/photos/google_photos:ro"
     ];
     labels = {
       "traefik.enable" = "true";
