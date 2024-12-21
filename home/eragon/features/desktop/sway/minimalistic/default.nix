@@ -28,7 +28,7 @@ in
       bars = [];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
-        "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
+        "${cfg.modifier}+d" = "exec GTK_THEME= XDG_CURRENT_DESKTOP=none ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 

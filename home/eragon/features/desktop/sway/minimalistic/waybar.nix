@@ -222,7 +222,7 @@ in
             exec = jsonOutput "menu" {
               text = "";
             };
-            on-click = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
+            on-click = "exec GTK_THEME= XDG_CURRENT_DESKTOP=none ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
           };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
