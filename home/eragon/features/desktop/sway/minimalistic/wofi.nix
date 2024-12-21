@@ -75,7 +75,7 @@ in {
       cache_file = "/dev/null";
       exec_search = true;
       matching = "multi-contains";
-      gtk_dark = true;
+      prompt="kitty";
     };
     style = wofiStyle;
   };
