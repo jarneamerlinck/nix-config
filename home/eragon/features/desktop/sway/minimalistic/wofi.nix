@@ -52,7 +52,6 @@ let
     }
 
     #window #outer-box #scroll #inner-box #entry #img {
-      width: 1rem;
       margin-right: 0.5rem;
     }
 
