@@ -1,4 +1,8 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 let
   i_keyboard = "be";
   cfg = config.wayland.windowManager.sway.config;
