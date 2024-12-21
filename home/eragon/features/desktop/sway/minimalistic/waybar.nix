@@ -217,11 +217,7 @@ in
             isFullScreen = "false";
           in
           {
-            interval = 1;
-            return-type = "json";
-            exec = jsonOutput "menu" {
-              text = "";
-            };
+            exec = "echo ";
             on-click = "exec GTK_THEME=none ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
           };
         "custom/hostname" = {
