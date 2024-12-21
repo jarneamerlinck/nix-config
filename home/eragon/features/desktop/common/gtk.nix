@@ -59,4 +59,6 @@ in {
       name = "${themeName}";
     };
   };
+
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 }
