@@ -21,6 +21,7 @@ in
       "git"
       "libvirtd"
       "deluge"
+      "wireshark"
     ];
 
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/ssh.pub) ];

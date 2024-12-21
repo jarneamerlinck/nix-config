@@ -3,4 +3,5 @@
     termshark
     wireshark
   ];
+  groups.wireshark = {};
 }
