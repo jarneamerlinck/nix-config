@@ -42,6 +42,10 @@ let
       background-color: @base00;
       color: @base05;
     }
+
+    box, grid, stack {
+      background-color: @base00;
+    }
     /* Additional GTK styling can be customized here */
   '';
 in {
