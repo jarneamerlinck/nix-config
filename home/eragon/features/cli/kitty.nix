@@ -2,12 +2,36 @@
 let
   rmHash = lib.removePrefix "#";
   inherit (config.colorscheme) palette;
+  kittyColors = ''
+    # Colors generated from nix-colors
+    foreground #${rmHash palette.base05}
+    background #${rmHash palette.base00}
+    cursor #${rmHash palette.base05}
+
+    color0  #${rmHash palette.base00}
+    color1  #${rmHash palette.base08}
+    color2  #${rmHash palette.base0B}
+    color3  #${rmHash palette.base0A}
+    color4  #${rmHash palette.base0D}
+    color5  #${rmHash palette.base0E}
+    color6  #${rmHash palette.base0C}
+    color7  #${rmHash palette.base05}
+
+    color8  #${rmHash palette.base03}
+    color9  #${rmHash palette.base08}
+    color10 #${rmHash palette.base0B}
+    color11 #${rmHash palette.base0A}
+    color12 #${rmHash palette.base0D}
+    color13 #${rmHash palette.base0E}
+    color14 #${rmHash palette.base0C}
+    color15 #${rmHash palette.base07}
+  '';
 in
 {
   programs.kitty = {
     enable = true;
-  	theme = "Tokyo Night";
-  	font.name = "JetBrainsMono Nerd Font";
+    # theme = "Tokyo Night";
+    font.name = "JetBrainsMono Nerd Font";
     keybindings = {
       "super+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";
@@ -55,12 +79,7 @@ in
       bold_font = "auto";
       bold_italic_font = "auto";
       font_size = 12;
-      foreground = "#${palette.base05}";
-      background = "#${palette.base00}";
       background_opacity = "0.9";
-      selection_foreground = "#${palette.base00}";
-      selection_background = "#${palette.base0B}";
-      cursor = "#${palette.base0E}";
       cursor_shape = "block";
       cursor_stop_blinking_after = 15;
       scrollback_lines = 2000;
@@ -77,22 +96,6 @@ in
       term = "xterm-kitty";
       window_border_width = 0;
       window_margin_width = 15;
-      color0 = "#${palette.base00}";
-      color1 = "#${palette.base01}";
-      color2 = "#${palette.base02}";
-      color3 = "#${palette.base03}";
-      color4 = "#${palette.base04}";
-      color5 = "#${palette.base05}";
-      color6 = "#${palette.base06}";
-      color7 = "#${palette.base07}";
-      color8 = "#${palette.base08}";
-      color9 = "#${palette.base09}";
-      color10 = "#${palette.base0A}";
-      color11 = "#${palette.base0B}";
-      color12 = "#${palette.base0C}";
-      color13 = "#${palette.base0D}";
-      color14 = "#${palette.base0E}";
-      color15 = "#${palette.base0F}";
 
       hide_window_decorations = "yes";
       macos_option_as_alt = false;
@@ -100,5 +103,6 @@ in
       initial_window_height = 1380;
       macos_titlebar_color = "background";
       };
+      extraConfig = kittyColors;
   };
 }

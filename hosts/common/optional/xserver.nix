@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs;[
     xdg-desktop-portal

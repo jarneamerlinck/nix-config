@@ -1,9 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
   ...
 }: {
   imports = [
@@ -22,7 +18,7 @@
     ../common/optional/wireless.nix
     ../common/optional/wd-decrypt.nix
     ## Display server
-    ../common/optional/xserver.nix
+    # ../common/optional/xserver.nix
     ../common/optional/wayland.nix
 
     ## Display Managers

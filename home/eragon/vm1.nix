@@ -8,7 +8,6 @@
     ./features/music
     ./features/cyber
     ./features/desktop/common/discord.nix
-    ./features/desktop/common/matrix.nix
     ./features/desktop/common/vscode.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;

@@ -1,4 +1,8 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 let
   i_keyboard = "be";
   cfg = config.wayland.windowManager.sway.config;
@@ -28,7 +32,7 @@ in
       bars = [];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
-        "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
+        "${cfg.modifier}+d" = "exec GTK_THEME=none ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
@@ -41,9 +45,13 @@ in
         "${cfg.modifier}+Shift+Down" = "move down";
         "${cfg.modifier}+Shift+Up" = "move up";
         "${cfg.modifier}+Shift+Right" = "move right";
-        "${cfg.modifier}+f" = "fullscreen toggle";
         "${cfg.modifier}+Shift+Escape" = "exec swaymsg exit";
         "${cfg.modifier}+Shift+c" = "exec swaymsg reload";
+
+        # full screen modes
+        "${cfg.modifier}+f" = "fullscreen toggle";
+        "${cfg.modifier}+F11" = "exec systemctl is-active --user --quiet waybar && systemctl --user stop waybar || systemctl --user start waybar";
+
 
         "Ctrl+Alt+Right" = "workspace next";
         "Ctrl+Alt+Left" = "workspace prev";
