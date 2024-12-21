@@ -12,7 +12,7 @@
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
-  colorScheme = inputs.nix-colors.colorSchemes.dracula;
+  colorScheme = inputs.nix-colors.colorSchemes.ashes;
 
   monitors = [{
     name = "eDP-1";
