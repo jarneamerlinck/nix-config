@@ -11,6 +11,7 @@
     ./features/cyber/exploration/wireshark.nix
     ./features/desktop/common/discord.nix
     ./features/desktop/common/vscode.nix
+    ./features/desktop/common/office.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
