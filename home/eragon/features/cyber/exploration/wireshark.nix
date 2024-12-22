@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     termshark
     tshark
+    tcpdump
   ];
 
   home.shellAliases = {
