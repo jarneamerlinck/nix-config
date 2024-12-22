@@ -7,6 +7,7 @@
     ./features/desktop/sway/minimalistic
     ./features/music
     ./features/cyber
+    ./features/cyber/pentesting
     ./features/cyber/exploration/wireshark.nix
     ./features/desktop/common/discord.nix
     ./features/desktop/common/vscode.nix
