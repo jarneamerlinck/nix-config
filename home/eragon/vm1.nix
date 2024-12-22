@@ -9,9 +9,11 @@
     ./features/cyber
     ./features/cyber/pentesting
     ./features/cyber/exploration/wireshark.nix
-    ./features/desktop/common/discord.nix
-    ./features/desktop/common/vscode.nix
-    ./features/desktop/common/office.nix
+
+    ./features/desktop/applications
+    ./features/desktop/applications/discord.nix
+    ./features/desktop/applications/vscode.nix
+    ./features/desktop/applications/office.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 

@@ -3,12 +3,7 @@
 }:
 {
   imports = [
-    ./dragon.nix
-    ./font.nix
-    ./xdg.nix
-    ./qt.nix
-    ./gtk.nix
-    ./audio.nix
+    ./firefox.nix
   ];
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 }
