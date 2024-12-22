@@ -1,6 +1,11 @@
+# Wireshark needs to be enabled on the host itself.
 { pkgs, ... }: {
   home.packages = with pkgs; [
     termshark
-    wireshark
+    tshark
   ];
+
+  home.shellAliases = {
+    "tshark" = "tshark --color";
+  };
 }
