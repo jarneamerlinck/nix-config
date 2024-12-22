@@ -40,6 +40,9 @@
     ../common/optional/virtualization
     # ../common/optional/services/photos.nix
 
+
+    ../common/optional/wireshark.nix
+
     ../common/optional/services/portainer.nix
     ../common/optional/qemu-guest.nix
   ];
