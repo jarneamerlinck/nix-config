@@ -41,6 +41,7 @@
     # ../common/optional/services/photos.nix
 
 
+    ../common/optional/mouse.nix
     ../common/optional/wireshark.nix
 
     ../common/optional/qemu-guest.nix

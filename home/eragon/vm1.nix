@@ -14,7 +14,6 @@
     ./features/desktop/applications/discord.nix
     ./features/desktop/applications/vscode.nix
     ./features/desktop/applications/office.nix
-    ./features/desktop/applications/mouse.nix
     ./features/desktop/applications/image_editing.nix
     ./features/desktop/applications/video_editing.nix
   ];
