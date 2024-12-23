@@ -4,4 +4,5 @@
     piper
     solaar
   ];
+  services.ratbagd.enable = true;
 }

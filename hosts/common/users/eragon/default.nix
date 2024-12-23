@@ -20,6 +20,7 @@ in
       "docker"
       "git"
       "libvirtd"
+      "libvirt-qemu"
       "deluge"
       "wireshark"
     ];
