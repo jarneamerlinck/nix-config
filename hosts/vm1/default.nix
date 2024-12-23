@@ -43,7 +43,6 @@
 
     ../common/optional/wireshark.nix
 
-    ../common/optional/services/portainer.nix
     ../common/optional/qemu-guest.nix
   ];
 
