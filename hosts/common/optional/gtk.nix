@@ -10,5 +10,4 @@
     [Settings]
     gtk-theme-name = nix-color
   '';
-
 }
