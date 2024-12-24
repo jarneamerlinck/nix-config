@@ -67,5 +67,12 @@ in {
       "Net/IconThemeName" = "${config.fontProfiles.regular.family}";
     };
   };
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+
+  home.packages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+  ];
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+  ];
 }

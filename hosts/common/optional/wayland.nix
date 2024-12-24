@@ -7,6 +7,7 @@
   sound.enable = true;
   security.polkit.enable = true;
   hardware.opengl.enable = true; # Only enable inside VM
+  programs.xwayland.enable = true;
   # programs.sway.enable = false;
   # nixpkgs.config.pulseaudio = true;
   # hardware.pulseaudio.enable = true;
