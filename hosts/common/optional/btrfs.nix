@@ -2,7 +2,6 @@
 {
   services.snapper = {
     snapshotInterval = "hourly";
-    cleanupInterval = "1d";
     configs = {
       root = {
         SUBVOLUME = "/";
