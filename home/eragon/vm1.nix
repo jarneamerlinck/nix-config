@@ -12,6 +12,7 @@
 
     ./features/desktop/applications
     ./features/desktop/applications/media_player.nix
+    ./features/desktop/applications/remote_desktop.nix
     ./features/desktop/applications/discord.nix
     ./features/desktop/applications/vscode.nix
     ./features/desktop/applications/office.nix
