@@ -8,6 +8,12 @@
   security.polkit.enable = true;
   hardware.opengl.enable = true; # Only enable inside VM
   programs.xwayland.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-shana
+  ];
   # programs.sway.enable = false;
   # nixpkgs.config.pulseaudio = true;
   # hardware.pulseaudio.enable = true;

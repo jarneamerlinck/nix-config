@@ -68,10 +68,6 @@ in {
     };
   };
 
-  home.packages = with pkgs; [
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-  ];
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gtk
   ];
