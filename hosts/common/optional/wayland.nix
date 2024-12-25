@@ -12,7 +12,7 @@
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-shana
+    xdg-desktop-portal-kde
   ];
   # programs.sway.enable = false;
   # nixpkgs.config.pulseaudio = true;
