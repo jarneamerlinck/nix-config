@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -10,5 +11,8 @@
     ./gtk.nix
     ./audio.nix
   ];
+
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
+  xdg.portal.enable = true;
 }
