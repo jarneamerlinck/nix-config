@@ -46,6 +46,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
 
+    # ../common/optional/services/ddns.nix
     ../common/optional/services/cloudflare_tunnel.nix
     ../common/optional/services/homebox.nix
     ../common/optional/services/syncthing.nix
