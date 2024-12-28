@@ -9,7 +9,7 @@
       "HBOX_LOG_FORMAT" = "text";
       "HBOX_LOG_LEVEL" = "info";
       "HBOX_OPTIONS_ALLOW_REGISTRATION" = "false";
-      "HBOX_WEB_MAX_UPLOAD_SIZE" = "10";
+      "HBOX_WEB_MAX_UPLOAD_SIZE" = "100";
     };
     volumes = [
       "/data/docker/homebox:/data:rw"
@@ -17,6 +17,16 @@
     # ports = [
     #   "3100:7745/tcp"
     # ];
+
+    labels = {
+      "traefik.enable" = "true";
+      "traefik.http.routers.homebox-rtr.entrypoints" = "https";
+      "traefik.http.routers.homebox-rtr.rule" = "Host(`inventory.ko0.net`)";
+      "traefik.http.routers.homebox-rtr.service" = "homebox-svc";
+      "traefik.http.routers.homebox-rtr.tls" = "true";
+      "traefik.http.routers.homebox-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.homebox-svc.loadbalancer.server.port" = "7745";
+    };
     log-driver = "journald";
     extraOptions = [
       "--network-alias=homebox"
