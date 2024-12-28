@@ -4,7 +4,7 @@
 {
   # Runtime
   virtualisation.oci-containers.containers."homebox-homebox" = {
-    image = "ghcr.io/sysadminsmedia/homebox:0.15.2";
+    image = "ghcr.io/sysadminsmedia/homebox:0.16.0";
     environment = {
       "HBOX_LOG_FORMAT" = "text";
       "HBOX_LOG_LEVEL" = "info";
