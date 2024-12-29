@@ -60,6 +60,8 @@
       # terminals
       kitty
 
+      ffmpeg
+
 
     ];
   };
