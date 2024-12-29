@@ -17,6 +17,7 @@
     ./mdadm.nix
     ./mount_points.nix
     ./sops.nix
+    ./hardware-packages.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
