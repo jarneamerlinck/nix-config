@@ -56,6 +56,15 @@
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+      prime = {
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+        # run `lspci | grep VGA`
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:7:0:0";
+      };
+
+
     };
     nvidia-container-toolkit = {
       enable = true;
