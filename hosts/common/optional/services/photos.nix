@@ -46,6 +46,9 @@
       "--network=photos_photos"
       "--security-opt=apparmor:unconfined"
       "--security-opt=seccomp:unconfined"
+      "--device=/dev/nvidia0:/dev/nvidia0:rwm"
+      "--device=/dev/nvidiactl:/dev/nvidiactl:rwm"
+      "--device=nvidia.com/gpu=all"
     ];
   };
   virtualisation.oci-containers.containers."photos-mariadb" = {
