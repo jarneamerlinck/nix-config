@@ -25,10 +25,14 @@
       "--api.insecure=true"
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
-      "--entryPoints.https.address=:443"
+
       "--entryPoints.http.address=:80"
-      "--entryPoints.http.http.middlewares=redirect-to-https@internal"
+      "--entrypoints.http.http.redirections.entrypoint.to=https"
+      "--entryPoints.http.http.redirections.entrypoint.scheme=https"
       "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
+
+      "--entryPoints.https.address=:443"
+      # "--entrypoints.https.http.tls.certresolver=cloudflare"
       "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
       "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
       "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
