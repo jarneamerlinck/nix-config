@@ -1,5 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    ./exploration/nmap.nix
+    ./cyberchef.nix
     ];
 }

@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ./exploration/nmap.nix
+    ./macchanger.nix
     ];
 }
+

@@ -7,6 +7,7 @@
 
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
@@ -46,6 +47,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
 
+    # ../common/optional/services/ddns.nix
     ../common/optional/services/cloudflare_tunnel.nix
     ../common/optional/services/homebox.nix
     ../common/optional/services/syncthing.nix

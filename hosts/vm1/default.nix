@@ -20,6 +20,7 @@
     ## Display server
     # ../common/optional/xserver.nix
     ../common/optional/wayland.nix
+    ../common/optional/gtk.nix
 
     ## Display Managers
     ../common/optional/greetd.nix
@@ -40,7 +41,10 @@
     ../common/optional/virtualization
     # ../common/optional/services/photos.nix
 
-    ../common/optional/services/portainer.nix
+
+    ../common/optional/mouse.nix
+    ../common/optional/wireshark.nix
+
     ../common/optional/qemu-guest.nix
   ];
 

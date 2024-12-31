@@ -20,6 +20,8 @@
       "443:443/tcp"
     ];
     cmd = [
+      "--accesslog=true"
+      "--accesslog.filePath=/logs/access.log"
       "--api.insecure=true"
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
