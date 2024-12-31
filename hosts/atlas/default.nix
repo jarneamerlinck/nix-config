@@ -62,6 +62,9 @@
     ../common/optional/services/recipes.nix
     ../common/optional/services/photos.nix
 
+    # smart tools
+    ../common/optional/services/search.nix
+
   ];
 
   networking = {
