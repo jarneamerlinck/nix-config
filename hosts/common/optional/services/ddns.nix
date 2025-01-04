@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.2.3-pre.
-{ 
+{
   pkgs,
   lib,
   config,
@@ -22,15 +22,15 @@ in  {
 
   services.ddclient = {
     enable = true;
-    config = {
-      use = "web";
-      web = "dynamicdns.park-your-domain.com/getip";
-      protocol = "cloudflare";
-      server = "api.cloudflare.com/client/v4";
-      login = config.sops.secrets."ddns/email".path;
-      password = config.sops.secrets."ddns/token".path;
-      zone = config.sops.secrets."ddns/zone".path;
-      fqdn = config.sops.secrets."ddns/fqdn".path;
-    };
+    use = "web";
+    server = "api.cloudflare.com/client/v4";
+    protocol = "cloudflare";
+    passwordFile = config.sops.secrets."ddns/token".path;
+    username = config.sops.secrets."ddns/email".path;
+    zone = "knightofzero.com";
+    domains = ["vps.knightofzero.com"];
+    # extraConfig = {
+    #   web = "dynamicdns.park-your-domain.com/getip";
+    # };
   };
 }
