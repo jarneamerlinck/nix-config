@@ -16,7 +16,7 @@
       "/var/run/docker.sock:/var/run/docker.sock:ro"
     ];
     ports = [
-      "80:80/tcp"
+      # "80:80/tcp"
       "443:443/tcp"
     ];
     cmd = [
