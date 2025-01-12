@@ -32,7 +32,7 @@
   };
   home.shellAliases = {
       de="fzf-docker-exec";
-      dl="fzf-docker-full-log";
+      dl="fzf-docker-live-log";
       dfl="fzf-docker-full-log";
       dll="fzf-docker-live-log";
       gl="fzf-git-log";
