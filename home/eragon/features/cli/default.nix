@@ -14,6 +14,7 @@
     # ./shellcolor.nix
     ./ssh.nix
     ./docker.nix
+    ./python.nix
     # ./starship.nix
     # ./xpo.nix
   ];
