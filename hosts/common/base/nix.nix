@@ -1,5 +1,9 @@
 { inputs, lib, pkgs, ... }:
 {
+
+  environment.systemPackages = with pkgs; [
+    nh
+  ];
   nix = {
     # TODO
     # https://github.com/NixOS/nix/issues/9579

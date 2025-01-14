@@ -24,8 +24,8 @@
       rebuild="cd ~/nix-config && git stash &&  git pull && ./deploy.sh";
       rebuildf="cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
       rebuildl="cd ~/nix-config &&  ./deploy.sh";
-      homef="cd ~/nix-config && git stash && git pull -f && home-manager --flake .#$USER@$HOST switch";
-      homel="cd ~/nix-config &&  home-manager --flake .#$USER@$HOST switch";
+      homef="cd ~/nix-config && git stash && git pull -f && nh home switch -c $USER@$HOST";
+      homel="cd ~/nix-config &&  nh home switch -c $USER@$HOST";
       homen="cd ~/nix-config &&  home-manager --flake .#$USER@$HOST news";
     };
 
