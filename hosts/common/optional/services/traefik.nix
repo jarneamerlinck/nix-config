@@ -16,7 +16,7 @@
       "/var/run/docker.sock:/var/run/docker.sock:ro"
     ];
     ports = [
-      "80:80/tcp"
+      # "80:80/tcp"
       "443:443/tcp"
     ];
     cmd = [
@@ -25,9 +25,12 @@
       "--api.insecure=true"
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
-      "--entryPoints.https.address=:443"
+
       "--entryPoints.http.address=:80"
-      "--entryPoints.http.http.middlewares=redirect-to-https@internal"
+      "--entrypoints.web.http.redirections.entrypoint.to=https"
+      "--entryPoints.web.http.redirections.entrypoint.scheme=https"
+
+      "--entryPoints.https.address=:443"
       "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
       "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
       "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
@@ -38,9 +41,9 @@
       "traefik.enable"="true";
       "traefik.http.routers.traefik-dash.entrypoints"="https";
       "traefik.http.routers.traefik-dash.rule"="Host(`${config.networking.hostName}.ko0.net`)";
+      "traefik.http.routers.traefik-dash.service"="traefik-dash";
       "traefik.http.routers.traefik-dash.tls"="true";
       "traefik.http.routers.traefik-dash.tls.certresolver"="cloudflare";
-      "traefik.http.routers.traefik-dash.service"="traefik-dash";
       "traefik.http.services.traefik-dash.loadbalancer.server.port"="8080";
     };
     log-driver = "journald";

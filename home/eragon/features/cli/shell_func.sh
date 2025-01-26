@@ -20,7 +20,7 @@ function fzf-docker-exec() {
 	  --prompt="Select host: ")
 	if [ ! -z $CONTAINER ]
 	then
-		docker exec -it $CONTAINER bash
+		docker exec -it $CONTAINER sh -c 'bash || sh'
 	fi
 }
 

@@ -61,6 +61,10 @@
     ../common/optional/services/music.nix
     ../common/optional/services/recipes.nix
     ../common/optional/services/photos.nix
+    ../common/optional/services/drawio.nix
+
+    # smart tools
+    ../common/optional/services/search.nix
 
   ];
 

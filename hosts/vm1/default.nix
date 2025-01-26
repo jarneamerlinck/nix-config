@@ -39,6 +39,7 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
+    ../common/optional/services/portainer.nix
     # ../common/optional/services/photos.nix
 
 
