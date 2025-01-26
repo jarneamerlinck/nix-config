@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
 
     ../common/optional/btrfs.nix
-    ../common/disko/boot_1d_btrfs.nix
+    ../common/disko/boot_1d_btrfs_luks.nix
 
     ../common/base
     ../common/users/eragon
