@@ -2,7 +2,7 @@
 # Example to create a bios compatible gpt partition
 { lib, disko, ... }:
 {
-  boot.initrd.clevis.devices."crypted".secretFile = "/etc/clevis-secret.jwe";
+  # boot.initrd.clevis.devices."crypted".secretFile = "/etc/clevis-secret.jwe";
 
   disko.devices = {
     disk = {
@@ -33,11 +33,11 @@
                 type = "luks";
                 name = "crypted";
                 # disable settings.keyFile if you want to use interactive password entry
-                passwordFile = "/tmp/secret.key"; # Interactive
-                # settings = {
-                #   allowDiscards = true;
-                #   keyFile = "/tmp/secret.key";
-                # };
+                # passwordFile = "/etc/secret.key"; # Interactive
+                settings = {
+                  allowDiscards = true;
+                  keyFile = "/etc/clevis-secret.jwe";
+                };
                 # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
 
                 content = {
