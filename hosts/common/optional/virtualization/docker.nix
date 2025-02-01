@@ -11,7 +11,6 @@
   virtualisation.oci-containers.backend = "docker";
 
   imports = [
-    ../services/traefik.nix
     ../services/docker-image-notifier.nix
   ];
 
