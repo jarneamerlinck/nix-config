@@ -16,11 +16,11 @@
     ../common/users/eragon
 
     ## Display server
-    ../common/optional/xserver.nix
     ../common/optional/wayland.nix
+    ../common/optional/gtk.nix
 
     ## Display Managers
-    # ../common/optional/greetd.nix
+    ../common/optional/greetd.nix
     # ../common/optional/sddm.nix
 
 
