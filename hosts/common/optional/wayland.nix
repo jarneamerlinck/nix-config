@@ -13,6 +13,8 @@
     xdg-desktop-portal-gtk
     xdg-desktop-portal-kde
   ];
+
+  programs.dconf.enable = true;
   # programs.sway.enable = false;
   # nixpkgs.config.pulseaudio = true;
   # hardware.pulseaudio.enable = true;
