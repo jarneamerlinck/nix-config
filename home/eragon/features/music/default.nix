@@ -6,6 +6,6 @@
     yt-dlp
     audacity
     picard
-
+    feishin
   ];
 }

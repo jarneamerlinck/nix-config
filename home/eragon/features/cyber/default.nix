@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    ./basic.nix
-    # ./extended.nix
+    ./exploration/nmap.nix
     ];
 }

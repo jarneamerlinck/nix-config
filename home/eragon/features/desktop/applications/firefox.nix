@@ -11,6 +11,9 @@
     };
   in
 {
+  home.packages = with pkgs; [
+    speechd
+  ];
   programs = {
     firefox = {
       enable = true;

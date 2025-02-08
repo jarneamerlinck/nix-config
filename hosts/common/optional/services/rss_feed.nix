@@ -44,9 +44,6 @@
   };
   virtualisation.oci-containers.containers."full-test-rss" = {
     image = "heussd/fivefilters-full-text-rss:3.8.1";
-    ports = [
-      "50000:80/tcp"
-    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=full-test-rss"

@@ -1,4 +1,8 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 let
   i_keyboard = "be";
   cfg = config.wayland.windowManager.sway.config;
@@ -41,9 +45,13 @@ in
         "${cfg.modifier}+Shift+Down" = "move down";
         "${cfg.modifier}+Shift+Up" = "move up";
         "${cfg.modifier}+Shift+Right" = "move right";
-        "${cfg.modifier}+f" = "fullscreen toggle";
         "${cfg.modifier}+Shift+Escape" = "exec swaymsg exit";
         "${cfg.modifier}+Shift+c" = "exec swaymsg reload";
+
+        # full screen modes
+        "${cfg.modifier}+f" = "fullscreen toggle";
+        "${cfg.modifier}+F11" = "exec systemctl is-active --user --quiet waybar && systemctl --user stop waybar || systemctl --user start waybar";
+
 
         "Ctrl+Alt+Right" = "workspace next";
         "Ctrl+Alt+Left" = "workspace prev";

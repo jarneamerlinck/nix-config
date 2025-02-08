@@ -7,6 +7,7 @@ with import <nixpkgs> {}; {
       git
       age
       sops
+      nh
     ];
     NIX_CONFIG = "experimental-features = nix-command flakes";
     shellHook = ''

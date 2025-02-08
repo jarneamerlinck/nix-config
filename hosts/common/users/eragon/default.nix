@@ -20,7 +20,9 @@ in
       "docker"
       "git"
       "libvirtd"
+      "libvirt-qemu"
       "deluge"
+      "wireshark"
     ];
 
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/ssh.pub) ];

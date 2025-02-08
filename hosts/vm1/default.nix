@@ -1,9 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
   ...
 }: {
   imports = [
@@ -22,8 +18,9 @@
     # ../common/optional/wireless.nix
     ../common/optional/wd-decrypt.nix
     ## Display server
-    ../common/optional/xserver.nix
+    # ../common/optional/xserver.nix
     ../common/optional/wayland.nix
+    ../common/optional/gtk.nix
 
     ## Display Managers
     ../common/optional/greetd.nix
@@ -42,9 +39,13 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/virtualization
-    # ../common/optional/services/calibre.nix
-
     ../common/optional/services/portainer.nix
+    # ../common/optional/services/photos.nix
+
+
+    ../common/optional/mouse.nix
+    ../common/optional/wireshark.nix
+
     ../common/optional/qemu-guest.nix
   ];
 
