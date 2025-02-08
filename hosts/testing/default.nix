@@ -38,6 +38,7 @@
     ../common/optional/virtualization/docker.nix
     ../common/optional/virtualization/flatpak.nix
 
+    ../common/optional/openlens.nix
     ../common/optional/qemu-guest.nix
   ];
 

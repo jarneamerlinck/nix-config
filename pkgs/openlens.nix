@@ -2,18 +2,16 @@
 {
   openlens = stdenv.mkDerivation rec {
     pname = "openlens";
-    version = "6.5.2-366"; # Replace with the desired version.
+    version = "6.5.2-366";
   
     src = fetchFromGitHub {
       owner = "MuhammedKalkan";
       repo = "OpenLens";
       rev = "v${version}";
-      sha256 = "0xxxxxxxxxxxxxxxxxxxxxxxxxxxx"; # Replace with the correct hash.
+      sha256 = "sha256-tg6XeeX5R3aZpmo+o9OJE/LciJVnBg36l6d7BE2LSM8=";
     };
   
     buildInputs = [ nodejs yarn makeWrapper ];
-  
-    unpackPhase = "tar xvf ${src} --strip-components=1";
   
     buildPhase = ''
       yarn install
