@@ -7,9 +7,9 @@
     ./features/music
     ./features/cyber
   ];
-  wallpaper = pkgs.wallpapers.nixos-logo;
+  wallpaper = pkgs.wallpapers.abstract-cubes;
 
-  colorScheme = inputs.nix-colors.colorSchemes.brewer;
+  colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
 
   monitors = [{
     name = "eDP-1";
