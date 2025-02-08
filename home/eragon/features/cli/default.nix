@@ -7,7 +7,7 @@
     # ./gpg.nix
     ./kitty.nix
     ./tmux.nix
-    # ./lyrics.nix
+    ./kubernetes.nix
     ./fetch.nix
     # ./ranger.nix
     # ./screen.nix
