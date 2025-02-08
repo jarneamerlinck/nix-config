@@ -6,8 +6,5 @@
     winetricks
     wineWowPackages.waylandFull
   ];
-  virtualisation.docker = {
-    enable = true;
-  };
 
 }

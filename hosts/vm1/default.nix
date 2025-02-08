@@ -38,7 +38,7 @@
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/virtualization
+    ../common/optional/virtualization/docker.nix
     ../common/optional/services/portainer.nix
     # ../common/optional/services/photos.nix
 

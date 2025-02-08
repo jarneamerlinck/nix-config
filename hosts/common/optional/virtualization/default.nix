@@ -7,10 +7,4 @@
     ./wine.nix
 
   ];
-
-  environment.systemPackages = with pkgs; [
-    flatpak
-    appimage-run
-  ];
-
 }

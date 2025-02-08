@@ -45,7 +45,9 @@
     ../common/optional/unattended-upgrades.nix
 
     ../common/optional/pipewire.nix
-    ../common/optional/virtualization
+    ../common/optional/virtualization/docker.nix
+    ../common/optional/virtualization/qemu.nix
+    ../common/optional/virtualization/wine.nix
 
     # ../common/optional/services/ddns.nix
     ../common/optional/services/cloudflare_tunnel.nix
