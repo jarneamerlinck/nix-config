@@ -9,13 +9,13 @@
       owner = "lensapp";
       repo = "lens";
       rev = "v${version}";
-      sha256 = "sha256-tg6XeeX5R3aZpmo+o9OJE/LciJVnBg36l6d7BE2LSM8=";
+      sha256 = "sha256-9qxsaKYqDV5LLzVoIngGyTggbiOj2k8zmqqWsjlPP78=";
     };
   
-    # nativeBuildInputs = [ nodejs yarn makeWrapper gcc jq curl patchelf ];
+    nativeBuildInputs = [ nodejs yarn makeWrapper gcc jq curl patchelf ];
     buildInputs = [
       electron
-      nodejs
+      nodejs_18
       yarn
       gcc
     ];
@@ -23,11 +23,8 @@
     # unpackPhase = "tar xvf ${src} --strip-components=1";
   
     buildPhase = ''
-      ls -lhi
-      cd open-lens
       npm install
       npm run all:install
-      cd ..
   
       mkdir -p open-lens/node_modules
       npx nx run open-lens:build:app
