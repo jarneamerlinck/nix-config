@@ -36,6 +36,7 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/virtualization/docker.nix
+    ../common/optional/virtualization/flatpak.nix
 
     ../common/optional/qemu-guest.nix
   ];
