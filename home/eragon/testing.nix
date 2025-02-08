@@ -4,6 +4,7 @@
     ./common
     ./features/cli/debugging.nix
     ./features/desktop/sway/minimalistic
+    ./features/desktop/applications/openlens.nix
     ./features/music
     ./features/cyber
   ];
