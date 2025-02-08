@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, nodejs, yarn, makeWrapper, electron, gcc, jq, curl, patchelf }:
+{ stdenv, fetchFromGitHub, nodejs, yarn, makeWrapper, electron, gcc, jq, curl, patchelf, pkgs }:
 {
 
   openlens =  stdenv.mkDerivation rec {
@@ -15,7 +15,7 @@
     nativeBuildInputs = [ nodejs yarn makeWrapper gcc jq curl patchelf ];
     buildInputs = [
       electron
-      nodejs_18
+      pkgs.nodejs_18
       yarn
       gcc
     ];
@@ -23,6 +23,7 @@
     # unpackPhase = "tar xvf ${src} --strip-components=1";
   
     buildPhase = ''
+      rm package-lock.json
       npm install
       npm run all:install
   
