@@ -7,11 +7,7 @@
   ];
 
   home.sessionVariables = {
-    KUBECONFIG = "${config.home.homeDirectory}/.kube/config";
-  };
-  home.file.".kube/config" = {
-    source = "/etc/rancher/k3s/k3s.yaml";
-    target = "symlink";
+    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 
   programs.k9s = {
