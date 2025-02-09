@@ -6,14 +6,14 @@
     kubernetes-helm
   ];
 
-  environment.sessionVariables = {
+  # environment.sessionVariables = {
+  #
+  #   HELM_REPOSITORY_CONFIG = "/etc/helm/.helm/repository.yaml";
+  # };
 
-    HELM_REPOSITORY_CONFIG = "/etc/helm_repositories.yaml";
-  };
-
-  environment.etc."helm_repositories.yaml".text = ''
-    apiVersion: ""
-    generated: '0001-01-01T00:00:00Z'
+  environment.etc."helm/repository.yaml".text = ''
+    apiVersion: v1
+    generated: 1
     repositories:
       - caFile: ""
         certFile: ""
