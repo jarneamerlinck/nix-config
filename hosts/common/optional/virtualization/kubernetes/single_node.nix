@@ -11,6 +11,7 @@
         "--write-kubeconfig-mode \"0644\""
         "--cluster-init"
         "--disable traefik"
+        "--tls-san ${config.networking.hostName}.ko0.net"
     ]);
     clusterInit = true;
     
