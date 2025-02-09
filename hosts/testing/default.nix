@@ -36,6 +36,7 @@
 
     ../common/optional/pipewire.nix
     ../common/optional/virtualization/docker.nix
+    ../common/optional/virtualization/kubernetes.nix
     ../common/optional/virtualization/flatpak.nix
 
     # ../common/optional/openlens.nix
