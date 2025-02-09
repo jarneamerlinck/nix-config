@@ -53,7 +53,10 @@
             valuesContent = ''
               grafana:
                 enabled: false
+                namespaceOverride: monitoring
               namespaceOverride: monitoring
+              kube-state-metrics.namespaceOverride: monitoring
+              prometheus-node-exporter.namespaceOverride: monitoring
             '';
           };
         }
