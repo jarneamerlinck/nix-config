@@ -10,9 +10,7 @@
     extraFlags = toString ([
         "--write-kubeconfig-mode \"0644\""
         "--cluster-init"
-        "--disable servicelb"
         "--disable traefik"
-        "--disable local-storage"
     ]);
     clusterInit = true;
     
