@@ -6,17 +6,28 @@
     kubernetes-helm
   ];
 
+  environment.sessionVariables = {
 
-  systemd.services.add-helm-repo = {
-    description = "Add Prometheus Community Helm Repo";
-    serviceConfig.ExecStart = "${pkgs.kubernetes-helm}/bin/helm repo add prometheus-community https://prometheus-community.github.io/helm-charts";
-    wantedBy = [ "multi-user.target" ];
+    HELM_REPOSITORY_CONFIG = "/etc/helm_repositories.yaml";
   };
 
+  environment.etc."helm_repositories.yaml".text = ''
+    apiVersion: ""
+    generated: '0001-01-01T00:00:00Z'
+    repositories:
+      - caFile: ""
+        certFile: ""
+        insecure_skip_tls_verify: false
+        keyFile: ""
+        name: "prometheus-community"
+        pass_credentials_all: false
+        password: ""
+        url: "https://prometheus-community.github.io/helm-charts" 
+        username: ""
 
+  '';
 
   services.k3s = {
-
     manifests.prometheus = {
       enable = true;
       content = [
