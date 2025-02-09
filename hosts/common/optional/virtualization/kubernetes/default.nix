@@ -1,6 +1,15 @@
 { config, pkgs, ... }:
 
 {
+
+  systemd.services.add-helm-repo = {
+    description = "Add Prometheus Community Helm Repo";
+    serviceConfig.ExecStart = "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts";
+    serviceConfig.Environment = "DISPLAY=";  # Prevents any DISPLAY (X server) environment variable from being set
+    serviceConfig.User = "root";  # Specify which user the service should run as
+    serviceConfig.Group = "root";  # Ensure it runs with the appropriate group privileges
+    wantedBy = [ "multi-user.target" ];
+  };
   services.k3s = {
 
     manifests.prometheus = {
@@ -13,15 +22,6 @@
           metadata.name = "monitoring";
         }
 
-        # Hem repo
-        {
-          apiVersion = "helm.cattle.io/v1";
-          kind = "HelmRepository";
-          metadata = {
-            namespace = "kube-system";
-          };
-          spec.url = "https://prometheus-community.github.io/helm-charts";
-        }
         # Helm chart for Prometheus
         {
           apiVersion = "helm.cattle.io/v1";
