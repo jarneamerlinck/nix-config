@@ -1,10 +1,19 @@
-{ outputs, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
 
   home.packages = with pkgs; [
     kubectl
     kubernetes-helm
   ];
+
+  home.sessionVariables = {
+    KUBECONFIG = "${config.home.homeDirectory}/.kube/config";
+  };
+  home.file.".kube/config" = {
+    source = "/etc/rancher/k3s/k3s.yaml";
+    target = "symlink";
+  };
+
   programs.k9s = {
     enable= true;
 
