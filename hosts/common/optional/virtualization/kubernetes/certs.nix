@@ -65,6 +65,33 @@
           };
         }
 
+        # Fetch secrets
+        {
+          apiVersion = "cert-manager.io/v1";
+          kind = "ClusterIssuer";
+
+          metadata = {
+            name =  "letsencrypt-cloudflare";
+            namespace = "certs";
+          };
+          spec = {
+            acme= {
+              email = "jarneamerlinck@pm.me";
+              server = "https://acme-v02.api.letsencrypt.org/directory";
+              privateKeySecretRef.name = "letsencrypt-cloudflare";
+              solvers= [
+                {
+                  dns01 = {
+                    cloudflare.apiTokenSecretRef = {
+                      name = "cloudflare-api-token-secret";
+                      key =  "api-token";
+                    };
+                  };
+                }
+              ];
+            };
+          };
+        }
 
         # Make hayproxy use cert-manager certs
         {
