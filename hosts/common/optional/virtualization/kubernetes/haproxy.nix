@@ -26,6 +26,14 @@
             version = "1.44.0";
             targetNamespace = "certs";
             valuesContent = ''
+              controller:
+                service:
+                  type: LoadBalancer
+                containerPort:
+                  http: 80
+                  https: 443
+                  stats: 1024
+                allowPrivilegedPorts: true
             '';
           };
         }
