@@ -3,6 +3,7 @@
 {
   imports = [
     ./prometheus.nix
+    ./haproxy.nix
   ];
 
 }
