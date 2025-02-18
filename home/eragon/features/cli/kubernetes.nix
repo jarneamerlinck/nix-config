@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     kubectl
     kubernetes-helm
+    kubeseal
   ];
 
   home.sessionVariables = {
