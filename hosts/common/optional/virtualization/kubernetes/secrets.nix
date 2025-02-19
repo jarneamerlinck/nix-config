@@ -1,6 +1,15 @@
 { lib, ... }:
 {
 
+  sops.secrets."sealed-secrets/tls.crt" = {
+    sopsFile = ./secrets.yml;
+    neededForUsers = false;
+  };
+
+  sops.secrets."sealed-secrets/tls.key" = {
+    sopsFile = ./secrets.yml;
+    neededForUsers = false;
+  };
   services.k3s = {
     manifests.secrets = {
       enable = lib.mkDefault true;
