@@ -1,9 +1,6 @@
 { lib, pkgs, ... }:
 {
 
-  environment.systemPackages = with pkgs; [
-    kubectl
-  ];
   sops.secrets."sealed-secrets/tls.crt" = {
     sopsFile = ./secrets.yml;
     neededForUsers = false;
@@ -13,6 +10,7 @@
     sopsFile = ./secrets.yml;
     neededForUsers = false;
   };
+
   systemd.services.k8s-sealed-secret-key = {
     description = "Deploy Sealed Secrets TLS Key to Kubernetes";
     after = [ "network.target" ];
