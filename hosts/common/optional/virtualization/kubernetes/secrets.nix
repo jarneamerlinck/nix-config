@@ -72,12 +72,12 @@
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChart";
           metadata = {
-            name =  "sealed-secrets";
+            name =  "sealed-secrets-controller";
             namespace = "kube-system";
           };
           spec = {
             repo = "https://bitnami-labs.github.io/sealed-secrets";
-            chart =  "sealed-secrets-controller";
+            chart =  "sealed-secrets";
             version = "2.17.1";
             targetNamespace = "kube-system";
             valuesContent = ''
