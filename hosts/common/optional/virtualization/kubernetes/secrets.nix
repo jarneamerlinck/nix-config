@@ -13,7 +13,8 @@
 
   systemd.services.k8s-sealed-secret-key = {
     description = "Deploy Sealed Secrets TLS Key to Kubernetes";
-    after = [ "network.target" ];
+    after = [ "k3s.service" ];
+    requires = [ "k3s.service" ];
     wantedBy = [ "multi-user.target" ];
     path = with pkgs; [ kubectl coreutils ];
     script = ''
