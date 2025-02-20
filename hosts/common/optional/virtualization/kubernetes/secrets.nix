@@ -76,7 +76,7 @@
           };
           spec = {
             repo = "https://bitnami-labs.github.io/sealed-secrets";
-            chart =  "sealed-secrets";
+            chart =  "sealed-secrets-controller";
             version = "2.17.1";
             targetNamespace = "kube-system";
             valuesContent = ''
