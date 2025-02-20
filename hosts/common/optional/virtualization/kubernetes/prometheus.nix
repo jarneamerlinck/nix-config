@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
 
   services.k3s = {
@@ -27,8 +27,17 @@
             targetNamespace = "monitoring";
             valuesContent = ''
               grafana:
-                enabled: false
+                enabled: true
                 namespaceOverride: monitoring
+                ingress:
+                  enabled: true
+                  hosts: [${config.networking.hostname}.ko0.net]
+                  annotations:
+                    cert-manager.io/cluster-issuer: "letsencrypt-cloudflare"
+                  tls:
+                    - hosts:
+                        - ${config.networking.hostname}.ko0.net
+                      secretName: haproxy-tls-secret
               namespaceOverride: monitoring
               kube-state-metrics.namespaceOverride: monitoring
               prometheus-node-exporter.namespaceOverride: monitoring
