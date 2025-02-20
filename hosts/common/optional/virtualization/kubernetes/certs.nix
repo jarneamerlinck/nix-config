@@ -114,6 +114,28 @@
           };
         }
 
+        # Add cloudflare cert with sealed secrets
+        {
+          apiVersion = "bitnami.com/v1alpha1";
+          kind = "SealedSecret";
+
+          metadata = {
+            name =  "cloudflare-api-token-secret";
+            namespace = "certs";
+          };
+          spec = {
+            template = {
+              metadata = {
+                name =  "cloudflare-api-token-secret";
+                namespace = "certs";
+              };
+              type = "Opaque";
+            };
+            encryptedData = {
+              api-token= "AgCROzYxASY4rKpZFBU/frqSLuPOnY2G3JKldfT739hBaeFTglyyY5czFw4k0Ob484Hvo5n0FE9mUMKoze3CTLiaTliU//xcUvBnlsMKPiR4+tah4v3NP4NJM7Rvej6IODfyRNU4jbqjVaU6WkcYuo8kydrvrDSS6nNu0OxoTHEkKrAuM+qbarX30zgfP0nSbh9uF6OoBCFL7zfcROpoAPThu1qNVaA05VHLZgMAyCfvy87a7DuQC0NPFUJonB4L+DhwtClb/dZvIZJTfLPae4E+/1nvR8Zp0mczc5dCcnJcSgV2WnnYTSP8JXAz1iL7cR8myN7iy77tbN+bjsrXctxQ+TxJ2tsitvwOaLal7QQb8oadaAo2imtPKfasXzjlxSuhkLEpPRcIrW/G82j0wwg23J3MsCrOrUVEnD88SfDpo9EQBGipLzYATxFagn6YSbzhmBt+MFdeK7UaozJuokuRh7xKGkf7j7TqCvZFLnH9OjUWgo0TKTIoKUe/PxZ9yixZBSnU2mXIXQNdvI4MFGYt/EFQCjW/Grg4wLOoaioSukX8ZPMxhgaDh6SssZd5yzlbpCe/eqZ8b5l5/YidNbOi/l04e/e6+3n3DZxYvGmiIXkg84U8B0pECARyh7ZID7ftssA817rAoTULEhayivbGBcjpYKdhcIb986cSOPJLrJiEyFiDmqh4LHJv71FGbPCAl5Xninahpb3SAG3mow9ECR+NEth+ZtyXKaNfghgmbySvo88yw4c5";
+            };
+          };
+        }
 
       ];
     };
