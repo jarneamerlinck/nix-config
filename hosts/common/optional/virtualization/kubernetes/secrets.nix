@@ -54,7 +54,7 @@
       Group = "root";
     };
   };
-
+  # TODO: restart cert manager after 10-15s of boot to refresh the cloudflare api token
 
   services.k3s = {
     manifests.secrets = {
