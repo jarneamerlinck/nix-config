@@ -31,12 +31,12 @@
                 namespaceOverride: monitoring
                 ingress:
                   enabled: true
-                  hosts: [${config.networking.hostname}.ko0.net]
+                  hosts: [${config.networking.hostName}.ko0.net]
                   annotations:
                     cert-manager.io/cluster-issuer: "letsencrypt-cloudflare"
                   tls:
                     - hosts:
-                        - ${config.networking.hostname}.ko0.net
+                        - ${config.networking.hostName}.ko0.net
                       secretName: haproxy-tls-secret
               namespaceOverride: monitoring
               kube-state-metrics.namespaceOverride: monitoring
