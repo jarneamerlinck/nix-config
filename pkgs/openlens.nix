@@ -6,7 +6,7 @@
     
     src = pkgs.fetchurl {
       url = "https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.AppImage";
-      sha256 = "f17b841edd003c8a15c526b0897724595e18967475138b09290a90941f5de801"; 
+      sha256 = "sha256-ZAltAS/U/xh4kCT7vQ+NHAzWV7z0uE5GMQICHKSdj8k="; 
     };
 
     dontUnpack = true;
