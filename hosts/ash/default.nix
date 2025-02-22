@@ -14,8 +14,6 @@
     ../common/base
     ../common/users/eragon
 
-    ../common/optional/unattended-upgrades.nix
-
     ../common/optional/virtualization/docker.nix
   ];
 

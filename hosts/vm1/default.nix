@@ -27,7 +27,7 @@
     ## Desktop environments / Window Managers
 
     ## Common items
-    ../common/optional/unattended-upgrades.nix
+    ../common/services/unattended-upgrades.nix
 
     ../common/desktop/pipewire.nix
     ../common/optional/virtualization/docker.nix
