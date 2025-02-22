@@ -1,7 +1,8 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, inputs, outputs, ... }:
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   username = "eragon";
+
 in
 {
   users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
@@ -30,10 +31,18 @@ in
     packages = [ pkgs.home-manager ];
   };
 
- sops.secrets."users/${username}" = {
-   sopsFile = ../../secrets.yml;
-   neededForUsers = true;
- };
+  sops.secrets."users/${username}" = {
+    sopsFile = ../../secrets.yml;
+    neededForUsers = true;
+  };
+
+  homeConfigurations = {
+
+      "${username}@${config.networking.hostName}" = lib.homeManagerConfiguration {
+          modules = [ ./home/eragon/vm1.nix ];
+          extraSpecialArgs = { inherit inputs outputs; };
+      };
+  };
 
   home-manager.users."${username}" = import ../../../../home/${username}/${config.networking.hostName}.nix;
 
