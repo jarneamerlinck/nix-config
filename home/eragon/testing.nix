@@ -4,7 +4,6 @@
     ./common
     ./features/cli/debugging.nix
     ./features/desktop/sway/minimalistic
-    ./features/music
     ./features/cyber
   ];
   wallpaper = pkgs.wallpapers.abstract-cubes;
