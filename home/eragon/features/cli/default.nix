@@ -1,22 +1,15 @@
 { pkgs, ... }: {
   imports = [
-    # ./bat.nix
     ./direnv.nix
     ./zsh.nix
     ./git.nix
-    # ./gpg.nix
     ./kitty.nix
     ./tmux.nix
     ./kubernetes.nix
     ./fetch.nix
-    # ./ranger.nix
-    # ./screen.nix
-    # ./shellcolor.nix
     ./ssh.nix
     ./docker.nix
     ./python.nix
-    # ./starship.nix
-    # ./xpo.nix
   ];
   home = {
     shellAliases = {
