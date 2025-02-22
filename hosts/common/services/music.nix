@@ -2,7 +2,7 @@
 
 {
   sops.secrets."music/env" = {
-    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
   # Containers

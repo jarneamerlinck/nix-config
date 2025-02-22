@@ -14,59 +14,47 @@
 
     # For the raid 10 as it's not supported by disko we need to add the other disks to the system after the installer is done
 
-    # ../common/disko/raid_btrfs.nix
-    ../common/optional/btrfs.nix
-    ../common/disko/boot_custom_nas.nix
+    ../common/disks/boot_custom_nas.nix
 
 
     # ../common/disko/boot_custom_nas.nix
 
     ../common/base
     ../common/users/eragon
-    ../common/optional/wd-decrypt.nix
+    ../common/disks/wd-decrypt.nix
 
     ## Display server
-    ../common/optional/xserver.nix
-    ../common/optional/wayland.nix
+    ../common/desktop/xserver.nix
+    ../common/desktop/wayland.nix
 
     ## Display Managers
-    ../common/optional/greetd.nix
-    # ../common/optional/sddm.nix
+    ../common/desktop/greetd.nix
 
 
     ## Desktop environments / Window Managers
-    # ../common/optional/gnome.nix
-    # ../common/optional/hyprland.nix
+    ../common/desktop/pipewire.nix
 
+    ## Services items
+    ../common/services/unattended-upgrades.nix
 
+    ../common/virtualization/docker
+    ../common/virtualization/qemu
+    ../common/virtualization/wine
 
-    ## Common items
-    # ../common/optional/auto-rebuild.nix
-    ../common/optional/unattended-upgrades.nix
+    ../common/services/cloudflare_tunnel.nix
+    ../common/services/homebox.nix
+    ../common/services/syncthing.nix
+    ../common/services/rss_feed.nix
+    ../common/services/portainer.nix
+    ../common/services/zabbix_server.nix
+    ../common/services/zabbix_client.nix
 
-    ../common/optional/pipewire.nix
-    ../common/optional/virtualization/docker.nix
-    ../common/optional/virtualization/qemu.nix
-    ../common/optional/virtualization/wine.nix
-
-    # ../common/optional/services/ddns.nix
-    ../common/optional/services/cloudflare_tunnel.nix
-    ../common/optional/services/homebox.nix
-    ../common/optional/services/syncthing.nix
-    ../common/optional/services/rss_feed.nix
-    ../common/optional/services/portainer.nix
-    ../common/optional/services/zabbix_server.nix
-    ../common/optional/services/zabbix_client.nix
-    # ../common/optional/services/zabbix_web.nix
-
-    ../common/optional/services/calibre.nix
-    ../common/optional/services/music.nix
-    # ../common/optional/services/recipes.nix
-    ../common/optional/services/photos.nix
-    # ../common/optional/services/drawio.nix
+    ../common/services/calibre.nix
+    ../common/services/music.nix
+    ../common/services/photos.nix
 
     # smart tools
-    ../common/optional/services/search.nix
+    ../common/services/search.nix
 
   ];
 
