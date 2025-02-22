@@ -9,14 +9,13 @@
 
     ./hardware-configuration.nix
 
-    ../common/optional/btrfs.nix
-    ../common/disko/boot_1d_btrfs.nix
+    ../common/disks/boot_1d_btrfs.nix
 
     ../common/base
     ../common/users/eragon
 
     # ../common/optional/wireless.nix
-    ../common/optional/wd-decrypt.nix
+    ../common/disks/wd-decrypt.nix
     ## Display server
     # ../common/optional/xserver.nix
     ../common/optional/wayland.nix

@@ -10,6 +10,10 @@
 
 
 {
+
+  imports = [
+    ./btrfs.nix
+  ];
   disko.devices = {
     disk = {
       # Boot disk 1

@@ -14,16 +14,14 @@
 
     # For the raid 10 as it's not supported by disko we need to add the other disks to the system after the installer is done
 
-    # ../common/disko/raid_btrfs.nix
-    ../common/optional/btrfs.nix
-    ../common/disko/boot_custom_nas.nix
+    ../common/disks/boot_custom_nas.nix
 
 
     # ../common/disko/boot_custom_nas.nix
 
     ../common/base
     ../common/users/eragon
-    ../common/optional/wd-decrypt.nix
+    ../common/disks/wd-decrypt.nix
 
     ## Display server
     ../common/optional/xserver.nix
