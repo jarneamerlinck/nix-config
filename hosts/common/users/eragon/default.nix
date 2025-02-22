@@ -42,7 +42,7 @@ in
     neededForUsers = true;
   };
 
-  homeConfigurations."${username}@${config.networking.hostName}" = lib.homeManagerConfiguration {
+  lib.homeConfigurations."${username}@${config.networking.hostName}" = lib.homeManagerConfiguration {
     modules = [ ../../../../home/${username}/${config.networking.hostName}.nix ];
     pkgs = pkgsFor."${config.nixpkgs.hostPlatform.system}";
     extraSpecialArgs = { inherit inputs outputs; };
