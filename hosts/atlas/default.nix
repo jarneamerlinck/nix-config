@@ -34,7 +34,6 @@
     ## Desktop environments / Window Managers
 
     ## Common items
-    # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
 
     ../common/desktop/pipewire.nix
