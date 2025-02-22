@@ -11,7 +11,7 @@
   virtualisation.oci-containers.backend = "docker";
 
   imports = [
-    ../services/docker-image-notifier.nix
+    ../../services/docker-image-notifier.nix
   ];
 
 }
