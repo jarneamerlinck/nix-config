@@ -14,36 +14,30 @@
     ../common/base
     ../common/users/eragon
 
-    # ../common/optional/wireless.nix
     ../common/disks/wd-decrypt.nix
+
     ## Display server
-    # ../common/optional/xserver.nix
-    ../common/optional/wayland.nix
-    ../common/optional/gtk.nix
+    ../common/desktop/wayland.nix
+    ../common/desktop/gtk.nix
 
     ## Display Managers
-    ../common/optional/greetd.nix
-    # ../common/optional/sddm.nix
+    ../common/desktop/greetd.nix
 
 
     ## Desktop environments / Window Managers
-    # ../common/optional/gnome.nix
-    # ../common/optional/hyprland.nix
-
-
 
     ## Common items
     # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
 
-    ../common/optional/pipewire.nix
+    ../common/desktop/pipewire.nix
     ../common/optional/virtualization/docker.nix
     ../common/optional/services/portainer.nix
     # ../common/optional/services/photos.nix
 
 
-    ../common/optional/mouse.nix
-    ../common/optional/wireshark.nix
+    ../common/desktop/mouse.nix
+    ../common/desktop/wireshark.nix
 
     ../common/optional/qemu-guest.nix
   ];

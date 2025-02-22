@@ -16,7 +16,6 @@
 
     ../common/optional/unattended-upgrades.nix
 
-    ../common/optional/pipewire.nix
     ../common/optional/virtualization/docker.nix
   ];
 

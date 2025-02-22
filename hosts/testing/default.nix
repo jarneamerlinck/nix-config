@@ -15,25 +15,19 @@
     ../common/users/eragon
 
     ## Display server
-    ../common/optional/wayland.nix
-    ../common/optional/gtk.nix
+    ../common/desktop/wayland.nix
+    ../common/desktop/gtk.nix
 
     ## Display Managers
-    ../common/optional/greetd.nix
-    # ../common/optional/sddm.nix
+    ../common/desktop/greetd.nix
 
 
     ## Desktop environments / Window Managers
-    # ../common/optional/gnome.nix
-    # ../common/optional/hyprland.nix
-
-
 
     ## Common items
-    # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
 
-    ../common/optional/pipewire.nix
+    ../common/desktop/pipewire.nix
     ../common/optional/virtualization/kubernetes/single_node.nix
 
     # ../common/optional/openlens.nix

@@ -24,25 +24,20 @@
     ../common/disks/wd-decrypt.nix
 
     ## Display server
-    ../common/optional/xserver.nix
-    ../common/optional/wayland.nix
+    ../common/desktop/xserver.nix
+    ../common/desktop/wayland.nix
 
     ## Display Managers
-    ../common/optional/greetd.nix
-    # ../common/optional/sddm.nix
+    ../common/desktop/greetd.nix
 
 
     ## Desktop environments / Window Managers
-    # ../common/optional/gnome.nix
-    # ../common/optional/hyprland.nix
-
-
 
     ## Common items
     # ../common/optional/auto-rebuild.nix
     ../common/optional/unattended-upgrades.nix
 
-    ../common/optional/pipewire.nix
+    ../common/desktop/pipewire.nix
     ../common/optional/virtualization/docker.nix
     ../common/optional/virtualization/qemu.nix
     ../common/optional/virtualization/wine.nix
