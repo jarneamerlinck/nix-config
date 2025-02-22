@@ -41,24 +41,24 @@
     ../common/optional/virtualization/qemu.nix
     ../common/optional/virtualization/wine.nix
 
-    # ../common/optional/services/ddns.nix
-    ../common/optional/services/cloudflare_tunnel.nix
-    ../common/optional/services/homebox.nix
-    ../common/optional/services/syncthing.nix
-    ../common/optional/services/rss_feed.nix
-    ../common/optional/services/portainer.nix
-    ../common/optional/services/zabbix_server.nix
-    ../common/optional/services/zabbix_client.nix
-    # ../common/optional/services/zabbix_web.nix
+    # ../common/services/ddns.nix
+    ../common/services/cloudflare_tunnel.nix
+    ../common/services/homebox.nix
+    ../common/services/syncthing.nix
+    ../common/services/rss_feed.nix
+    ../common/services/portainer.nix
+    ../common/services/zabbix_server.nix
+    ../common/services/zabbix_client.nix
+    # ../common/services/zabbix_web.nix
 
-    ../common/optional/services/calibre.nix
-    ../common/optional/services/music.nix
-    # ../common/optional/services/recipes.nix
-    ../common/optional/services/photos.nix
-    # ../common/optional/services/drawio.nix
+    ../common/services/calibre.nix
+    ../common/services/music.nix
+    # ../common/services/recipes.nix
+    ../common/services/photos.nix
+    # ../common/services/drawio.nix
 
     # smart tools
-    ../common/optional/services/search.nix
+    ../common/services/search.nix
 
   ];
 

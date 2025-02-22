@@ -31,8 +31,8 @@
 
     ../common/desktop/pipewire.nix
     ../common/optional/virtualization/docker.nix
-    ../common/optional/services/portainer.nix
-    # ../common/optional/services/photos.nix
+    ../common/services/portainer.nix
+    # ../common/services/photos.nix
 
 
     ../common/desktop/mouse.nix
