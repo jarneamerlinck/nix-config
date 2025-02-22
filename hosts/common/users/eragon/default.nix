@@ -4,7 +4,7 @@ let
   username = "eragon";
   lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
   systems = [ "x86_64-linux" "aarch64-linux" ];
-  pkgsFor = lib.genAttrs systems (system: import outputs.nixpkgs {
+  pkgsFor = lib.genAttrs systems (system: import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
   });
