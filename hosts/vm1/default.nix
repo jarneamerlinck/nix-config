@@ -25,20 +25,17 @@
 
 
     ## Desktop environments / Window Managers
+    ../common/desktop/mouse.nix
+    ../common/desktop/pipewire.nix
 
-    ## Common items
+    ## Services items
     ../common/services/unattended-upgrades.nix
 
-    ../common/desktop/pipewire.nix
-    ../common/optional/virtualization/docker.nix
+    ../common/virtualization/docker
     ../common/services/portainer.nix
-    # ../common/services/photos.nix
+    ../common/virtualization/qemu/qemu-guest.nix
 
-
-    ../common/desktop/mouse.nix
     ../common/desktop/wireshark.nix
-
-    ../common/optional/qemu-guest.nix
   ];
 
   networking = {

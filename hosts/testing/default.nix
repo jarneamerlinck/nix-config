@@ -23,15 +23,13 @@
 
 
     ## Desktop environments / Window Managers
-
-    ## Common items
-    ../common/services/unattended-upgrades.nix
-
     ../common/desktop/pipewire.nix
-    ../common/optional/virtualization/kubernetes/single_node.nix
 
-    # ../common/optional/openlens.nix
-    ../common/optional/qemu-guest.nix
+    ## Servies items
+    ../common/services/unattended-upgrades.nix
+    ../common/virtualization/kubernetes/single_node.nix
+
+    ../common/virtualization/qemu/qemu-guest.nix
   ];
 
   networking = {

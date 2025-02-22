@@ -14,7 +14,7 @@
     ../common/base
     ../common/users/eragon
 
-    ../common/optional/virtualization/docker.nix
+    ../common/virtualization/docker
   ];
 
   networking = {

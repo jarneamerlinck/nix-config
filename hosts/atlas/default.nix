@@ -32,16 +32,15 @@
 
 
     ## Desktop environments / Window Managers
+    ../common/desktop/pipewire.nix
 
-    ## Common items
+    ## Services items
     ../common/services/unattended-upgrades.nix
 
-    ../common/desktop/pipewire.nix
-    ../common/optional/virtualization/docker.nix
-    ../common/optional/virtualization/qemu.nix
-    ../common/optional/virtualization/wine.nix
+    ../common/virtualization/docker
+    ../common/virtualization/qemu
+    ../common/virtualization/wine
 
-    # ../common/services/ddns.nix
     ../common/services/cloudflare_tunnel.nix
     ../common/services/homebox.nix
     ../common/services/syncthing.nix
@@ -49,13 +48,10 @@
     ../common/services/portainer.nix
     ../common/services/zabbix_server.nix
     ../common/services/zabbix_client.nix
-    # ../common/services/zabbix_web.nix
 
     ../common/services/calibre.nix
     ../common/services/music.nix
-    # ../common/services/recipes.nix
     ../common/services/photos.nix
-    # ../common/services/drawio.nix
 
     # smart tools
     ../common/services/search.nix
