@@ -11,14 +11,14 @@
     neededForUsers = false;
   };
 
-  sops.secrets."secret-configs/sealed-secrets.yaml" = {
+  sops.secrets."kubernetes/sealed-secrets.yaml" = {
     sopsFile = ./secrets.yml;
     neededForUsers = false;
   };
 
-  # systemd.tmpfiles.rules = [
-  #   "L /var/lib/rancher/server/manifests/secret-tls-keys.yaml - - - - /run/secrets/sealed-secrets/file.yaml"
-  # ];
+  systemd.tmpfiles.rules = [
+    "L /var/lib/rancher/k3s/server/manifests/secret-tls-keys.yaml - - - - /run/secrets/kubernetes/sealed-secrets.yaml"
+  ];
 
   # systemd.services.k8s-sealed-secret-key = {
   #   description = "Deploy Sealed Secrets TLS Key to Kubernetes";
