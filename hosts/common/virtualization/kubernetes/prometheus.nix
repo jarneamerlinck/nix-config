@@ -37,7 +37,6 @@
                   tls:
                     - hosts:
                         - ${config.networking.hostName}.ko0.net
-                      secretName: haproxy-tls-secret
               namespaceOverride: monitoring
               kube-state-metrics.namespaceOverride: monitoring
               prometheus-node-exporter.namespaceOverride: monitoring
