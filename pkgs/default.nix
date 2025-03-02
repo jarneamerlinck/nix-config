@@ -4,7 +4,7 @@
   sddm-themes = pkgs.callPackage ./sddm-themes.nix { };
   grub-themes = pkgs.callPackage ./grub-themes.nix { };
   hyprslurp = pkgs.callPackage ./hyprslurp { };
-  openlens = pkgs.callPackage ./openlens.nix { };
+  lens = pkgs.callPackage ./lens.nix { };
 
   # Wallpapers
   wallpapers = import ./wallpapers {inherit pkgs;};

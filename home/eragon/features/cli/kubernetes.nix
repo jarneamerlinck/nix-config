@@ -5,7 +5,7 @@
     kubectl
     kubernetes-helm
     kubeseal
-    openlens.openlens
+    lens.freelens
 
   ];
 
