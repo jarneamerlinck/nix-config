@@ -5,8 +5,7 @@
   version = "1.0.0";
 
   src = fetchurl {
-    # url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage";
-    url = "https://github.com/freelensapp/freelens/releases/download/v1.0.0/Freelens-1.0.0-linux-amd64.AppImage";
+    url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage";
     sha256 = "sha256-Ic7Algr+8ZNNMp5WsaxbGhylkTwjpT/GABRnly4ghmw=";
   };
 
@@ -19,7 +18,8 @@
 
   installPhase = ''
     mkdir -p $out/bin
-    install -m 755 ${src} $out/bin/freelens.AppImage
+    # install -m 755 ${src} $out/bin/freelens.AppImage
+    cp ${src} $out/bin/freelens.AppImage
 
     # Wrapper script to run the AppImage
     cat > $out/bin/freelens <<EOF
