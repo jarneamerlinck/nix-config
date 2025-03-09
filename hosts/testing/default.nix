@@ -28,7 +28,6 @@
     ## Services items
     ../common/services/unattended-upgrades.nix
     ../common/virtualization/kubernetes/single_node.nix
-    ../common/desktop/lens.nix
 
     ../common/virtualization/qemu/qemu-guest.nix
   ];
