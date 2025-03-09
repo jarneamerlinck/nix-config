@@ -1,27 +1,21 @@
-
 {
   lib,
   appimageTools,
   fetchurl,
+  pkgs,
 }:
 let
-  pversion = "1.0.0";
-  pname = "freelens";
-
-  # src = fetchurl {
-  #   url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage";
-  #   hash = "sha256-Ic7Algr+8ZNNMp5WsaxbGhylkTwjpT/GABRnly4ghmw=";
-  # };
-
-  # appimageContents = appimageTools.extractType1 { inherit pname src; };
+  pkgVersion = "1.0.0";
+  pkgName = "freelens";
+  pkgRepo = "https://github.com/freelensapp/freelens";
+  
 in
-
   {
   freelens = appimageTools.wrapType2 rec {
-    name= "${pname}"; 
-    version = "${pversion}";
+    name= "${pkgName}"; 
+    version = "${pkgVersion}";
     src = fetchurl {
-      url = "https://github.com/freelensapp/freelens/releases/download/v${pversion}/Freelens-${pversion}-linux-amd64.AppImage";
+      url = "${pkgRepo}/releases/download/v${pkgVersion}/Freelens-${pkgVersion}-linux-amd64.AppImage";
       hash = "sha256-Ic7Algr+8ZNNMp5WsaxbGhylkTwjpT/GABRnly4ghmw=";
     };
 
@@ -34,30 +28,27 @@ in
       mkdir -p $out/share/applications
       cat > $out/share/applications/freelens.desktop <<EOF
       [Desktop Entry]
-      Name=Freelens
+      Name=${pkgName}
       Comment=Free and open-source Kubernetes IDE
-      Exec=${pname}
-      Icon=freelens
+      Exec=${pkgName}
+      Icon=${pkgName}
       Terminal=false
       Type=Application
       Categories=Development;Kubernetes;
       EOF
 
-
       mkdir -p $out/share/icons/hicolor/scalable/apps
-      install -m 644 ${icon} $out/share/icons/hicolor/scalable/apps/freelens.png 
+      install -m 644 ${icon} $out/share/icons/hicolor/scalable/apps/${pkgName}.png 
     '';
 
-
-  
-    meta = {
+    meta = with pkgs.lib; {
       description = "Free and open-source Kubernetes IDE";
-      homepage = "https://github.com/freelensapp/freelens";
-      downloadPage = "https://github.com/freelensapp/freelens/releases";
-      # license = lib.licenses.asl20;
+      homepage = "${pkgRepo}";
+      downloadPage = "${pkgRepo}/releases";
+      license = licenses.mit;
       sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-      # maintainers = with lib.maintainers; [ onny ];
-      platforms = [ "x86_64-linux" ];
+      maintainers = with lib.maintainers; [ ];
+      platforms = platforms.linux;
     };
   };
 }
