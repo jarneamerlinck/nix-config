@@ -24,10 +24,22 @@ in
         url = "https://github.com/freelensapp/freelens/releases/download/v${pversion}/Freelens-${pversion}-linux-amd64.AppImage";
         hash = "sha256-Ic7Algr+8ZNNMp5WsaxbGhylkTwjpT/GABRnly4ghmw=";
       };
-      # extraInstallCommands = ''
-      #   substituteInPlace $out/share/applications/${pname}.desktop \
-      #     --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
-      # '';
+      extraInstallCommands = ''
+
+        mkdir -p $out/share/applications
+        cat > $out/share/applications/freelens.desktop <<EOF
+        [Desktop Entry]
+        Name=Freelens
+        Comment=Free and open-source Kubernetes IDE
+        Exec=${pname}
+        Icon=freelens
+        Terminal=false
+        Type=Application
+        Categories=Development;Kubernetes;
+        EOF
+      '';
+
+
   
       meta = {
         description = "Free and open-source Kubernetes IDE";
