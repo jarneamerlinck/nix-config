@@ -5,14 +5,7 @@
     kubectl
     kubernetes-helm
     kubeseal
-    lens.freelens
-
   ];
-
-  #TODO: Add openLens as package, with extentions
-
-
-
 
   home.sessionVariables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";

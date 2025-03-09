@@ -5,7 +5,6 @@
     ./git.nix
     ./kitty.nix
     ./tmux.nix
-    ./kubernetes.nix
     ./fetch.nix
     ./ssh.nix
     ./docker.nix

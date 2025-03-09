@@ -5,6 +5,7 @@
     ./features/cli/debugging.nix
     ./features/desktop/sway/minimalistic
     ./features/cyber
+    ./features/desktop/applications/lens.nix
   ];
   wallpaper = pkgs.wallpapers.abstract-cubes;
 
