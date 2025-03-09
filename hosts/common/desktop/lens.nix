@@ -2,7 +2,7 @@
 {
 
   environment.systemPackages = with pkgs; [
-    openlens.openlens
+    lens.freelens
   ];
 }
 
