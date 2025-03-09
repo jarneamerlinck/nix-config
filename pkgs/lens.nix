@@ -1,57 +1,59 @@
-{ stdenv, fetchFromGitHub, nodejs, yarn, makeWrapper, electron, gcc, jq, curl, patchelf, pkgs }:
+{ stdenv, fetchurl, appimage-run, curl, pkgs }:
 {
-  freelens = pkgs.stdenv.mkDerivation rec {
+  freelens = stdenv.mkDerivation rec {
+  pname = "freelens";
+  version = "1.0.0";
 
-    pname = "freelens";
-    version = "1.0.0";
+  src = fetchurl {
+    url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage";
+    sha256 = "sha256-Ic7Algr+8ZNNMp5WsaxbGhylkTwjpT/GABRnly4ghmw=";
+  };
 
-    src = builtins.fetchurl {
-      url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage";
-      sha256 = "sha256-Ic7Algr+8ZNNMp5WsaxbGhylkTwjpT/GABRnly4ghmw=";
-    };
-    icon = pkgs.fetchurl {
-      url = "https://avatars.githubusercontent.com/u/172038998";
-      sha256 = "sha256-ayIriBfFiPCCpP059ieqG/1v+97e5aLYfAkOpC8PowM="; # Replace with actual hash
-    };
-    dontUnpack = true;
+  icon = fetchurl {
+    url = "https://avatars.githubusercontent.com/u/172038998";
+    sha256 = "sha256-ayIriBfFiPCCpP059ieqG/1v+97e5aLYfAkOpC8PowM=";
+  };
 
-    installPhase = ''
-      mkdir -p $out/bin
+  dontUnpack = true;
 
-      curl -L -o $out/bin/freelens.AppImage https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage
+  installPhase = ''
+    mkdir -p $out/bin
+    install -m 755 ${src} $out/bin/freelens.AppImage
 
-      cat > $out/bin/freelens <<EOF
-      #!/bin/sh
-      exec ${pkgs.appimage-run}/bin/appimage-run $out/bin/freelens.AppImage
-      EOF
-      chmod +x $out/bin/freelens
+    # Wrapper script to run the AppImage
+    cat > $out/bin/freelens <<EOF
+    #!/bin/sh
+    exec ${appimage-run}/bin/appimage-run $out/bin/freelens.AppImage
+    EOF
+    chmod +x $out/bin/freelens
 
-      # Create desktop entry
-      mkdir -p $out/share/applications
-      cat > $out/share/applications/freelens.desktop <<EOF
-      [Desktop Entry]
-      Name=Freelens
-      Comment=Free and open-source kubernetes IDE
-      Exec="$out/bin/freelens"
-      Icon=freelens
-      Terminal=false
-      Type=Application
-      Categories=coding;kubernetes;
-      EOF
+    # Install icon
+    mkdir -p $out/share/icons/hicolor/scalable/apps
+    install -m 644 ${icon} $out/share/icons/hicolor/scalable/apps/freelens.png 
 
-      mkdir -p $out/share/icons/hicolor/scalable/apps
-      install -m 644 ${icon} $out/share/icons/hicolor/scalable/apps/freelens.png 
- 
-    '';
+    # Create desktop entry
+    mkdir -p $out/share/applications
+    cat > $out/share/applications/freelens.desktop <<EOF
+    [Desktop Entry]
+    Name=Freelens
+    Comment=Free and open-source Kubernetes IDE
+    Exec=$out/bin/freelens
+    Icon=freelens
+    Terminal=false
+    Type=Application
+    Categories=Development;Kubernetes;
+    EOF
+  '';
 
-    nativeBuildInputs = [ pkgs.appimage-run pkgs.curl ];
+  nativeBuildInputs = [ curl ];
+  propagatedBuildInputs = [ appimage-run ]; # Needed at runtime
 
-    meta = with pkgs.lib; {
-      description = "Free and open-source photography workflow application";
-      homepage = "https://github.com/freelensapp/freelens";
-      license = licenses.mit;
-      platforms = platforms.linux;
-    };
+  meta = with pkgs.lib; {
+    description = "Free and open-source Kubernetes IDE";
+    homepage = "https://github.com/freelensapp/freelens";
+    license = licenses.mit;
+    platforms = platforms.linux;
+    maintainers = with maintainers; [ ];
+  };
   };
 }
-
