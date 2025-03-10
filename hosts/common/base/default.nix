@@ -18,6 +18,7 @@
     ./mount_points.nix
     ./sops.nix
     ./hardware-packages.nix
+    ./security.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
