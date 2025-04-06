@@ -24,8 +24,8 @@
       10251  # kube-scheduler
       10252  # kube-controller-manager
     ];
-    allowedUDPPorts = [
-      8472  # Flannel VXLAN (if using Flannel CNI)
-    ];
+    # allowedUDPPorts = [
+    #   8472  # Flannel VXLAN (if using Flannel CNI)
+    # ];
   };
 }
