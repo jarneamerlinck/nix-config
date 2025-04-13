@@ -3,7 +3,7 @@
 {
   imports = [
     ./prometheus.nix
-    ./secrets.nix
+    # ./secrets.nix
     ./certs.nix
     ./storage.nix
   ];
