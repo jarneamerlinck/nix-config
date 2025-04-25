@@ -16,7 +16,7 @@
   # Containers
 
   virtualisation.oci-containers.containers."photos-photoprism" = {
-    image = "photoprism/photoprism:240915";
+    image = "photoprism/photoprism:250425";
     environmentFiles = [
       "/run/secrets-for-users/photos/env"
     ];
