@@ -12,7 +12,6 @@
 
   imports = [
     ../services/traefik.nix
-    ../services/docker-image-notifier.nix
   ];
 
 }
