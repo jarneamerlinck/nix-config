@@ -111,13 +111,14 @@
             namespace = "certs";
           };
           spec = {
-            secretName = "haproxy-tls-secret";
+            secretName = "cloudflare-api-token-secret";
             issuerRef = {
               name =  "letsencrypt-cloudflare";
               kind = "ClusterIssuer";
             };
             dnsNames = [
               "*.ko0.net"
+              "*.85311442.xyz"
             ];
           };
         }
