@@ -52,11 +52,10 @@ in
                   stats: 1024
                 allowPrivilegedPorts: true
                 ssl:
-                  certificates:
-                    - name: haproxy-cert
-                      secret:
-                        name: ${tls-secret-name}
-                        namespace: certs
+                  defaultCertificate:
+                    secret:
+                      name: ${tls-secret-name}
+                      namespace: certs
             '';
           };
         }
