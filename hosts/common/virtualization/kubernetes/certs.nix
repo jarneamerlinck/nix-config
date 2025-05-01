@@ -43,6 +43,12 @@
                   https: 443
                   stats: 1024
                 allowPrivilegedPorts: true
+                ssl:
+                  certificates:
+                    - name: haproxy-cert
+                      secret:
+                        name: haproxy-cert
+                        namespace: certs
             '';
           };
         }
@@ -111,7 +117,7 @@
             namespace = "certs";
           };
           spec = {
-            secretName = "cloudflare-api-token-secret";
+            secretName = "letsencrypt-cloudflare";
             issuerRef = {
               name =  "letsencrypt-cloudflare";
               kind = "ClusterIssuer";

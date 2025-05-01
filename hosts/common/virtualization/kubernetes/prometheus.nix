@@ -36,7 +36,7 @@
                     cert-manager.io/cluster-issuer: "letsencrypt-cloudflare"
                   tls:
                     - hosts:
-                        - ${config.networking.hostName}.ko0.net
+                        - '*.ko0.net'
               namespaceOverride: monitoring
               kube-state-metrics.namespaceOverride: monitoring
               prometheus-node-exporter.namespaceOverride: monitoring
