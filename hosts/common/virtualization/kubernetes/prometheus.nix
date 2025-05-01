@@ -30,7 +30,7 @@
                 enabled: true
                 namespaceOverride: monitoring
                 ingress:
-                  enabled: true
+                  enabled: false
                   hosts: [${config.networking.hostName}.ko0.net]
                   annotations:
                     cert-manager.io/cluster-issuer: "letsencrypt-cloudflare"
