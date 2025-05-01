@@ -1,4 +1,12 @@
 { lib, ... }:
+let
+  tls-cert-name = "letsencrypt-tls-cert";
+  tls-secret-name = "letsencrypt-tls-secret";
+  cloudflare-api-secret-name = "cloudflare-api-token-secret";
+  cloudflare-api-secret-key = "api-token";
+
+in
+
 {
 
   sops.secrets."kubernetes/cloudflare-api-token.yaml" = {
@@ -47,7 +55,7 @@
                   certificates:
                     - name: haproxy-cert
                       secret:
-                        name: haproxy-cert
+                        name: ${tls-secret-name}
                         namespace: certs
             '';
           };
@@ -85,7 +93,7 @@
           kind = "ClusterIssuer";
 
           metadata = {
-            name =  "letsencrypt-cloudflare";
+            name =  "${tls-cert-name}";
             namespace = "certs";
           };
           spec = {
@@ -97,8 +105,8 @@
                 {
                   dns01 = {
                     cloudflare.apiTokenSecretRef = {
-                      name = "cloudflare-api-token-secret";
-                      key =  "api-token";
+                      name = "${cloudflare-api-secret-name}";
+                      key =  "${cloudflare-api-secret-key}";
                     };
                   };
                 }
@@ -113,13 +121,13 @@
           kind = "Certificate";
 
           metadata = {
-            name =  "haproxy-tls";
+            name =  "haproxy-certificate";
             namespace = "certs";
           };
           spec = {
-            secretName = "letsencrypt-cloudflare";
+            secretName = "${tls-secret-name}";
             issuerRef = {
-              name =  "letsencrypt-cloudflare";
+              name =  "${tls-cert-name}";
               kind = "ClusterIssuer";
             };
             dnsNames = [
