@@ -1,42 +1,23 @@
 # Auto-generated using compose2nix v0.2.3-pre.
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
 
   # Containers
   virtualisation.oci-containers.containers."portainer" = {
-    image = "portainer/portainer-ce:2.27.5";
+    image = "portainer/portainer-ce:2.21.1";
     volumes = [
       "/var/run/docker.sock:/var/run/docker.sock:rw"
       "portainer_portainer_data:/data:rw"
     ];
-
-    labels = {
-      "traefik.enable" = "true";
-      "traefik.http.routers.portainer-rtr.entrypoints" = "https";
-      "traefik.http.routers.portainer-rtr.rule" = "Host(`portainer.${config.networking.hostName}.ko0.net`)";
-      "traefik.http.routers.portainer-rtr.service" = "portainer-svc";
-      "traefik.http.routers.portainer-rtr.tls" = "true";
-      "traefik.http.routers.portainer-rtr.tls.certresolver" = "cloudflare";
-      "traefik.http.services.portainer-svc.loadbalancer.server.port" = "9000";
-
-
-      # Edge
-      "traefik.http.routers.portainer-backbone-rtr.entrypoints" = "https";
-      "traefik.http.routers.portainer-backbone-rtr.rule" = "Host(`portainer_backbone.${config.networking.hostName}.ko0.net`)";
-      "traefik.http.routers.portainer-backbone-rtr.service" = "portainer-backbone-svc";
-      "traefik.http.routers.portainer-backbone-rtr.tls" = "true";
-      "traefik.http.routers.portainer-backbone-rtr.tls.certresolver" = "cloudflare";
-      "traefik.http.services.portainer-backbone-svc.loadbalancer.server.port" = "8000";
-    };
-    # ports = [
-    #   "8000:8000/tcp"
-    #   "9443:9443/tcp"
-    # ];
+    ports = [
+      "8000:8000/tcp"
+      "9443:9443/tcp"
+    ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=frontend"
-      "--network=frontend"
+      "--network-alias=portainer"
+      "--network=portainer_default"
     ];
   };
   systemd.services."docker-portainer" = {
@@ -47,9 +28,11 @@
       RestartSteps = lib.mkOverride 500 9;
     };
     after = [
+      "docker-network-portainer_default.service"
       "docker-volume-portainer_portainer_data.service"
     ];
     requires = [
+      "docker-network-portainer_default.service"
       "docker-volume-portainer_portainer_data.service"
     ];
     partOf = [
@@ -58,6 +41,21 @@
     wantedBy = [
       "docker-compose-portainer-root.target"
     ];
+  };
+
+  # Networks
+  systemd.services."docker-network-portainer_default" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f portainer_default";
+    };
+    script = ''
+      docker network inspect portainer_default || docker network create portainer_default
+    '';
+    partOf = [ "docker-compose-portainer-root.target" ];
+    wantedBy = [ "docker-compose-portainer-root.target" ];
   };
 
   # Volumes
