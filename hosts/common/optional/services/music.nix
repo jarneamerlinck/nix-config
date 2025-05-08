@@ -14,7 +14,7 @@
     ];
     volumes = [
       "/data/docker/navidrome/:/data:rw"
-      "/data/sync/Music/:/music:ro"
+      "/data/docker/downloader/storage/media/music/:/music:ro"
     ];
     labels = {
       "traefik.enable" = "true";
