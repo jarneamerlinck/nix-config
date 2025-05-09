@@ -69,13 +69,13 @@ chmod 600 "./ssh_host_ed25519_key"
 4. Test configuration (to catch mistakes before pushing to host)
 
 ```bash
-nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
+nix run github:nix-community/nixos-anywhere/97b45ac -- --flake .#vm1 --vm-test
 ```
 
 5. Run the install commando from an other device with nix (change Ip and hostname)
 
 ```bash
-nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
+nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$temp" --flake .#vm1 nixos@ip
 ```
 
 (without extra temp files)
