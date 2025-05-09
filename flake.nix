@@ -118,8 +118,7 @@
             ./hosts/banshee
             disko.nixosModules.disko
             {
-              disko.devices.disk.boot.device = "/dev/mmcblk0";
-              disko.devices.disk.data.device = "/dev/nvme0n1";
+              disko.devices.disk.boot_disk.device = "/dev/nvme0n1";
             }
           ];
           specialArgs = { inherit inputs outputs; };

@@ -6,7 +6,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
-    ../common/disks/boot_1d_btrfs_data.nix
+    ../common/disks/boot_1d_btrfs.nix
 
     ../common/base
     ../common/users/eragon
