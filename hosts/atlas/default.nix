@@ -46,8 +46,7 @@
     ../common/services/syncthing.nix
     ../common/services/rss_feed.nix
     ../common/services/portainer.nix
-    ../common/services/zabbix_server.nix
-    ../common/services/zabbix_client.nix
+
 
     ../common/services/calibre.nix
     ../common/services/music.nix

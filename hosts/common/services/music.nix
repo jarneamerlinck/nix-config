@@ -7,14 +7,14 @@
   };
   # Containers
   virtualisation.oci-containers.containers."music-navidrome" = {
-    image = "deluan/navidrome:0.53.3";
+    image = "deluan/navidrome:0.55.2";
 
     environmentFiles = [
       "/run/secrets-for-users/music/env"
     ];
     volumes = [
       "/data/docker/navidrome/:/data:rw"
-      "/data/sync/Music/:/music:ro"
+      "/data/docker/downloader/storage/media/music/:/music:ro"
     ];
     labels = {
       "traefik.enable" = "true";
