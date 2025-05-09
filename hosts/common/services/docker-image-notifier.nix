@@ -2,7 +2,7 @@
 
 {
   sops.secrets."docker-notifier/env" = {
-    sopsFile = ../../../common/secrets.yml;
+    sopsFile = ../../common/secrets.yml;
     neededForUsers = true;
   };
   # Containers

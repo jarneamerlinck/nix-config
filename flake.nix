@@ -116,28 +116,5 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # VM
-      "eragon@vm1" = lib.homeManagerConfiguration {
-          modules = [ ./home/eragon/vm1.nix ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-      };
-      "eragon@testing" = lib.homeManagerConfiguration {
-          modules = [ ./home/eragon/testing.nix ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-      };
-      "eragon@ash" = lib.homeManagerConfiguration {
-          modules = [ ./home/eragon/ash.nix ];
-          pkgs = pkgsFor.aarch64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-      };
-      "eragon@atlas" = lib.homeManagerConfiguration {
-          modules = [ ./home/eragon/atlas.nix ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-      };
-    };
   };
 }

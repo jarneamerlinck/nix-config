@@ -9,16 +9,12 @@
 
     ./hardware-configuration.nix
 
-    ../common/optional/btrfs.nix
-    ../common/disko/boot_1d_btrfs.nix
+    ../common/disks/boot_1d_btrfs.nix
 
     ../common/base
     ../common/users/eragon
 
-    ../common/optional/unattended-upgrades.nix
-
-    ../common/optional/pipewire.nix
-    ../common/optional/virtualization/docker.nix
+    ../common/virtualization/docker
   ];
 
   networking = {

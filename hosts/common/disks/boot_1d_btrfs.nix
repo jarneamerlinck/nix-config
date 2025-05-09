@@ -2,6 +2,12 @@
 # Example to create a bios compatible gpt partition
 { lib, ... }:
 {
+
+  imports = [
+    ./btrfs.nix
+  ];
+
+
   disko.devices = {
     disk = {
       boot_disk = {

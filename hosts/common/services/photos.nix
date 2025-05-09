@@ -4,12 +4,12 @@
 {
 
   sops.secrets."photos/env" = {
-    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 
   sops.secrets."photos/db" = {
-    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 

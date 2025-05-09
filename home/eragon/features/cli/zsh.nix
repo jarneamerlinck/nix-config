@@ -33,6 +33,8 @@
   home.shellAliases = {
       de="fzf-docker-exec";
       dl="fzf-docker-live-log";
+      kn="fzf-kube-namespace";
+      kc="fzf-kube-context";
       # dfl="fzf-docker-full-log";
       # dll="fzf-docker-live-log";
       gl="fzf-git-log";

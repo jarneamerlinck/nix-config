@@ -9,35 +9,27 @@
 
     ./hardware-configuration.nix
 
-    ../common/optional/btrfs.nix
-    ../common/disko/boot_1d_btrfs.nix
+    ../common/disks/boot_1d_btrfs.nix
 
     ../common/base
     ../common/users/eragon
 
     ## Display server
-    ../common/optional/wayland.nix
-    ../common/optional/gtk.nix
+    ../common/desktop/wayland.nix
+    ../common/desktop/gtk.nix
 
     ## Display Managers
-    ../common/optional/greetd.nix
-    # ../common/optional/sddm.nix
+    ../common/desktop/greetd.nix
 
 
     ## Desktop environments / Window Managers
-    # ../common/optional/gnome.nix
-    # ../common/optional/hyprland.nix
+    ../common/desktop/pipewire.nix
 
+    ## Services items
+    ../common/services/unattended-upgrades.nix
+    ../common/virtualization/kubernetes/single_node.nix
 
-
-    ## Common items
-    # ../common/optional/auto-rebuild.nix
-    ../common/optional/unattended-upgrades.nix
-
-    ../common/optional/pipewire.nix
-    ../common/optional/virtualization
-
-    ../common/optional/qemu-guest.nix
+    ../common/virtualization/qemu/qemu-guest.nix
   ];
 
   networking = {

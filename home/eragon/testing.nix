@@ -3,13 +3,14 @@
   imports = [
     ./common
     ./features/cli/debugging.nix
+    ./features/cli/kubernetes.nix
     ./features/desktop/sway/minimalistic
-    ./features/music
     ./features/cyber
+    ./features/desktop/applications/lens.nix
   ];
-  wallpaper = pkgs.wallpapers.nixos-logo;
+  wallpaper = pkgs.wallpapers.abstract-cubes;
 
-  colorScheme = inputs.nix-colors.colorSchemes.brewer;
+  colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
 
   monitors = [{
     name = "eDP-1";

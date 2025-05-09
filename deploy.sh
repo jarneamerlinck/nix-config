@@ -14,6 +14,5 @@ fi
 for host in ${hosts//,/ }; do
     # nixos-rebuild --flake .\#$host switch --target-host $host --use-remote-sudo --use-substitutes $@
     nh os switch -H $host
-    nh home switch -c $USER@$host
 
 done

@@ -109,3 +109,34 @@ function fzf-git-files-updated(){
 	  --prompt="get updated git files: "
 
 }
+
+function fzf-kube-namespace() {
+	NAMESPACE=$(kubectl get namespaces --no-headers | awk '{print $1}' | fzf \
+	  --no-sort \
+	  --preview-window down:10% \
+	  --cycle \
+	  --color bg:#222222,preview-bg:#333333 \
+	  --layout='reverse-list' \
+	  --prompt="Select namespace: ")
+
+	if [ ! -z "$NAMESPACE" ]; then
+		kubectl config set-context --current --namespace="$NAMESPACE"
+		echo "Switched to namespace: $NAMESPACE"
+	fi
+}
+
+function fzf-kube-context() {
+	CONTEXT=$(kubectl config get-contexts --no-headers | awk '{print $1}' | fzf \
+	  --no-sort \
+	  --preview-window down:10% \
+	  --cycle \
+	  --color bg:#222222,preview-bg:#333333 \
+	  --layout='reverse-list' \
+	  --prompt="Select context: ")
+
+	if [ ! -z "$CONTEXT" ]; then
+		kubectl config use-context "$CONTEXT"
+		echo "Switched to context: $CONTEXT"
+	fi
+}
+
