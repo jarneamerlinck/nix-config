@@ -29,6 +29,11 @@ creation_rules:
       - *eragon
       - *atlas
 
+  - path_regex: hosts/banshee/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *banshee
 
   - path_regex: hosts/testing/secrets.ya?ml$
     key_groups:
