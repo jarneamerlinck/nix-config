@@ -27,6 +27,8 @@ Don't forget to add the user to the needed files inside of this file.
 
 Run the command `./docs/reencrypt_sops.sh` from the root of the repo
 
+> This step is very imporant. If on a new host you get the message key is not accepted to decrypt `/nix/store/**-secrets.yml`, validate that file can be opend with the user run this file and rebuild on the host.
+
 5. Once the host has been deployed add the key to the users folder under
     `~/.config/sops/age/`
 

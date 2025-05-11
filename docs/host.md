@@ -101,7 +101,7 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
 
 6. Test ssh connection to new host
 
-7. Copy the user specific ssh keys for sops to the user
+7. Copy the age key to the user dir for sops
 
 see [sops](./sops.md#new-device-user)
 
