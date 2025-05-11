@@ -48,11 +48,6 @@
                     mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
-
-                  "/data" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
-                    mountpoint = "/data";
-                  };
                 };
               };
             };
