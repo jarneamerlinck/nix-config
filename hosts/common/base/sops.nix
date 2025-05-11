@@ -17,6 +17,5 @@ in {
 
   sops = {
     age.sshKeyPaths = map getKeyPath keys;
-    age.keyFile = "/etc/ssh/ssh_host_ed25519_key";
   };
 }
