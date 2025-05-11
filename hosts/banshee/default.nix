@@ -15,7 +15,6 @@
     ## Services items
     ../common/services/unattended-upgrades.nix
     ../common/virtualization/docker
-    ../common/services/cloudflare_tunnel.nix
 
   ];
 
