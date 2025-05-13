@@ -8,7 +8,7 @@
     image = "portainer/portainer-ce:2.27.5";
     volumes = [
       "/var/run/docker.sock:/var/run/docker.sock:rw"
-      "portainer_portainer_data:/data:rw"
+      "/data/docker/portainer:/data:rw"
     ];
 
     labels = {
@@ -47,10 +47,8 @@
       RestartSteps = lib.mkOverride 500 9;
     };
     after = [
-      "docker-volume-portainer_portainer_data.service"
     ];
     requires = [
-      "docker-volume-portainer_portainer_data.service"
     ];
     partOf = [
       "docker-compose-portainer-root.target"
@@ -60,19 +58,6 @@
     ];
   };
 
-  # Volumes
-  systemd.services."docker-volume-portainer_portainer_data" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      docker volume inspect portainer_portainer_data || docker volume create portainer_portainer_data
-    '';
-    partOf = [ "docker-compose-portainer-root.target" ];
-    wantedBy = [ "docker-compose-portainer-root.target" ];
-  };
 
   # Root service
   # When started, this will automatically create all resources and start
