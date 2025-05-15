@@ -46,6 +46,14 @@ creation_rules:
       - *vm1
       - *banshee
 
+  - path_regex: hosts/common/virtualization/kubernetes/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *testing
+
+
+
   - path_regex: hosts/common/users/eragon/secrets.ya?ml$
     key_groups:
     - age:

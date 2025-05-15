@@ -1,22 +1,14 @@
 { pkgs, ... }: {
   imports = [
-    # ./bat.nix
     ./direnv.nix
     ./zsh.nix
     ./git.nix
-    # ./gpg.nix
     ./kitty.nix
     ./tmux.nix
-    # ./lyrics.nix
     ./fetch.nix
-    # ./ranger.nix
-    # ./screen.nix
-    # ./shellcolor.nix
     ./ssh.nix
     ./docker.nix
     ./python.nix
-    # ./starship.nix
-    # ./xpo.nix
   ];
   home = {
     shellAliases = {
@@ -24,9 +16,6 @@
       rebuild="cd ~/nix-config && git stash &&  git pull && ./deploy.sh";
       rebuildf="cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
       rebuildl="cd ~/nix-config &&  ./deploy.sh";
-      homef="cd ~/nix-config && git stash && git pull -f && nh home switch -c $USER@$HOST";
-      homel="cd ~/nix-config &&  nh home switch -c $USER@$HOST";
-      homen="cd ~/nix-config &&  home-manager --flake .#$USER@$HOST news";
     };
 
     sessionVariables = {

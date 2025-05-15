@@ -2,7 +2,7 @@
 
 {
   sops.secrets."music/env" = {
-    sopsFile = ../../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
   # Containers
@@ -14,7 +14,7 @@
     ];
     volumes = [
       "/data/docker/navidrome/:/data:rw"
-      "/data/sync/Music/:/music:ro"
+      "/data/docker/downloader/storage/media/music/:/music:ro"
     ];
     labels = {
       "traefik.enable" = "true";
