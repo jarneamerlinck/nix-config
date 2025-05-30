@@ -23,7 +23,7 @@
 
       # Edge
       "traefik.http.routers.portainer-backbone-rtr.entrypoints" = "https";
-      "traefik.http.routers.portainer-backbone-rtr.rule" = "Host(`portainer_backbone.${config.networking.hostName}.ko0.net`)";
+      "traefik.http.routers.portainer-backbone-rtr.rule" = "Host(`portainer-backbone.${config.networking.hostName}.ko0.net`)";
       "traefik.http.routers.portainer-backbone-rtr.service" = "portainer-backbone-svc";
       "traefik.http.routers.portainer-backbone-rtr.tls" = "true";
       "traefik.http.routers.portainer-backbone-rtr.tls.certresolver" = "cloudflare";
