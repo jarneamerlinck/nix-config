@@ -16,7 +16,18 @@
 
     3. Set the correct permissions for the host
 
-    4. [sops new host](./sops.md#new-host)
+        Private key: 600
+        Public key: 644
+
+        ```bash
+        chmod 600 ssh_host_ed25519_key
+        chmod 644 ssh_host_ed25519_key.pub
+        ```
+
+    4. add the `ssh_host_ed25519_key.pub` in `hosts/{hostname}/ssh_host_ed25519_key.pub`
+
+
+    5. [sops new host](./sops.md#new-host)
 
 2. Copy the harware config and adjust
 
@@ -35,6 +46,7 @@ traefik:
         CF_API_EMAIL=email
         CF_DNS_API_TOKEN=token
 ```
+
 
 ## Installation with minimal iso and nixos-anywhere
 
@@ -69,13 +81,16 @@ chmod 600 "./ssh_host_ed25519_key"
 4. Test configuration (to catch mistakes before pushing to host)
 
 ```bash
-nix run github:nix-community/nixos-anywhere -- --flake .#vm1 --vm-test
+nix run github:nix-community/nixos-anywhere/97b45ac -- --flake .#vm1 --vm-test
 ```
 
 5. Run the install commando from an other device with nix (change Ip and hostname)
 
+The `ls $temp` is to validate the `$temp` has been set correctly. You should see the `etc` directory
+
 ```bash
-nix run github:nix-community/nixos-anywhere -- --extra-files "$temp" --flake .#vm1 nixos@ip
+ls $temp
+nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$temp" --flake .#vm1 nixos@ip
 ```
 
 (without extra temp files)
@@ -86,7 +101,7 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vm1 nixos@ip
 
 6. Test ssh connection to new host
 
-7. Copy the user specific ssh keys for sops to the user
+7. Copy the age key to the user dir for sops
 
 see [sops](./sops.md#new-device-user)
 

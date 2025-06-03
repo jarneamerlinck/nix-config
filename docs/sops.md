@@ -23,7 +23,13 @@ and added it to the host machine
 
 Don't forget to add the user to the needed files inside of this file.
 
-4. Once the host has been deployed add the key to the users folder under
+4. Reapply the `.sops.yaml`
+
+Run the command `./docs/reencrypt_sops.sh` from the root of the repo
+
+> This step is very imporant. If on a new host you get the message key is not accepted to decrypt `/nix/store/**-secrets.yml`, validate that file can be opend with the user run this file and rebuild on the host.
+
+5. Once the host has been deployed add the key to the users folder under
     `~/.config/sops/age/`
 
 
@@ -53,5 +59,12 @@ Running those 2 commands will do 2 things:
 2. Print out the public key (similar to line below)
     `age1aykttttttttttttttttttttttttttttttttttttttttttttttttttttttt`
 
+## New device user
 
+Run the following commands for the new user on a device.
 
+```bash
+mkdir -p ~/.config/sops/age
+```
+
+then copy the `age.txt` file to that directory

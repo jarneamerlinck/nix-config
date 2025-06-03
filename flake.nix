@@ -112,6 +112,18 @@
           ];
           specialArgs = { inherit inputs outputs; };
         };
+
+        banshee = lib.nixosSystem {
+          modules = [
+            ./hosts/banshee
+            disko.nixosModules.disko
+            {
+              disko.devices.disk.boot_disk.device = "/dev/nvme0n1";
+            }
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
+
     };
 
     # Standalone home-manager configuration entrypoint
