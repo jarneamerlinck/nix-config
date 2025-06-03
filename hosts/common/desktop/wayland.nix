@@ -11,7 +11,6 @@
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-kde
   ];
 
   programs.dconf.enable = true;
