@@ -21,7 +21,7 @@
     initExtraBeforeCompInit = ''
       [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
     '';
-    initExtra = ''
+    initContent = ''
       eval "$(zoxide init zsh)"
       [[ ! -f ${./shell_func.sh} ]] || source ${./shell_func.sh}
     '';
