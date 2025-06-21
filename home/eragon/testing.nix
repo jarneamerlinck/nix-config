@@ -4,7 +4,7 @@
     ./common
     ./features/cli/debugging.nix
     ./features/cli/kubernetes.nix
-    ./features/desktop/sway/minimalistic
+    ./features/desktop/hyprland/minimalistic
     ./features/cyber
     ./features/desktop/applications/lens.nix
   ];
