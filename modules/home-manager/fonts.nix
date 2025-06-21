@@ -12,7 +12,7 @@ let
       type = lib.types.package;
       default = null;
       description = "Package for ${variant} font profile";
-      example = "pkgs.fira-code";
+      example = "pkgs.nerd-fonts.fira-code";
     };
   };
   cfg = config.fontProfiles;

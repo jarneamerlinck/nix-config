@@ -31,7 +31,7 @@ in
   programs.kitty = {
     enable = true;
     # theme = "Tokyo Night";
-    font.name = "JetBrainsMono Nerd Font";
+    font.name = "${config.fontProfiles.monospace.family}";
     keybindings = {
       "super+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";
@@ -74,7 +74,7 @@ in
       "ctrl+shift+backspace" = "restore_font_size";
     };
     settings = {
-      font_family = "FiraCode Nerd Font Mono";
+      font_family = "${config.fontProfiles.monospace.family}";
       italic_font = "auto";
       bold_font = "auto";
       bold_italic_font = "auto";

@@ -4,7 +4,6 @@
     packages = with pkgs; [
       xdg-desktop-portal
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-kde
     ];
   };
   xdg.portal = {
@@ -19,7 +18,6 @@
     };
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-kde
     ];
   };
 

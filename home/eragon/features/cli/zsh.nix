@@ -18,10 +18,9 @@
         file = "shell_func.sh";
       }
       ];
-    initExtraBeforeCompInit = ''
+    initContent = ''
       [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
-    '';
-    initExtra = ''
+
       eval "$(zoxide init zsh)"
       [[ ! -f ${./shell_func.sh} ]] || source ${./shell_func.sh}
     '';
