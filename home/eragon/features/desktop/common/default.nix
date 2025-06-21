@@ -5,7 +5,6 @@
 {
   imports = [
     ./dragon.nix
-    ./font.nix
     ./xdg.nix
     ./qt.nix
     ./gtk.nix

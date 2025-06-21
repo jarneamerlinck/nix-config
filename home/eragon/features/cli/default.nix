@@ -6,6 +6,7 @@
     ./kitty.nix
     ./tmux.nix
     ./fetch.nix
+    ./font.nix
     ./ssh.nix
     ./docker.nix
     ./python.nix
