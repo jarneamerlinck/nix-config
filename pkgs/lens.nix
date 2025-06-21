@@ -12,7 +12,7 @@ let
 in
   {
   freelens = appimageTools.wrapType2 rec {
-    name= "${pkgName}"; 
+    pname= "${pkgName}";
     version = "${pkgVersion}";
     src = fetchurl {
       url = "${pkgRepo}/releases/download/v${pkgVersion}/Freelens-${pkgVersion}-linux-amd64.AppImage";
