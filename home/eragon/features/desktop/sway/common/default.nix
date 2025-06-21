@@ -6,7 +6,7 @@ in
 {
   imports = [
     ../../common
-    ./wayland-common.nix
+    ../../common/wayland-common.nix
   ];
   wayland.windowManager.sway = {
     enable = true;
