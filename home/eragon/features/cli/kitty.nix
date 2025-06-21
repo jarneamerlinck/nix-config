@@ -31,7 +31,7 @@ in
   programs.kitty = {
     enable = true;
     # theme = "Tokyo Night";
-    font.name = "JetBrainsMono Nerd Font";
+    font.name = "${config.fontProfiles.monospace.family}";
     keybindings = {
       "super+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";
