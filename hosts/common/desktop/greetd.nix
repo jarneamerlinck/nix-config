@@ -32,8 +32,7 @@
       };
     };
 
-    environment.etc."greetd/environments".text = ''
-      sway
-      hyprland
-    '';
+    # environment.etc."greetd/environments".text = ''
+    #   sway
+    # '';
 }
