@@ -3,7 +3,7 @@
     enable = true;
     monospace = {
       family = "FiraCode Nerd Font Mono";
-      package = [  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+      package = pkgs.nerd-fonts."fira-mono";
     };
     regular = {
       family = "Fira Sans";
