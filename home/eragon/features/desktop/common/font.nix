@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, lib,  ... }: {
   fontProfiles = {
     enable = true;
     monospace = {
       family = "FiraCode Nerd Font Mono";
-      package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      package = [  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     };
     regular = {
       family = "Fira Sans";
