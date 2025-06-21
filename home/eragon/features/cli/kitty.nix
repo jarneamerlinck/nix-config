@@ -74,7 +74,7 @@ in
       "ctrl+shift+backspace" = "restore_font_size";
     };
     settings = {
-      font_family = "FiraCode Nerd Font Mono";
+      font_family = "${config.fontProfiles.monospace.family}";
       italic_font = "auto";
       bold_font = "auto";
       bold_italic_font = "auto";

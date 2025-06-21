@@ -44,7 +44,7 @@ let
   * {
     border: none;
     border-radius: 0;
-    font-family: Source Code Pro;
+    font-family: ${config.fontProfiles.monospace.family};
     color: #${palette.base05};
     background-color: #${palette.base00};
   }
