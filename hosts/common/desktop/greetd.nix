@@ -34,5 +34,6 @@
 
     environment.etc."greetd/environments".text = ''
       sway
+      hyprland
     '';
 }
