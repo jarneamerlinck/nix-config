@@ -1,10 +1,23 @@
 { pkgs, lib, config, ... }:
-let
-  session = if config.wayland.windowManager.hyprland.enable then "Hyprland"
-            else if config.wayland.windowManager.sway.enable then "sway"
-            else "sway";  # default fallback
-
-in
+# let
+#   homeCfgs = config.home-manager.users;
+#   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
+#   vars = ''XDG_DATA_DIRS="$XDG_DATA_DIRS:${lib.concatStringsSep ":" homeSharePaths}" GTK_USE_PORTAL=0'';
+#
+#   # misterioCfg = homeCfgs.misterio;
+#   # gtkTheme = misterioCfg.gtk.theme;
+#   # iconTheme = misterioCfg.gtk.iconTheme;
+#   # wallpaper = misterioCfg.wallpaper;
+#
+#   # sway-kiosk = command: "${lib.getExe pkgs.sway} --config ${pkgs.writeText "kiosk.config" ''
+#   #   output * bg #000000 solid_color
+#   #   xwayland disable
+#   #   input "type:touchpad" {
+#   #     tap enabled
+#   #   }
+#   #   exec '${vars} ${command}; ${pkgs.sway}/bin/swaymsg exit'
+#   # ''}";
+# in
 {
   services.greetd = {
       enable = true;
@@ -14,12 +27,12 @@ in
           --time \
           --asterisks \
           --user-menu \
-          --cmd ${session}
+          --cmd sway
       '';
       };
     };
 
-    environment.etc."greetd/environments".text = ''
-      ${session}
-    '';
+    # environment.etc."greetd/environments".text = ''
+    #   sway
+    # '';
 }
