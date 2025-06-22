@@ -122,7 +122,7 @@ in
         workspace_swipe = false;
       };
 
-      keyBinds = [
+      bind = [
         "$mainMod, T, exec, $terminal"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
@@ -159,6 +159,10 @@ in
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+      ];
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
 
     };
