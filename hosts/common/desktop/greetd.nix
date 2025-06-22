@@ -19,6 +19,14 @@
 #   # ''}";
 # in
 {
+  environment.etc."greetd/session-wrapper.sh".text = ''
+    #!/usr/bin/env sh
+    exec "/home/$USER/.nix-profile/bin/greetd-session"
+  '';
+
+  systemd.tmpfiles.rules = [
+    "f /etc/greetd/session-wrapper.sh 0755 root root -"
+  ];
   services.greetd = {
       enable = true;
       settings = {
@@ -27,7 +35,7 @@
           --time \
           --asterisks \
           --user-menu \
-          --cmd sway
+          --cmd /etc/greetd/session-wrapper.sh
       '';
       };
     };
