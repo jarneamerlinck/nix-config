@@ -22,7 +22,7 @@
     };
     gc = { # garbage collection
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       # Keep the last 3 generations
       options = "--delete-older-than +3";
     };
