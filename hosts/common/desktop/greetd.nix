@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 # let
 #   homeCfgs = config.home-manager.users;
 #   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
@@ -31,8 +31,4 @@
       '';
       };
     };
-
-    # environment.etc."greetd/environments".text = ''
-    #   sway
-    # '';
 }
