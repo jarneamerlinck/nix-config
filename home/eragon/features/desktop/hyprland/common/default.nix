@@ -22,6 +22,12 @@ in
       monitor = [
         "${toString monitor.name}, ${toString monitor.width}x${toString monitor.height}@${toString monitor.refreshRate}, auto, auto"
       ];
+      "$mainMod" = "SUPER";
+      "$terminal" = "kitty";
+      "$fileManager" = "dolphin";
+
+
+
       general = {
         gaps_in = 5;
         gaps_out = 20;
