@@ -8,6 +8,11 @@ in
     ../../common
     ../../common/wayland-common.nix
   ];
+  home.sessionVariables = {
+    TERMINAL = "kitty";
+  };
+
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
