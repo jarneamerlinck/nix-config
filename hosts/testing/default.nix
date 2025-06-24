@@ -27,7 +27,6 @@
 
     ## Services items
     ../common/services/unattended-upgrades.nix
-    ../common/virtualization/docker
 
     ../common/virtualization/qemu/qemu-guest.nix
   ];
