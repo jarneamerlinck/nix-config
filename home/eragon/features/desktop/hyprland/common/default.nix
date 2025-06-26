@@ -7,6 +7,7 @@ in
   imports = [
     ../../common
     ../../common/wayland-common.nix
+    ../../sway/minimalistic/waybar.nix
   ];
   # home.sessionVariables = {
   #   XCURSOR_SIZE = 24;
