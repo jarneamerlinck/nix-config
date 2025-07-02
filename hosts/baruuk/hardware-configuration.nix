@@ -6,6 +6,7 @@
 {
   imports =
     [ (modulesPath + "/profiles/qemu-guest.nix")
+      inputs.nixos-hardware.nixosModules.framework-12-13th-gen-intel
     ];
   boot = {
     loader.grub = {
