@@ -28,7 +28,9 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
-
+  hardware.graphics = {
+    enable = true;
+  };
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;

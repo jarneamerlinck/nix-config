@@ -22,9 +22,9 @@
     };
     gc = { # garbage collection
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       # Keep the last 3 generations
-      options = "--delete-older-than +3";
+      options = "--delete-older-than 14d";
     };
 
     # Add each flake input as a registry

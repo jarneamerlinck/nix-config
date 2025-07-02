@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 # let
 #   homeCfgs = config.home-manager.users;
 #   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
@@ -27,12 +27,8 @@
           --time \
           --asterisks \
           --user-menu \
-          --cmd sway
+          --cmd "/home/\$USER/.nix-profile/bin/greetd-session"
       '';
       };
     };
-
-    environment.etc."greetd/environments".text = ''
-      sway
-    '';
 }
