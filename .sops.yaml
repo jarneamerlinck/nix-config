@@ -9,6 +9,7 @@ keys:
     - &testing age1v9eu0t6crm766jn22nj5n473t646w5c09dwja5et9fpy3xe7cfzqgjuykw
     - &vm1 age1aykstl5ugcl5u5gwwvllq3ysgdhxs6zv4hp62v42j93tfu9nycsq0z04vt
     - &banshee age1jcap04zvw47k2c4ekl3wrl98nthnuhelhrrp7zx4en5mc7azkapq2davel
+    - &baruuk age16nx032ql9c3qmlddq2nyls0vvdww2mthfpv8pqcnp7ym8gd5tvmsrujcm0
 
 creation_rules:
   - path_regex: hosts/vm1/secrets.ya?ml$
@@ -35,6 +36,12 @@ creation_rules:
       - *eragon
       - *banshee
 
+  - path_regex: hosts/baruuk/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *baruuk
+
   - path_regex: hosts/testing/secrets.ya?ml$
     key_groups:
     - age:
@@ -50,6 +57,7 @@ creation_rules:
       - *testing
       - *vm1
       - *banshee
+      - *baruuk
 
   - path_regex: hosts/common/virtualization/kubernetes/secrets.ya?ml$
     key_groups:
@@ -67,3 +75,4 @@ creation_rules:
       - *atlas
       - *vm1
       - *banshee
+      - *baruuk

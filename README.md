@@ -1,4 +1,4 @@
-# Nixos with flakes
+ Nixos with flakes
 
 
 ## Devices
@@ -8,6 +8,7 @@
 | `ash`     | Raspberry pi 4 | BCM2835 (4) @ 1.800GHz                              |  8GB  |                                                |               |   🖥️   |   ❄️   |   ✅   |
 | `atlas`   | ZimaCube       | 12th Gen Intel(R) Core(TM) i5-1235U (12) @ 4.40 GHz |  64G  | Intel Iris Xe Graphics @ 1.20 GHz [Integrated] |               |   🖥️   |   ❄️   |   ✅   |
 | `banshee` | Zimaboard 832  | Intel Celeron N3450 (4) @ 2.200GHz                  |  8GB  | Intel HD Graphics 500                          |               |   🖥️   |   ❄️   |   ✅   |
+| `baruuk`  | Framework 12   | Intel Core - i5-1334U (10) @ 3.40GHz                | 16GB  | Intel Core - i5-1334U                          |               |   💻️   |   ❄️   |   ✅   |
 |           |
 | `vm1`     |                |                                                     |       |                                                |               |   📦   |   ❄️   |   ✅   |
 | `testing` |                |                                                     |       |                                                |               |   📦   |   ❄️   |   ✅   |
