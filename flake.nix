@@ -124,6 +124,18 @@
           specialArgs = { inherit inputs outputs; };
         };
 
+        baruuk = lib.nixosSystem {
+          modules = [
+            ./hosts/baruuk
+            disko.nixosModules.disko
+            {
+              disko.devices.disk.boot_disk.device = "/dev/nvme0n1";
+            }
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
+
+
     };
 
     # Standalone home-manager configuration entrypoint
