@@ -12,12 +12,12 @@
   networking.wireless = {
     enable = true;
     secretsFile = config.sops.secrets."wireless/env".path;
-    # networks = {
-    #   "knightofzero" = {
-    #     psk = "ext:home_pwd";
-    #     priority = 100;
-    #   };
-    # }
+    networks = {
+      "knightofzero" = {
+        psk = "ext:home_pwd";
+        priority = 100;
+      };
+    };
 
     # Imperative
     allowAuxiliaryImperativeNetworks = false;
