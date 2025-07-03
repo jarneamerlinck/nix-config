@@ -3,7 +3,6 @@
   ...
 }: {
   imports = [
-    inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
     ../common/disks/boot_1d_btrfs.nix
