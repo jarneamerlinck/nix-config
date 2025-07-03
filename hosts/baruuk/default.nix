@@ -15,6 +15,17 @@
     ## Services items
     ../common/services/unattended-upgrades.nix
 
+    ## Display server
+    ../common/desktop/wayland.nix
+    ../common/desktop/gtk.nix
+
+    ## Display Managers
+    ../common/desktop/greetd.nix
+
+
+    ## Desktop environments / Window Managers
+    ../common/desktop/mouse.nix
+    ../common/desktop/pipewire.nix
   ];
 
   networking = {
