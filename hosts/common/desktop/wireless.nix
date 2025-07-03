@@ -1,34 +1,27 @@
 {
   config,
   ...
-}: let
-  sops_settings = {
+}: {
+
+  sops.secrets."wireless/env" = {
     sopsFile = ../users/eragon/secrets.yml;
     neededForUsers = true;
   };
-  wifi_networks = ["home" "iotHome"];
-
-in  {
-
-  sops.secrets = builtins.listToAttrs (
-    (map (wifi: {
-      name = "wireless/${wifi}/ssid";
-      value = sops_settings;
-    }) wifi_networks) ++
-    (map (wifi: {
-      name = "wireless/${wifi}/psw";
-      value = sops_settings;
-    }) wifi_networks)
-  );
 
   networking.wireless = {
     enable = true;
-    networks = builtins.listToAttrs (map (wifi: {
-      name = config.sops.secrets."wireless/${wifi}/ssid".path;  # Dynamically get the SSID path
-      value = {
-        pskRaw = config.sops.secrets."wireless/${wifi}/psw".path;  # Dynamically get the PSK path
+    environmentFile = config.sops.secrets."wireless/env".path;
+    networks = {
+      "@home_SSID@" = {
+        psk = "@home_psk@";
       };
-    }) wifi_networks);
+      "@homeIot_SSID@" = {
+        psk = "@homeIot_psk@";
+      };
+      "@homeDad_SSID@" = {
+        psk = "@homeDad_psk@";
+      };
+    };
 
     # Imperative
     allowAuxiliaryImperativeNetworks = true;
