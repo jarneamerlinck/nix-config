@@ -25,6 +25,7 @@
 
     # Imperative
     allowAuxiliaryImperativeNetworks = true;
+    scanOnLowSignal = true;
     userControlled = {
       enable = true;
       group = "network";
