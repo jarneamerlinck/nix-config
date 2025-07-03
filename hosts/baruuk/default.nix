@@ -11,6 +11,7 @@
     ../common/base
     ../common/users/eragon
     ../common/disks/wd-decrypt.nix
+    ../common/desktop/wireless.nix
 
     ## Services items
     ../common/services/unattended-upgrades.nix
