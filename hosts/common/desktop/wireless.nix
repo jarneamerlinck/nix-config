@@ -11,7 +11,7 @@
   networking.networkmanager.enable = false;
   networking.wireless = {
     enable = true;
-    secretsFile = config.sops.secrets."wireless/env".path;
+    secretsFile = "/run/secrets/wireles/env";
     networks = {
       "knightofzero" = {
         psk = "ext:home_pwd";
