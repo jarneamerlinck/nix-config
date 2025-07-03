@@ -47,7 +47,7 @@
     nixpkgs,
     home-manager,
     disko,
-    nixos-hardware,
+    hardware,
     ...
   } @ inputs:
   let
@@ -118,7 +118,7 @@
           modules = [
             ./hosts/banshee
             disko.nixosModules.disko
-            nixos-hardware.nixosModules.framework-12-13th-gen-intel
+            hardware.nixosModules.framework-12-13th-gen-intel
             {
               disko.devices.disk.boot_disk.device = "/dev/nvme0n1";
             }
