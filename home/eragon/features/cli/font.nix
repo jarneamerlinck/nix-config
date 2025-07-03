@@ -1,4 +1,8 @@
 { pkgs, lib,  ... }: {
+
+  home.packages = with pkgs; [
+    dconf
+  ];
   fontProfiles = {
     enable = true;
     monospace = {
