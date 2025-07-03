@@ -10,7 +10,7 @@
 
   networking.wireless = {
     enable = true;
-    environmentFile = config.sops.secrets."wireless/env".path;
+    secretsFile = config.sops.secrets."wireless/env".path;
     networks = {
       "@home_SSID@" = {
         psk = "@home_psk@";
