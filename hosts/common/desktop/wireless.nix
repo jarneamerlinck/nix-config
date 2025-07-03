@@ -5,7 +5,7 @@
 
   sops.secrets."wireless/env" = {
     sopsFile = ../users/eragon/secrets.yml;
-    neededForUsers = true;
+    neededForUsers = false;
   };
 
   networking.networkmanager.enable = false;
