@@ -13,15 +13,9 @@
     enable = true;
     secretsFile = config.sops.secrets."wireless/env".path;
     networks = {
-      "${config.sops.secrets."wireless/env/home_SSID"}" = {
+      "knightofzero" = {
         psk = "ext:home_psk";
         priority = 100;
-      };
-      "ext:homeIot_SSID" = {
-        psk = "ext:homeIot_psk";
-      };
-      "ext:homeDad_SSID" = {
-        psk = "ext:homeDad_psk";
       };
     };
 
