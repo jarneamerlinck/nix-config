@@ -20,7 +20,7 @@
     };
 
     # Imperative
-    allowAuxiliaryImperativeNetworks = true;
+    allowAuxiliaryImperativeNetworks = false;
     scanOnLowSignal = true;
     userControlled = {
       enable = true;
