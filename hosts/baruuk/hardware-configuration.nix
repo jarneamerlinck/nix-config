@@ -30,6 +30,7 @@
   };
 
   swapDevices = [ ];
+  services.fwupd.enable = true;
 
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
