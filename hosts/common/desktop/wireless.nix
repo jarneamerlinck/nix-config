@@ -21,7 +21,6 @@ in  {
     }) wifi_networks)
   );
 
-  networking.networkmanager.enable = false;
   networking.wireless = {
     enable = true;
     networks = builtins.listToAttrs (map (wifi: {
