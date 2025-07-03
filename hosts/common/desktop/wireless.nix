@@ -8,6 +8,7 @@
     neededForUsers = true;
   };
 
+  networking.networkmanager.enable = true;
   networking.wireless = {
     enable = true;
     secretsFile = config.sops.secrets."wireless/env".path;
