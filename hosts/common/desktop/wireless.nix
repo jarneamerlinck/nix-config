@@ -13,13 +13,13 @@
     enable = true;
     secretsFile = config.sops.secrets."wireless/env".path;
     networks = {
-      "@home_SSID@" = {
+      "ext:home_SSID" = {
         psk = "ext:home_psk";
       };
-      "@homeIot_SSID@" = {
+      "ext:homeIot_SSID" = {
         psk = "ext:homeIot_psk";
       };
-      "@homeDad_SSID@" = {
+      "ext:homeDad_SSID" = {
         psk = "ext:homeDad_psk";
       };
     };
