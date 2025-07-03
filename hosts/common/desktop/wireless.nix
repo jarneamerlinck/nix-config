@@ -26,9 +26,7 @@
       enable = true;
       group = "network";
     };
-    extraConfig = ''
-      update_config=1
-    '';
+    extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
   };
   #
   # # Ensure group exists
