@@ -3,6 +3,12 @@
   imports = [
     ./common
     ./features/desktop/sway/minimalistic
+
+    # Apps
+    ./features/desktop/applications
+    ./features/desktop/applications/discord.nix
+    ./features/desktop/applications/office.nix
+    ./features/desktop/applications/media_player.nix
   ];
   wallpaper = pkgs.wallpapers.framework-12-grid;
 
