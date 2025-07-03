@@ -4,6 +4,7 @@
 }: {
   imports = [
 
+    inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
     ../common/disks/boot_1d_btrfs.nix
 
