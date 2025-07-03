@@ -24,7 +24,7 @@
     scanOnLowSignal = true;
     userControlled = {
       enable = true;
-      group = "network";
+      group = "users";
     };
     extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
   };
