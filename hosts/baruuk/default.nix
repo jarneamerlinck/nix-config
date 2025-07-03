@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -31,7 +32,7 @@
 
   networking = {
     hostName = "baruuk";
-    useDHCP = true;
+    useDHCP = lib.mkDefault true;
   };
 
   system.stateVersion = "25.05";
