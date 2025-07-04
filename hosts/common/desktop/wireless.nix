@@ -13,8 +13,8 @@
     enable = true;
     secretsFile = config.sops.secrets."wireless/env".path;
     networks = {
-      "knightofzero" = {
-        psk = "ext:home_pwd";
+      "ext:homeDad_SSID" = {
+        psk = "ext:psk_homeDad";
         priority = 100;
       };
     };
