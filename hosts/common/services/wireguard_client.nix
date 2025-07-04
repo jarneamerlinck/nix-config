@@ -1,4 +1,7 @@
 { pkgs, lib, config, inputs, ... }:
+let
+  publicKeyHome = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
+in
 {
   sops.secrets."wireguard/privateKey" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
@@ -30,7 +33,7 @@
 
         peers = [
           {
-            publicKey = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
+            publicKey = "${publicKeyHome}";
             presharedKeyFile = config.sops.secrets."wireguard/presharedKey".path;
             allowedIPs = [ "10.20.0.0/24" ];
             persistentKeepalive = 25;
@@ -42,13 +45,12 @@
 
 
   };
-  # systemd.services."wg-quick-wg0".serviceConfig = {
-  #   ExecStartPre = [
-  #     # Use sed to inject the endpoint into the generated config file
-  #     ''
-  #       ${pkgs.sed}/bin/sed -i "/^Endpoint =/c\Endpoint = $(cat ${config.sops.secrets."wireguard/endpoint".path})" /etc/wireguard/wg0.conf
-  #     ''
-  #   ];
-  # };
+  systemd.services."wg-quick-wg0".serviceConfig = {
+    ExecStartPre = [
+      ''
+        ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint $(cat ${config.sops.secrets."wireguard/endpoint".path})
+      ''
+    ];
+  };
 
 }
