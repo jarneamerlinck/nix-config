@@ -5,23 +5,7 @@
 
   sops.secrets."wireless/env" = {
     sopsFile = ../users/eragon/secrets.yml;
-    neededForUsers = true;
-  };
-  sops.secrets."wireless/home/ssid" = {
-    sopsFile = ../users/eragon/secrets.yml;
-    neededForUsers = true;
-  };
-  sops.secrets."wireless/home/psk" = {
-    sopsFile = ../users/eragon/secrets.yml;
-    neededForUsers = true;
-  };
-  sops.secrets."wireless/home-dad/ssid" = {
-    sopsFile = ../users/eragon/secrets.yml;
-    neededForUsers = true;
-  };
-  sops.secrets."wireless/home-dad/psk" = {
-    sopsFile = ../users/eragon/secrets.yml;
-    neededForUsers = true;
+    neededForUsers = false;
   };
 
   networking.networkmanager = {
@@ -56,7 +40,6 @@
   };
   networking.wireless = {
     enable = false;
-    secretsFile = config.sops.secrets."wireless/env".path;
   };
   #
   # # Ensure group exists
