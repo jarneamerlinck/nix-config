@@ -7,26 +7,62 @@
     sopsFile = ../users/eragon/secrets.yml;
     neededForUsers = true;
   };
+  sops.secrets."wireless/home/ssid" = {
+    sopsFile = ../users/eragon/secrets.yml;
+    neededForUsers = true;
+  };
+  sops.secrets."wireless/home/psk" = {
+    sopsFile = ../users/eragon/secrets.yml;
+    neededForUsers = true;
+  };
+  sops.secrets."wireless/home-dad/ssid" = {
+    sopsFile = ../users/eragon/secrets.yml;
+    neededForUsers = true;
+  };
+  sops.secrets."wireless/home-dad/psk" = {
+    sopsFile = ../users/eragon/secrets.yml;
+    neededForUsers = true;
+  };
 
-  networking.networkmanager.enable = false;
-  networking.wireless = {
+  networking.networkmanager = {
     enable = true;
-    secretsFile = config.sops.secrets."wireless/env".path;
-    networks = {
-      "$homeDad_SSID" = {
-        pskRaw = "ext:psk_homeDad";
-        priority = 100;
+    ensureProfiles = {
+      
+      environmentFiles = [
+        config.sops.secrets."wireless/home/ssid".path
+        config.sops.secrets."wireless/home/psk".path
+        config.sops.secrets."wireless/home-dad/ssid".path
+        config.sops.secrets."wireless/home-dad/psk".path
+      ];
+      profiles = {
+        home-dad = {
+          connection = {
+            id = "home-dad";
+            permissions = "";
+            type = "wifi";
+          };
+          ipv4 = {
+            dns-search = "";
+            method = "auto";
+          };
+          wifi = {
+            mac-address-blacklist = "";
+            mode = "infrastructure";
+            ssid = "$HOME_DAD_SSID";
+          };
+          wifi-security = {
+            auth-alg = "open";
+            key-mgmt = "wpa-psk";
+            psk = "$HOME_DAD_PASSWORD";
+          };
+        };
       };
-    };
 
-    # Imperative
-    allowAuxiliaryImperativeNetworks = false;
-    scanOnLowSignal = true;
-    userControlled = {
-      enable = true;
-      group = "users";
     };
-    extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
+  };
+  networking.wireless = {
+    enable = false;
+    secretsFile = config.sops.secrets."wireless/env".path;
   };
   #
   # # Ensure group exists
