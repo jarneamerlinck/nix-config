@@ -5,6 +5,11 @@
     neededForUsers = true;
   };
 
+  sops.secrets."wireguard/presharedKey" = {
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
+
   sops.secrets."wireguard/endpoint" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -18,23 +23,16 @@
     interfaces = {
 
       wg0 = {
-        # Determines the IP address and subnet of the client's end of the tunnel interface.
-        ips = [ "10.5.5.2/32" ];
-        listenPort = 51820; # to match firewall allowedUDPPorts (without this wg uses random port numbers)
+        ips = [ "10.5.5.7/32" ];
+        listenPort = 51820;
 
-        # Path to the private key file.
-        #
-        # Note: The private key can also be included inline via the privateKey option,
-        # but this makes the private key world-readable; thus, using privateKeyFile is
-        # recommended.
         privateKeyFile = config.sops.secrets."wireguard/privateKey".path;
 
         peers = [
           {
             publicKey = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
-
+            presharedKeyFile = config.sops.secrets."wireguard/presharedKey".path;
             allowedIPs = [ "10.20.0.0/24" ];
-
             persistentKeepalive = 25;
           }
         ];
