@@ -29,10 +29,7 @@
     ensureProfiles = {
       
       environmentFiles = [
-        config.sops.secrets."wireless/home/ssid".path
-        config.sops.secrets."wireless/home/psk".path
-        config.sops.secrets."wireless/home-dad/ssid".path
-        config.sops.secrets."wireless/home-dad/psk".path
+        config.sops.secrets."wireless/env".path
       ];
       profiles = {
         home-dad = {
@@ -50,7 +47,7 @@
           };
           wifi-security = {
             key-mgmt = "wpa-psk";
-            psk = "$HOME_DAD_PASSWORD";
+            psk = "$HOME_DAD_PSK";
           };
         };
       };
