@@ -1,7 +1,11 @@
 { pkgs, lib, config, inputs, ... }:
 {
+  sops.secrets."wireguard/privateKey" = {
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
 
-  sops.secrets."wireguard" = {
+  sops.secrets."wireguard/endpoint" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
@@ -23,7 +27,7 @@
         # Note: The private key can also be included inline via the privateKey option,
         # but this makes the private key world-readable; thus, using privateKeyFile is
         # recommended.
-        privateKeyFile = "path to private key file";
+        privateKeyFile = config.sops.secrets."wireguard/privateKey".path;
 
         peers = [
           {
