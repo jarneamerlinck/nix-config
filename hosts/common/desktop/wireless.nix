@@ -11,7 +11,7 @@
   networking.networkmanager.enable = false;
   networking.wireless = {
     enable = true;
-    secretsFile = config.sops.secrets."wireless/env".path;
+    secretsFile = [config.sops.secrets."wireless/env".path];
     networks = {
       "$homeDad_SSID" = {
         psk = "$psk_homeDad";
