@@ -16,6 +16,7 @@
 
     ## Services items
     ../common/services/unattended-upgrades.nix
+    ../common/services/wireguard_client.nix
 
     ## Display server
     ../common/desktop/wayland.nix
