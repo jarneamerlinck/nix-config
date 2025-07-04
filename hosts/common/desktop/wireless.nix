@@ -31,7 +31,7 @@
           };
           wifi-security = {
             key-mgmt = "wpa-psk";
-            psk = "$HOME_DAD_PSK";
+            psk = "$HOME_DAD_PASS";
           };
         };
       };
