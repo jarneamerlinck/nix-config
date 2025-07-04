@@ -42,16 +42,13 @@
             type = "wifi";
           };
           ipv4 = {
-            dns-search = "";
             method = "auto";
           };
           wifi = {
-            mac-address-blacklist = "";
             mode = "infrastructure";
             ssid = "$HOME_DAD_SSID";
           };
           wifi-security = {
-            auth-alg = "open";
             key-mgmt = "wpa-psk";
             psk = "$HOME_DAD_PASSWORD";
           };
