@@ -47,6 +47,7 @@ in
   };
   systemd.services.set-wireguard-endpoint = {
     description = "Set WireGuard Peer Endpoint";
+    wantedBy = [ "network-online.target" ]; # Or adjust to your use-case
     after = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
