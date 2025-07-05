@@ -46,7 +46,7 @@ in
 
   };
   systemd.services."wg-quick-wg0".serviceConfig = {
-    ExecStartPre = [
+    ExecStart = [
       ''
         ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint $(cat ${config.sops.secrets."wireguard/endpoint".path})
       ''
