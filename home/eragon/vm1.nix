@@ -3,6 +3,7 @@
   imports = [
     ./common
     ./features/desktop/sway/minimalistic
+    ./features/desktop/applications/firefox.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
