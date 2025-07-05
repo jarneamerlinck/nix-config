@@ -51,7 +51,7 @@
                 IconURL = "https://search.ko0.net/favicon.ico";
               }
             ];
-            Remove = [ "*" ];
+            Remove = [ "google" "Bing" "Amazon.com" "Twitter" "Wikipedia" ];
           };
 
           /* ---- EXTENSIONS ---- */
