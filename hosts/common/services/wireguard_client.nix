@@ -45,12 +45,15 @@ in
 
 
   };
-  systemd.services."wg-quick-wg0".serviceConfig = {
-    ExecStart = [
-      ''
+  systemd.services.set-wireguard-endpoint = {
+    description = "Set WireGuard Peer Endpoint";
+    after = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
         ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint $(cat ${config.sops.secrets."wireguard/endpoint".path})
-      ''
-    ];
+      '';
+    };
   };
 
 }
