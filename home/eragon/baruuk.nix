@@ -9,7 +9,7 @@
     ./features/desktop/applications/discord.nix
     ./features/desktop/applications/office.nix
     ./features/desktop/applications/media_player.nix
-    ./features/music/default.nix
+    ./features/music
   ];
   wallpaper = pkgs.wallpapers.framework-12-grid;
 
