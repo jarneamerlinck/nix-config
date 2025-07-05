@@ -102,10 +102,14 @@
           settings = {          # specify profile-specific preferences here; check about:config for options
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
-            # add preferences for profile_0 here...
+
+            "browser.search.defaultenginename" = "DuckDuckGo";
+            "browser.search.selectedEngine" = "DuckDuckGo";
+            "browser.search.order.1" = "DuckDuckGo";
+
+            "browser.search.hiddenOneOffs" = "Google,Bing,Amazon.com,Twitter,Wikipedia";
           };
         };
-      # add profiles here...
       };
     };
   };
