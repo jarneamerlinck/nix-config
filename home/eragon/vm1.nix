@@ -2,23 +2,7 @@
 {
   imports = [
     ./common
-    ./features/services/git-config.nix
-    ./features/cli/debugging.nix
     ./features/desktop/sway/minimalistic
-    ./features/music
-    ./features/cyber
-    ./features/cyber/pentesting
-    ./features/cyber/exploration/wireshark.nix
-
-    ./features/desktop/applications
-    ./features/desktop/applications/media_player.nix
-    ./features/desktop/applications/remote_desktop.nix
-    ./features/desktop/applications/discord.nix
-    ./features/desktop/applications/vscode.nix
-    ./features/desktop/applications/office.nix
-    ./features/desktop/applications/mouse.nix
-    ./features/desktop/applications/image_editing.nix
-    ./features/desktop/applications/video_editing.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
