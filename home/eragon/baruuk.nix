@@ -10,6 +10,7 @@
     ./features/desktop/applications/office.nix
     ./features/desktop/applications/media_player.nix
     ./features/music
+    ./features/desktop/applications/proton.nix
   ];
   wallpaper = pkgs.wallpapers.framework-12-grid;
 
