@@ -42,6 +42,17 @@
             Default = "DuckDuckGo";
             PreventInstalls =  true;
           };
+	  SearchEngines = {
+            Add = [
+              {
+                Name = "searnxg";
+                URLTemplate = "https://search.ko0.net?q={searchTerms}";
+                Method = "GET";
+                IconURL = "https://search.ko0.net/favicon.ico";
+              }
+            ];
+            Remove = [ "*" ];
+          };
 
           /* ---- EXTENSIONS ---- */
           ExtensionSettings = {
