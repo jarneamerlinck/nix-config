@@ -41,9 +41,6 @@ in
         ];
       };
     };
-
-
-
   };
   systemd.services.set-wireguard-endpoint = {
     description = "Set WireGuard Peer Endpoint";
