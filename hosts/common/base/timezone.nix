@@ -1,5 +1,5 @@
  { config, lib, pkgs, ... }:
 {
-  services.localtimed.enable = true;
+  services.tzupdate.enable = true;
 }
 
