@@ -66,6 +66,7 @@ in
       for_window [app_id="code"] move to workspace 3
       for_window [app_id="vesktop"] move to workspace 4
       for_window [title=".*Discord.*"] move to workspace 4
+      for_window [title=".*Feishin.*"] move to workspace 4
 
       exec swaymsg workspace 4
       exec swaymsg workspace 3
