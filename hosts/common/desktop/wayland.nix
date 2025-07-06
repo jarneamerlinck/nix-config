@@ -16,7 +16,9 @@
   ];
 
   programs.dconf.enable = true;
-  # programs.sway.enable = false;
-  # nixpkgs.config.pulseaudio = true;
-  # hardware.pulseaudio.enable = true;
+  programs.light = {
+    enable = true;
+    brightnessKeys.enable = true;
+  };
+
 }
