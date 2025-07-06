@@ -8,6 +8,7 @@
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
     ../common/disks/boot_1d_btrfs.nix
+    ../common/base/timezone.nix
 
     ../common/base
     ../common/users/eragon
