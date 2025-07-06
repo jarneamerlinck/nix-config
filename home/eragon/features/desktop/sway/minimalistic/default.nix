@@ -60,7 +60,7 @@ in
         "Ctrl+Alt+2" = "workspace 2";
         "Ctrl+Alt+3" = "workspace 3";
         "Ctrl+Alt+4" = "workspace 4";
-        "PrintScreen" = "exec ${pkgs.shotman}/bin/shotman -c output -C";
+        "Print" = "exec ${pkgs.shotman}/bin/shotman -c output -C";
       };
     };
     extraConfig = ''
