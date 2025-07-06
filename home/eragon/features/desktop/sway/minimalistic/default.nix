@@ -16,6 +16,7 @@ in
     ./waybar.nix
     ./notifications.nix
     ./darkmode-theme.nix
+    ./swaylock.nix
   ];
 
   home.packages = with pkgs; [
