@@ -20,5 +20,5 @@
     enable = true;
     brightnessKeys.enable = true;
   };
-
+  security.pam.services.swaylock = {};
 }
