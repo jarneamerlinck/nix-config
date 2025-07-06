@@ -28,11 +28,11 @@
     events = [
       {
         event = "before-sleep";
-        command = "swaylock";
+        command = "${pkgs.swaylock}/bin/swaylock";
       }
       {
         event = "lock";
-        command = "swaylock -f -c 000000";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
       }
     ];
   };
