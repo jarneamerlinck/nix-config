@@ -1,3 +1,4 @@
+# See https://tinted-theming.github.io/tinted-gallery/
 {pkgs, ...}: let
   inherit (pkgs) lib;
   matugen = import (fetchTarball {
