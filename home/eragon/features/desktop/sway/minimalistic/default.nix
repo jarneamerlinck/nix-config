@@ -46,7 +46,8 @@ in
         "${cfg.modifier}+Shift+Down" = "move down";
         "${cfg.modifier}+Shift+Up" = "move up";
         "${cfg.modifier}+Shift+Right" = "move right";
-        "${cfg.modifier}+Shift+Escape" = "exec ${pkgs.swaylock}/bin/swaylock";
+        "${cfg.modifier}+Escape" = "exec ${pkgs.swaylock-effects}/bin/swaylock";
+        # "${cfg.modifier}+Shift+Escape" = "exec ${pkgs.swaylock-effects}/bin/swaylock -C /home/${config.home.username}/.config/swaylock/config";
         "${cfg.modifier}+Shift+l" = "exec swaymsg exit";
         "${cfg.modifier}+Shift+r" = "exec swaymsg reload";
 
