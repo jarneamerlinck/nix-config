@@ -11,6 +11,7 @@
     ./features/desktop/applications/media_player.nix
     ./features/music
     ./features/desktop/applications/proton.nix
+    ./features/cyber/default.nix
   ];
   wallpaper = pkgs.wallpapers.framework-12-grid;
 
