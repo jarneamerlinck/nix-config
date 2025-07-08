@@ -12,11 +12,9 @@ in
   sops.secrets."kubernetes/cloudflare-api-token.yaml" = {
     sopsFile = ./secrets.yml;
     neededForUsers = false;
+    path = "/var/lib/rancher/k3s/server/manifests/cloudflare-api-token.yaml";
   };
 
-  systemd.tmpfiles.rules = [
-    "L /var/lib/rancher/k3s/server/manifests/cloudflare-api-token.yaml - - - - /run/secrets/kubernetes/cloudflare-api-token.yaml"
-  ];
   services.k3s = {
 
     manifests.haproxy = {
