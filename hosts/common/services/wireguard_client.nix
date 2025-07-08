@@ -1,6 +1,7 @@
 { pkgs, lib, config, inputs, ... }:
 let
   publicKeyHome = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
+  publicKeyHomeSafe = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI";
 in
 {
   sops.secrets."wireguard/privateKey" = {
@@ -42,14 +43,14 @@ in
       };
     };
   };
-  systemd.services.set-wireguard-endpoint = {
+  systemd.services.wg-set-endpoint = {
     description = "Set WireGuard Peer Endpoint";
-    wants = [ "wireguard-wg0-peer-${publicKeyHome}" ];
-    after = [ "wireguard-wg0-peer-${publicKeyHome}" ];
+    wants = [ "wireguard-wg0-peer-${publicKeyHomeSafe}\\x3d.service" ];
+    after = [ "wireguard-wg0-peer-${publicKeyHomeSafe}\\x3d.service" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint $(cat ${config.sops.secrets."wireguard/endpoint".path})
+        ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint "$$(tr -d '\n' <  ${config.sops.secrets."wireguard/endpoint".path})"
       '';
     };
   };
