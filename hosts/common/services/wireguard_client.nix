@@ -44,8 +44,8 @@ in
   };
   systemd.services.set-wireguard-endpoint = {
     description = "Set WireGuard Peer Endpoint";
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
+    wants = [ "wireguard-wg0-peer-${publicKeyHome}" ];
+    after = [ "wireguard-wg0-peer-${publicKeyHome}" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
