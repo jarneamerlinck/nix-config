@@ -66,6 +66,22 @@
           };
         };
 
+        hotspot = {
+          connection = {
+            id = "hotspot";
+            permissions = "";
+            type = "wifi";
+          };
+          ipv4 = { method = "auto";};
+          wifi = {
+            mode = "infrastructure";
+            ssid = "$HOTSPOT_SSID";
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = "$HOTSPOT_PSK";
+          };
+        };
       };
 
     };
