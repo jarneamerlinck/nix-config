@@ -13,6 +13,7 @@
     ./features/desktop/applications/proton.nix
     ./features/cyber/default.nix
     ./features/cyber/exploration/nmap-desktop.nix
+    ./features/desktop/common/swww.nix
   ];
   wallpaper = pkgs.wallpapers.framework-12-grid;
 
