@@ -58,7 +58,7 @@ in
       }
     ];
     timeouts = [
-      { timeout = 60*5;  command = "${pkgs.swaylock-effects}/bin/swaylock"; }
+      { timeout = 60*5;  command = "${config.programs.swaylock.package}/bin/swaylock"; }
       { timeout = 90*10; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
