@@ -47,7 +47,6 @@
   };
 
   # Fix for qt6 plugins
-  # TODO: maybe upstream this?
   environment.profileRelativeSessionVariables = {
     QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
   };
