@@ -61,10 +61,6 @@
   #     Group = "root";
   #   };
   # };
-  #TODO: restart cert manager after 10-15s of boot to refresh the cloudflare api token
-
-  #TODO: make a soft link to the secret instead so k3s will create it
-
   services.k3s = {
     manifests.secrets = {
       enable = lib.mkDefault true;
