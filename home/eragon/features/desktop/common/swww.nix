@@ -14,9 +14,7 @@
     star-trails-5k-i0-16-10
     red-dragon-sky-16-10
   ];
-  config = {
-    home.file.".wallpapers".text = lib.concatStringsSep "\n" (config.wallpaper-list);
-  };
+  home.file."${config.xdg.configHome}/wallpaper_list.txt".text = lib.concatStringsSep "\n" (config.wallpaper-list);
 
 
   services.swww = {
