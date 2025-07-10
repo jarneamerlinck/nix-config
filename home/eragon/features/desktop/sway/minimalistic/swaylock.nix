@@ -50,11 +50,11 @@ in
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock";
+        command = "${config.programs.swaylock.package}/bin/swaylock";
       }
       {
         event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+        command = "${config.programs.swaylock.package}/bin/swaylock -f -c 000000";
       }
     ];
     timeouts = [
