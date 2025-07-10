@@ -8,4 +8,12 @@ in {
       Wallpaper path
     '';
   };
+
+  options.wallpaper-list = mkOption {
+    type = types.listOf types.path;
+    default = [];
+    description = ''
+      List of wallpaper paths
+    '';
+  };
 }
