@@ -3,7 +3,10 @@
   pkgs,
   lib,
   ...
-}:
+}: let
+
+  wallpaperListFile = "${config.xdg.configHome}/wallpaper_list.txt";
+in
 {
   wallpaper-list =  with pkgs.wallpapers; [
     framework-12-grid-16-10
@@ -14,11 +17,38 @@
     star-trails-5k-i0-16-10
     red-dragon-sky-16-10
   ];
-  home.file."${config.xdg.configHome}/wallpaper_list.txt".text = lib.concatStringsSep "\n" (config.wallpaper-list);
+  home.file."${wallpaperListFile}".text = lib.concatStringsSep "\n" (config.wallpaper-list);
 
 
   services.swww = {
     enable = true;
   };
+
+
+  systemd.user.services.random-wallpaper = {
+      Unit = {
+        Description = "Set a random wallpaper from the configured list";
+        After = [ "swww.service" ];
+      };
+
+      Service = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "set-random-wallpaper" ''
+          set -eu
+          wallpaper_file="${wallpaperListFile}"
+          if [ -s "$wallpaper_file" ]; then
+            selected=$(shuf -n 1 "$wallpaper_file")
+            ${pkgs.swww}/bin/swww img "$selected"
+          else
+            echo "Wallpaper list is empty or missing: $wallpaper_file"
+            exit 1
+          fi
+        '';
+      };
+
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
 
 }
