@@ -52,14 +52,9 @@ in
         event = "before-sleep";
         command = "${config.programs.swaylock.package}/bin/swaylock";
       }
-      {
-        event = "lock";
-        command = "${config.programs.swaylock.package}/bin/swaylock -f -c 000000";
-      }
     ];
     timeouts = [
       { timeout = 60*5;  command = "${config.programs.swaylock.package}/bin/swaylock"; }
-      { timeout = 90*10; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 }
