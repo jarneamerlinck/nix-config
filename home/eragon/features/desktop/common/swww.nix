@@ -35,19 +35,13 @@ in
         Type = "oneshot";
         ExecStart = pkgs.writeShellScript "set-random-wallpaper" ''
           set -eu
-          if [ -s "$wallpaper_file" ]; then
-            selected=$(shuf -n 1 "$wallpaper_file")
-            ${pkgs.swww}/bin/swww img $(shuf -n 1 ${wallpaperListFile})
-          else
-            echo "Wallpaper list is empty or missing"
-            exit 1
-          fi
+          ${pkgs.swww}/bin/swww img $(${pkgs.coreutils}/bin/shuf -n 1 ${wallpaperListFile})
         '';
       };
 
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
+      # Install = {
+      #   WantedBy = [ "default.target" ];
+      # };
     };
 
 }
