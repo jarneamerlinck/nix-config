@@ -15,7 +15,7 @@
     ./features/cyber/exploration/nmap-desktop.nix
     ./features/desktop/common/swww.nix
   ];
-  wallpaper = pkgs.wallpapers.framework-12-grid;
+  wallpaper = pkgs.wallpapers.16-10-framework-12-grid;
 
   colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
 
