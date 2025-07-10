@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -13,6 +14,11 @@
     star-trails-5k-i0-16-10
     red-dragon-sky-16-10
   ];
+  config = {
+    home.file.".wallpapers".text = lib.concatStringsSep "\n" (config.wallpaper-list);
+  };
+
+
   services.swww = {
     enable = true;
   };
