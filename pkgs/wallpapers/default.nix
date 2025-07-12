@@ -6,7 +6,7 @@ let
     name = "${wallpaper.name}.gif";
     src = pkgs.fetchurl {
       inherit (wallpaper) sha256;
-      name = "${wallpaper.name}.mp4";
+      name = "${wallpaper.name}.gif";
       url = "https://${wallpaper.website}/${wallpaper.id}.mp4";
     };
 
@@ -14,8 +14,8 @@ let
 
     unpackPhase = "true";
     installPhase = ''
-      mkdir -p $out
-      ffmpeg -i $src -vf "fps=10,scale=1920:-1:flags=lanczos" "$out/${wallpaper.name}.gif"
+      # mkdir -p $out
+      ffmpeg -i $src -vf "fps=10,scale=1920:-1:flags=lanczos" "$out"
     '';
   };
 
