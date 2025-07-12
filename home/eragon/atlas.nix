@@ -2,6 +2,7 @@
 {
   imports = [
     ./common
+    ./features/cli/tmux_saved_sessions.nix
     ./features/desktop/sway/minimalistic
     ./features/cyber
   ];
