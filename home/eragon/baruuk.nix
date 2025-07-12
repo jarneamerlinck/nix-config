@@ -28,7 +28,6 @@
     space-black-hole-gif
     lone-samurai-silhouette-gif
     giant-sun-falls-gif
-    colorful-matrix-code-gif
     disturbed-gif
 
 
