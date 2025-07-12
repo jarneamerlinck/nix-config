@@ -13,17 +13,8 @@
     ./features/desktop/applications/proton.nix
     ./features/cyber/default.nix
     ./features/cyber/exploration/nmap-desktop.nix
-    ./features/desktop/common/swww.nix
   ];
-  # wallpaper = pkgs.wallpapers.framework-12-grid;
-  wallpaper-list =  with pkgs.wallpapers; [
-    framework-12-grid-16-10
-    linkin-park-logo-4k-qu-16-10
-    linkin-park-burning-in-the-skies-r1
-    rotating-waves-gif
-    meteor-shower-apocalypse-gif
-    giant-sun-falls-gif
-  ];
+  wallpaper = pkgs.wallpapers.framework-12-grid-16-10;
 
   colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
 
