@@ -103,6 +103,22 @@
       "id": "linkin-park-logo-4k-qu-1920x1200",
       "website": "images.hdqwalls.com/download",
       "sha256": "0ff46474ae6ab7cfa471af3a91111b43f7dbddb85f821df4233041c9a7dacd41"
+   },
+   {
+      "name": "falling-numbers-16-10-gif",
+      "ext": "gif",
+      "id": "wallpaper2you_199970",
+      "website": "wallpaper-house.com/data/out/7",
+      "sha256": "ec785179d679a10ed810f1f263f2724716228952ef965a5921ed5332d4aa4a2e"
+   },
+
+
+   {
+      "name": "rotating-waves-gif",
+      "ext": "gif",
+      "id": "wallpaper2you_199983",
+      "website": "wallpaper-house.com/data/out/7",
+      "sha256": "95248e6fb9366ffbb8a8d05be024210158b44a47c73ccb4447276ad49ff8eded"
    }
 
 ]
