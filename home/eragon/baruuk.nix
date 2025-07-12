@@ -25,7 +25,7 @@
     rotating-waves-gif
     red-dragon-gif
     astronaut-red-moon-gif
-    glowing-abstract-flow-gif
+    # glowing-abstract-flow-gif
     gothic-floral-skull-gif
     meteor-shower-apocalypse-gif
     space-black-hole-gif
