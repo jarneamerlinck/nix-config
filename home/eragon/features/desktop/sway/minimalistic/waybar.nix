@@ -176,7 +176,7 @@ in
           };
         };
         battery = {
-          bat = "BAT0";
+          bat = "BAT1";
           interval = 10;
           format-icons = [
             "󰁺"
