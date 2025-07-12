@@ -47,9 +47,9 @@ in
         "${cfg.modifier}+Shift+Up" = "move up";
         "${cfg.modifier}+Shift+Right" = "move right";
         "${cfg.modifier}+Escape" = "exec ${config.programs.swaylock.package}/bin/swaylock";
-        # "${cfg.modifier}+Shift+Escape" = "exec ${pkgs.swaylock-effects}/bin/swaylock -C /home/${config.home.username}/.config/swaylock/config";
         "${cfg.modifier}+Shift+l" = "exec swaymsg exit";
         "${cfg.modifier}+Shift+r" = "exec swaymsg reload";
+        "${cfg.modifier}+Shift+w" = "exec systemctl --user restart swww-random-wallpaper";
 
         # full screen modes
         "${cfg.modifier}+f" = "fullscreen toggle";
