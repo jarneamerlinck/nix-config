@@ -21,17 +21,8 @@
     linkin-park-logo-4k-qu-16-10
     linkin-park-burning-in-the-skies-r1
     rotating-waves-gif
-    red-dragon-gif
-    astronaut-red-moon-gif
-    glowing-abstract-flow-gif
     meteor-shower-apocalypse-gif
-    space-black-hole-gif
-    lone-samurai-silhouette-gif
     giant-sun-falls-gif
-    disturbed-gif
-
-
-
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
