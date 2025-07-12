@@ -16,6 +16,27 @@
     ./features/desktop/common/swww.nix
   ];
   # wallpaper = pkgs.wallpapers.framework-12-grid;
+  wallpaper-list =  with pkgs.wallpapers; [
+    framework-12-grid-16-10
+    linkin-park-logo-4k-qu-16-10
+    linkin-park-burning-in-the-skies-r1
+    sunset-over-the-peaks-jx-16-10
+    flare-lines-vr-16-10
+    rotating-waves-gif
+    red-dragon-gif
+    astronaut-red-moon-gif
+    glowing-abstract-flow-gif
+    gothic-floral-skull-gif
+    meteor-shower-apocalypse-gif
+    space-black-hole-gif
+    lone-samurai-silhouette-gif
+    giant-sun-falls-gif
+    colorful-matrix-code-gif
+    disturbed-gif
+
+
+
+  ];
 
   colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
 
