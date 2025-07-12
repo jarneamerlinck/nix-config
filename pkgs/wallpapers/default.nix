@@ -15,7 +15,7 @@ let
     unpackPhase = "true";
     installPhase = ''
       # mkdir -p $out
-      ffmpeg -i $src -vf "fps=10,scale=1920:-1:flags=lanczos" "$out"
+      ffmpeg -i $src -vf "fps=10" "$out"
     '';
   };
 
