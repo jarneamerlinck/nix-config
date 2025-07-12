@@ -111,14 +111,83 @@
       "website": "wallpaper-house.com/data/out/7",
       "sha256": "ec785179d679a10ed810f1f263f2724716228952ef965a5921ed5332d4aa4a2e"
    },
-
-
    {
       "name": "rotating-waves-gif",
       "ext": "gif",
       "id": "wallpaper2you_199983",
       "website": "wallpaper-house.com/data/out/7",
       "sha256": "95248e6fb9366ffbb8a8d05be024210158b44a47c73ccb4447276ad49ff8eded"
-   }
+   },
+   {
+      "name": "red-dragon-gif",
+      "ext": "mp4",
+      "id": "Boa4EhgfpZ-44412Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "db46c1019fd6a8cad247b7eeea2f336e901fc7de406ab05a60f20dd0b7ebb87e"
+   },
+   {
+      "name": "astronaut-red-moon-gif",
+      "ext": "mp4",
+      "id": "KYnuXZftUV-Wallpaper2Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "1eae0747337fa6a02ea666845440112b995060e94c14d88cfa43a04e34fb059a"
+   },
 
+   {
+      "name": "gothic-floral-skull-gif",
+      "ext": "mp4",
+      "id": "UkdSNJ7r2f-2Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "9385624a17ae9d4caa371f5c0d191473a774a82bfe4cd10d9d57826678a23625"
+   },
+   {
+      "name": "glowing-abstract-flow-gif",
+      "ext": "mp4",
+      "id": "uUCbNpXzP2-Wallpaper22Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "9385624a17ae9d4caa371f5c0d191473a774a82bfe4cd10d9d57826678a23625"
+   },
+   {
+      "name": "meteor-shower-apocalypse-gif",
+      "ext": "mp4",
+      "id": "V0xsmrDqOK-Seqrretertertert2Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "f562e961dd1109d980da97cc429c30a3ecf4b5574f6d45b1fa4564bd77e99c1a"
+   },
+   {
+      "name": "space-black-hole-gif",
+      "ext": "mp4",
+      "id": "4zEQ2Ocu9M-0001-15002prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "f232c4e98c762b10b11a135169df3524b21c39aad2a67624816576dd8e437a25"
+   },
+
+   {
+      "name": "lone-samurai-silhouette-gif",
+      "ext": "mp4",
+      "id": "w41FupgCID-Wallpaper32Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "1ec893b1845b3ef21dbfe275a575e0fbf6dfe9e165ec308a8d37f21dee9fc726"
+   },
+   {
+      "name": "giant-sun-falls-gif",
+      "ext": "mp4",
+      "id": "up3D2fxY9A-Wallpaper62Prob4",
+      "website": "www.desktophut.com/files",
+      "sha256": "9aa450d335cfd3fb22e18bc48a459c3be573d42d44a9c48aede50afd4e87e120"
+   },
+   {
+      "name": "colorful-matrix-code-gif",
+      "ext": "mp4",
+      "id": "1655307164-1655307164-colorful-matrix-code-hd-live-wallpaper-for-pc",
+      "website": "www.desktophut.com/files",
+      "sha256": "88f27301c83a5e87d51bef4638f7d850db1b6de13dbd94cb281b4618fa4dc38b"
+   },
+   {
+      "name": "disturbed-gif",
+      "ext": "mp4",
+      "id": "1654796866-1654796866-pc-disturbed-live-wallpaper-free",
+      "website": "www.desktophut.com/files",
+      "sha256": "737d8453094ec8a559b6d3b12af36b402d89ff59098279e10a26b5f06bb0f210"
+   }
 ]
