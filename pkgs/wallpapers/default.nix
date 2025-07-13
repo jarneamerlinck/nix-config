@@ -15,7 +15,7 @@ let
     unpackPhase = "true";
     installPhase = ''
       # mkdir -p $out
-      ffmpeg -i $src -vf "fps=10" "$out"
+      ffmpeg -i $src -vf "fps=20" "$out"
     '';
   };
 
