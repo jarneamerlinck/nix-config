@@ -4,24 +4,13 @@
   # Containers
   virtualisation.oci-containers.containers."excalidraw-excalidraw" = {
     image = "excalidraw/excalidraw:sha-4bfc5bb";
-    labels = {
-      "traefik.enable" = "false";
-      "traefik.http.routers.excalidraw-rtr.entrypoints" = "https";
-      "traefik.http.routers.excalidraw-rtr.rule" = "Host(`excalidraw.ko0.net`)";
-      "traefik.http.routers.excalidraw-rtr.service" = "excalidraw-svc";
-      "traefik.http.routers.excalidraw-rtr.tls" = "true";
-      "traefik.http.routers.excalidraw-rtr.tls.certresolver" = "cloudflare";
-      "traefik.http.services.excalidraw-svc.loadbalancer.server.port" = "8080";
-    };
     ports = [
-      "8080:8080/tcp"
+      "8080:80/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
       "--cpus=0.5"
       "--memory=500MB"
-      "--network-alias=excalidraw"
-      "--network=frontend"
     ];
   };
   systemd.services."docker-excalidraw" = {
