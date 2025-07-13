@@ -16,6 +16,7 @@
     ../common/desktop/wireless.nix
 
     ## Services items
+    ../common/virtualization/docker
     ../common/services/unattended-upgrades.nix
     # ../common/services/wireguard_client.nix
 

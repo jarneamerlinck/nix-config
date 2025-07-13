@@ -10,8 +10,4 @@
   };
   virtualisation.oci-containers.backend = "docker";
 
-  imports = [
-    ./traefik.nix
-  ];
-
 }

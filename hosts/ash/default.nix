@@ -15,6 +15,7 @@
     ../common/users/eragon
 
     ../common/virtualization/docker
+    ../common/virtualization/docker/traefik.nix
   ];
 
   networking = {
