@@ -17,6 +17,7 @@
 
     ## Services items
     ../common/virtualization/docker
+    ../common/services/excalidraw.nix
     ../common/services/unattended-upgrades.nix
     # ../common/services/wireguard_client.nix
 
