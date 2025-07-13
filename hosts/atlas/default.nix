@@ -38,6 +38,7 @@
     ../common/services/unattended-upgrades.nix
 
     ../common/virtualization/docker
+    ../common/virtualization/docker/traefik.nix
     ../common/virtualization/qemu
     ../common/virtualization/wine
 

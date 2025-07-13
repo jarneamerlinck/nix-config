@@ -15,6 +15,7 @@
     ## Services items
     ../common/services/unattended-upgrades.nix
     ../common/virtualization/docker
+    ../common/virtualization/docker/traefik.nix
 
   ];
 
