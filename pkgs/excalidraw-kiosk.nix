@@ -1,0 +1,24 @@
+{
+  lib,
+  makeDesktopItem,
+  fetchurl,
+  pkgs,
+}:
+let
+  pkgVersion = "0.0.1";
+  pkgName = "excalidraw";
+in
+  {
+
+  excalidraw = makeDesktopItem {
+    name= "${pkgName}";
+    exec = "firefox --kiosk --new-window http://localhost:8080";
+    icon = fetchurl {
+      url = "https://avatars.githubusercontent.com/u/59452120";
+      sha256 = "a8e40476d4f4e4a0155b0accc29b28779ec309ad552465a9683ca16b7cab4877";
+    };
+    desktopName = "${pkgName}";
+    genericName = "${pkgName}";
+    comment = "Open excalidraw in kiosk mode";
+  };
+}

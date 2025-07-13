@@ -5,6 +5,7 @@
   grub-themes = pkgs.callPackage ./grub-themes.nix { };
   hyprslurp = pkgs.callPackage ./hyprslurp { };
   lens = pkgs.callPackage ./lens.nix { };
+  excalidraw = pkgs.callPackage ./excalidraw-kiosk.nix { };
 
   # Wallpapers
   wallpapers = import ./wallpapers {inherit pkgs;};
