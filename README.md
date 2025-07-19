@@ -23,46 +23,50 @@ Laptop: 💻️
 ## Directory structure
 
 ```
-|-- home                    <-- home-manager configuration for each user
-|   `-- eragon              <-- home-manager for user eragon
-|       |-- common          <-- default configuration for cli
+|-- home                        <-- home-manager configuration for each user
+|   `-- eragon                  <-- home-manager for user eragon
+|       |-- base                <-- default configuration
+|           `-- ssh.pub
 |       |-- features
-|       |   |-- cli         <-- configuration for all cli related tools
-|       |   |-- desktop     <-- user configuration for desktop tools
+|       |   |-- cli             <-- configuration for all cli related tools
+|       |   |-- desktop         <-- user configuration for desktop tools
 |       |   |   |-- common
 |       |   |   |-- gnome
 |       |   |   |-- sway
-|       |   `-- nvim        <-- configuration for nvim (from the repo kickstart.nvim)
-|       |-- ash.nix         <-- home-manager for host ash
-|       |-- ssh.pub
-|       `-- vm1.nix         <-- home-manager for host vm1
+|       |   `-- applications    <-- all user applications
+|       |-- ash                 <-- home-manager for host ash
+|       `-- vm1                 <-- home-manager for host vm1
 |
-|-- hosts                   <-- all configuration on host level
-|   |-- common
-|   |   |-- base            <-- base configuration for all hosts
-|   |   |-- disko           <-- disko configs to set disk partitions on nix-anywhere install
-|   |   |-- optional        <-- optional configurations (like gnome, sddm, gdm, ...) on system level
-|   |   `-- users           <-- configuration for each user (to call home-manager)
+|-- hosts                       <-- all configuration on host level
+|   |-- base                    <-- base features for all hosts
+|   |   `-- users               <-- configuration for each user (to call home-manager)
 |   |       `-- eragon
-|   |-- ash                 <-- configuration for the host ash
-|   |   |-- default.nix
+|   |-- features
+|   |   |-- desktop             <-- host settings for desktops: x11, wayland, pulsaudio, ...
+|   |   |-- disks               <-- disko configs to set disk partitions on nix-anywhere install
+|   |   |-- services            <-- system level services like wireguard or syncthing
+|   |   `-- virtualization      <-- docker, k8s, qemu and there services/applications
+|   |-- ash                     <-- configuration for the host ash
+|   |   |-- default.nix         <-- config file
+|   |   |-- secrets.yml         <-- sops secrets only for this host
 |   |   `-- hardware-configuration.nix
-|   |-- vm1                 <-- configuration for the host vm1
+|   |-- vm1                     <-- configuration for the host vm1
 |
-|-- modules                 <-- modules for home-manager and nixos
+|-- modules                     <-- modules for home-manager and nixos
 |   |-- home-manager
 |   `-- nixos
 |
-|-- overlays/               <-- Overlays to modify pkgs
+|-- overlays/                   <-- overlays to modify pkgs
 |
-|-- pkgs                    <-- Custom packages
-|   `-- wallpapers          <-- Package for custom wallpapers
+|-- pkgs                        <-- custom packages
+|   `-- wallpapers              <-- package for custom wallpapers
 |
-|-- default.nix             <-- Nix dev file to be able to run the flake
-|-- deploy.sh               <-- Shell file to run the flake and update the system
-|-- flake.lock              <-- Version lock for the flake
-|-- flake.nix               <-- Nix file for the flake
-`-- README.md               <-- This README
+|-- default.nix                 <-- nix dev file to be able to run the flake
+|-- .sops.yaml                  <-- sops controll file
+|-- deploy.sh                   <-- shell file to run the flake and update the system
+|-- flake.lock                  <-- version lock for the flake
+|-- flake.nix                   <-- nix file for the flake
+`-- README.md                   <-- this README
 ```
 
 ## [Add a new host](./docs/host.md)
