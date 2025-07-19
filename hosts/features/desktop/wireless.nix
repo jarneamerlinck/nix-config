@@ -1,17 +1,18 @@
 {
   config,
   ...
-}: {
+}:
+{
 
   sops.secrets."wireless/env" = {
-    sopsFile = ../users/eragon/secrets.yml;
+    sopsFile = ../../base/users/eragon/secrets.yml;
     neededForUsers = false;
   };
 
   networking.networkmanager = {
     enable = true;
     ensureProfiles = {
-      
+
       environmentFiles = [
         config.sops.secrets."wireless/env".path
       ];
@@ -22,7 +23,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto";};
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOME_WIFI_SSID";
@@ -38,7 +41,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto";};
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOME_DAD_SSID";
@@ -55,7 +60,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto";};
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOME_MEP_SSID";
@@ -72,7 +79,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto";};
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOTSPOT_SSID";
@@ -91,7 +100,7 @@
   };
   #
   # # Ensure group exists
-  users.groups.network = {};
+  users.groups.network = { };
   #
   # systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
 }
