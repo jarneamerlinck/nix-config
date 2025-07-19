@@ -1,36 +1,60 @@
-{ pkgs, config, inputs, outputs, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  outputs,
+  ...
+}:
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   username = "eragon";
   lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
-  systems = [ "x86_64-linux" "aarch64-linux" ];
-  pkgsFor = lib.genAttrs systems (system: import inputs.nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  });
+  systems = [
+    "x86_64-linux"
+    "aarch64-linux"
+  ];
+  pkgsFor = lib.genAttrs systems (
+    system:
+    import inputs.nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    }
+  );
 
 in
 {
-  users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
+
+  home = {
+    username = lib.mkDefault "eragon";
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    stateVersion = lib.mkDefault "25.05";
+    sessionPath = [ "$HOME/.local/bin" ];
+    sessionVariables = {
+      FLAKE = "$HOME/nix-config";
+      NH_FLAKE = "$HOME/nix-config";
+    };
+  };
   users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    uid=1442;
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-      "mounts"
-    ] ++ ifTheyExist [
-      "network"
-      "i2c"
-      "docker"
-      "git"
-      "libvirtd"
-      "libvirt-qemu"
-      "deluge"
-      "wireshark"
-    ];
+    uid = 1442;
+    extraGroups =
+      [
+        "wheel"
+        "video"
+        "audio"
+        "mounts"
+      ]
+      ++ ifTheyExist [
+        "network"
+        "i2c"
+        "docker"
+        "git"
+        "libvirtd"
+        "libvirt-qemu"
+        "deluge"
+        "wireshark"
+      ];
 
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/ssh.pub) ];
     hashedPasswordFile = config.sops.secrets."users/${username}".path;
@@ -48,8 +72,8 @@ in
     extraSpecialArgs = { inherit inputs outputs; };
   };
 
-
-  home-manager.users."${username}" = import ../../../../home/${username}/${config.networking.hostName}.nix;
+  home-manager.users."${username}" =
+    import ../../../../home/${username}/${config.networking.hostName}.nix;
 
   # services.geoclue2.enable = true;
   # security.pam.services = { swaylock = { }; };
