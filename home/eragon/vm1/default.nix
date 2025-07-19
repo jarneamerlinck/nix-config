@@ -6,10 +6,9 @@
 }:
 {
   imports = [
-    ./common
-    ./features/services/git-config.nix
-    ./features/cli/debugging.nix
-    ./features/desktop/sway/minimalistic
+    ../base
+    ../features/applications/base
+    ../features/desktop/sway/minimalistic
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 

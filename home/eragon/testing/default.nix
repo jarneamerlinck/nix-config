@@ -7,11 +7,6 @@
 {
   imports = [
     ../base
-    ../features/cli/debugging.nix
-    ../features/cli/kubernetes.nix
-    ../features/desktop/hyprland/minimalistic
-    ../features/cyber
-    ../features/desktop/applications/lens.nix
   ];
   wallpaper = pkgs.wallpapers.abstract-cubes;
 
