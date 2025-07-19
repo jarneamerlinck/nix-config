@@ -1,4 +1,9 @@
-{ outputs, lib, config, ... }:
+{
+  outputs,
+  lib,
+  config,
+  ...
+}:
 
 let
   inherit (config.networking) hostName;
@@ -10,7 +15,7 @@ let
   # hasOptinPersistence = config.environment.persistence ? "/persist";
   knownHosts = builtins.mapAttrs (host: config: {
     extraHostNames = [ "${host}.ko0.net" ];
-    publicKeyFile = ../../${host}/ssh_host_ed25519_key.pub;  # Adjust if public key file paths are specific to each host
+    publicKeyFile = ../${host}/ssh_host_ed25519_key.pub;
   }) hosts;
 in
 {
