@@ -23,17 +23,7 @@ let
 
 in
 {
-
-  home = {
-    username = lib.mkDefault "eragon";
-    homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "25.05";
-    sessionPath = [ "$HOME/.local/bin" ];
-    sessionVariables = {
-      FLAKE = "$HOME/nix-config";
-      NH_FLAKE = "$HOME/nix-config";
-    };
-  };
+  users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
   users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -62,7 +52,7 @@ in
   };
 
   sops.secrets."users/${username}" = {
-    sopsFile = ../../secrets.yml;
+    sopsFile = ../secrets.yml;
     neededForUsers = true;
   };
 
