@@ -48,7 +48,7 @@ creation_rules:
       - *eragon
       - *testing
 
-  - path_regex: hosts/common/secrets.ya?ml$
+  - path_regex: ./hosts/base/users/secrets.y?aml$
     key_groups:
     - age:
       - *eragon
@@ -67,7 +67,7 @@ creation_rules:
 
 
 
-  - path_regex: hosts/common/users/eragon/secrets.ya?ml$
+  - path_regex: hosts/base/users/eragon/secrets.ya?ml$
     key_groups:
     - age:
       - *eragon
