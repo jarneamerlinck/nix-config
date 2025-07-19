@@ -46,7 +46,7 @@ in
         "wireshark"
       ];
 
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/ssh.pub) ];
+    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/base/ssh.pub) ];
     hashedPasswordFile = config.sops.secrets."${username}/password".path;
     packages = [ pkgs.home-manager ];
   };
