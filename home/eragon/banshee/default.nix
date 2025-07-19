@@ -1,7 +1,7 @@
-{ lib, pkgs,  ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
-    ./common
+    ../base
   ];
 
 }
