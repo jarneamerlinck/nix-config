@@ -6,6 +6,10 @@
   outputs,
   ...
 }:
+let
+  inherit (inputs.nix-colors) colorSchemes;
+  inherit (config.colorscheme) palette;
+in
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
