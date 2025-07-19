@@ -1,9 +1,9 @@
 {
   inputs,
   ...
-}: {
+}:
+{
   imports = [
-
 
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd
@@ -14,47 +14,44 @@
 
     # For the raid 10 as it's not supported by disko we need to add the other disks to the system after the installer is done
 
-    ../common/disks/boot_custom_nas.nix
-
+    ../features/disks/boot_custom_nas.nix
 
     # ../common/disko/boot_custom_nas.nix
 
-    ../common/base
-    ../common/users/eragon
-    ../common/disks/wd-decrypt.nix
+    ../base
+    ../base/users/eragon
+    ../features/disks/wd-decrypt.nix
 
     ## Display server
-    ../common/desktop/xserver.nix
-    ../common/desktop/wayland.nix
+    ../features/desktop/xserver.nix
+    ../features/desktop/wayland.nix
 
     ## Display Managers
-    ../common/desktop/greetd.nix
-
+    ../features/desktop/greetd.nix
 
     ## Desktop environments / Window Managers
-    ../common/desktop/pipewire.nix
+    ../features/desktop/pipewire.nix
 
     ## Services items
-    ../common/services/unattended-upgrades.nix
+    ../features/services/unattended-upgrades.nix
 
-    ../common/virtualization/docker
-    ../common/virtualization/docker/traefik.nix
-    ../common/virtualization/qemu
-    ../common/virtualization/wine
+    ../features/virtualization/docker
+    ../features/virtualization/docker/traefik.nix
+    ../features/virtualization/qemu
+    ../features/virtualization/wine
 
-    ../common/services/cloudflare_tunnel.nix
-    ../common/services/homebox.nix
-    ../common/services/syncthing.nix
-    ../common/services/rss_feed.nix
-    ../common/services/portainer.nix
+    ../features/services/cloudflare_tunnel.nix
+    ../features/services/homebox.nix
+    ../features/services/syncthing.nix
+    ../features/services/rss_feed.nix
+    ../features/services/portainer.nix
 
-
-    ../common/services/calibre.nix
-    ../common/services/music.nix
-    ../common/services/photos.nix
+    ../features/services/calibre.nix
+    ../features/services/music.nix
+    ../features/services/photos.nix
 
     # smart tools
-    ../common/services/search.nix
+    ../features/services/search.nix
 
   ];
 
