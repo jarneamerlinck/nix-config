@@ -63,7 +63,7 @@ in
   };
 
   home-manager.users."${username}" =
-    import ../../../../home/${username}/${config.networking.hostName}.nix;
+    import ../../../../home/${username}/${config.networking.hostName};
 
   # services.geoclue2.enable = true;
   # security.pam.services = { swaylock = { }; };
