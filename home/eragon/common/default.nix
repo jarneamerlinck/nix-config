@@ -6,10 +6,6 @@
   outputs,
   ...
 }:
-let
-  inherit (inputs.nix-colors) colorSchemes;
-  inherit (config.colorscheme) palette;
-in
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
@@ -28,7 +24,10 @@ in
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
@@ -64,7 +63,6 @@ in
   home.file = {
     ".colorscheme.json".text = builtins.toJSON config.colorscheme;
   };
-
 
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
