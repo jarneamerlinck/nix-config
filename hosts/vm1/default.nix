@@ -30,7 +30,7 @@
 
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
-    ../features/services/portainer.nix
+    ../features/virtualization/docker/services/portainer.nix
     ../features/virtualization/qemu/qemu-guest.nix
 
     ../features/desktop/wireshark.nix

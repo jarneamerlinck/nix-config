@@ -18,7 +18,7 @@
 
     ## Services items
     ../features/virtualization/docker
-    ../features/services/excalidraw.nix
+    ../features/virtualization/docker/services/excalidraw.nix
     ../features/services/unattended-upgrades.nix
     ../features/services/wireguard_client.nix
 

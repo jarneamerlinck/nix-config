@@ -40,18 +40,18 @@
     ../features/virtualization/qemu
     ../features/virtualization/wine
 
-    ../features/services/cloudflare_tunnel.nix
-    ../features/services/homebox.nix
-    ../features/services/syncthing.nix
-    ../features/services/rss_feed.nix
-    ../features/services/portainer.nix
+    ../features/virtualization/docker/services/cloudflare_tunnel.nix
+    ../features/virtualization/docker/services/homebox.nix
+    ../features/virtualization/docker/services/syncthing.nix
+    ../features/virtualization/docker/services/rss_feed.nix
+    ../features/virtualization/docker/services/portainer.nix
 
-    ../features/services/calibre.nix
-    ../features/services/music.nix
-    ../features/services/photos.nix
+    ../features/virtualization/docker/services/calibre.nix
+    ../features/virtualization/docker/services/music.nix
+    ../features/virtualization/docker/services/photos.nix
 
     # smart tools
-    ../features/services/search.nix
+    ../features/virtualization/docker/services/search.nix
 
   ];
 
