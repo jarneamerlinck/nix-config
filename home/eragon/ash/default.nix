@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ./common
-    ./features/cli/mount.nix
+    ../base
+    ../features/cli/mount.nix
   ];
 }
