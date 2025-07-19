@@ -10,15 +10,15 @@
     ../features/desktop/sway/minimalistic
 
     # Apps
-    ../features/desktop/applications
-    ../features/desktop/applications/discord.nix
-    ../features/desktop/applications/office.nix
-    ../features/desktop/applications/media_player.nix
-    ../features/music
-    ../features/desktop/applications/proton.nix
-    ../features/cyber/default.nix
-    ../features/cyber/exploration/nmap-desktop.nix
-    ../features/desktop/applications/excalidraw_desktop_icon.nix
+    ../features/applications/base
+    ../features/applications/base/discord.nix
+    ../features/applications/base/office.nix
+    ../features/applications/base/media_player.nix
+    ../features/applications/music
+    ../features/applications/base/proton.nix
+    ../features/applications/cyber/default.nix
+    ../features/applications/cyber/exploration/nmap-desktop.nix
+    ../features/applications/base/excalidraw_desktop_icon.nix
     ../features/desktop/common/swww.nix
   ];
   wallpaper-list = with pkgs.wallpapers; [
