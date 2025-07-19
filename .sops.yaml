@@ -48,24 +48,6 @@ creation_rules:
       - *eragon
       - *testing
 
-  - path_regex: ./hosts/base/users/secrets.y?aml$
-    key_groups:
-    - age:
-      - *eragon
-      - *ash
-      - *atlas
-      - *testing
-      - *vm1
-      - *banshee
-      - *baruuk
-
-  - path_regex: hosts/common/virtualization/kubernetes/secrets.ya?ml$
-    key_groups:
-    - age:
-      - *eragon
-      - *testing
-
-
 
   - path_regex: hosts/base/users/eragon/secrets.ya?ml$
     key_groups:
