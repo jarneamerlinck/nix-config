@@ -12,7 +12,7 @@
     ../base/timezone.nix
 
     ../base
-    ../features/users/eragon
+    ../base/users/eragon
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
 
