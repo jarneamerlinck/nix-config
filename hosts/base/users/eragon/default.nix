@@ -47,12 +47,12 @@ in
       ];
 
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/ssh.pub) ];
-    hashedPasswordFile = config.sops.secrets."users/${username}".path;
+    hashedPasswordFile = config.sops.secrets."${username}/password".path;
     packages = [ pkgs.home-manager ];
   };
 
-  sops.secrets."users/${username}" = {
-    sopsFile = ../secrets.yml;
+  sops.secrets."${username}/password" = {
+    sopsFile = ./secrets.yml;
     neededForUsers = true;
   };
 
