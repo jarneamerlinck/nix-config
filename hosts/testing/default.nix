@@ -1,7 +1,8 @@
 {
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd
@@ -9,26 +10,25 @@
 
     ./hardware-configuration.nix
 
-    ../common/disks/boot_1d_btrfs.nix
+    ../features/disks/boot_1d_btrfs.nix
 
-    ../common/base
-    ../common/users/eragon
+    ../base
+    ../base/users/eragon
 
     ## Display server
-    ../common/desktop/wayland.nix
-    ../common/desktop/gtk.nix
+    ../features/desktop/wayland.nix
+    ../features/desktop/gtk.nix
 
     ## Display Managers
-    ../common/desktop/greetd.nix
-
+    ../features/desktop/greetd.nix
 
     ## Desktop environments / Window Managers
-    ../common/desktop/pipewire.nix
+    ../features/desktop/pipewire.nix
 
     ## Services items
-    ../common/services/unattended-upgrades.nix
+    ../features/services/unattended-upgrades.nix
 
-    ../common/virtualization/qemu/qemu-guest.nix
+    ../features/virtualization/qemu/qemu-guest.nix
   ];
 
   networking = {

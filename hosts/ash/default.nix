@@ -1,21 +1,21 @@
 {
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd
     # inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
+    ../features/disks/boot_1d_btrfs.nix
 
-    ../common/disks/boot_1d_btrfs.nix
+    ../base
+    ../base/users/eragon
 
-    ../common/base
-    ../common/users/eragon
-
-    ../common/virtualization/docker
-    ../common/virtualization/docker/traefik.nix
+    ../features/virtualization/docker
+    ../features/virtualization/docker/traefik.nix
   ];
 
   networking = {

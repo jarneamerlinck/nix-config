@@ -1,42 +1,39 @@
 {
   inputs,
   ...
-}: {
+}:
+{
   imports = [
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
 
-    ../common/disks/boot_1d_btrfs.nix
+    ../features/disks/boot_1d_btrfs.nix
 
-    ../common/base
-    ../common/users/eragon
+    ../base
+    ../base/users/eragon
 
-    ../common/disks/wd-decrypt.nix
+    ../features/disks/wd-decrypt.nix
 
     ## Display server
-    ../common/desktop/wayland.nix
-    ../common/desktop/gtk.nix
+    ../features/desktop/wayland.nix
+    ../features/desktop/gtk.nix
 
     ## Display Managers
-    ../common/desktop/greetd.nix
-
+    ../features/desktop/greetd.nix
 
     ## Desktop environments / Window Managers
-    ../common/desktop/mouse.nix
-    ../common/desktop/pipewire.nix
+    ../features/desktop/mouse.nix
+    ../features/desktop/pipewire.nix
 
     ## Services items
-    ../common/services/unattended-upgrades.nix
+    ../features/services/unattended-upgrades.nix
 
-    ../common/virtualization/docker
-    ../common/virtualization/docker/traefik.nix
-    ../common/services/portainer.nix
-    ../common/virtualization/qemu/qemu-guest.nix
+    ../features/virtualization/docker
+    ../features/virtualization/docker/traefik.nix
+    ../features/services/portainer.nix
+    ../features/virtualization/qemu/qemu-guest.nix
 
-    ../common/desktop/wireshark.nix
+    ../features/desktop/wireshark.nix
   ];
 
   networking = {
