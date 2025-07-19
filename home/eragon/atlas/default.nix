@@ -1,10 +1,10 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ./common
-    ./features/cli/tmux_saved_sessions.nix
-    ./features/desktop/sway/minimalistic
-    ./features/cyber
+    ../base
+    ../features/cli/tmux_saved_sessions.nix
+    ../features/desktop/sway/minimalistic
+    ../features/cyber
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
