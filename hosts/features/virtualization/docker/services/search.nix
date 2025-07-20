@@ -1,8 +1,13 @@
-{ pkgs, lib, config,  ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   sops.secrets."search/env" = {
-    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 
@@ -48,7 +53,6 @@
     partOf = [ "docker-compose-search-root.target" ];
     wantedBy = [ "docker-compose-search-root.target" ];
   };
-
 
   virtualisation.oci-containers.containers."redis" = {
     image = "docker.io/valkey/valkey:8-alpine";
