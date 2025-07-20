@@ -1,15 +1,20 @@
 # Auto-generated using compose2nix v0.3.2-pre.
-{ pkgs, lib, config,  ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
 
   sops.secrets."photos/env" = {
-    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 
   sops.secrets."photos/db" = {
-    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 
@@ -56,7 +61,15 @@
     volumes = [
       "/data/docker/photoprism/database:/var/lib/mysql:rw"
     ];
-    cmd = [ "--innodb-buffer-pool-size=512M" "--transaction-isolation=READ-COMMITTED" "--character-set-server=utf8mb4" "--collation-server=utf8mb4_unicode_ci" "--max-connections=512" "--innodb-rollback-on-timeout=OFF" "--innodb-lock-wait-timeout=120" ];
+    cmd = [
+      "--innodb-buffer-pool-size=512M"
+      "--transaction-isolation=READ-COMMITTED"
+      "--character-set-server=utf8mb4"
+      "--collation-server=utf8mb4_unicode_ci"
+      "--max-connections=512"
+      "--innodb-rollback-on-timeout=OFF"
+      "--innodb-lock-wait-timeout=120"
+    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=mariadb"
