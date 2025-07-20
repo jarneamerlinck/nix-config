@@ -8,7 +8,7 @@
 
     or get it from a vault (see [nixos-anywhere vaults](https://nix-community.github.io/nixos-anywhere/howtos/secrets.html#example-decrypting-an-openssh-host-key-with-pass))
 
-    `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C root@vm1`
+    `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C root@$HOST`
 
     2. Put the ssh key in the following folder structure on the host
 

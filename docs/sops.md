@@ -15,7 +15,7 @@ and added it to the host machine
 
 1. Generate a ssh key
 
-`ssh-keygen -o -a 100 -t ed25519 -f ./id_ed25519 -C user@host`
+`ssh-keygen -o -a 100 -t ed25519 -f ./id_ed25519 -C $USER@$HOST`
 
 2. Create the sops secret with the ssh key (see [generating secrets](./sops.md#generating-secrets))
 
