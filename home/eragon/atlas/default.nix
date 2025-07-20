@@ -4,7 +4,7 @@
     ../base
     ../features/cli/tmux_saved_sessions.nix
     ../features/desktop/sway/minimalistic
-    ../features/cyber
+    ../features/applications/cyber
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
