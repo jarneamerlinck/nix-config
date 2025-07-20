@@ -116,3 +116,10 @@ see [sops](./sops.md#new-device-user)
 ```bash
 nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ```
+
+
+
+## Add ssh login
+
+If the host is a server that others need to ssh into you need to add it to the list in `../home/eragon/features/cli/ssh.nix`
+
