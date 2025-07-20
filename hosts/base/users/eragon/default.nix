@@ -8,6 +8,17 @@
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   username = "eragon";
+  homePath = ../../../../home/${username};
+  subdirs = builtins.attrNames (builtins.readDir homePath);
+  sshKeys = builtins.filter (x: x != null) (builtins.map (dir:
+    let
+      keyPath = "${homePath}/${dir}/ssh.pub";
+    in
+      if builtins.pathExists keyPath then builtins.readFile keyPath else null
+  ) subdirs);
+
+
+
   lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
   systems = [
     "x86_64-linux"
@@ -46,7 +57,7 @@ in
         "wireshark"
       ];
 
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/${username}/base/ssh.pub) ];
+    openssh.authorizedKeys.keys = sshKeys;
     hashedPasswordFile = config.sops.secrets."${username}/password".path;
     packages = [ pkgs.home-manager ];
   };
