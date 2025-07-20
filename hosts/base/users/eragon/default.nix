@@ -9,7 +9,10 @@ let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   username = "eragon";
   homePath = ../../../../home/${username};
-  subdirs = builtins.attrNames (builtins.readDir homePath);
+  entries = builtins.readDir homePath;
+  subdirs = builtins.filter (name:
+    entries.${name} == "directory" && name != config.networking.hostName && name != "features"
+  ) (builtins.attrNames entries);
   sshKeys = builtins.filter (x: x != null) (builtins.map (dir:
     let
       keyPath = "${homePath}/${dir}/ssh.pub";
