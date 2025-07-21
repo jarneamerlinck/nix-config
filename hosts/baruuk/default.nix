@@ -22,6 +22,8 @@
     ../features/services/unattended-upgrades.nix
     ../features/services/wireguard_client.nix
 
+    ../features/services/google_coral.nix
+
     ## Display server
     ../features/desktop/wayland.nix
     ../features/desktop/gtk.nix
