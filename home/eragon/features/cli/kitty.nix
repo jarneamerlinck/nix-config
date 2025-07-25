@@ -55,35 +55,35 @@ in
       "ctrl+shift+down" = "decrease_font_size";
       "ctrl+shift+backspace" = "restore_font_size";
     };
-    settings = {
-      italic_font = "auto";
-      bold_font = "auto";
-      bold_italic_font = "auto";
-      font_size = 12;
-      background_opacity = "0.9";
-      cursor_shape = "block";
-      cursor_stop_blinking_after = 15;
-      scrollback_lines = 2000;
-      scrollback_pager = "less +G -R";
-      select_by_word_characters = ":@-./_~?&=%+#";
-      enabled_layouts = "*";
-      remember_window_size = false;
-      repaint_delay = 10;
-      input_delay = 3;
-      visual_bell_duration = 0;
-      enable_audio_bell = false;
-      open_url_modifiers = "ctrl+shift";
-      open_url_with = "default";
-      term = "xterm-kitty";
-      window_border_width = 0;
-      window_margin_width = 15;
-
-      hide_window_decorations = "yes";
-      macos_option_as_alt = false;
-      initial_window_width = 2500;
-      initial_window_height = 1380;
-      macos_titlebar_color = "background";
-    };
-    extraConfig = kittyColors;
+    # settings = {
+    #   italic_font = "auto";
+    #   bold_font = "auto";
+    #   bold_italic_font = "auto";
+    #   font_size = 12;
+    #   background_opacity = "0.9";
+    #   cursor_shape = "block";
+    #   cursor_stop_blinking_after = 15;
+    #   scrollback_lines = 2000;
+    #   scrollback_pager = "less +G -R";
+    #   select_by_word_characters = ":@-./_~?&=%+#";
+    #   enabled_layouts = "*";
+    #   remember_window_size = false;
+    #   repaint_delay = 10;
+    #   input_delay = 3;
+    #   visual_bell_duration = 0;
+    #   enable_audio_bell = false;
+    #   open_url_modifiers = "ctrl+shift";
+    #   open_url_with = "default";
+    #   term = "xterm-kitty";
+    #   window_border_width = 0;
+    #   window_margin_width = 15;
+    #
+    #   hide_window_decorations = "yes";
+    #   macos_option_as_alt = false;
+    #   initial_window_width = 2500;
+    #   initial_window_height = 1380;
+    #   macos_titlebar_color = "background";
+    # };
+    # extraConfig = kittyColors;
   };
 }
