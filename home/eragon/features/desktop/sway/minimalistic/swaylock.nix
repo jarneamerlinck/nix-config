@@ -21,8 +21,6 @@
       fade-in = "0.1";
       ignore-empty-password = true;
 
-      # Own settings
-      font = "${config.fontProfiles.monospace.family}";
     };
   };
 
