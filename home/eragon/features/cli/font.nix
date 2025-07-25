@@ -1,18 +1,29 @@
-{ pkgs, lib,  ... }: {
+{ pkgs, lib, ... }:
+{
 
   home.packages = with pkgs; [
     dconf
   ];
-  fontProfiles = {
-    enable = true;
-    monospace = {
-      family = "FiraCode Nerd Font Mono";
+
+  stylix.fonts = {
+    serif = {
       package = pkgs.nerd-fonts."fira-mono";
+      name = "FiraCode Nerd Font Serif";
     };
-    regular = {
-      family = "Fira Sans";
-      package = pkgs.fira;
+
+    sansSerif = {
+      package = pkgs.nerd-fonts."fira-mono";
+      name = "FiraCode Nerd Font Sans";
+    };
+
+    monospace = {
+      package = pkgs.nerd-fonts."fira-mono";
+      name = "FiraCode Nerd Font Mono";
+    };
+
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
     };
   };
 }
-

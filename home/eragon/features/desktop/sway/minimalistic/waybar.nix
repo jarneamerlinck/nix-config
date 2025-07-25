@@ -43,7 +43,6 @@ let
     * {
       border: none;
       border-radius: 0;
-      font-family: ${config.fontProfiles.monospace.family};
     }
 
     window#waybar {
