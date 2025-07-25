@@ -56,6 +56,9 @@
   # https://tinted-theming.github.io/base16-gallery/
   wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
 
+  # Enable styles
+  stylix.enable = true;
+
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
   #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
