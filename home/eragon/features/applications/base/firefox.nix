@@ -75,6 +75,21 @@ in
             ];
           };
           settings = {
+            # Disable Pocket
+            "extensions.pocket.enabled" = false;
+
+            # Disable Firefox Account / Sync
+            "identity.fxaccounts.enabled" = false;
+            "services.sync.engine.prefs" = false;
+            "services.sync.engine.passwords" = false;
+            "services.sync.engine.history" = false;
+            "services.sync.engine.tabs" = false;
+            "services.sync.engine.bookmarks" = false;
+            "services.sync.engine.addons" = false;
+            "services.sync.engine.creditcards" = false;
+            "services.sync.engine.addresses" = false;
+
+            # Others
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
           };
