@@ -16,7 +16,6 @@ in
     ./waybar.nix
     ./notifications.nix
     ./darkmode-theme.nix
-    ./swaylock.nix
   ];
 
   home.packages = with pkgs; [
@@ -30,7 +29,7 @@ in
     config = rec {
       modifier = "Mod4"; # super key
       terminal = "${pkgs.kitty}/bin/kitty";
-      bars = [];
+      bars = [ ];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
         "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
@@ -53,8 +52,8 @@ in
 
         # full screen modes
         "${cfg.modifier}+f" = "fullscreen toggle";
-        "${cfg.modifier}+F11" = "exec systemctl is-active --user --quiet waybar && systemctl --user stop waybar || systemctl --user start waybar";
-
+        "${cfg.modifier}+F11" =
+          "exec systemctl is-active --user --quiet waybar && systemctl --user stop waybar || systemctl --user start waybar";
 
         "Ctrl+Alt+Right" = "workspace next";
         "Ctrl+Alt+Left" = "workspace prev";
@@ -64,12 +63,11 @@ in
         "Ctrl+Alt+4" = "workspace 4";
         "Print" = "exec ${pkgs.shotman}/bin/shotman -c output -C";
 
-
         "XF86MonBrightnessDown" = "exec light -U 10";
-        "XF86MonBrightnessUp" =  "exec light -A 10";
-        "XF86AudioRaiseVolume" =  "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
-        "XF86AudioLowerVolume" =  "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
-        "XF86AudioMute" =  "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+        "XF86MonBrightnessUp" = "exec light -A 10";
+        "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
+        "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
+        "XF86AudioMute" = "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
       };
     };
     extraConfig = ''
