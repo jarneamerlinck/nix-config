@@ -47,31 +47,6 @@ in
             PreventInstalls = true;
           };
 
-          # ---- EXTENSIONS ----
-          ExtensionSettings = {
-            "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
-            # uBlock Origin:
-            "uBlock0@raymondhill.net" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-              installation_mode = "force_installed";
-            };
-            # Dark reader
-            "addon@darkreader.org" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
-              installation_mode = "force_installed";
-            };
-            # Bitwarden
-            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-              installation_mode = "force_installed";
-            };
-            # user-agent-string-switcher
-            "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/user-agent-string-switcher/latest.xpi";
-              installation_mode = "force_installed";
-            };
-          };
-
           # ---- PREFERENCES ----
           # Set preferences shared by all profiles.
           Preferences = {
@@ -96,6 +71,15 @@ in
           id = 2; # 0 is the default profile; see also option "isDefault"
           name = "base_profile"; # name as listed in about:profiles
           isDefault = true; # can be omitted; true if profile ID is 0
+          extensions = {
+            force = true;
+            packages = with pkgs.firefox-addons; [
+              ublock-origin
+              darkreader
+              bitwarden
+              user-agent-switcher
+            ];
+          };
           settings = {
             # specify profile-specific preferences here; check about:config for options
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
