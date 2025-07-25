@@ -1,29 +1,32 @@
 { config, pkgs, ... }:
 
-  let
-    lock-false = {
-      Value = false;
-      Status = "locked";
-    };
-    lock-true = {
-      Value = true;
-      Status = "locked";
-    };
-  in
+let
+  lock-false = {
+    Value = false;
+    Status = "locked";
+  };
+  lock-true = {
+    Value = true;
+    Status = "locked";
+  };
+in
 {
   home.packages = with pkgs; [
     speechd
+  ];
+  stylix.targets.firefox.profileNames = [
+    "profile_0"
   ];
   programs = {
     firefox = {
       enable = true;
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
         extraPolicies = {
-          /* ---- Policies ---- */
+          # ---- Policies ----
           DisableTelemetry = true;
           DisableFirefoxStudies = true;
           EnableTrackingProtection = {
-            Value= true;
+            Value = true;
             Locked = true;
             Cryptomining = true;
             Fingerprinting = true;
@@ -40,10 +43,10 @@
           SearchBar = "unified"; # alternative: "separate"
           SearchEngine = {
             Default = "DuckDuckGo";
-            PreventInstalls =  true;
+            PreventInstalls = true;
           };
 
-          /* ---- EXTENSIONS ---- */
+          # ---- EXTENSIONS ----
           ExtensionSettings = {
             "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
             # uBlock Origin:
@@ -68,10 +71,13 @@
             };
           };
 
-          /* ---- PREFERENCES ---- */
+          # ---- PREFERENCES ----
           # Set preferences shared by all profiles.
           Preferences = {
-            "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+            "browser.contentblocking.category" = {
+              Value = "strict";
+              Status = "locked";
+            };
             "extensions.pocket.enabled" = lock-false;
             "extensions.screenshots.disabled" = lock-true;
             # add global preferences here...
@@ -79,22 +85,24 @@
         };
       };
 
-      /* ---- PROFILES ---- */
+      # ---- PROFILES ----
       # Switch profiles via about:profiles page.
       # For options that are available in Home-Manager see
       # https://nix-community.github.io/home-manager/options.html#opt-programs.firefox.profiles
-      profiles ={
-        profile_0 = {           # choose a profile name; directory is /home/<user>/.mozilla/firefox/profile_0
-          id = 0;               # 0 is the default profile; see also option "isDefault"
-          name = "profile_0";   # name as listed in about:profiles
-          isDefault = true;     # can be omitted; true if profile ID is 0
-          settings = {          # specify profile-specific preferences here; check about:config for options
+      profiles = {
+        profile_0 = {
+          # choose a profile name; directory is /home/<user>/.mozilla/firefox/profile_0
+          id = 0; # 0 is the default profile; see also option "isDefault"
+          name = "profile_0"; # name as listed in about:profiles
+          isDefault = true; # can be omitted; true if profile ID is 0
+          settings = {
+            # specify profile-specific preferences here; check about:config for options
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
             # add preferences for profile_0 here...
           };
         };
-      # add profiles here...
+        # add profiles here...
       };
     };
   };
