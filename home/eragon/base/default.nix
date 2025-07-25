@@ -10,6 +10,7 @@
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.stylix.homeModules.stylix
+    inputs.nur.modules.homeManager.default
     inputs.sops-nix.homeManagerModule
     ../features/cli
   ]
