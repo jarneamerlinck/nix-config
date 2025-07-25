@@ -14,10 +14,6 @@ in
   home.packages = with pkgs; [
     speechd
   ];
-  stylix.targets.firefox.profileNames = [
-    "base_profile"
-  ];
-  stylix.targets.firefox.colorTheme.enable = true;
   programs = {
     firefox = {
       enable = true;
@@ -82,8 +78,27 @@ in
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
           };
+          search = {
+            default = "ddg"; # duckduckgo
+            force = true; # This locks the default engine
+            engines = {
+              "ddg" = {
+                urls = [
+                  {
+                    template = "https://duckduckgo.com/?q={searchTerms}";
+                  }
+                ];
+                icon = "https://duckduckgo.com/favicon.ico";
+              };
+            };
+          };
         };
       };
     };
   };
+
+  stylix.targets.firefox.profileNames = [
+    "base_profile"
+  ];
+  stylix.targets.firefox.colorTheme.enable = true;
 }
