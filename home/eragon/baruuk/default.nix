@@ -25,7 +25,7 @@
     framework-12-grid-16-10
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.equilibrium-dark;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
 
   monitors = [
     {
