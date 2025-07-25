@@ -12,6 +12,8 @@
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/adventure-time.yaml";
+
   monitors = [
     {
       name = "eDP-1";
