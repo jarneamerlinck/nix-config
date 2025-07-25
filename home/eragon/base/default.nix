@@ -9,7 +9,7 @@
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
-    inputs.stylix.nixosModules.stylix
+    inputs.stylix.homeModules.stylix
     inputs.sops-nix.homeManagerModule
     ../features/cli
   ]
