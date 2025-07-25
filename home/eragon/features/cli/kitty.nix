@@ -13,7 +13,7 @@ in
 {
   programs.kitty = {
     enable = true;
-    theme = "Tokyo Night";
+    themeFile = "Tokyo Night";
     keybindings = {
       "super+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";
