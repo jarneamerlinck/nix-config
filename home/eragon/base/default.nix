@@ -54,16 +54,15 @@
   # Set default wallpaper and colorscheme
   # Available color schemes can be found at
   # https://tinted-theming.github.io/base16-gallery/
-  colorScheme = lib.mkDefault inputs.nix-colors.colorSchemes.atelier-heath;
   wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
 
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
   #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
   # };
-  home.file = {
-    ".colorscheme.json".text = builtins.toJSON config.colorscheme;
-  };
+  # home.file = {
+  #   ".colorscheme.json".text = builtins.toJSON config.colorscheme;
+  # };
 
   # home.packages = let
   #   specialisation = pkgs.writeShellScriptBin "specialisation" ''
