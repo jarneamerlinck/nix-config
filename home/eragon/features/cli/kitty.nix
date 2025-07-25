@@ -13,7 +13,7 @@ in
 {
   programs.kitty = {
     enable = true;
-    # theme = "Tokyo Night";
+    theme = "Tokyo Night";
     keybindings = {
       "super+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";
@@ -60,7 +60,7 @@ in
       bold_font = "auto";
       bold_italic_font = "auto";
       font_size = 12;
-      # background_opacity = "0.9";
+      background_opacity = lib.mkForce "0.9";
       cursor_shape = "block";
       cursor_stop_blinking_after = 15;
       scrollback_lines = 2000;
