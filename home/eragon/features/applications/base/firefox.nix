@@ -77,7 +77,7 @@ in
               ublock-origin
               darkreader
               bitwarden
-              user-agent-switcher
+              # user-agent-switcher
             ];
           };
           settings = {
