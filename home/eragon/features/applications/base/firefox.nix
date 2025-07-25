@@ -15,8 +15,9 @@ in
     speechd
   ];
   stylix.targets.firefox.profileNames = [
-    "profile_0"
+    "base_profile"
   ];
+  stylix.targets.firefox.colorTheme.enable = true;
   programs = {
     firefox = {
       enable = true;
@@ -90,10 +91,10 @@ in
       # For options that are available in Home-Manager see
       # https://nix-community.github.io/home-manager/options.html#opt-programs.firefox.profiles
       profiles = {
-        profile_0 = {
+        base_profile = {
           # choose a profile name; directory is /home/<user>/.mozilla/firefox/profile_0
-          id = 0; # 0 is the default profile; see also option "isDefault"
-          name = "profile_0"; # name as listed in about:profiles
+          id = 2; # 0 is the default profile; see also option "isDefault"
+          name = "base_profile"; # name as listed in about:profiles
           isDefault = true; # can be omitted; true if profile ID is 0
           settings = {
             # specify profile-specific preferences here; check about:config for options
