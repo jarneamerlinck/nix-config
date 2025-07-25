@@ -32,8 +32,6 @@
     hardware = {
       url = "github:nixos/nixos-hardware";
     };
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
