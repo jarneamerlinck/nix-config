@@ -73,7 +73,7 @@ in
           isDefault = true; # can be omitted; true if profile ID is 0
           extensions = {
             force = true;
-            packages = with pkgs.firefox-addons; [
+            packages = with pkgs.nur.repos.rycee.firefox-addons; [
               ublock-origin
               darkreader
               bitwarden
