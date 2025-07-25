@@ -79,9 +79,18 @@ in
             "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
           };
           search = {
-            default = "ddg"; # duckduckgo
+            default = "searxng"; # duckduckgo
             force = true; # This locks the default engine
             engines = {
+
+              "searxng" = {
+                urls = [
+                  {
+                    template = "https://search.ko0.net/?q={searchTerms}";
+                  }
+                ];
+                icon = "https://search.ko0.net/favicon.ico";
+              };
               "ddg" = {
                 urls = [
                   {
