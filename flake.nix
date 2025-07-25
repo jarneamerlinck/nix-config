@@ -32,10 +32,7 @@
     hardware = {
       url = "github:nixos/nixos-hardware";
     };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:nix-community/stylix/release-25.05";
 
     nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
