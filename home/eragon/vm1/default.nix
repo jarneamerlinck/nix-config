@@ -12,7 +12,7 @@
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brushtrees.yaml";
 
   monitors = [
     {
