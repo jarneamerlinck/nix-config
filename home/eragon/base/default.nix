@@ -6,17 +6,14 @@
   outputs,
   ...
 }:
-let
-  inherit (inputs.nix-colors) colorSchemes;
-  inherit (config.colorscheme) palette;
-in
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
-    inputs.nix-colors.homeManagerModules.default
+    inputs.stylix.nixosModules.stylix
     inputs.sops-nix.homeManagerModule
     ../features/cli
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
