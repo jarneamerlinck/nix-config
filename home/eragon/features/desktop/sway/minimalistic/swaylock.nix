@@ -3,10 +3,6 @@
   pkgs,
   ...
 }:
-let
-  
-  inherit (config.colorscheme) palette;
-in
 {
   programs.swaylock = {
     enable = true;
@@ -26,22 +22,7 @@ in
       ignore-empty-password = true;
 
       # Own settings
-      color = "${palette.base00}";
-      inside-color = "${palette.base00}";
       font = "${config.fontProfiles.monospace.family}";
-      text-color = "${palette.base05}";
-      text-caps-lock-color = "${palette.base07}";
-      line-color = "${palette.base01}";
-
-      ring-color = "${palette.base06}";
-      key-h1-color = "${palette.base0A}";
-
-
-      ring-clear-color = "${palette.base00}";
-
-      ring-wrong-color = "${palette.base09}";
-      inside-wrong-color = "${palette.base09}";
-
     };
   };
 
@@ -54,7 +35,10 @@ in
       }
     ];
     timeouts = [
-      { timeout = 60*5;  command = "${config.programs.swaylock.package}/bin/swaylock"; }
+      {
+        timeout = 60 * 5;
+        command = "${config.programs.swaylock.package}/bin/swaylock";
+      }
     ];
   };
 }

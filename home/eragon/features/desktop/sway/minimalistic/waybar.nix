@@ -5,7 +5,6 @@
   ...
 }:
 let
-  inherit (config.colorscheme) palette;
 
   cat = "${pkgs.coreutils}/bin/cat";
 
@@ -40,61 +39,48 @@ let
   sway = config.wayland.windowManager.sway.package;
 
   waybarStyle = ''
-  /* Waybar theme using nix-colors */
-  * {
-    border: none;
-    border-radius: 0;
-    font-family: ${config.fontProfiles.monospace.family};
-    color: #${palette.base05};
-    background-color: #${palette.base00};
-  }
+    /* Waybar theme using nix-colors */
+    * {
+      border: none;
+      border-radius: 0;
+      font-family: ${config.fontProfiles.monospace.family};
+    }
 
-  window#waybar {
-    background-color: #${palette.base00};
-  }
+    window#waybar {
+    }
 
-  #workspaces button {
-    padding: 0 5px;
-    color: #${palette.base05};
-    border-bottom: none;
-  }
+    #workspaces button {
+      padding: 0 5px;
+      border-bottom: none;
+    }
 
-  #workspaces button.focused {
-    border-top: 3px solid #${palette.base0D};
-    border-bottom: none;
-    color: #${palette.base07};
-  }
+    #workspaces button.focused {
+      border-bottom: none;
+    }
 
-  #workspaces button.urgent {
-    border-bottom: none;
-    color: #${palette.base09};
-  }
+    #workspaces button.urgent {
+      border-bottom: none;
+    }
 
-  #workspaces button.visible {
-    border-bottom: none;
-    color: #${palette.base05};
-  }
+    #workspaces button.visible {
+      border-bottom: none;
+    }
 
-  #workspaces button:hover {
-    border-bottom: none;
-    color: #${palette.base06};
-  }
+    #workspaces button:hover {
+      border-bottom: none;
+    }
 
-  #clock {
-    color: #${palette.base0C};
-  }
+    #clock {
+    }
 
-  #cpu {
-    color: #${palette.base0C};
-  }
+    #cpu {
+    }
 
-  #memory {
-    color: #${palette.base0C};
-  }
+    #memory {
+    }
 
-  #battery {
-    color: #${palette.base0C};
-  }
+    #battery {
+    }
   '';
 in
 {
@@ -110,12 +96,13 @@ in
         height = 40;
         margin = "6";
         position = "top";
-        modules-left =
-          [ "custom/menu" ]
-          ++ (lib.optionals hasSway [
-            "sway/workspaces"
-            "sway/mode"
-          ]);
+        modules-left = [
+          "custom/menu"
+        ]
+        ++ (lib.optionals hasSway [
+          "sway/workspaces"
+          "sway/mode"
+        ]);
 
         modules-center = [
           "cpu"
@@ -209,11 +196,10 @@ in
             Down: {bandwidthDownBits}'';
           on-click = "";
         };
-        "custom/menu" =
-          {
-            exec = "echo ";
-            on-click = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
-          };
+        "custom/menu" = {
+          exec = "echo ";
+          on-click = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
+        };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
           on-click = "${systemctl} --user restart waybar";
@@ -222,4 +208,3 @@ in
     };
   };
 }
-

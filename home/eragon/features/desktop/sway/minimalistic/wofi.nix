@@ -4,7 +4,6 @@
   ...
 }:
 let
-  inherit (config.colorscheme) palette;
   wofiStyle = ''
     /* Wofi theme generated from nix-colors */
 
@@ -12,12 +11,9 @@ let
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
       border-radius: 1rem;
       font-size: 1rem;
-      background-color: #${palette.base00};
-      color: #${palette.base05};
     }
 
     #window #outer-box {
-      background-color: #${palette.base01};
     }
 
     #window #outer-box #input {
@@ -25,30 +21,23 @@ let
       padding: 0.8rem 1rem;
       font-size: 1.2rem;
       border-radius: 1rem 1rem 0 0;
-      background-color: #${palette.base02};
-      color: #${palette.base05};
     }
 
     #window #outer-box #input:focus,
     #window #outer-box #input:focus-visible,
     #window #outer-box #input:active {
       border: none;
-      outline: 2px solid #${palette.base05};
       outline-offset: 2px;
     }
 
     #window #outer-box #scroll {
-      background-color: #${palette.base01};
     }
 
     #window #outer-box #scroll #inner-box {
-      background-color: #${palette.base01};
     }
 
     #window #outer-box #scroll #inner-box #entry {
       padding: 0.6rem 1rem;
-      background-color: #${palette.base00};
-      color: #${palette.base05};
     }
 
     #window #outer-box #scroll #inner-box #entry #img {
@@ -57,11 +46,10 @@ let
 
     #window #outer-box #scroll #inner-box #entry:selected {
       outline: none;
-      background-color: #${palette.base02};
-      color: #${palette.base07};
     }
   '';
-in {
+in
+{
   programs.wofi = {
     enable = true;
     settings = {
@@ -74,7 +62,7 @@ in {
       cache_file = "/dev/null";
       exec_search = true;
       matching = "multi-contains";
-      prompt="kitty";
+      prompt = "kitty";
     };
     style = wofiStyle;
   };
