@@ -67,8 +67,6 @@ in
       # https://nix-community.github.io/home-manager/options.html#opt-programs.firefox.profiles
       profiles = {
         base_profile = {
-          # choose a profile name; directory is /home/<user>/.mozilla/firefox/profile_0
-          id = 2; # 0 is the default profile; see also option "isDefault"
           name = "base_profile"; # name as listed in about:profiles
           isDefault = true; # can be omitted; true if profile ID is 0
           extensions = {
@@ -81,13 +79,10 @@ in
             ];
           };
           settings = {
-            # specify profile-specific preferences here; check about:config for options
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
-            # add preferences for profile_0 here...
           };
         };
-        # add profiles here...
       };
     };
   };
