@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, lib, ... }:
+{
   qt = {
     enable = true;
     platformTheme = {
-      name = "gtk3";
+      name = lib.mkDefault "gtk3";
       # package = [
       #   # QT 5
       #   (pkgs.libsForQt5.qtstyleplugins.overrideAttrs (old: {
