@@ -58,6 +58,8 @@
 
   # Enable styles
   stylix.enable = true;
+  stylix.autoEnable = true;
+
   stylix.base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
 
   # specialisation = {
