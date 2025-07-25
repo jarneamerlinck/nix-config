@@ -1,15 +1,15 @@
 { config, pkgs, ... }:
-  let
-    lock-false = {
-      Value = false;
-      Status = "locked";
-    };
-    lock-true = {
-      Value = true;
-      Status = "locked";
-    };
-    firefox_theme_ID = "{6d0cb08e-b66a-4738-afb1-f18300ed681e}"; # grey by varmed
-  in
+let
+  lock-false = {
+    Value = false;
+    Status = "locked";
+  };
+  lock-true = {
+    Value = true;
+    Status = "locked";
+  };
+  firefox_theme_ID = "{6d0cb08e-b66a-4738-afb1-f18300ed681e}"; # grey by varmed
+in
 {
   programs = {
 
@@ -27,17 +27,17 @@
       };
     };
 
-    firefox = {
-      profiles = {
-        profile_0 = {
-          settings = {
-            "ui.systemUsesDarkTheme" = 1;
-            "browser.in-content.dark-mode" = true;
-            "extensions.activeThemeID" = "${toString firefox_theme_ID}";
-          };
-        };
-      };
-    };
+    # firefox = {
+    #   profiles = {
+    #     profile_0 = {
+    #       settings = {
+    #         "ui.systemUsesDarkTheme" = 1;
+    #         "browser.in-content.dark-mode" = true;
+    #         "extensions.activeThemeID" = "${toString firefox_theme_ID}";
+    #       };
+    #     };
+    #   };
+    # };
   };
 
 }
