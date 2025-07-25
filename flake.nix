@@ -34,6 +34,10 @@
     };
     stylix.url = "github:nix-community/stylix/release-25.05";
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
 
