@@ -1,4 +1,13 @@
- Nixos with flakes
+# nix configs
+
+## Features
+
+- [home manager](https://github.com/nix-community/home-manager) (to manage everything)
+- [sops](https://github.com/Mic92/sops-nix) (secret managment + push to git)
+- [disko](https://github.com/nix-community/disko/) (disk formatting)
+- [stylix](https://github.com/nix-community/stylix) (for styles)
+- [NUR](https://github.com/nix-community/NUR) (for firefox plugins)
+
 
 
 ## Devices
