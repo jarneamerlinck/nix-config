@@ -34,46 +34,54 @@
     };
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    disko,
-    ...
-  } @ inputs:
-  let
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      disko,
+      ...
+    }@inputs:
+    let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      });
-  in {
-    inherit lib;
+      pkgsFor = lib.genAttrs systems (
+        system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+      );
+    in
+    {
+      inherit lib;
 
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
-    # templates = import ./templates;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+      # templates = import ./templates;
 
-    overlays = import ./overlays { inherit inputs outputs; };
-    # hydraJobs = import ./hydra.nix { inherit inputs outputs; };
+      overlays = import ./overlays { inherit inputs outputs; };
+      # hydraJobs = import ./hydra.nix { inherit inputs outputs; };
 
-    packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-    devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
-    formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
+      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+      # NixOS configuration entrypoint
+      # Available through 'nixos-rebuild --flake .#your-hostname'
+      nixosConfigurations = {
         vm1 = lib.nixosSystem {
           modules = [
             ./hosts/vm1
@@ -135,10 +143,9 @@
           specialArgs = { inherit inputs outputs; };
         };
 
+      };
 
+      # Standalone home-manager configuration entrypoint
+      # Available through 'home-manager --flake .#your-username@your-hostname'
     };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-  };
 }
