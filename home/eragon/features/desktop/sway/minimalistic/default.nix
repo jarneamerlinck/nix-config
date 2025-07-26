@@ -32,7 +32,7 @@ in
       bars = [ ];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
-        "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi -S drun -x 10 -y 10 -W 25% -H 60%";
+        "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
