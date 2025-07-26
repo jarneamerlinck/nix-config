@@ -11,11 +11,6 @@ in
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
-    setings= {
-      image = config.stylix.image;
-      clock = true;
-      indicator = true;
-    };
   };
 
   services.swayidle = {
@@ -33,7 +28,7 @@ in
       }
     ];
   };
-  config.stylix.targets.swaylock = {
+  stylix.targets.swaylock = {
     enable = true;
     useWallpaper = true;
   };
