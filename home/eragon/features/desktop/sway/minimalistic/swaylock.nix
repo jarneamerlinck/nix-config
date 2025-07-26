@@ -7,6 +7,7 @@ let
   palette = config.lib.stylix.colors;
 in
 {
+  stylix.targets.swaylock.enable = false;
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
@@ -24,17 +25,24 @@ in
       fade-in = "0.1";
       ignore-empty-password = true;
 
-      # Stylix colors (adjust depending on swaylock-effects support)
-      inside-color = "${palette.base00}ff";
-      ring-color = "${palette.base0D}ff";
-      text-color = "${palette.base05}ff";
-      key-hl-color = "${palette.base0B}ff";
-      bs-hl-color = "${palette.base08}ff";
-      ring-ver-color = "${palette.base0B}ff";
-      ring-wrong-color = "${palette.base08}ff";
+      # Own settings
+      color = "${palette.base00}";
+      inside-color = "${palette.base00}";
+      font = "${config.fontProfiles.monospace.family}";
+      text-color = "${palette.base05}";
+      text-caps-lock-color = "${palette.base07}";
+      line-color = "${palette.base01}";
+
+      ring-color = "${palette.base06}";
+      key-h1-color = "${palette.base0A}";
+
+      ring-clear-color = "${palette.base00}";
+
+      ring-wrong-color = "${palette.base09}";
+      inside-wrong-color = "${palette.base09}";
+
     };
   };
-  stylix.targets.swaylock.enable = true;
 
   services.swayidle = {
     enable = true;
