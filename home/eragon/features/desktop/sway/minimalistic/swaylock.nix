@@ -7,9 +7,15 @@ let
   palette = config.lib.stylix.colors;
 in
 {
+
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
+    setings= {
+      image = config.stylix.image;
+      clock = true;
+      indicator = true;
+    };
   };
 
   services.swayidle = {
