@@ -58,10 +58,10 @@
   stylix.autoEnable = true;
 
   stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
-  stylix.polarity = "dark";
+  stylix.polarity = lib.mkDefault "dark";
 
   specialisation = {
-     dark.configuration.stylix.polarity = lib.mkOverride 1498 "dark";
+    dark.configuration.stylix.polarity = lib.mkOverride 1498 "dark";
     light.configuration.stylix.polarity = lib.mkOverride 1498 "light";
   };
   # home.file = {
