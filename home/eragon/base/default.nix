@@ -60,10 +60,10 @@
   stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
   stylix.polarity = "dark";
 
-  # specialisation = {
-  #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
-  #    light.configuration.colorscheme.mode = lib.mkOverride 1498 "light";
-  # };
+  specialisation = {
+     dark.configuration.stylix.polarity = lib.mkOverride 1498 "dark";
+    light.configuration.stylix.polarity = lib.mkOverride 1498 "light";
+  };
   # home.file = {
   #   ".colorscheme.json".text = builtins.toJSON config.colorscheme;
   # };
