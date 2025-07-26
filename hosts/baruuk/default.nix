@@ -20,7 +20,7 @@
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidraw.nix
     ../features/services/unattended-upgrades.nix
-    ../features/services/wireguard_client.nix
+    # ../features/services/wireguard_client.nix
 
     ../features/services/google_coral.nix
 
