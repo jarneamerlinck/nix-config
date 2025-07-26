@@ -54,14 +54,11 @@
 
   # Set default wallpaper and colorscheme
   # Available color schemes can be found at
-  # https://tinted-theming.github.io/base16-gallery/
-  wallpaper = lib.mkDefault pkgs.wallpapers.nixos-logo;
-
-  # Enable styles
   stylix.enable = true;
   stylix.autoEnable = true;
 
-  # stylix.base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
+  stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
+  stylix.polarity = "dark";
 
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
