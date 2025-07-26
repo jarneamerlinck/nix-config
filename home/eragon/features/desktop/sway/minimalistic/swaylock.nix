@@ -9,7 +9,7 @@ in
 {
   programs.swaylock = {
     enable = true;
-    package = pkgs.swaylock-effects;
+    # package = pkgs.swaylock-effects;
   };
 
   services.swayidle = {
@@ -27,8 +27,8 @@ in
       }
     ];
   };
-  stylix.targets.swaylock = {
+  config.stylix.targets.swaylock = {
     enable = true;
-    useImage = false;
+    useWallpaper = true;
   };
 }
