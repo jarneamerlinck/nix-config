@@ -23,6 +23,7 @@
 
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
   stylix.image = "${pkgs.wallpapers.framework-12-grid-16-10}";
+  stylix.polarity = "dark";
 
   monitors = [
     {
