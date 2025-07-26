@@ -140,3 +140,27 @@ function fzf-kube-context() {
 	fi
 }
 
+
+function fzf-hm-specialisation() {
+    local SPECIALISATIONS_DIR="$HOME/.local/state/nix/profiles/home-manager/specialisations"
+
+    if [ ! -d "$SPECIALISATIONS_DIR" ]; then
+        echo "No specialisations found in $SPECIALISATIONS_DIR"
+        return 1
+    fi
+
+    SPECIALISATION=$(ls -1 "$SPECIALISATIONS_DIR" \
+        | fzf \
+            --no-sort \
+            --preview="nix path-info -r $SPECIALISATIONS_DIR/{} 2>/dev/null" \
+            --preview-window=down:40% \
+            --cycle \
+            --prompt="Select Home Manager specialisation: " \
+            --color=bg:#222222,preview-bg:#333333 \
+            --layout='reverse-list')
+
+    if [ -n "$SPECIALISATION" ]; then
+        echo "Switching to specialisation: $SPECIALISATION"
+        home-manager switch --specialisation "$SPECIALISATION"
+    fi
+}
