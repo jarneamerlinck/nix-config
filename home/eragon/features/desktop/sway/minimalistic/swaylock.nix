@@ -34,6 +34,7 @@ in
       ring-wrong-color = "${palette.base08}ff";
     };
   };
+  stylix.targets.swaylock.enable = true;
 
   services.swayidle = {
     enable = true;
