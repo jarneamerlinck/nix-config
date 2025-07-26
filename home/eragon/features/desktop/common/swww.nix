@@ -5,6 +5,7 @@
   ...
 }: let
 
+  cfg = config.wayland.windowManager.sway.config;
   wallpaperListFile = "${config.xdg.configHome}/wallpaper_list.txt";
 in
 {
@@ -33,6 +34,13 @@ in
       Install = {
         WantedBy = [ "default.target" ];
       };
+    };
+
+    wayland.windowManager.sway.config = rec {
+
+      keybindings = {
+        "${cfg.modifier}+Shift+w" = "exec systemctl --user restart swww-random-wallpaper";
+        };
     };
 
 }
