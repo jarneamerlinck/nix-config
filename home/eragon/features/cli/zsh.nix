@@ -1,4 +1,5 @@
-{ pkgs, lib,  ... }: {
+{ pkgs, lib, ... }:
+{
   programs.zsh = {
     enable = true;
     plugins = [
@@ -17,7 +18,7 @@
         src = lib.cleanSource ./shell_func.sh;
         file = "shell_func.sh";
       }
-      ];
+    ];
     initContent = ''
       [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
 
@@ -26,18 +27,19 @@
     '';
   };
   programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
+    enable = true;
+    enableZshIntegration = true;
   };
   home.shellAliases = {
-      de="fzf-docker-exec";
-      dl="fzf-docker-live-log";
-      kn="fzf-kube-namespace";
-      kc="fzf-kube-context";
-      # dfl="fzf-docker-full-log";
-      # dll="fzf-docker-live-log";
-      gl="fzf-git-log";
-      fssh="fzf-ssh";
-    };
+    de = "fzf-docker-exec";
+    dl = "fzf-docker-live-log";
+    kn = "fzf-kube-namespace";
+    kc = "fzf-kube-context";
+    # dfl="fzf-docker-full-log";
+    # dll="fzf-docker-live-log";
+    gl = "fzf-git-log";
+    fssh = "fzf-ssh";
+    hms = "fzf-hm-specialisation";
+  };
 
 }
