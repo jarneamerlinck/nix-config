@@ -61,7 +61,7 @@
   stylix.enable = true;
   stylix.autoEnable = true;
 
-  stylix.base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
+  # stylix.base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
 
   # specialisation = {
   #     dark.configuration.colorscheme.mode = lib.mkOverride 1498 "dark";
