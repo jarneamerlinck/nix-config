@@ -21,7 +21,7 @@
     ../features/applications/base/excalidraw_desktop_icon.nix
   ];
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
   stylix.image = "${pkgs.wallpapers.framework-12-grid-16-10}";
 
   monitors = [
