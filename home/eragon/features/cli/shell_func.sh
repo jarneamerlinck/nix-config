@@ -151,16 +151,15 @@ function fzf-hm-specialisation() {
 
     SPECIALISATION=$(ls -1 "$SPECIALISATIONS_DIR" \
         | fzf \
-            --no-sort \
-            --preview="nix path-info -r $SPECIALISATIONS_DIR/{} 2>/dev/null" \
-            --preview-window=down:40% \
-            --cycle \
-            --prompt="Select Home Manager specialisation: " \
-            --color=bg:#222222,preview-bg:#333333 \
-            --layout='reverse-list')
+	  --no-sort \
+	  --preview-window down:10% \
+	  --cycle \
+	  --color bg:#222222,preview-bg:#333333 \
+	  --layout='reverse-list' \
+	  --prompt="Select Home Manager specialisation: ")
 
     if [ -n "$SPECIALISATION" ]; then
         echo "Switching to specialisation: $SPECIALISATION"
-        home-manager switch --specialisation "$SPECIALISATION"
+        . $SPECIALISATIONS_DIR/$SPECIALISATION/activate
     fi
 }
