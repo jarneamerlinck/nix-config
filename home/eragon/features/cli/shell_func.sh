@@ -142,7 +142,7 @@ function fzf-kube-context() {
 
 
 function fzf-hm-specialisation() {
-    local SPECIALISATIONS_DIR="$HOME/.local/state/nix/profiles/home-manager/specialisations"
+    local SPECIALISATIONS_DIR="$HOME/.local/state/nix/profiles/home-manager/specialisation"
 
     if [ ! -d "$SPECIALISATIONS_DIR" ]; then
         echo "No specialisations found in $SPECIALISATIONS_DIR"
