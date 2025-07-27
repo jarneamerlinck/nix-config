@@ -2,7 +2,7 @@
 
   home = {
     packages = with pkgs; [
-      onlyoffice-documentserver
+      onlyoffice-desktopeditors
     ];
   };
 }
