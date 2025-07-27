@@ -160,6 +160,6 @@ function fzf-hm-specialisation() {
 
     if [ -n "$SPECIALISATION" ]; then
         echo "Switching to specialisation: $SPECIALISATION"
-        . $SPECIALISATIONS_DIR/$SPECIALISATION/activate
+        $SHELL $SPECIALISATIONS_DIR/$SPECIALISATION/activate
     fi
 }
