@@ -9,6 +9,7 @@
     ../base
     ../features/applications/base
     ../features/desktop/sway/minimalistic
+    ../features/applications/base/vscode.nix
   ];
   wallpaper = pkgs.wallpapers.nixos-logo;
 
