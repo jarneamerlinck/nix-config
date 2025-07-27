@@ -1,6 +1,6 @@
 # nix configs
 
-## Features
+## Nixos Features
 
 - [home manager](https://github.com/nix-community/home-manager) (to manage everything)
 - [sops](https://github.com/Mic92/sops-nix) (secret managment + push to git)
@@ -8,7 +8,27 @@
 - [stylix](https://github.com/nix-community/stylix) (for styles)
 - [NUR](https://github.com/nix-community/NUR) (for firefox plugins)
 
+## Tooling
 
+
+### CLI
+- kitty
+
+- neovim (from nixCats template see: [kickstart.nvim](https://github.com/jarneamerlinck/kickstart.nvim))
+- fzf
+
+### Desktop
+
+- greetd
+- sway + swaylock  swayidle
+- waybar
+- wofi
+- swww
+
+### Applications
+
+- feishin (desktop navidrome player)
+- vesktop (discord with color themes and more)
 
 ## Rices
 
