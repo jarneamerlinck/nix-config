@@ -31,7 +31,7 @@
       VISUAL = "nvim";
     };
     packages = with pkgs; [
-      comma # Install and run programs by sticking a , before them
+      # comma # Install and run programs by sticking a , before them
 
       # ncdu # TUI disk usage
       ripgrep # Better grep
