@@ -10,6 +10,14 @@
 
 
 
+## Rices
+
+### Sway minimal
+
+![sway minimal](./docs/images/sway-minimal.png)
+
+
+
 ## Devices
 
 | Hostname  | Board          | CPU                                                 |  RAM  | Primary GPU                                    | Secondary GPU | Role  |  OS   | State |
