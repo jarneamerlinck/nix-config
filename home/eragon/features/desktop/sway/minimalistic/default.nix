@@ -33,7 +33,7 @@ in
       bars = [ ];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
-        "${cfg.modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+        "${cfg.modifier}+d" = "exec ${config.programs.wofi.package}/bin/wofi --show drun";
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
