@@ -15,7 +15,6 @@ in
     ./wofi.nix
     ./waybar.nix
     ./notifications.nix
-    ./darkmode-theme.nix
     ./swaylock.nix
   ];
 
