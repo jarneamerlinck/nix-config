@@ -197,7 +197,7 @@ in
         };
         "custom/menu" = {
           exec = "echo ";
-          on-click = "exec ${pkgs.wofi}/bin/wofi --show drun";
+          on-click = "$SHELL -lc '${config.programs.wofi.package}/bin/wofi --show drun'";
         };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
