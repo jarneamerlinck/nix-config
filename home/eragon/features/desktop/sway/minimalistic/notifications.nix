@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [
+    libnotify
+  ];
   config.services.mako = {
     enable = true;
     settings = {
