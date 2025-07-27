@@ -1,8 +1,11 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    libnotify
-  ];
-  config.services.mako = {
+
+
+  home = {
+    packages = with pkgs; [ libnotify ];
+  };
+
+  services.mako = {
     enable = true;
     settings = {
       anchor = "top-center";
