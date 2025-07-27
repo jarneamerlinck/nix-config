@@ -1,14 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  lock-false = {
-    Value = false;
-    Status = "locked";
-  };
-  lock-true = {
-    Value = true;
-    Status = "locked";
-  };
+  chat_uri = "https://chat.ko0.net";
+  chat_options = "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
 in
 {
   home.packages = with pkgs; [
@@ -50,9 +44,6 @@ in
               Value = "strict";
               Status = "locked";
             };
-            "extensions.pocket.enabled" = lock-false;
-            "extensions.screenshots.disabled" = lock-true;
-            # add global preferences here...
           };
         };
       };
@@ -88,6 +79,26 @@ in
             "services.sync.engine.addons" = false;
             "services.sync.engine.creditcards" = false;
             "services.sync.engine.addresses" = false;
+
+
+            # Disable password saving
+            "signon.rememberSignons" = false;  # Disable saving passwords
+
+            # Disable autofill
+            "browser.formfill.enable" = false;  # Disable form autofill
+
+            # Disable saving payment methods
+            "payments.enabled" = false;  # Disable saving credit card/payment methods
+
+            # ML integration
+
+
+            ## Enable Firefox ML chat features
+            "browser.ml.chat.enabled" = true;
+
+            ## Show localhost in ML chat features
+            "browser.ml.chat.hideLocalhost" = false;
+            "browser.ml.chat.provider" = "${chat_uri}/${chat_options}";
 
             # Others
             "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
