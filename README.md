@@ -7,15 +7,19 @@
 - [disko](https://github.com/nix-community/disko/) (disk formatting)
 - [stylix](https://github.com/nix-community/stylix) (for styles)
 - [NUR](https://github.com/nix-community/NUR) (for firefox plugins)
+- [nh](https://github.com/nix-community/nh) (better nixos rebuild output)
 
 ## Tooling
 
 
 ### CLI
-- kitty
 
+- kitty
 - neovim (from nixCats template see: [kickstart.nvim](https://github.com/jarneamerlinck/kickstart.nvim))
 - fzf
+- zoxide
+- tmux
+- btop/htop
 
 ### Desktop
 
