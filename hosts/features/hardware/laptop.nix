@@ -19,6 +19,6 @@
       STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
     };
   };
-
+  powerManagement.powertop.enable = true;
 
 }
