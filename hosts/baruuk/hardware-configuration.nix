@@ -5,7 +5,9 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
+      ../features/hardware/laptop.nix
     ];
   boot = {
     loader.grub = {
