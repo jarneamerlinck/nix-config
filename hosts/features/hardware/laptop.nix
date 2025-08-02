@@ -5,8 +5,7 @@
   };
   service.logind = {
     lidSwitch = "suspend";
-    lidSwitchExternalPower = "hybrid-sleep";
+    lidSwitchExternalPower = "sleep";
     lidSwitchDocked = "ignore";
-
   };
 }
