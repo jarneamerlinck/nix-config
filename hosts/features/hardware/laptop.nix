@@ -3,7 +3,7 @@
   services.auto-cpufreq = {
     enable = true;
   };
-  service.logind = {
+  services.logind = {
     lidSwitch = "suspend";
     lidSwitchExternalPower = "sleep";
     lidSwitchDocked = "ignore";
