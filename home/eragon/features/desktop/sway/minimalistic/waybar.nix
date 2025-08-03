@@ -105,7 +105,7 @@ in
 
         modules-center = [
           "cpu"
-          "custom/gpu"
+          # "custom/gpu"
           "memory"
           "clock"
           "pulseaudio"
