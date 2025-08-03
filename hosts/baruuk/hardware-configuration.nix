@@ -30,6 +30,7 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
+  hardware.sensor.iio.enable = true;
 
   swapDevices = [ ];
   services.fwupd.enable = true;
