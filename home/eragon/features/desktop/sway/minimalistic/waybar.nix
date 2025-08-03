@@ -37,6 +37,7 @@ let
 
   hasSway = config.wayland.windowManager.sway.enable;
   sway = config.wayland.windowManager.sway.package;
+  hasGpu = false;
 
   waybarStyle = ''
     /* Waybar theme using nix-colors */
@@ -105,7 +106,12 @@ in
 
         modules-center = [
           "cpu"
-          # "custom/gpu"
+        ]
+        ++ (lib.optionals hasGpu [
+          "custom/gpu"
+        ])
+        ++
+        [
           "memory"
           "clock"
           "pulseaudio"
