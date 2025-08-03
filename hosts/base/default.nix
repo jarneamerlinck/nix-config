@@ -20,6 +20,7 @@
     ./sops.nix
     ./hardware-packages.nix
     ./security.nix
+    ./monitoring.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
