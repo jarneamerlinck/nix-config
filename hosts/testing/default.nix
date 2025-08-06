@@ -10,7 +10,7 @@
 
     ./hardware-configuration.nix
 
-    ../features/disks/boot_1d_btrfs.nix
+    ../features/disks/boot_btrfs_laptop.nix
 
     ../base
     ../base/users/eragon
