@@ -11,6 +11,8 @@
     extraOptions = [
       "--cpus=0.5"
       "--memory=500MB"
+      "--network-alias=excalidraw"
+      "--network=host"
     ];
   };
   systemd.services."docker-excalidraw" = {
