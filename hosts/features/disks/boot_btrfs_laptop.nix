@@ -4,6 +4,7 @@
 
   imports = [
     ./btrfs.nix
+    ./clevis.nix
   ];
 
   disko.devices = {
@@ -43,11 +44,11 @@
                 type = "luks";
                 name = "crypted";
                 # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/disk.key"; # Interactive
-                settings = {
-                  allowDiscards = true;
-                  keyFile = "/tmp/disk-encryption.key";
-                };
+                passwordFile = "/tmp/disk.key"; # Interactive
+                # settings = {
+                #   allowDiscards = true;
+                #   keyFile = "/tmp/disk-1.key";
+                # };
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];

@@ -93,6 +93,13 @@ ls $temp
 nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$temp" --flake .#vm1 nixos@ip
 ```
 
+
+
+```bash
+
+nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$TEMP" --disk-encryption-keys /tmp/disk-1.key <(cat "$TEMP/disk-1.key") --flake .#testing  nixos@192.168.100.215
+```
+
 (without extra temp files)
 
 ```bash
