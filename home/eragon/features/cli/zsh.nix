@@ -2,17 +2,9 @@
 {
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
     plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./p10k.zsh;
-        file = "p10k.zsh";
-      }
       {
         name = "shell-func-config";
         src = lib.cleanSource ./shell_func.sh;
@@ -20,12 +12,19 @@
       }
     ];
     initContent = ''
-      [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
 
       eval "$(zoxide init zsh)"
       [[ ! -f ${./shell_func.sh} ]] || source ${./shell_func.sh}
     '';
   };
+  programs.starship = {
+    enable = true;
+  };
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -40,6 +39,8 @@
     gl = "fzf-git-log";
     fssh = "fzf-ssh";
     hms = "fzf-hm-specialisation";
+    l = "eza -l";
+    ll = "eza -ahl";
   };
 
 }
