@@ -10,12 +10,22 @@
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
+
+  sops.secrets."nix_cache/nix-cache.yml" = {
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
   services.nix-serve = {
     enable = true;
     secretKeyFile = "/run/secrets-for-users/nix_cache/cache-priv-key.pem";
   };
   virtualisation.oci-containers.containers."traefik" = {
 
+    volumes = lib.mkForce [
+      "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
+      "/var/run/docker.sock:/var/run/docker.sock:ro"
+      "/run/secrets-for-users/nix_cache/nix-cache.yml:/etc/traefik/nix-cache.yml:ro"
+    ];
     cmd = lib.mkForce [
       "--accesslog=true"
       "--accesslog.filePath=/logs/access.log"
