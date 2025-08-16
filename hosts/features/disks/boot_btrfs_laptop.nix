@@ -51,7 +51,7 @@
                 # };
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = [ ];
                   subvolumes = {
                     "/rootfs" = {
                       mountpoint = "/";
