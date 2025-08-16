@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
 
   sops.secrets."nix_cache/cache-priv-key.pem" = {
@@ -10,7 +15,24 @@
     secretKeyFile = "/run/secrets-for-users/nix_cache/cache-priv-key.pem";
   };
   virtualisation.oci-containers.containers."traefik" = {
-    cmd = config.virtualisation.oci-containers.containers."traefik".cmd ++ [
+
+    cmd = lib.mkForce [
+      "--accesslog=true"
+      "--accesslog.filePath=/logs/access.log"
+      "--api.insecure=true"
+      "--providers.docker=true"
+      "--providers.docker.exposedbydefault=false"
+
+      "--entryPoints.http.address=:80"
+      "--entrypoints.web.http.redirections.entrypoint.to=https"
+      "--entryPoints.web.http.redirections.entrypoint.scheme=https"
+
+      "--entryPoints.https.address=:443"
+      "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
+      "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
+      "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
+      "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
+
       "--providers.file.filename=/etc/traefik/nix-cache.yml"
       "--providers.file.watch=true"
     ];
