@@ -56,6 +56,14 @@
                     "/rootfs" = {
                       mountpoint = "/";
                     };
+
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
                     ".snapshots" = {
                       mountOptions = [
                         "compress=zstd"
