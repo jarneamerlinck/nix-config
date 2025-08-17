@@ -44,9 +44,9 @@ in
       "traefik.http.routers.chat-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.services.chat-svc.loadbalancer.server.port" = "8080";
     };
-    dependsOn = [
-      "chat-ollama"
-    ];
+    # dependsOn = [
+    #   "chat-ollama"
+    # ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=chat"
