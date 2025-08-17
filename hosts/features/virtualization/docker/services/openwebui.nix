@@ -15,6 +15,10 @@ in
     neededForUsers = true;
   };
 
+  sops.secrets."mcpo/config.json" = {
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
   # Containers
   virtualisation.oci-containers.containers."chat-openwebui" = {
     image = "ghcr.io/open-webui/open-webui:0.6.22";
