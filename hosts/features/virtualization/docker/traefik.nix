@@ -60,7 +60,7 @@
   };
   systemd.services."docker-traefik" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "no";
+      Restart = lib.mkOverride 90 "always";
     };
     after = [
       "docker-network-frontend.service"
