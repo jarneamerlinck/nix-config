@@ -1,5 +1,10 @@
 # Auto-generated using compose2nix v0.2.3-pre.
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
 
@@ -14,16 +19,17 @@
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.portainer-rtr.entrypoints" = "https";
-      "traefik.http.routers.portainer-rtr.rule" = "Host(`portainer.${config.networking.hostName}.ko0.net`)";
+      "traefik.http.routers.portainer-rtr.rule" =
+        "Host(`portainer.${config.networking.hostName}.ko0.net`)";
       "traefik.http.routers.portainer-rtr.service" = "portainer-svc";
       "traefik.http.routers.portainer-rtr.tls" = "true";
       "traefik.http.routers.portainer-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.services.portainer-svc.loadbalancer.server.port" = "9000";
 
-
       # Edge
       "traefik.http.routers.portainer-backbone-rtr.entrypoints" = "https";
-      "traefik.http.routers.portainer-backbone-rtr.rule" = "Host(`portainer-backbone.${config.networking.hostName}.ko0.net`)";
+      "traefik.http.routers.portainer-backbone-rtr.rule" =
+        "Host(`portainer-backbone.${config.networking.hostName}.ko0.net`)";
       "traefik.http.routers.portainer-backbone-rtr.service" = "portainer-backbone-svc";
       "traefik.http.routers.portainer-backbone-rtr.tls" = "true";
       "traefik.http.routers.portainer-backbone-rtr.tls.certresolver" = "cloudflare";
@@ -47,8 +53,10 @@
       RestartSteps = lib.mkOverride 500 9;
     };
     after = [
+      "docker-network-frontend.service"
     ];
     requires = [
+      "docker-network-frontend.service"
     ];
     partOf = [
       "docker-compose-portainer-root.target"
@@ -57,7 +65,6 @@
       "docker-compose-portainer-root.target"
     ];
   };
-
 
   # Root service
   # When started, this will automatically create all resources and start
