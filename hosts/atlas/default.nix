@@ -51,7 +51,8 @@
     ../features/virtualization/docker/services/music.nix
     ../features/virtualization/docker/services/photos.nix
 
-    # TODO: Add openwebuit
+    ../features/virtualization/docker/services/openwebui.nix
+
     # TODO: Add bookmarks
 
     # smart tools
