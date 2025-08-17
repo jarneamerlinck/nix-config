@@ -86,11 +86,11 @@ nix run github:nix-community/nixos-anywhere/97b45ac -- --flake .#vm1 --vm-test
 
 5. Run the install commando from an other device with nix (change Ip and hostname)
 
-The `ls $temp` is to validate the `$temp` has been set correctly. You should see the `etc` directory
+The `ls $TEMP` is to validate the `$TEMP` has been set correctly. You should see the `etc` directory
 
 ```bash
-ls $temp
-nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$temp" --flake .#vm1 nixos@ip
+ls $TEMP
+nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$TEMP" --flake .#vm1 nixos@ip
 ```
 
 
