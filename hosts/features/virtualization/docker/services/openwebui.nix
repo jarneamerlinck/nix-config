@@ -98,10 +98,10 @@ in
       RestartSteps = lib.mkOverride 500 9;
     };
     after = [
-      "docker-network-chat.target"
+      "docker-network-chat.service"
     ];
     requires = [
-      "docker-network-chat.target"
+      "docker-network-chat.service"
     ];
     partOf = [
       "docker-compose-chat-root.target"
@@ -119,10 +119,10 @@ in
       RestartSteps = lib.mkOverride 500 9;
     };
     after = [
-      "docker-network-chat.target"
+      "docker-network-chat.service"
     ];
     requires = [
-      "docker-network-chat.target"
+      "docker-network-chat.service"
     ];
     partOf = [
       "docker-compose-chat-root.target"
