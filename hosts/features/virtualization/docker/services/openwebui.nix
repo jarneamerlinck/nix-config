@@ -45,7 +45,7 @@ in
       "traefik.http.services.chat-svc.loadbalancer.server.port" = "8080";
     };
     # dependsOn = [
-    #   "chat-ollama"
+    #   "ollama"
     # ];
     log-driver = "journald";
     extraOptions = [
@@ -55,7 +55,7 @@ in
     ];
   };
 
-  virtualisation.oci-containers.containers."chat-ollama" = {
+  virtualisation.oci-containers.containers."ollama" = {
     image = "ollama/ollama:0.11.4";
     volumes = [
       "/data/docker/chat/ollama/:/root/.ollama"
@@ -111,7 +111,7 @@ in
     ];
   };
 
-  systemd.services."docker-chat-ollama" = {
+  systemd.services."docker-ollama" = {
     serviceConfig = {
       Restart = lib.mkOverride 500 "always";
       RestartMaxDelaySec = lib.mkOverride 500 "1m";
