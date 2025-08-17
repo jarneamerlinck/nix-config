@@ -5,6 +5,9 @@
   config,
   ...
 }:
+let
+  url = "portainer.${config.networking.hostName}.ko0.net";
+in
 
 {
 
@@ -19,8 +22,7 @@
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.portainer-rtr.entrypoints" = "https";
-      "traefik.http.routers.portainer-rtr.rule" =
-        "Host(`portainer.${config.networking.hostName}.ko0.net`)";
+      "traefik.http.routers.portainer-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.portainer-rtr.service" = "portainer-svc";
       "traefik.http.routers.portainer-rtr.tls" = "true";
       "traefik.http.routers.portainer-rtr.tls.certresolver" = "cloudflare";
