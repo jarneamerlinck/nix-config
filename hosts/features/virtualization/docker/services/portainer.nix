@@ -10,7 +10,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."portainer" = {
-    image = "portainer/portainer-ce:2.27.5";
+    image = "portainer/portainer-ce:2.32.0";
     volumes = [
       "/var/run/docker.sock:/var/run/docker.sock:rw"
       "/data/docker/portainer:/data:rw"
