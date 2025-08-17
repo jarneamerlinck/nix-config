@@ -5,7 +5,7 @@
   ...
 }:
 let
-  url = "https://chat.ko0.net";
+  url = "chat.ko0.net";
 in
 
 {
@@ -23,7 +23,7 @@ in
     ];
 
     environment = {
-      "WEBUI_URL" = "${url}";
+      "WEBUI_URL" = "https://${url}";
       "OLLAMA_BASE_URL" = "http://ollama:11434";
       "ENABLE_ADMIN_CHAT_ACCESS" = "false";
       "ENABLE_SIGNUP" = "false";
