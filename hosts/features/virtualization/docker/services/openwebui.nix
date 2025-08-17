@@ -44,9 +44,9 @@ in
       "traefik.http.routers.chat-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.services.chat-svc.loadbalancer.server.port" = "8080";
     };
-    # dependsOn = [
-    #   "ollama"
-    # ];
+    dependsOn = [
+      "ollama"
+    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=chat"
@@ -74,6 +74,19 @@ in
     ];
   };
 
+  virtualisation.oci-containers.containers."mcpo" = {
+    image = "ghcr.io/jarneamerlinck/mcpo:main@sha256:e40e14e1f36ac3c137f27b15c5f2f5a9edee19fb3b2c044a12e48b4ef04d299d";
+    volumes = [
+      "${config.sops.secrets."mcpo/config.json".path}:/config.json"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=chat"
+      "--network=chat"
+      "--network=frontend"
+      "--network=source_code"
+    ];
+  };
   # Networks
   systemd.services."docker-network-chat" = {
     path = [ pkgs.docker ];
@@ -131,7 +144,28 @@ in
       "docker-compose-chat-root-root.target"
     ];
   };
+
   # Root service
+  systemd.services."docker-mcpo" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 500 "always";
+      RestartMaxDelaySec = lib.mkOverride 500 "1m";
+      RestartSec = lib.mkOverride 500 "100ms";
+      RestartSteps = lib.mkOverride 500 9;
+    };
+    after = [
+      "docker-network-chat.service"
+    ];
+    requires = [
+      "docker-network-chat.service"
+    ];
+    partOf = [
+      "docker-compose-chat-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-chat-root-root.target"
+    ];
+  };
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.
   systemd.targets."docker-compose-chat-root" = {
