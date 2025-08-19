@@ -55,7 +55,7 @@ in
   };
 
   virtualisation.oci-containers.containers."bookmarks-chrome" = {
-    image = "gcr.io/zenika-hub/alpine-chrome:123";
+    image = "gcr.io/zenika-hub/alpine-chrome:124";
     environmentFiles = [
       "/run/secrets-for-users/bookmarks/env"
     ];
@@ -77,7 +77,7 @@ in
   };
 
   virtualisation.oci-containers.containers."bookmarks-meilisearch" = {
-    image = "getmeili/meilisearch:v1.11.1";
+    image = "getmeili/meilisearch:v1.13.3";
     environmentFiles = [
       "/run/secrets-for-users/bookmarks/env"
     ];
