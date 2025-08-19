@@ -52,6 +52,7 @@
     ../features/virtualization/docker/services/photos.nix
 
     ../features/virtualization/docker/services/openwebui.nix
+    ../features/virtualization/docker/services/bookmarks.nix
 
     # TODO: Add bookmarks
 
