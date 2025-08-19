@@ -25,10 +25,6 @@ in
     neededForUsers = true;
   };
 
-  sops.secrets."bookmarks/mcpo.env" = {
-    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
-    neededForUsers = true;
-  };
   # Containers
   virtualisation.oci-containers.containers."bookmarks-karakeep" = {
     image = "ghcr.io/karakeep-app/karakeep:${karakeep_version}";
