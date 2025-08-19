@@ -101,7 +101,6 @@ in
     image = "ghcr.io/karakeep-app/karakeep-mcp:${karakeep_version}";
     environmentFiles = [
       "/run/secrets-for-users/bookmarks/mcpo.env"
-      "/run/secrets-for-users/bookmarks/env"
     ];
     log-driver = "journald";
     extraOptions = [
