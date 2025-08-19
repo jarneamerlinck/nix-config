@@ -14,6 +14,7 @@ let
     "DATA_DIR" = "/data";
     "OLLAMA_BASE_URL" = "http://ollama:11434";
   };
+  karakeep_version = "0.24.1";
 
 in
 
@@ -24,9 +25,13 @@ in
     neededForUsers = true;
   };
 
+  sops.secrets."bookmarks/mcpo.env" = {
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
   # Containers
   virtualisation.oci-containers.containers."bookmarks-karakeep" = {
-    image = "ghcr.io/karakeep-app/karakeep:0.24.1";
+    image = "ghcr.io/karakeep-app/karakeep:${karakeep_version}";
     environmentFiles = [
       "/run/secrets-for-users/bookmarks/env"
     ];
@@ -91,6 +96,24 @@ in
     ];
 
   };
+
+  virtualisation.oci-containers.containers."bookmarks-mcp" = {
+    image = "ghcr.io/karakeep-app/karakeep-mcp:${karakeep_version}";
+    environmentFiles = [
+      "/run/secrets-for-users/bookmarks/mcpo.env"
+    ];
+    volumes = [
+      "/data/docker/bookmarks/meilisearch/:/meili_data"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=bookmarks"
+      "--network=bookmarks"
+      "--network=chat"
+    ];
+
+  };
+
   # Networks
   systemd.services."docker-network-bookmarks" = {
     path = [ pkgs.docker ];
@@ -144,6 +167,28 @@ in
     ];
     requires = [
       "docker-network-bookmarks.service"
+    ];
+    partOf = [
+      "docker-compose-bookmarks-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-bookmarks-root-root.target"
+    ];
+  };
+  systemd.services."docker-bookmarks-mcp" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 500 "always";
+      RestartMaxDelaySec = lib.mkOverride 500 "1m";
+      RestartSec = lib.mkOverride 500 "100ms";
+      RestartSteps = lib.mkOverride 500 9;
+    };
+    after = [
+      "docker-network-bookmarks.service"
+      "docker-network-chat.service"
+    ];
+    requires = [
+      "docker-network-bookmarks.service"
+      "docker-network-chat.service"
     ];
     partOf = [
       "docker-compose-bookmarks-root.target"
