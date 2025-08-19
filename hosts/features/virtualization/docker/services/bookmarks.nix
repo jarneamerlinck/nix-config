@@ -14,7 +14,7 @@ let
     "DATA_DIR" = "/data";
     "OLLAMA_BASE_URL" = "http://ollama:11434";
   };
-  karakeep_version = "0.24.1";
+  karakeep_version = "0.26.0";
 
 in
 
