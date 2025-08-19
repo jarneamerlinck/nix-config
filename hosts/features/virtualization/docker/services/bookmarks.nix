@@ -7,7 +7,7 @@
 let
   url = "bookmarks.ko0.net";
   shared_env = {
-    "NEXTAUTH_URL" = "http://localhost:3000";
+    "NEXTAUTH_URL" = "https://bookmarks.ko0.net";
     "MEILI_NO_ANALYTICS" = "true";
     "MEILI_ADDR" = "http://bookmarks-meilisearch:7700";
     "BROWSER_WEB_URL" = "http://bookmarks-chrome:9222";
