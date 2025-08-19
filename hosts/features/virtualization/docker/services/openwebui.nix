@@ -87,8 +87,8 @@ in
     extraOptions = [
       "--network-alias=chat"
       "--network=chat"
-      "--network=frontend"
       "--network=source_code"
+      "--network=bookmark"
     ];
   };
   # Networks
@@ -158,9 +158,13 @@ in
     };
     after = [
       "docker-network-chat.service"
+      "docker-network-source_code.service"
+      "docker-network-bookmark.service"
     ];
     requires = [
       "docker-network-chat.service"
+      "docker-network-source_code.service"
+      "docker-network-bookmark.service"
     ];
     partOf = [
       "docker-compose-chat-root.target"
