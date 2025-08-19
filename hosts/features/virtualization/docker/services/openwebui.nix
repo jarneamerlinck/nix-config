@@ -149,7 +149,6 @@ in
     ];
   };
 
-  # Root service
   systemd.services."docker-mcpo" = {
     serviceConfig = {
       Restart = lib.mkOverride 500 "always";
@@ -170,6 +169,7 @@ in
       "docker-compose-chat-root-root.target"
     ];
   };
+  # Root service
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.
   systemd.targets."docker-compose-chat-root" = {
