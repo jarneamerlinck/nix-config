@@ -102,9 +102,6 @@ in
     environmentFiles = [
       "/run/secrets-for-users/bookmarks/mcpo.env"
     ];
-    volumes = [
-      "/data/docker/bookmarks/meilisearch/:/meili_data"
-    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=bookmarks"
