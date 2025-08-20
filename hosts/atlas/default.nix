@@ -51,6 +51,7 @@
     ../features/virtualization/docker/services/music.nix
     ../features/virtualization/docker/services/photos.nix
 
+    ../features/virtualization/docker/services/zipline.nix
     ../features/virtualization/docker/services/openwebui.nix
     ../features/virtualization/docker/services/bookmarks.nix
 
