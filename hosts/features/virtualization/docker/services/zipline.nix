@@ -15,11 +15,16 @@ in
     neededForUsers = true;
   };
 
+  sops.secrets."zipline/env_zipline" = {
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
   # Containers
   virtualisation.oci-containers.containers."zipline-zipline" = {
     image = "ghcr.io/diced/zipline:4.1.2";
     environmentFiles = [
       "/run/secrets-for-users/zipline/env"
+      "/run/secrets-for-users/zipline/env_zipline"
     ];
 
     volumes = [
