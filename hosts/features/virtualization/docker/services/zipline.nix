@@ -47,10 +47,6 @@ in
       "zipline-postgresql"
     ];
     extraOptions = [
-      "--health-cmd=[\"wget\", \"-q\", \"--spider\", \"http://0.0.0.0:3000/api/healthcheck\"]"
-      "--health-interval=15s"
-      "--health-retries=2"
-      "--health-timeout=2s"
       "--network-alias=zipline"
       "--network=zipline"
       "--network=frontend"
@@ -68,11 +64,7 @@ in
       "/data/docker/zipline/db:/var/lib/postgresql/data"
     ];
     extraOptions = [
-      "--health-cmd=[\"pg_isready\", \"-U\", \"zipline\"]"
-      "--health-interval=10s"
-      "--health-retries=5"
-      "--health-timeout=5s"
-      "--network-alias=postgresql"
+      "--network-alias=zipline"
       "--network=zipline"
     ];
   };
