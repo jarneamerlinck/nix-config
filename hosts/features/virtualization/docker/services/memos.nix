@@ -26,10 +26,6 @@ in
       "traefik.http.services.memos-svc.loadbalancer.server.port" = "5230";
     };
     log-driver = "journald";
-
-    dependsOn = [
-      "memos-postgresql"
-    ];
     extraOptions = [
       "--network-alias=frontend"
       "--network=frontend"
