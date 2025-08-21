@@ -5,7 +5,7 @@
   ...
 }:
 let
-  url = "docs.ko0.net";
+  url = "notes.ko0.net";
 in
 
 {
