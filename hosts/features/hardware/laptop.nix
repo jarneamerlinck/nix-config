@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  outputs,
+  ...
+}:
 {
   services.auto-cpufreq = {
     enable = true;
@@ -8,4 +13,8 @@
     lidSwitchExternalPower = "sleep";
     lidSwitchDocked = "ignore";
   };
+  swapDevices = [
+    { device = outputs.disko.devices.disk.boot_disk.device; }
+  ];
+
 }
