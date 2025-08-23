@@ -34,6 +34,7 @@
 
     ## Services items
     ../features/services/unattended-upgrades.nix
+    ../features/services/nix_cache_server.nix
 
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
@@ -41,14 +42,19 @@
     ../features/virtualization/wine
 
     ../features/virtualization/docker/services/cloudflare_tunnel.nix
-    ../features/virtualization/docker/services/homebox.nix
     ../features/virtualization/docker/services/syncthing.nix
     ../features/virtualization/docker/services/rss_feed.nix
-    ../features/virtualization/docker/services/portainer.nix
 
+    # Docker stacks
+    ../features/virtualization/docker/services/homebox.nix
+    ../features/virtualization/docker/services/portainer.nix
     ../features/virtualization/docker/services/calibre.nix
     ../features/virtualization/docker/services/music.nix
     ../features/virtualization/docker/services/photos.nix
+    ../features/virtualization/docker/services/memos.nix
+    ../features/virtualization/docker/services/zipline.nix
+    ../features/virtualization/docker/services/openwebui.nix
+    ../features/virtualization/docker/services/bookmarks.nix
 
     # smart tools
     ../features/virtualization/docker/services/search.nix

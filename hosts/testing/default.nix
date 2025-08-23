@@ -9,6 +9,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
+    ../features/services/nix_cache_vms.nix
 
     ../features/disks/boot_btrfs_laptop.nix
 
