@@ -13,8 +13,9 @@
     lidSwitchExternalPower = "sleep";
     lidSwitchDocked = "ignore";
   };
-  swapDevices = [
-    { device = outputs.disko.devices.disk.boot_disk.device; }
-  ];
+  # swapDevices = [
+  #   { device = outputs.disko.devices.disk.boot_disk.device; }
+  # ];
+  boot.resumeDevice = outputs.disko.devices.disk.boot_disk.device;
 
 }
