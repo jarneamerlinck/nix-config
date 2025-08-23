@@ -16,6 +16,6 @@
   # swapDevices = [
   #   { device = outputs.disko.devices.disk.boot_disk.device; }
   # ];
-  boot.resumeDevice = outputs.disko.devices.disk.boot_disk.device;
+  boot.resumeDevice = "/dev/vda3";
 
 }
