@@ -39,7 +39,7 @@
   };
   swapDevices = [ ];
 
-  disko.devices.disk.boot_disk.content.partitions.swap.size = lib.MkForce "10240M";
+  disko.devices.disk.boot_disk.content.partitions.swap.size = lib.mkForce "10240M";
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
