@@ -14,8 +14,12 @@
     lidSwitchDocked = "ignore";
   };
   # swapDevices = [
-  #   { device = outputs.disko.devices.disk.boot_disk.device; }
+  #   {
+  #     device = "/var/lib/swapfile";
+  #     size = 10240;
+  #   }
   # ];
   boot.resumeDevice = "/dev/vda3";
-
+  powerManagement.enable = true;
+  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 }
