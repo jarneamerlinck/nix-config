@@ -30,14 +30,14 @@
                 mountpoint = "/boot";
               };
             };
-            swap = {
-              name = "swap";
-              size = "20G";
-              type = "8200";
-              content = {
-                type = "swap";
-              };
-            };
+            # swap = {
+            #   name = "swap";
+            #   size = "10240M";
+            #   type = "8200";
+            #   content = {
+            #     type = "swap";
+            #   };
+            # };
             lusk = {
               size = "100%";
               content = {
