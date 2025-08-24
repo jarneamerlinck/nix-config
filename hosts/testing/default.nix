@@ -10,6 +10,7 @@
 
     ./hardware-configuration.nix
     ../features/services/nix_cache_vms.nix
+    ../features/hardware/laptop.nix
 
     ../features/disks/boot_btrfs_laptop.nix
 
@@ -30,6 +31,7 @@
     ../features/services/unattended-upgrades.nix
 
     ../features/virtualization/qemu/qemu-guest.nix
+
   ];
 
   networking = {
