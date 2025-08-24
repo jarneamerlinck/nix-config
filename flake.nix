@@ -32,6 +32,10 @@
     hardware = {
       url = "github:nixos/nixos-hardware";
     };
+    # Secure boot
+    lanzaboote.url = "github:nix-community/lanzaboote";
+
+    # Styles
     stylix.url = "github:nix-community/stylix/release-25.05";
 
     nur = {

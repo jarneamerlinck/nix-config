@@ -10,6 +10,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
+    ../features/hardware/secure_boot.nix
     ../features/hardware/laptop.nix
 
     ../features/disks/boot_btrfs_laptop.nix
