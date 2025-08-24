@@ -20,6 +20,7 @@
   #   }
   # ];
   boot.resumeDevice = "/dev/vda3";
+  boot.kernelParams = [ "resume_offset=0" ];
   powerManagement.enable = true;
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 }
