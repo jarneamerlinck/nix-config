@@ -34,7 +34,6 @@
     ../features/desktop/mouse.nix
     ../features/desktop/pipewire.nix
   ];
-
   networking = {
     hostName = "baruuk";
     useDHCP = lib.mkDefault true;

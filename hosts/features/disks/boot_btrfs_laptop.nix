@@ -32,7 +32,7 @@
             };
             swap = {
               name = "swap";
-              size = lib.MkDefault "10240M";
+              size = lib.MkDefault "16384M";
               type = "8200";
               content = {
                 type = "swap";
