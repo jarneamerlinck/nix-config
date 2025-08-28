@@ -4,7 +4,7 @@
 }:
 {
   services.logind = {
-    lidSwitch = if config.powerManagement.enable then "suspend-then-hibernate" else "suspend";
+    lidSwitch = if config.powerManagement.enable then "hibernate" else "suspend";
   };
   boot.resumeDevice = "${config.disko.devices.disk.boot_disk.device}3";
   boot.kernelParams = [ "resume_offset=0" ]; # This is because it's a sepperate partition
