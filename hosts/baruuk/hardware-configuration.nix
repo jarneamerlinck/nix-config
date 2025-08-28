@@ -13,7 +13,6 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    ../features/hardware/laptop.nix
   ];
   boot = {
     loader.grub = {
