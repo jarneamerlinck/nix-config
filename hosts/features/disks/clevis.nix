@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:
 {
+  # TODO: allow yubi key to decrypt: https://haseebmajid.dev/posts/2024-07-30-how-i-setup-btrfs-and-luks-on-nixos-using-disko/
   systemd.tpm2.enable = true;
   security.tpm2.enable = true;
   boot.initrd.clevis = {
