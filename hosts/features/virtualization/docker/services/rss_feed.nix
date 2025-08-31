@@ -10,6 +10,16 @@
       "PUID" = "1442";
       "TZ" = "Europe/London";
     };
+
+    labels = {
+      "traefik.enable" = "true";
+      "traefik.http.routers.rss-rtr.entrypoints" = "https";
+      "traefik.http.routers.rss-rtr.rule" = "Host(`rss.ko0.net`)";
+      "traefik.http.routers.rss-rtr.service" = "rss-svc";
+      "traefik.http.routers.rss-rtr.tls" = "true";
+      "traefik.http.routers.rss-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.rss-svc.loadbalancer.server.port" = "80";
+    };
     volumes = [
       "/data/docker/freshrss:/config:rw"
     ];
