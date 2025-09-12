@@ -1,14 +1,19 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
 
   # Containers
 
   virtualisation.oci-containers.containers."calibre-server" = {
-    image = "lscr.io/linuxserver/calibre:7.22.0";
+    image = "lscr.io/linuxserver/calibre:8.9.0";
     environment = {
       "TZ" = "Europe/Brussels";
       "UMASK" = "022";
-      "DOCKER_MODS"="linuxserver/calibre-web:calibre";
+      "DOCKER_MODS" = "linuxserver/calibre-web:calibre";
     };
 
     volumes = [
@@ -54,10 +59,10 @@
   };
 
   virtualisation.oci-containers.containers."calibre-web" = {
-  image = "lscr.io/linuxserver/calibre-web:0.6.24";
+    image = "lscr.io/linuxserver/calibre-web:0.6.24";
     environment = {
       "TZ" = "Europe/Brussels";
-      "DOCKER_MODS"="linuxserver/calibre-web:calibre";
+      "DOCKER_MODS" = "linuxserver/calibre-web:calibre";
     };
 
     volumes = [
@@ -98,7 +103,6 @@
       "docker-compose-calibre-root.target"
     ];
   };
-
 
   # Root service
   # When started, this will automatically create all resources and start

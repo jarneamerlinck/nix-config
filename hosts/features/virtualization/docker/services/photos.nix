@@ -21,7 +21,7 @@
   # Containers
 
   virtualisation.oci-containers.containers."photos-photoprism" = {
-    image = "photoprism/photoprism:250425";
+    image = "docker.io/photoprism/photoprism:250707";
     environmentFiles = [
       "/run/secrets-for-users/photos/env"
     ];
