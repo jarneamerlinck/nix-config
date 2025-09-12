@@ -6,7 +6,7 @@
     ./btrfs.nix
     ./clevis.nix
   ];
-
+  fileSystems."/var/log".neededForBoot = true;
   disko.devices = {
     disk = {
       boot_disk = {
@@ -41,7 +41,12 @@
             lusk = {
               size = "100%";
               content = {
-                settings = {crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];};
+                settings = {
+                  crypttabExtraOpts = [
+                    "fido2-device=auto"
+                    "token-timeout=10"
+                  ];
+                };
 
                 type = "luks";
                 name = "crypted";
