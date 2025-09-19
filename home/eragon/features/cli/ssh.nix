@@ -25,7 +25,6 @@ in {
     matchBlocks = {
       net = {
         host = lib.concatStringsSep " " (lib.flatten (map (host: [
-            host
             "${host}.ko0.net"
           ])
           hostnames));
