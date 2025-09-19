@@ -54,6 +54,10 @@ in
         "${cfg.modifier}+F11" =
           "exec systemctl is-active --user --quiet waybar && systemctl --user stop waybar || systemctl --user start waybar";
 
+
+        "${cfg.modifier}+Ctrl+Left"  = "move to workspace left";
+        "${cfg.modifier}+Ctrl+Right" = "move to workspace right";
+
         "Ctrl+Alt+Right" = "workspace next";
         "Ctrl+Alt+Left" = "workspace prev";
         "Ctrl+Alt+1" = "workspace 1";
