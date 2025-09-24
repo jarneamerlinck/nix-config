@@ -4,8 +4,6 @@ let
   publicKeyHomeSafe = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI";
 in
 {
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
-
   sops.secrets."wireguard/privateKey" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
