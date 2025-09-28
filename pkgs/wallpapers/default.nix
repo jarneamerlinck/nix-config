@@ -39,4 +39,3 @@ pkgs.lib.listToAttrs (
     }
   ) wallpaperList
 )
-

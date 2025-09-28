@@ -2,7 +2,7 @@
 
 ## Usage
 
-[Sops](https://github.com/getsops/sops) can be used to encrypt secrets 
+[Sops](https://github.com/getsops/sops) can be used to encrypt secrets
 with the nixos module called: [sops-nix](https://github.com/Mic92/sops-nix).
 
 

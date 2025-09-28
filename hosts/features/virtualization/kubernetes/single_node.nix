@@ -14,7 +14,7 @@
         "--tls-san ${config.networking.hostName}.ko0.net"
     ]);
     clusterInit = true;
-    
+
   };
   networking.firewall = {
     allowedTCPPorts = [

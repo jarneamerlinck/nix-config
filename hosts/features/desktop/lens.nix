@@ -5,4 +5,3 @@
     lens.freelens
   ];
 }
-

@@ -55,4 +55,3 @@ sudo nmcli d  wifi show-password
 ```bash
 sudo nmcli c modify $SSID ipv4.dns "1.1.1.1,9.9.9.9"
 ```
-

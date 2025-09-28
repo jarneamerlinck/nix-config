@@ -75,7 +75,7 @@ chmod 600 "./ssh_host_ed25519_key"
 
     ```bash
     passwd
-    ip -a 
+    ip -a
     ```
 
 4. Test configuration (to catch mistakes before pushing to host)
@@ -129,4 +129,3 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ## Add ssh login
 
 If the host is a server that others need to ssh into you need to add it to the list in `../home/eragon/features/cli/ssh.nix`
-

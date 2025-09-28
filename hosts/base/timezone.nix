@@ -2,4 +2,3 @@
 {
   services.tzupdate.enable = true;
 }
-
