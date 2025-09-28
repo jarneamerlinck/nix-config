@@ -24,3 +24,35 @@ Replace the env variables with the correct SSID and password or set the env vari
 sudo nmcli wifi connect $SSID password "$PASSWORD"
 ```
 
+3. Extra options / usefull commands
+
+- Show all known networks
+
+```bash
+sudo nmcli c show
+```
+
+- Scan and list all wifi networks
+
+```bash
+sudo nmcli d wifi
+```
+
+or with rescanning
+
+```bash
+sudo nmcli d wifi list --rescan yes
+```
+
+- Generate QR for currently connected wifi network
+
+```bash
+sudo nmcli d  wifi show-password
+```
+
+- Change dns
+
+```bash
+sudo nmcli c modify $SSID ipv4.dns "1.1.1.1,9.9.9.9"
+```
+
