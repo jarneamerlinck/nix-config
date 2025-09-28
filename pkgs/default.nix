@@ -1,8 +1,11 @@
+# TODO: Allow nix flake check to succeed
+
 { pkgs ? import <nixpkgs> { config.allowUnfree = true; } }:
 
 let
   wallpapers = import ./wallpapers { inherit pkgs; };
 in {
+
   sddm-themes   = pkgs.callPackage ./sddm-themes.nix { };
   grub-themes   = pkgs.callPackage ./grub-themes.nix { };
   lens          = pkgs.callPackage ./lens.nix { };
