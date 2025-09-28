@@ -24,13 +24,14 @@
 ### Desktop
 
 - greetd
-- sway + swaylock  swayidle
+- sway + swaylock / swayidle
 - waybar
 - wofi
-- swww
+- stylix (or swww)
 
 ### Applications
 
+- firefox (extentions, theme based on stylix, custom search engine, ml)
 - feishin (desktop navidrome player)
 - vesktop (discord with color themes and more)
 
