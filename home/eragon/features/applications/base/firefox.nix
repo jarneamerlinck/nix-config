@@ -4,6 +4,8 @@ with config.lib.stylix.colors.withHashtag;
 let
   chat_uri = "https://chat.ko0.net";
   chat_options = "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
+  file_path_darkreader =   ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
+
 in
 {
   home.packages = with pkgs; [
@@ -136,12 +138,9 @@ in
   ];
   stylix.targets.firefox.colorTheme.enable = true;
 
-  xdg.configFile.darkreader = {
 
-    enable = true;
-    #onChange = manually tell darkreader to refresh somehow?
-    target = "darkreader/config.json";
-    text = ''
+  home.file."${file_path_darkreader}".text =  ''
+
 
       {
           "schemeVersion": 2,
@@ -199,7 +198,5 @@ in
       	"thanks-2023"
           ]
       }
-
     '';
-  };
 }
