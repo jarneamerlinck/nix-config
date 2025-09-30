@@ -13,6 +13,7 @@
     ../features/applications/base
     ../features/applications/base/discord.nix
     ../features/applications/base/office.nix
+    ../features/applications/base/krita.nix
     ../features/applications/base/media_player.nix
     ../features/applications/music
     ../features/applications/base/proton.nix
