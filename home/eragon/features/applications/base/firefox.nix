@@ -1,8 +1,11 @@
 { config, pkgs, ... }:
 
+with config.lib.stylix.colors.withHashtag;
 let
   chat_uri = "https://chat.ko0.net";
   chat_options = "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
+  file_path_darkreader =   ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
+
 in
 {
   home.packages = with pkgs; [
@@ -80,18 +83,16 @@ in
             "services.sync.engine.creditcards" = false;
             "services.sync.engine.addresses" = false;
 
-
             # Disable password saving
-            "signon.rememberSignons" = false;  # Disable saving passwords
+            "signon.rememberSignons" = false; # Disable saving passwords
 
             # Disable autofill
-            "browser.formfill.enable" = false;  # Disable form autofill
+            "browser.formfill.enable" = false; # Disable form autofill
 
             # Disable saving payment methods
-            "payments.enabled" = false;  # Disable saving credit card/payment methods
+            "payments.enabled" = false; # Disable saving credit card/payment methods
 
             # ML integration
-
 
             ## Enable Firefox ML chat features
             "browser.ml.chat.enabled" = true;
@@ -136,4 +137,66 @@ in
     "base_profile"
   ];
   stylix.targets.firefox.colorTheme.enable = true;
+
+
+  home.file."${file_path_darkreader}".text =  ''
+
+
+      {
+          "schemeVersion": 2,
+          "enabled": true,
+          "fetchNews": true,
+          "theme": {
+      	"mode": 1,
+      	"brightness": 100,
+      	"contrast": 100,
+      	"grayscale": 0,
+      	"sepia": 0,
+      	"useFont": false,
+      	"fontFamily": "Open Sans",
+      	"textStroke": 0,
+      	"engine": "dynamicTheme",
+      	"stylesheet": "",
+      	"darkSchemeBackgroundColor": "${base00}",
+      	"darkSchemeTextColor": "${base05}",
+      	"lightSchemeBackgroundColor": "${base05}",
+      	"lightSchemeTextColor": "${base00}",
+      	"scrollbarColor": "auto",
+      	"selectionColor": "auto",
+      	"styleSystemControls": false,
+      	"lightColorScheme": "Default",
+      	"darkColorScheme": "Default",
+      	"immediateModify": false
+          },
+          "presets": [],
+          "customThemes": [],
+          "enabledByDefault": true,
+          "enabledFor": [],
+          "disabledFor": [],
+          "changeBrowserTheme": false,
+          "syncSettings": false,
+          "syncSitesFixes": true,
+          "automation": {
+      	"enabled": false,
+      	"mode": "",
+      	"behavior": "OnOff"
+          },
+          "time": {
+      	"activation": "18:00",
+      	"deactivation": "9:00"
+          },
+          "location": {
+      	"latitude": null,
+      	"longitude": null
+          },
+          "previewNewDesign": true,
+          "enableForPDF": true,
+          "enableForProtectedPages": true,
+          "enableContextMenus": false,
+          "detectDarkTheme": false,
+          "displayedNews": [
+      	"thanks-2023"
+          ]
+      }
+    '';
 }

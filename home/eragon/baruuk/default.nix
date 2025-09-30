@@ -14,6 +14,7 @@
     ../features/applications/base/discord.nix
     ../features/applications/base/office.nix
     ../features/applications/base/media_player.nix
+    ../features/applications/base/image_editing.nix
     ../features/applications/music
     ../features/applications/base/proton.nix
     ../features/applications/cyber/default.nix

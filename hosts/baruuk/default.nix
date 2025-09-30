@@ -28,6 +28,7 @@
     ## Display server
     ../features/desktop/wayland.nix
     ../features/desktop/gtk.nix
+    ../features/desktop/krita.nix
 
     ## Display Managers
     ../features/desktop/greetd.nix
