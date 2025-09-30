@@ -19,6 +19,7 @@
     ../features/applications/cyber/default.nix
     ../features/applications/cyber/exploration/nmap-desktop.nix
     ../features/applications/base/excalidraw_desktop_icon.nix
+    ../features/applications/base/krita.nix
   ];
 
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
