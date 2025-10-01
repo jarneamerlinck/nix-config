@@ -110,8 +110,7 @@ in
         ++ (lib.optionals hasGpu [
           "custom/gpu"
         ])
-        ++
-        [
+        ++ [
           "memory"
           "clock"
           "pulseaudio"

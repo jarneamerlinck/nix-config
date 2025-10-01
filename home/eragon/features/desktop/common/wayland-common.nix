@@ -1,8 +1,12 @@
-{ pkgs, config,  ... }:
+{ pkgs, config, ... }:
 let
-  shell_script = if config.wayland.windowManager.hyprland.enable then "Hyprland"
-            else if config.wayland.windowManager.sway.enable then "sway"
-            else "sway";
+  shell_script =
+    if config.wayland.windowManager.hyprland.enable then
+      "Hyprland"
+    else if config.wayland.windowManager.sway.enable then
+      "sway"
+    else
+      "sway";
 in
 {
   home = {

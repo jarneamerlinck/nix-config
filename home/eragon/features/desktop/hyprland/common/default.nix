@@ -1,4 +1,11 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  config,
+  outputs,
+  ...
+}:
 let
   monitor = lib.head (lib.filter (m: m.primary) config.monitors);
   i_modifier = "Mod4";
@@ -13,7 +20,6 @@ in
   #   XCURSOR_SIZE = 24;
   #   HYPRCURSOR_SIZE = 24;
   # };
-
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -33,8 +39,6 @@ in
         "HYPRCURSOR_SIZE,24"
 
       ];
-
-
 
       general = {
         gaps_in = 5;
@@ -67,9 +71,9 @@ in
       };
 
       animations = {
-        enabled="yes";
+        enabled = "yes";
 
-        bezier= [
+        bezier = [
           "easeOutQuint,0.23,1,0.32,1"
           "easeInOutCubic,0.65,0.05,0.36,1"
           "linear,0,0,1,1"
@@ -169,7 +173,6 @@ in
       ];
 
     };
-    extraConfig = ''
-    '';
+    extraConfig = '''';
   };
 }

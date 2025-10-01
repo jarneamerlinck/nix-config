@@ -1,6 +1,8 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) types mkOption;
-in {
+in
+{
   options.wallpaper = mkOption {
     type = types.nullOr types.path;
     default = null;
@@ -11,7 +13,7 @@ in {
 
   options.wallpaper-list = mkOption {
     type = types.listOf types.path;
-    default = [];
+    default = [ ];
     description = ''
       List of wallpaper paths
     '';

@@ -1,4 +1,9 @@
- { config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.tzupdate.enable = true;
 }

@@ -10,17 +10,18 @@ let
   username = "eragon";
   homePath = ../../../../home/${username};
   entries = builtins.readDir homePath;
-  subdirs = builtins.filter (name:
-    entries.${name} == "directory" && name != config.networking.hostName && name != "features"
+  subdirs = builtins.filter (
+    name: entries.${name} == "directory" && name != config.networking.hostName && name != "features"
   ) (builtins.attrNames entries);
-  sshKeys = builtins.filter (x: x != null) (builtins.map (dir:
-    let
-      keyPath = "${homePath}/${dir}/ssh.pub";
-    in
+  sshKeys = builtins.filter (x: x != null) (
+    builtins.map (
+      dir:
+      let
+        keyPath = "${homePath}/${dir}/ssh.pub";
+      in
       if builtins.pathExists keyPath then builtins.readFile keyPath else null
-  ) subdirs);
-
-
+    ) subdirs
+  );
 
   lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
   systems = [
@@ -42,23 +43,22 @@ in
     isNormalUser = true;
     shell = pkgs.zsh;
     uid = 1442;
-    extraGroups =
-      [
-        "wheel"
-        "video"
-        "audio"
-        "mounts"
-      ]
-      ++ ifTheyExist [
-        "network"
-        "i2c"
-        "docker"
-        "git"
-        "libvirtd"
-        "libvirt-qemu"
-        "deluge"
-        "wireshark"
-      ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "audio"
+      "mounts"
+    ]
+    ++ ifTheyExist [
+      "network"
+      "i2c"
+      "docker"
+      "git"
+      "libvirtd"
+      "libvirt-qemu"
+      "deluge"
+      "wireshark"
+    ];
 
     openssh.authorizedKeys.keys = sshKeys;
     hashedPasswordFile = config.sops.secrets."${username}/password".path;

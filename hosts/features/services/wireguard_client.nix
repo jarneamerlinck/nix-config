@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 let
   publicKeyHome = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
   publicKeyHomeSafe = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI";
@@ -50,7 +56,9 @@ in
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint "$$(tr -d '\n' <  ${config.sops.secrets."wireguard/endpoint".path})"
+        ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint "$$(tr -d '\n' <  ${
+          config.sops.secrets."wireguard/endpoint".path
+        })"
       '';
     };
   };

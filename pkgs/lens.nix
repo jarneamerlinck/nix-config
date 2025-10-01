@@ -10,9 +10,9 @@ let
   pkgRepo = "https://github.com/freelensapp/freelens";
 
 in
-  {
+{
   freelens = appimageTools.wrapType2 rec {
-    pname= "${pkgName}";
+    pname = "${pkgName}";
     version = "${pkgVersion}";
     src = fetchurl {
       url = "${pkgRepo}/releases/download/v${pkgVersion}/Freelens-${pkgVersion}-linux-amd64.AppImage";

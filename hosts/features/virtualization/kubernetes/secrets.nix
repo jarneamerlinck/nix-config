@@ -17,7 +17,6 @@
     path = "/var/lib/rancher/k3s/server/manifests/secret-tls-keys.yaml";
   };
 
-
   # systemd.services.k8s-sealed-secret-key = {
   #   description = "Deploy Sealed Secrets TLS Key to Kubernetes";
   #   after = [ "k3s.service" ];
@@ -77,12 +76,12 @@
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChart";
           metadata = {
-            name =  "sealed-secrets-controller";
+            name = "sealed-secrets-controller";
             namespace = "kube-system";
           };
           spec = {
             repo = "https://bitnami-labs.github.io/sealed-secrets";
-            chart =  "sealed-secrets";
+            chart = "sealed-secrets";
             version = "2.17.1";
             targetNamespace = "kube-system";
             valuesContent = ''

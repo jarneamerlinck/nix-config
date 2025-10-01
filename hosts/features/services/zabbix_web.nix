@@ -3,7 +3,7 @@
 
 {
 
- services.zabbixServer.enable = true;
+  services.zabbixServer.enable = true;
   services.zabbixWeb = {
     enable = true;
     virtualHost = {
@@ -11,6 +11,5 @@
       adminAddr = "webmaster@localhost";
     };
   };
-
 
 }

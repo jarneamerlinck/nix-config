@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
 
   home.packages = with pkgs; [
@@ -12,7 +17,7 @@
   };
 
   programs.k9s = {
-    enable= true;
+    enable = true;
 
     plugin = {
       # Defines a plugin to provide a `ctrl-l` shortcut to
@@ -38,8 +43,8 @@
   };
 
   home.shellAliases = {
-    h="helm";
-    k="kubectl";
+    h = "helm";
+    k = "kubectl";
   };
 
 }

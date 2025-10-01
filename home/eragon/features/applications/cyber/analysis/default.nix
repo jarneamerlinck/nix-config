@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./cyberchef.nix
-    ];
+  ];
 }

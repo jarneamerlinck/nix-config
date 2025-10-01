@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     xdg-desktop-portal
   ];
   services.xserver = {
