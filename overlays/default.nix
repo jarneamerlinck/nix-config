@@ -1,11 +1,4 @@
-{ outputs, inputs }:
-let
-  addPatches =
-    pkg: patches:
-    pkg.overrideAttrs (oldAttrs: {
-      patches = (oldAttrs.patches or [ ]) ++ patches;
-    });
-in
+{ inputs }:
 {
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
   # 'inputs.${flake}.packages.${pkgs.system}' or
@@ -23,7 +16,7 @@ in
 
   # Adds my custom packages
   additions =
-    final: prev:
+    final: _prev:
     import ../pkgs { pkgs = final; }
     // {
       # formats = (prev.formats or {}) // import ../pkgs/formats { pkgs = final; };
@@ -31,7 +24,7 @@ in
     };
 
   # Modifies existing packages
-  modifications = final: prev: {
+  modifications = _final: _prev: {
 
     # pfetch = prev.pfetch.overrideAttrs (oldAttrs: {
     #   version = "unstable-2021-12-10";

@@ -1,14 +1,7 @@
 {
-  outputs,
-  lib,
   pkgs,
-  config,
   ...
 }:
-let
-  uid_int = config.users.users.eragon.uid;
-  uid_user = toString uid_int;
-in
 {
   environment.systemPackages = [ pkgs.cifs-utils ];
   fileSystems."/mnt/share" = {

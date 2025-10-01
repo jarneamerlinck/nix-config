@@ -1,15 +1,6 @@
 {
-  config,
-  pkgs,
   ...
 }:
-let
-  themeName = "nix-color";
-  colorPalette = ''
-    /* GTK Theme generated from nix-colors */
-
-  '';
-in
 {
   # home.file.".themes/${themeName}/gtk-2.0/gtk.css".text = colorPalette;
   # home.file.".themes/${themeName}/gtk-3.0/gtk.css".text = colorPalette;

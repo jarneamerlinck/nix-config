@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   systemd.services.ensureMntDir = {
     description = "Ensure /mnt directory exists";

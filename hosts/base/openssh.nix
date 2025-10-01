@@ -1,19 +1,17 @@
 {
   outputs,
   lib,
-  config,
   ...
 }:
 
 let
-  inherit (config.networking) hostName;
   hosts = outputs.nixosConfigurations;
 
   # Sops needs acess to the keys before the persist dirs are even mounted; so
   # just persisting the keys won't work, we must point at /persist
   hasOptinPersistence = false;
   # hasOptinPersistence = config.environment.persistence ? "/persist";
-  knownHosts = builtins.mapAttrs (host: config: {
+  knownHosts = builtins.mapAttrs (host: _config: {
     extraHostNames = [ "${host}.ko0.net" ];
     publicKeyFile = ../${host}/ssh_host_ed25519_key.pub;
   }) hosts;
