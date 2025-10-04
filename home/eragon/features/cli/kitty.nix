@@ -1,8 +1,11 @@
 {
+  config,
   lib,
+  pkgs,
   ...
 }:
 let
+  rmHash = lib.removePrefix "#";
   kittyColors = ''
     # Colors generated from nix-colors
   '';

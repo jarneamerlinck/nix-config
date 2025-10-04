@@ -1,8 +1,11 @@
 {
+  lib,
   makeDesktopItem,
   fetchurl,
+  pkgs,
 }:
 let
+  pkgVersion = "0.0.1";
   pkgName = "excalidraw";
 in
 {

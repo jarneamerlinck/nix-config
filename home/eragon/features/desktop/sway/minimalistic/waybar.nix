@@ -7,12 +7,36 @@
 let
 
   cat = "${pkgs.coreutils}/bin/cat";
+
+  jq = "${pkgs.jq}/bin/jq";
   systemctl = "${pkgs.systemd}/bin/systemctl";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
 
   # Function to simplify making waybar outputs
+  jsonOutput =
+    name:
+    {
+      pre ? "",
+      text ? "",
+      tooltip ? "",
+      alt ? "",
+      class ? "",
+      percentage ? "",
+    }:
+    "${pkgs.writeShellScriptBin "waybar-${name}" ''
+      set -euo pipefail
+      ${pre}
+      ${jq} -cn \
+        --arg text \"${text}\" \
+        --arg tooltip \"${tooltip}\" \
+        --arg alt \"${alt}\" \
+        --arg class \"${class}\" \
+        --arg percentage \"${percentage}\" \
+        '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+    ''}/bin/waybar-${name}";
 
   hasSway = config.wayland.windowManager.sway.enable;
+  sway = config.wayland.windowManager.sway.package;
   hasGpu = false;
 
   waybarStyle = ''

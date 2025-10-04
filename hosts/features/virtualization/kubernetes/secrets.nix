@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
 
   sops.secrets."sealed-secrets/tls.crt" = {

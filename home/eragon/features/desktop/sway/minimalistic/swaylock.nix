@@ -3,6 +3,9 @@
   pkgs,
   ...
 }:
+let
+  palette = config.lib.stylix.colors;
+in
 {
 
   programs.swaylock = {

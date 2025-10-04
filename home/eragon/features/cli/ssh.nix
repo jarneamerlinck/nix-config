@@ -1,6 +1,7 @@
 {
   outputs,
   lib,
+  config,
   ...
 }:
 let

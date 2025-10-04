@@ -1,4 +1,6 @@
 {
+  outputs,
+  lib,
   pkgs,
   ...
 }:
