@@ -8,12 +8,12 @@
 
 {
 
-  sops.secrets."photos/env" = {
+  sops.secrets."photoprism/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
 
-  sops.secrets."photos/db" = {
+  sops.secrets."photoprism/db" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
@@ -23,7 +23,7 @@
   virtualisation.oci-containers.containers."photos-photoprism" = {
     image = "docker.io/photoprism/photoprism:250707";
     environmentFiles = [
-      "/run/secrets-for-users/photos/env"
+      "/run/secrets-for-users/photoprism/env"
     ];
     volumes = [
       "/data/docker/photoprism/original:/photoprism/originals:rw"
@@ -56,7 +56,7 @@
   virtualisation.oci-containers.containers."photos-mariadb" = {
     image = "mariadb:11";
     environmentFiles = [
-      "/run/secrets-for-users/photos/db"
+      "/run/secrets-for-users/photoprism/db"
     ];
     volumes = [
       "/data/docker/photoprism/database:/var/lib/mysql:rw"

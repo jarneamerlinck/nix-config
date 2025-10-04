@@ -50,7 +50,7 @@
     ../features/virtualization/docker/services/portainer.nix
     ../features/virtualization/docker/services/calibre.nix
     ../features/virtualization/docker/services/music.nix
-    ../features/virtualization/docker/services/photos.nix
+    ../features/virtualization/docker/services/photoprism.nix
     ../features/virtualization/docker/services/memos.nix
     ../features/virtualization/docker/services/zipline.nix
     ../features/virtualization/docker/services/openwebui.nix
