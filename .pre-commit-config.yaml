@@ -41,12 +41,12 @@ repos:
 #       language: system
 #       types: [nix]
 
-- repo: https://github.com/astro/deadnix
-  rev: v1.3.1
-  hooks:
-    - id: deadnix
-      args: [--edit] # Uncomment to automatically modify files
-      stages: [pre-commit]
+# - repo: https://github.com/astro/deadnix
+#   rev: v1.3.1
+#   hooks:
+#     - id: deadnix
+#       args: [--edit] # Uncomment to automatically modify files
+#       stages: [pre-commit]
 
 - repo: https://github.com/NixOS/nixfmt
   rev: v1.0.1
