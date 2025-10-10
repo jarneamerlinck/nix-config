@@ -18,6 +18,7 @@
     ../features/applications/music
     ../features/applications/base/proton.nix
     ../features/applications/cyber/default.nix
+    ../features/applications/cyber/analysis
     ../features/applications/cyber/exploration/nmap-desktop.nix
     ../features/applications/base/excalidraw_desktop_icon.nix
   ];
