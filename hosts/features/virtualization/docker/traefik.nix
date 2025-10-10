@@ -32,9 +32,9 @@
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
 
-      "--entryPoints.http.address=:80"
-      "--entrypoints.http.http.redirections.entrypoint.to=https"
-      "--entryPoints.http.http.redirections.entrypoint.scheme=https"
+      "--entryPoints.web.address=:80"
+      "--entrypoints.web.http.redirections.entrypoint.to=https"
+      "--entryPoints.web.http.redirections.entrypoint.scheme=https"
 
       "--entryPoints.https.address=:443"
       "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
