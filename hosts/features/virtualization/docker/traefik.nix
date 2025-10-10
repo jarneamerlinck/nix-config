@@ -42,9 +42,9 @@
       "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
       "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
 
-      "--entryPoints.https.transport.http.respondingTimeouts.readTimeout=600s"
-      "--entryPoints.https.transport.http.respondingTimeouts.idleTimeout=600s"
-      "--entryPoints.https.transport.http.respondingTimeouts.writeTimeout=600s"
+      "--entryPoints.https.transport.respondingTimeouts.readTimeout=600s"
+      "--entryPoints.https.transport.respondingTimeouts.idleTimeout=600s"
+      "--entryPoints.https.transport.respondingTimeouts.writeTimeout=600s"
     ];
 
     labels = {
