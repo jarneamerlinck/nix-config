@@ -12,7 +12,7 @@
   };
   # Containers
   virtualisation.oci-containers.containers."traefik" = {
-    image = "traefik:v3.2.1";
+    image = "traefik:v3.5.3";
     environmentFiles = [
       "/run/secrets-for-users/traefik/env"
     ];
