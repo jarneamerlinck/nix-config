@@ -20,15 +20,15 @@
 # in
 {
   services.greetd = {
-      enable = true;
-      settings = {
-       default_session.command = ''
+    enable = true;
+    settings = {
+      default_session.command = ''
         ${pkgs.greetd.tuigreet}/bin/tuigreet \
           --time \
           --asterisks \
           --user-menu \
           --cmd "/home/\$USER/.nix-profile/bin/greetd-session"
       '';
-      };
     };
+  };
 }

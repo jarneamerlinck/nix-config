@@ -1,22 +1,19 @@
-# Custom packages, that can be defined similarly to ones from nixpkgs
-# You can build them using 'nix build .#example'
-{ pkgs ? import <nixpkgs> { } }: rec {
+# TODO: Allow nix flake check to succeed
+
+{
+  pkgs ? import <nixpkgs> { config.allowUnfree = true; },
+}:
+
+let
+  wallpapers = import ./wallpapers { inherit pkgs; };
+in
+{
+
   sddm-themes = pkgs.callPackage ./sddm-themes.nix { };
   grub-themes = pkgs.callPackage ./grub-themes.nix { };
-  hyprslurp = pkgs.callPackage ./hyprslurp { };
   lens = pkgs.callPackage ./lens.nix { };
   excalidraw = pkgs.callPackage ./excalidraw-kiosk.nix { };
 
-  # Wallpapers
-  wallpapers = import ./wallpapers {inherit pkgs;};
+  wallpapers = wallpapers;
   allWallpapers = pkgs.linkFarmFromDrvs "wallpapers" (pkgs.lib.attrValues wallpapers);
-
-  # Color
-  generateColorscheme = import ./colorschemes/generator.nix {inherit pkgs;};
-  colorschemes = import ./colorschemes {inherit pkgs wallpapers generateColorscheme;};
-  allColorschemes = let
-    # This is here to help us keep IFD cached (hopefully)
-    combined = pkgs.writeText "colorschemes.json" (builtins.toJSON (pkgs.lib.mapAttrs (_: drv: drv.imported) colorschemes));
-  in
-    pkgs.linkFarmFromDrvs "colorschemes" (pkgs.lib.attrValues colorschemes ++ [combined]);
 }

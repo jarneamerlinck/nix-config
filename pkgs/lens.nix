@@ -8,11 +8,11 @@ let
   pkgVersion = "1.0.0";
   pkgName = "freelens";
   pkgRepo = "https://github.com/freelensapp/freelens";
-  
+
 in
-  {
+{
   freelens = appimageTools.wrapType2 rec {
-    pname= "${pkgName}";
+    pname = "${pkgName}";
     version = "${pkgVersion}";
     src = fetchurl {
       url = "${pkgRepo}/releases/download/v${pkgVersion}/Freelens-${pkgVersion}-linux-amd64.AppImage";
@@ -38,7 +38,7 @@ in
       EOF
 
       mkdir -p $out/share/icons/hicolor/scalable/apps
-      install -m 644 ${icon} $out/share/icons/hicolor/scalable/apps/${pkgName}.png 
+      install -m 644 ${icon} $out/share/icons/hicolor/scalable/apps/${pkgName}.png
     '';
 
     meta = with pkgs.lib; {

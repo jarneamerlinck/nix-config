@@ -123,4 +123,3 @@ nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/pr
 
 sudo nix-collect-garbage --delete-older-than 20d
 ```
-

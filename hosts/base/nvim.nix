@@ -5,8 +5,9 @@
   config,
   pkgs,
   ...
-}: {
-  environment.systemPackages =  [
+}:
+{
+  environment.systemPackages = [
     inputs.nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 

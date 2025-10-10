@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./macchanger.nix
-    ];
+  ];
 }
-

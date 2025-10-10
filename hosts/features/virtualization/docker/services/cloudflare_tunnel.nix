@@ -8,7 +8,11 @@
     environmentFiles = [
       "/data/docker/envs/.env_cf_tunnel"
     ];
-    cmd = [ "tunnel" "--no-autoupdate" "run" ];
+    cmd = [
+      "tunnel"
+      "--no-autoupdate"
+      "run"
+    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=cloudflaretunnel"

@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     gh
     lazygit
+    pre-commit
   ];
 
   home.shellAliases = {
