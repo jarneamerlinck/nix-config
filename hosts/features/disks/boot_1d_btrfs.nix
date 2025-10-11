@@ -1,4 +1,3 @@
-
 # Example to create a bios compatible gpt partition
 { lib, ... }:
 {
@@ -6,7 +5,6 @@
   imports = [
     ./btrfs.nix
   ];
-
 
   disko.devices = {
     disk = {
@@ -41,11 +39,17 @@
                     mountpoint = "/";
                   };
                   ".snapshots" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                     mountpoint = "/.snapshots";
                   };
                   "/nix" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
                   };
                 };

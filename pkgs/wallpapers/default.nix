@@ -2,26 +2,29 @@
 let
   wallpaperList = pkgs.lib.importJSON ./list.json;
 
-  convertMp4ToGif = wallpaper: pkgs.stdenv.mkDerivation {
-    name = "${wallpaper.name}.gif";
-    src = pkgs.fetchurl {
-      inherit (wallpaper) sha256;
+  convertMp4ToGif =
+    wallpaper:
+    pkgs.stdenv.mkDerivation {
       name = "${wallpaper.name}.gif";
-      url = "https://${wallpaper.website}/${wallpaper.id}.mp4";
+      src = pkgs.fetchurl {
+        inherit (wallpaper) sha256;
+        name = "${wallpaper.name}.gif";
+        url = "https://${wallpaper.website}/${wallpaper.id}.mp4";
+      };
+
+      nativeBuildInputs = [ pkgs.ffmpeg ];
+
+      unpackPhase = "true";
+      installPhase = ''
+        # mkdir -p $out
+        ffmpeg -i $src -vf "fps=20" "$out"
+      '';
     };
-
-    nativeBuildInputs = [ pkgs.ffmpeg ];
-
-    unpackPhase = "true";
-    installPhase = ''
-      # mkdir -p $out
-      ffmpeg -i $src -vf "fps=20" "$out"
-    '';
-  };
 
 in
 pkgs.lib.listToAttrs (
-  map (wallpaper:
+  map (
+    wallpaper:
     let
       value =
         if wallpaper.ext == "mp4" then
@@ -39,4 +42,3 @@ pkgs.lib.listToAttrs (
     }
   ) wallpaperList
 )
-

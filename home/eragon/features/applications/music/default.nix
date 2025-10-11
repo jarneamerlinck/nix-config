@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs;
-  [
+  home.packages = with pkgs; [
     alsa-utils
     yt-dlp
     audacity

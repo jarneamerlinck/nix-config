@@ -1,5 +1,6 @@
 #default.nix
-with import <nixpkgs> {}; {
+with import <nixpkgs> { };
+{
   pullapiEnv = stdenv.mkDerivation {
     name = "eragon1442-system-build-flake";
     buildInputs = [

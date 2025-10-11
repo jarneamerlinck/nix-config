@@ -46,6 +46,7 @@
       nvd # Differ
       nix-output-monitor
 
+      feh
       ffmpeg
 
     ];

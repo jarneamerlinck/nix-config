@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   ...
 }:
 {
@@ -9,8 +10,9 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
+    ../features/hardware/laptop.nix
 
-    ../features/disks/boot_1d_btrfs.nix
+    ../features/disks/boot_btrfs_laptop.nix
 
     ../base
     ../base/users/eragon
@@ -29,6 +31,7 @@
     ../features/services/unattended-upgrades.nix
 
     ../features/virtualization/qemu/qemu-guest.nix
+
   ];
 
   networking = {

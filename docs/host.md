@@ -75,7 +75,7 @@ chmod 600 "./ssh_host_ed25519_key"
 
     ```bash
     passwd
-    ip -a 
+    ip -a
     ```
 
 4. Test configuration (to catch mistakes before pushing to host)
@@ -86,11 +86,18 @@ nix run github:nix-community/nixos-anywhere/97b45ac -- --flake .#vm1 --vm-test
 
 5. Run the install commando from an other device with nix (change Ip and hostname)
 
-The `ls $temp` is to validate the `$temp` has been set correctly. You should see the `etc` directory
+The `ls $TEMP` is to validate the `$TEMP` has been set correctly. You should see the `etc` directory
 
 ```bash
-ls $temp
-nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$temp" --flake .#vm1 nixos@ip
+ls $TEMP
+nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$TEMP" --flake .#vm1 nixos@ip
+```
+
+
+
+```bash
+
+nix run github:nix-community/nixos-anywhere/97b45ac -- --extra-files "$TEMP" --disk-encryption-keys /tmp/disk.key <(cat "$TEMP/disk.key") --flake .#testing  nixos@192.168.100.215
 ```
 
 (without extra temp files)
@@ -122,4 +129,3 @@ nix-shell https://github.com/jarneamerlinck/nix-config/tarball/main
 ## Add ssh login
 
 If the host is a server that others need to ssh into you need to add it to the list in `../home/eragon/features/cli/ssh.nix`
-

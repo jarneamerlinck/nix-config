@@ -58,3 +58,4 @@ creation_rules:
       - *vm1
       - *banshee
       - *baruuk
+      - *testing

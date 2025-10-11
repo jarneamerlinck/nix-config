@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
 
   sops.secrets."traefik/env" = {
@@ -7,7 +12,7 @@
   };
   # Containers
   virtualisation.oci-containers.containers."traefik" = {
-  image = "traefik:v3.2.1";
+    image = "traefik:v3.5.3";
     environmentFiles = [
       "/run/secrets-for-users/traefik/env"
     ];
@@ -19,6 +24,7 @@
       # "80:80/tcp"
       "443:443/tcp"
     ];
+    # When updating this also update ../../services/nix_cache_server.nix
     cmd = [
       "--accesslog=true"
       "--accesslog.filePath=/logs/access.log"
@@ -26,7 +32,7 @@
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
 
-      "--entryPoints.http.address=:80"
+      "--entryPoints.web.address=:80"
       "--entrypoints.web.http.redirections.entrypoint.to=https"
       "--entryPoints.web.http.redirections.entrypoint.scheme=https"
 
@@ -35,16 +41,20 @@
       "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
       "--certificatesresolvers.cloudflare.acme.email=jarneamerlinck@pm.me"
       "--certificatesresolvers.cloudflare.acme.storage=/letsencrypt/acme.json"
+
+      "--entryPoints.https.transport.respondingTimeouts.readTimeout=600s"
+      "--entryPoints.https.transport.respondingTimeouts.idleTimeout=600s"
+      "--entryPoints.https.transport.respondingTimeouts.writeTimeout=600s"
     ];
 
     labels = {
-      "traefik.enable"="true";
-      "traefik.http.routers.traefik-dash.entrypoints"="https";
-      "traefik.http.routers.traefik-dash.rule"="Host(`${config.networking.hostName}.ko0.net`)";
-      "traefik.http.routers.traefik-dash.service"="traefik-dash";
-      "traefik.http.routers.traefik-dash.tls"="true";
-      "traefik.http.routers.traefik-dash.tls.certresolver"="cloudflare";
-      "traefik.http.services.traefik-dash.loadbalancer.server.port"="8080";
+      "traefik.enable" = "true";
+      "traefik.http.routers.traefik-dash.entrypoints" = "https";
+      "traefik.http.routers.traefik-dash.rule" = "Host(`${config.networking.hostName}.ko0.net`)";
+      "traefik.http.routers.traefik-dash.service" = "traefik-dash";
+      "traefik.http.routers.traefik-dash.tls" = "true";
+      "traefik.http.routers.traefik-dash.tls.certresolver" = "cloudflare";
+      "traefik.http.services.traefik-dash.loadbalancer.server.port" = "8080";
     };
     log-driver = "journald";
     extraOptions = [
@@ -54,7 +64,7 @@
   };
   systemd.services."docker-traefik" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "no";
+      Restart = lib.mkOverride 90 "always";
     };
     after = [
       "docker-network-frontend.service"

@@ -82,6 +82,9 @@ in
       initial_window_width = 2500;
       initial_window_height = 1380;
       macos_titlebar_color = "background";
+      cursor_trail = 3;
+      cursor_trail_decay = "0.1 0.4";
+
     };
     extraConfig = kittyColors;
   };

@@ -32,12 +32,12 @@ in
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChart";
           metadata = {
-            name =  "harpoxy-ingress";
+            name = "harpoxy-ingress";
             namespace = "certs";
           };
           spec = {
             repo = "https://haproxytech.github.io/helm-charts";
-            chart =  "kubernetes-ingress";
+            chart = "kubernetes-ingress";
             version = "1.44.0";
             targetNamespace = "certs";
             valuesContent = ''
@@ -69,12 +69,12 @@ in
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChart";
           metadata = {
-            name =  "cert-manager";
+            name = "cert-manager";
             namespace = "certs";
           };
           spec = {
             repo = "https://charts.jetstack.io";
-            chart =  "cert-manager";
+            chart = "cert-manager";
             version = "v1.17.1";
             targetNamespace = "certs";
             valuesContent = ''
@@ -90,20 +90,20 @@ in
           kind = "ClusterIssuer";
 
           metadata = {
-            name =  "${tls-cert-name}";
+            name = "${tls-cert-name}";
             namespace = "certs";
           };
           spec = {
-            acme= {
+            acme = {
               email = "jarneamerlinck@pm.me";
               server = "https://acme-v02.api.letsencrypt.org/directory";
               privateKeySecretRef.name = "letsencrypt-cloudflare";
-              solvers= [
+              solvers = [
                 {
                   dns01 = {
                     cloudflare.apiTokenSecretRef = {
                       name = "${cloudflare-api-secret-name}";
-                      key =  "${cloudflare-api-secret-key}";
+                      key = "${cloudflare-api-secret-key}";
                     };
                   };
                 }
@@ -118,13 +118,13 @@ in
           kind = "Certificate";
 
           metadata = {
-            name =  "haproxy-certificate";
+            name = "haproxy-certificate";
             namespace = "certs";
           };
           spec = {
             secretName = "${tls-secret-name}";
             issuerRef = {
-              name =  "${tls-cert-name}";
+              name = "${tls-cert-name}";
               kind = "ClusterIssuer";
             };
             dnsNames = [
@@ -138,4 +138,3 @@ in
     };
   };
 }
-

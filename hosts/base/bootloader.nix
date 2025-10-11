@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   grubEnabled = config.boot.loader.grub.enable;
@@ -6,9 +11,9 @@ let
   fullTheme = pkgs.grub-themes.${grubTheme};
 in
 {
-  environment.systemPackages = with pkgs;[
-   grub-themes.${grubTheme}
-   grub2
+  environment.systemPackages = with pkgs; [
+    grub-themes.${grubTheme}
+    grub2
   ];
   boot.loader.grub = {
     useOSProber = lib.mkDefault false;

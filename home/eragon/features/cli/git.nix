@@ -1,9 +1,20 @@
-{ outputs, lib, pkgs, ... }:
+{
+  outputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     gh
+    lazygit
+    pre-commit
   ];
 
+  home.shellAliases = {
+    d = "docker";
+    lg = "lazygit";
+  };
   programs.git = {
     enable = true;
     aliases = {
@@ -24,6 +35,9 @@
       pull.rebase = true;
     };
     lfs.enable = true;
-    ignores = [ ".direnv" "result" ];
+    ignores = [
+      ".direnv"
+      "result"
+    ];
   };
 }

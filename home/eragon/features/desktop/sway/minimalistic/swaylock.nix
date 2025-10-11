@@ -38,7 +38,7 @@ in
     ];
     timeouts = [
       {
-        timeout = 60 * 5;
+        timeout = 60 * 10;
         command = "${config.programs.swaylock.package}/bin/swaylock";
       }
     ];

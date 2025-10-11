@@ -1,6 +1,12 @@
-{ pkgs, lib, config, inputs, ... }:
 {
-  environment.systemPackages =  [
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+{
+  environment.systemPackages = [
     inputs.compose2nix
   ];
 }

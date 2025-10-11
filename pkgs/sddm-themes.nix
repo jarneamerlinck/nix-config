@@ -1,6 +1,6 @@
 { stdenv, fetchFromGitHub }:
 {
-  sddm-sugar-dark = stdenv.mkDerivation rec {
+  sddm-themes.sddm-sugar-dark = stdenv.mkDerivation rec {
     pname = "sddm-sugar-dark";
     version = "v1.2";
     dontBuild = true;
@@ -15,7 +15,7 @@
       sha256 = "0gx0am7vq1ywaw2rm1p015x90b75ccqxnb1sz3wy8yjl27v82yhb";
     };
   };
- sddm-tokyo-night = stdenv.mkDerivation rec {
+  sddm-themes.sddm-tokyo-night = stdenv.mkDerivation rec {
     pname = "sddm-tokyo-night";
     version = "320c8e74ade1e94f640708eee0b9a75a395697c6";
     dontBuild = true;

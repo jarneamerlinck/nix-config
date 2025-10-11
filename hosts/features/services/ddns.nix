@@ -4,21 +4,28 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   sops_settings = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
-  keys = ["zone" "fqdn" "email" "token"];
+  keys = [
+    "zone"
+    "fqdn"
+    "email"
+    "token"
+  ];
 
-in  {
+in
+{
 
   sops.secrets = builtins.listToAttrs (
     (map (item_key: {
       name = "ddns/${item_key}";
       value = sops_settings;
-    }) keys));
-
+    }) keys)
+  );
 
   services.ddclient = {
     enable = true;
@@ -28,7 +35,7 @@ in  {
     passwordFile = config.sops.secrets."ddns/token".path;
     username = config.sops.secrets."ddns/email".path;
     zone = "knightofzero.com";
-    domains = ["vps.knightofzero.com"];
+    domains = [ "vps.knightofzero.com" ];
     # extraConfig = {
     #   web = "dynamicdns.park-your-domain.com/getip";
     # };

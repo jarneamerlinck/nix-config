@@ -4,11 +4,21 @@
 {
   # Containers
   virtualisation.oci-containers.containers."freshrss" = {
-    image = "lscr.io/linuxserver/freshrss:1.24.3-ls244";
+    image = "lscr.io/linuxserver/freshrss:1.27.0";
     environment = {
       "PGID" = "100";
       "PUID" = "1442";
       "TZ" = "Europe/London";
+    };
+
+    labels = {
+      "traefik.enable" = "true";
+      "traefik.http.routers.rss-rtr.entrypoints" = "https";
+      "traefik.http.routers.rss-rtr.rule" = "Host(`rss.ko0.net`)";
+      "traefik.http.routers.rss-rtr.service" = "rss-svc";
+      "traefik.http.routers.rss-rtr.tls" = "true";
+      "traefik.http.routers.rss-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.rss-svc.loadbalancer.server.port" = "80";
     };
     volumes = [
       "/data/docker/freshrss:/config:rw"

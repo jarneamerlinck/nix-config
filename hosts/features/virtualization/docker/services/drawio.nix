@@ -1,9 +1,14 @@
-{ pkgs, lib, config,  ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   # Containers
   virtualisation.oci-containers.containers."drawio-drawio" = {
-    image = "jgraph/drawio:26.0.2";
+    image = "docker.io/jgraph/drawio:28.2.0";
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.drawio-rtr.entrypoints" = "https";

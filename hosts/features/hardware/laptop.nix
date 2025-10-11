@@ -1,11 +1,10 @@
-{ pkgs, lib, ... }:
 {
-  services.auto-cpufreq = {
-    enable = true;
-  };
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "sleep";
-    lidSwitchDocked = "ignore";
-  };
+  ...
+}:
+{
+  imports = [
+    ./hibernation.nix
+    ./battery_mode.nix
+    ./bluetooth.nix
+  ];
 }

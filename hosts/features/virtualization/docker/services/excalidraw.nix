@@ -1,4 +1,9 @@
-{ pkgs, lib, config,  ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   # Containers
@@ -15,7 +20,7 @@
       "--network=host"
     ];
   };
-  systemd.services."docker-excalidraw" = {
+  systemd.services."docker-excalidraw-excalidraw" = {
     serviceConfig = {
       Restart = lib.mkOverride 500 "always";
       RestartMaxDelaySec = lib.mkOverride 500 "1m";

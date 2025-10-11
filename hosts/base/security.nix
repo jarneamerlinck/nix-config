@@ -1,8 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.fail2ban = {
     enable = true;
-    extraPackages = [pkgs.ipset];
+    extraPackages = [ pkgs.ipset ];
     banaction = "iptables-ipset-proto6-allports";
     maxretry = 5;
     bantime = "24h"; # Ban IPs for one day on the first ban

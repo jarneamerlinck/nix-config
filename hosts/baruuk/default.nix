@@ -8,7 +8,9 @@
 
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
-    ../features/disks/boot_1d_btrfs.nix
+    ../features/hardware/laptop.nix
+    ../features/disks/boot_btrfs_laptop.nix
+
     ../base/timezone.nix
 
     ../base
@@ -26,6 +28,7 @@
     ## Display server
     ../features/desktop/wayland.nix
     ../features/desktop/gtk.nix
+    ../features/desktop/krita.nix
 
     ## Display Managers
     ../features/desktop/greetd.nix
@@ -34,7 +37,6 @@
     ../features/desktop/mouse.nix
     ../features/desktop/pipewire.nix
   ];
-
   networking = {
     hostName = "baruuk";
     useDHCP = lib.mkDefault true;

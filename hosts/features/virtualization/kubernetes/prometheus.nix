@@ -17,12 +17,12 @@
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChart";
           metadata = {
-            name =  "prometheus-stack";
+            name = "prometheus-stack";
             namespace = "kube-system";
           };
           spec = {
             repo = "https://prometheus-community.github.io/helm-charts";
-            chart =  "kube-prometheus-stack";
+            chart = "kube-prometheus-stack";
             version = "69.2.0";
             targetNamespace = "monitoring";
             valuesContent = ''

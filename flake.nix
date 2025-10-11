@@ -76,7 +76,6 @@
       # hydraJobs = import ./hydra.nix { inherit inputs outputs; };
 
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'

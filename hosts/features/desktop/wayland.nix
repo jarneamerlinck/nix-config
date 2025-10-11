@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
@@ -20,5 +25,5 @@
     enable = true;
     brightnessKeys.enable = true;
   };
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 }

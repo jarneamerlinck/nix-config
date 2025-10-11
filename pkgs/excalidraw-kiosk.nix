@@ -8,10 +8,10 @@ let
   pkgVersion = "0.0.1";
   pkgName = "excalidraw";
 in
-  {
+{
 
   excalidraw = makeDesktopItem {
-    name= "${pkgName}";
+    name = "${pkgName}";
     exec = "firefox --kiosk --new-window http://localhost:38080";
     icon = fetchurl {
       url = "https://avatars.githubusercontent.com/u/59452120";

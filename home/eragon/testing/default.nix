@@ -7,6 +7,7 @@
 {
   imports = [
     ../base
+    ../features/desktop/sway/minimalistic
   ];
   wallpaper = pkgs.wallpapers.abstract-cubes;
 

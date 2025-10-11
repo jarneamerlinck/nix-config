@@ -1,17 +1,16 @@
 { pkgs, ... }:
 let
   plugin-version = "stable-2024-06-06";
-  tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "tmux.nvim";
-      version = "${plugin-version}";
-      src = pkgs.fetchFromGitHub {
-        owner = "aserowy";
-        repo = "tmux.nvim/";
-        rev = "65ee9d6e6308afcd7d602e1320f727c5be63a947";
-        sha256 = "sha256-zpg7XJky7PRa5sC7sPRsU2ZOjj0wcepITLAelPjEkSI=";
-      };
+  tmux-nvim = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "tmux.nvim";
+    version = "${plugin-version}";
+    src = pkgs.fetchFromGitHub {
+      owner = "aserowy";
+      repo = "tmux.nvim/";
+      rev = "65ee9d6e6308afcd7d602e1320f727c5be63a947";
+      sha256 = "sha256-zpg7XJky7PRa5sC7sPRsU2ZOjj0wcepITLAelPjEkSI=";
     };
+  };
   # Looks usefull still need to implement in in the workflow
   # tmux-super-fingers = pkgs.tmuxPlugins.mkTmuxPlugin
   #   {
@@ -25,7 +24,6 @@ let
   #     };
   #   };
 
-
 in
 {
 
@@ -35,7 +33,7 @@ in
 
   home = {
     shellAliases = {
-      t="tmux";
+      t = "tmux";
     };
   };
   programs.tmux = {
@@ -43,44 +41,43 @@ in
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
     historyLimit = 100000;
-    plugins = with pkgs;
-      [
-        tmux-nvim
-        # tmuxPlugins.tmux-thumbs
-        # {
-        #   plugin = tmux-super-fingers;
-        #   # extraConfig = "set -g @super-fingers-key f";
-        # }
+    plugins = with pkgs; [
+      tmux-nvim
+      # tmuxPlugins.tmux-thumbs
+      # {
+      #   plugin = tmux-super-fingers;
+      #   # extraConfig = "set -g @super-fingers-key f";
+      # }
 
-        tmuxPlugins.sensible
-        # must be before continuum edits right status bar
-        {
-          plugin = tmuxPlugins.catppuccin;
-          extraConfig = ''
-            set -g @catppuccin_flavour 'frappe'
-            set -g @catppuccin_window_tabs_enabled on
-            set -g @catppuccin_date_time "%H:%M"
-          '';
-        }
-        {
-          plugin = tmuxPlugins.resurrect;
-          extraConfig = ''
-            set -g @resurrect-strategy-vim 'session'
-            set -g @resurrect-strategy-nvim 'session'
-            set -g @resurrect-capture-pane-contents 'on'
-          '';
-        }
-        {
-          plugin = tmuxPlugins.continuum;
-          extraConfig = ''
-            set -g @continuum-restore 'on'
-            set -g @continuum-boot 'on'
-            set -g @continuum-save-interval '10'
-          '';
-        }
-        tmuxPlugins.better-mouse-mode
-        tmuxPlugins.yank
-      ];
+      tmuxPlugins.sensible
+      # must be before continuum edits right status bar
+      {
+        plugin = tmuxPlugins.catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavour 'frappe'
+          set -g @catppuccin_window_tabs_enabled on
+          set -g @catppuccin_date_time "%H:%M"
+        '';
+      }
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-strategy-vim 'session'
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '10'
+        '';
+      }
+      tmuxPlugins.better-mouse-mode
+      tmuxPlugins.yank
+    ];
     extraConfig = ''
       set -g default-terminal "tmux-256color"
       set -ag terminal-overrides ",xterm-256color:RGB"

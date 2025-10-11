@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   services = {
     xserver = {
@@ -11,7 +16,10 @@
   # Fix broken stuff
   services.avahi.enable = false;
   # Remove gnome extra tools
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-  ]);
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
+      gnome-tour
+    ]
+  );
 }

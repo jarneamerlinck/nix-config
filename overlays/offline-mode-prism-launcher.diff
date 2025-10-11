@@ -3,7 +3,7 @@ index 9e2fd11..3965913 100644
 --- a/launcher/minecraft/auth/AccountList.cpp
 +++ b/launcher/minecraft/auth/AccountList.cpp
 @@ -657,13 +657,7 @@ void AccountList::setListFilePath(QString path, bool autosave)
- 
+
  bool AccountList::anyAccountIsValid()
  {
 -    for(auto account: m_accounts)
@@ -15,5 +15,5 @@ index 9e2fd11..3965913 100644
 -    return false;
 +    return true;
  }
- 
+
  void AccountList::fillQueue() {
