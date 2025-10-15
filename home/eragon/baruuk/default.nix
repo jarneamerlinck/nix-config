@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
-{
+{ lib, pkgs, inputs, ... }: {
   imports = [
     ../base
     ../features/desktop/sway/minimalistic
@@ -15,6 +9,7 @@
     ../features/applications/base/office.nix
     ../features/applications/base/media_player.nix
     ../features/applications/base/image_editing.nix
+    ../features/applications/base/hexecute.nix
     ../features/applications/music
     ../features/applications/base/proton.nix
     ../features/applications/cyber/default.nix
@@ -26,14 +21,12 @@
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
   stylix.image = "${pkgs.wallpapers.star-trails-5k-i0-16-10}";
 
-  monitors = [
-    {
-      name = "eDP-1";
-      width = 1920;
-      height = 1200;
-      workspace = "1";
-      primary = true;
-    }
-  ];
+  monitors = [{
+    name = "eDP-1";
+    width = 1920;
+    height = 1200;
+    workspace = "1";
+    primary = true;
+  }];
 
 }
