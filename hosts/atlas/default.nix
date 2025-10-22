@@ -54,7 +54,6 @@
     ../features/virtualization/docker/services/memos.nix
     ../features/virtualization/docker/services/zipline.nix
     ../features/virtualization/docker/services/openwebui.nix
-    ../features/virtualization/docker/services/bookmarks.nix
 
     # smart tools
     ../features/virtualization/docker/services/search.nix
