@@ -20,8 +20,20 @@ jobs:
           mkdir -p ~/.config/nix
           echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
+      - name: Cache pre-commit environments
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pre-commit-
+
       - name: Install pre-commit
         run: nix profile install nixpkgs#pre-commit
 
       - name: Run pre-commit hooks
-        run: pre-commit run --all
+        run: |
+          export NIX_REMOTE=daemon
+          export NIX_BUILD_CORES=1
+          export NIX_IGNORE_EVAL_CACHE=1
+          nix shell nixpkgs#pre-commit --command pre-commit run --all
