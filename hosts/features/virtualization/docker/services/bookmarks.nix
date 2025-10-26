@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, lib, config, ... }:
 let
   url = "bookmarks.ko0.net";
   shared_env = {
@@ -16,9 +11,7 @@ let
   };
   karakeep_version = "0.26.0";
 
-in
-
-{
+in {
 
   sops.secrets."bookmarks/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -28,14 +21,10 @@ in
   # Containers
   virtualisation.oci-containers.containers."bookmarks-karakeep" = {
     image = "ghcr.io/karakeep-app/karakeep:${karakeep_version}";
-    environmentFiles = [
-      "/run/secrets-for-users/bookmarks/env"
-    ];
+    environmentFiles = [ "/run/secrets-for-users/bookmarks/env" ];
 
     environment = shared_env;
-    volumes = [
-      "/data/docker/bookmarks/data/:/data"
-    ];
+    volumes = [ "/data/docker/bookmarks/data/:/data" ];
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.bookmarks-rtr.entrypoints" = "https";
@@ -56,15 +45,10 @@ in
 
   virtualisation.oci-containers.containers."bookmarks-chrome" = {
     image = "gcr.io/zenika-hub/alpine-chrome:124";
-    environmentFiles = [
-      "/run/secrets-for-users/bookmarks/env"
-    ];
+    environmentFiles = [ "/run/secrets-for-users/bookmarks/env" ];
     environment = shared_env;
     log-driver = "journald";
-    extraOptions = [
-      "--network-alias=bookmarks"
-      "--network=bookmarks"
-    ];
+    extraOptions = [ "--network-alias=bookmarks" "--network=bookmarks" ];
 
     cmd = [
       "--no-sandbox"
@@ -78,18 +62,11 @@ in
 
   virtualisation.oci-containers.containers."bookmarks-meilisearch" = {
     image = "getmeili/meilisearch:v1.13.3";
-    environmentFiles = [
-      "/run/secrets-for-users/bookmarks/env"
-    ];
+    environmentFiles = [ "/run/secrets-for-users/bookmarks/env" ];
     environment = shared_env;
-    volumes = [
-      "/data/docker/bookmarks/meilisearch/:/meili_data"
-    ];
+    volumes = [ "/data/docker/bookmarks/meilisearch/:/meili_data" ];
     log-driver = "journald";
-    extraOptions = [
-      "--network-alias=bookmarks"
-      "--network=bookmarks"
-    ];
+    extraOptions = [ "--network-alias=bookmarks" "--network=bookmarks" ];
 
   };
 
@@ -126,12 +103,8 @@ in
       "docker-network-chat.service"
       "docker-network-frontend.service"
     ];
-    partOf = [
-      "docker-compose-bookmarks-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-bookmarks-root-root.target"
-    ];
+    partOf = [ "docker-compose-bookmarks-root.target" ];
+    wantedBy = [ "docker-compose-bookmarks-root-root.target" ];
   };
 
   systemd.services."docker-bookmarks-chrome" = {
@@ -141,18 +114,10 @@ in
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
-    after = [
-      "docker-network-bookmarks.service"
-    ];
-    requires = [
-      "docker-network-bookmarks.service"
-    ];
-    partOf = [
-      "docker-compose-bookmarks-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-bookmarks-root-root.target"
-    ];
+    after = [ "docker-network-bookmarks.service" ];
+    requires = [ "docker-network-bookmarks.service" ];
+    partOf = [ "docker-compose-bookmarks-root.target" ];
+    wantedBy = [ "docker-compose-bookmarks-root-root.target" ];
   };
 
   systemd.services."docker-bookmarks-meilisearch" = {
@@ -162,18 +127,10 @@ in
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
-    after = [
-      "docker-network-bookmarks.service"
-    ];
-    requires = [
-      "docker-network-bookmarks.service"
-    ];
-    partOf = [
-      "docker-compose-bookmarks-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-bookmarks-root-root.target"
-    ];
+    after = [ "docker-network-bookmarks.service" ];
+    requires = [ "docker-network-bookmarks.service" ];
+    partOf = [ "docker-compose-bookmarks-root.target" ];
+    wantedBy = [ "docker-compose-bookmarks-root-root.target" ];
   };
 
   # Root service

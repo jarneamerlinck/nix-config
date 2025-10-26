@@ -1,11 +1,3 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-{
-  environment.systemPackages = with pkgs; [
-    krita
-  ];
+{ pkgs, lib, config, ... }: {
+  environment.systemPackages = with pkgs; [ krita ];
 }

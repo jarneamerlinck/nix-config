@@ -1,12 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-{
-  home.packages = with pkgs; [
-    pavucontrol
+{ config, pkgs, ... }: {
+  home.packages = with pkgs;
+    [
+      pavucontrol
 
-  ];
+    ];
 
 }

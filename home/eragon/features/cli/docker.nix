@@ -1,14 +1,6 @@
-{
-  outputs,
-  lib,
-  pkgs,
-  ...
-}:
-{
+{ outputs, lib, pkgs, ... }: {
 
-  home.packages = with pkgs; [
-    lazydocker
-  ];
+  home.packages = with pkgs; [ lazydocker ];
   home.shellAliases = {
     d = "docker";
     ld = "lazydocker";

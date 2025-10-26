@@ -1,31 +1,18 @@
 # Auto-generated using compose2nix v0.2.3-pre.
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, lib, config, ... }:
 let
   sops_settings = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
-  keys = [
-    "zone"
-    "fqdn"
-    "email"
-    "token"
-  ];
+  keys = [ "zone" "fqdn" "email" "token" ];
 
-in
-{
+in {
 
-  sops.secrets = builtins.listToAttrs (
-    (map (item_key: {
-      name = "ddns/${item_key}";
-      value = sops_settings;
-    }) keys)
-  );
+  sops.secrets = builtins.listToAttrs ((map (item_key: {
+    name = "ddns/${item_key}";
+    value = sops_settings;
+  }) keys));
 
   services.ddclient = {
     enable = true;

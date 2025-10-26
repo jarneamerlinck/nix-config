@@ -1,9 +1,6 @@
-{ pkgs, lib, ... }:
-{
+{ pkgs, lib, ... }: {
 
-  home.packages = with pkgs; [
-    dconf
-  ];
+  home.packages = with pkgs; [ dconf ];
 
   stylix.fonts = {
     serif = {

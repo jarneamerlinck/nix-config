@@ -1,10 +1,6 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   nix.settings = {
-    substituters = [
-      "https://nix.cache.ko0.net/"
-      "https://cache.nixos.org/"
-    ];
+    substituters = [ "https://nix.cache.ko0.net/" "https://cache.nixos.org/" ];
 
     trusted-public-keys = [
       "nix.cache.ko0.net:GtHtHec2fVedkzmQyaBu9/Ug7qWGGm4WA3joz3beTdc="

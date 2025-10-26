@@ -1,11 +1,7 @@
 # Example to create a bios compatible gpt partition
-{ lib, ... }:
-{
+{ lib, ... }: {
 
-  imports = [
-    ./btrfs.nix
-    ./clevis.nix
-  ];
+  imports = [ ./btrfs.nix ./clevis.nix ];
 
   disko.devices = {
     disk = {
@@ -34,18 +30,14 @@
               name = "swap";
               size = lib.mkDefault "16384M";
               type = "8200";
-              content = {
-                type = "swap";
-              };
+              content = { type = "swap"; };
             };
             lusk = {
               size = "100%";
               content = {
                 settings = {
-                  crypttabExtraOpts = [
-                    "fido2-device=auto"
-                    "token-timeout=10"
-                  ];
+                  crypttabExtraOpts =
+                    [ "fido2-device=auto" "token-timeout=10" ];
                 };
 
                 type = "luks";
@@ -60,29 +52,18 @@
                   type = "btrfs";
                   extraArgs = [ ];
                   subvolumes = {
-                    "/rootfs" = {
-                      mountpoint = "/";
-                    };
+                    "/rootfs" = { mountpoint = "/"; };
 
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = [ "compress=zstd" "noatime" ];
                     };
                     ".snapshots" = {
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = [ "compress=zstd" "noatime" ];
                       mountpoint = "/.snapshots";
                     };
                     "/nix" = {
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = [ "compress=zstd" "noatime" ];
                       mountpoint = "/nix";
                     };
                   };

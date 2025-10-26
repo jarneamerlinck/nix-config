@@ -1,10 +1,7 @@
 # Example to create a bios compatible gpt partition
-{ lib, ... }:
-{
+{ lib, ... }: {
 
-  imports = [
-    ./btrfs.nix
-  ];
+  imports = [ ./btrfs.nix ];
 
   disko.devices = {
     disk = {
@@ -35,21 +32,13 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
-                  "/rootfs" = {
-                    mountpoint = "/";
-                  };
+                  "/rootfs" = { mountpoint = "/"; };
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/.snapshots";
                   };
                   "/nix" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
                 };

@@ -3,12 +3,9 @@ let
   sops_decrypt_key = "wd-decrypt";
   sops_device_key = "wd-device-id";
   device_partition = "wwn-0x50014ee6094bb38a-part1";
-in
-{
+in {
 
-  environment.systemPackages = with pkgs; [
-    sg3_utils
-  ];
+  environment.systemPackages = with pkgs; [ sg3_utils ];
 
   services.devmon.enable = true;
   services.gvfs.enable = true;
@@ -27,11 +24,7 @@ in
   fileSystems."/mnt/wd" = {
     device = "/dev/disk/by-id/${device_partition}";
     fsType = "ext4";
-    options = [
-      "noatime"
-      "nofail"
-      "noauto"
-    ];
+    options = [ "noatime" "nofail" "noauto" ];
   };
 
   environment.interactiveShellInit = ''
