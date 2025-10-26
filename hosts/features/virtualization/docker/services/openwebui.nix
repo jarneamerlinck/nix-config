@@ -1,14 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-let
-  url = "chat.ko0.net";
-in
+{ pkgs, lib, config, ... }:
+let url = "chat.ko0.net";
 
-{
+in {
 
   sops.secrets."openwebui/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -21,10 +14,8 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."chat-openwebui" = {
-    image = "ghcr.io/open-webui/open-webui:0.6.32";
-    environmentFiles = [
-      "/run/secrets-for-users/openwebui/env"
-    ];
+    image = "ghcr.io/open-webui/open-webui:0.6.34";
+    environmentFiles = [ "/run/secrets-for-users/openwebui/env" ];
 
     environment = {
       "WEBUI_URL" = "https://${url}";
@@ -36,9 +27,7 @@ in
       "ENABLE_WEB_SEARCH" = "true";
       "WEB_SEARCH_ENGINE" = "duckduckgo";
     };
-    volumes = [
-      "/data/docker/chat/openwebui/:/app/backend/data"
-    ];
+    volumes = [ "/data/docker/chat/openwebui/:/app/backend/data" ];
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.chat-rtr.entrypoints" = "https";
@@ -48,22 +37,15 @@ in
       "traefik.http.routers.chat-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.services.chat-svc.loadbalancer.server.port" = "8080";
     };
-    dependsOn = [
-      "ollama"
-    ];
+    dependsOn = [ "ollama" ];
     log-driver = "journald";
-    extraOptions = [
-      "--network-alias=chat"
-      "--network=chat"
-      "--network=frontend"
-    ];
+    extraOptions =
+      [ "--network-alias=chat" "--network=chat" "--network=frontend" ];
   };
 
   virtualisation.oci-containers.containers."ollama" = {
-    image = "ollama/ollama:0.12.3";
-    volumes = [
-      "/data/docker/chat/ollama/:/root/.ollama"
-    ];
+    image = "ollama/ollama:0.12.6";
+    volumes = [ "/data/docker/chat/ollama/:/root/.ollama" ];
     environment = {
       "chat_HOST" = "0.0.0.0";
       "chat_KEEP_ALIVE" = "5m";
@@ -71,18 +53,14 @@ in
       "chat_GIN_MODE" = "release";
     };
     log-driver = "journald";
-    extraOptions = [
-      "--device=nvidia.com/gpu=all"
-      "--network-alias=chat"
-      "--network=chat"
-    ];
+    extraOptions =
+      [ "--device=nvidia.com/gpu=all" "--network-alias=chat" "--network=chat" ];
   };
 
   virtualisation.oci-containers.containers."mcpo" = {
-    image = "ghcr.io/jarneamerlinck/mcpo:main@sha256:e40e14e1f36ac3c137f27b15c5f2f5a9edee19fb3b2c044a12e48b4ef04d299d";
-    volumes = [
-      "${config.sops.secrets."mcpo/config.json".path}:/config.json"
-    ];
+    image =
+      "ghcr.io/jarneamerlinck/mcpo:main@sha256:e40e14e1f36ac3c137f27b15c5f2f5a9edee19fb3b2c044a12e48b4ef04d299d";
+    volumes = [ "${config.sops.secrets."mcpo/config.json".path}:/config.json" ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=chat"
@@ -114,18 +92,10 @@ in
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
-    after = [
-      "docker-network-chat.service"
-    ];
-    requires = [
-      "docker-network-chat.service"
-    ];
-    partOf = [
-      "docker-compose-chat-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-chat-root-root.target"
-    ];
+    after = [ "docker-network-chat.service" ];
+    requires = [ "docker-network-chat.service" ];
+    partOf = [ "docker-compose-chat-root.target" ];
+    wantedBy = [ "docker-compose-chat-root-root.target" ];
   };
 
   systemd.services."docker-ollama" = {
@@ -135,18 +105,10 @@ in
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
-    after = [
-      "docker-network-chat.service"
-    ];
-    requires = [
-      "docker-network-chat.service"
-    ];
-    partOf = [
-      "docker-compose-chat-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-chat-root-root.target"
-    ];
+    after = [ "docker-network-chat.service" ];
+    requires = [ "docker-network-chat.service" ];
+    partOf = [ "docker-compose-chat-root.target" ];
+    wantedBy = [ "docker-compose-chat-root-root.target" ];
   };
 
   systemd.services."docker-mcpo" = {
@@ -166,12 +128,8 @@ in
       "docker-network-source_code.service"
       "docker-network-bookmark.service"
     ];
-    partOf = [
-      "docker-compose-chat-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-chat-root-root.target"
-    ];
+    partOf = [ "docker-compose-chat-root.target" ];
+    wantedBy = [ "docker-compose-chat-root-root.target" ];
   };
   # Root service
   # When started, this will automatically create all resources and start

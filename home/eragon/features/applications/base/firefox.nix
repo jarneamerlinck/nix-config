@@ -3,14 +3,13 @@
 with config.lib.stylix.colors.withHashtag;
 let
   chat_uri = "https://chat.ko0.net";
-  chat_options = "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
-  file_path_darkreader = ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
+  chat_options =
+    "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
+  file_path_darkreader =
+    ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
 
-in
-{
-  home.packages = with pkgs; [
-    speechd
-  ];
+in {
+  home.packages = with pkgs; [ speechd ];
   programs = {
     firefox = {
       enable = true;
@@ -32,8 +31,10 @@ in
           OverrideFirstRunPage = "";
           OverridePostUpdatePage = "";
           DontCheckDefaultBrowser = true;
-          DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
-          DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+          DisplayBookmarksToolbar =
+            "never"; # alternatives: "always" or "newtab"
+          DisplayMenuBar =
+            "default-off"; # alternatives: "always", "never" or "default-on"
           SearchBar = "unified"; # alternative: "separate"
           SearchEngine = {
             Default = "DuckDuckGo";
@@ -90,7 +91,8 @@ in
             "browser.formfill.enable" = false; # Disable form autofill
 
             # Disable saving payment methods
-            "payments.enabled" = false; # Disable saving credit card/payment methods
+            "payments.enabled" =
+              false; # Disable saving credit card/payment methods
 
             # ML integration
 
@@ -102,8 +104,10 @@ in
             "browser.ml.chat.provider" = "${chat_uri}/${chat_options}";
 
             # Others
-            "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
-            "browser.startup.homepage" = "https://github.com/jarneamerlinck/nix-config";
+            "browser.newtabpage.activity-stream.feeds.section.highlights" =
+              false;
+            "browser.startup.homepage" =
+              "https://github.com/jarneamerlinck/nix-config";
           };
           search = {
             default = "searxng"; # duckduckgo
@@ -111,19 +115,13 @@ in
             engines = {
 
               "searxng" = {
-                urls = [
-                  {
-                    template = "https://search.ko0.net/?q={searchTerms}";
-                  }
-                ];
+                urls =
+                  [{ template = "https://search.ko0.net/?q={searchTerms}"; }];
                 icon = "https://search.ko0.net/favicon.ico";
               };
               "ddg" = {
-                urls = [
-                  {
-                    template = "https://duckduckgo.com/?q={searchTerms}";
-                  }
-                ];
+                urls =
+                  [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
                 icon = "https://duckduckgo.com/favicon.ico";
               };
             };
@@ -133,69 +131,68 @@ in
     };
   };
 
-  stylix.targets.firefox.profileNames = [
-    "base_profile"
-  ];
+  stylix.targets.firefox.profileNames = [ "base_profile" ];
   stylix.targets.firefox.colorTheme.enable = true;
 
-  home.file."${file_path_darkreader}".text = ''
-
-
-    {
-        "schemeVersion": 2,
-        "enabled": true,
-        "fetchNews": true,
-        "theme": {
-    	"mode": 1,
-    	"brightness": 100,
-    	"contrast": 100,
-    	"grayscale": 0,
-    	"sepia": 0,
-    	"useFont": false,
-    	"fontFamily": "Open Sans",
-    	"textStroke": 0,
-    	"engine": "dynamicTheme",
-    	"stylesheet": "",
-    	"darkSchemeBackgroundColor": "${base00}",
-    	"darkSchemeTextColor": "${base05}",
-    	"lightSchemeBackgroundColor": "${base05}",
-    	"lightSchemeTextColor": "${base00}",
-    	"scrollbarColor": "auto",
-    	"selectionColor": "auto",
-    	"styleSystemControls": false,
-    	"lightColorScheme": "Default",
-    	"darkColorScheme": "Default",
-    	"immediateModify": false
-        },
-        "presets": [],
-        "customThemes": [],
-        "enabledByDefault": true,
-        "enabledFor": [],
-        "disabledFor": [],
-        "changeBrowserTheme": false,
-        "syncSettings": false,
-        "syncSitesFixes": true,
-        "automation": {
-    	"enabled": false,
-    	"mode": "",
-    	"behavior": "OnOff"
-        },
-        "time": {
-    	"activation": "18:00",
-    	"deactivation": "9:00"
-        },
-        "location": {
-    	"latitude": null,
-    	"longitude": null
-        },
-        "previewNewDesign": true,
-        "enableForPDF": true,
-        "enableForProtectedPages": true,
-        "enableContextMenus": false,
-        "detectDarkTheme": false,
-        "displayedNews": [
-    	"thanks-2023"
-        ]
-    }
-  '';
+  home.file."${file_path_darkreader}" = {
+    force = true;
+    text = ''
+      {
+          "schemeVersion": 2,
+          "enabled": true,
+          "fetchNews": true,
+          "theme": {
+      	"mode": 1,
+      	"brightness": 100,
+      	"contrast": 100,
+      	"grayscale": 0,
+      	"sepia": 0,
+      	"useFont": false,
+      	"fontFamily": "Open Sans",
+      	"textStroke": 0,
+      	"engine": "dynamicTheme",
+      	"stylesheet": "",
+      	"darkSchemeBackgroundColor": "${base00}",
+      	"darkSchemeTextColor": "${base05}",
+      	"lightSchemeBackgroundColor": "${base05}",
+      	"lightSchemeTextColor": "${base00}",
+      	"scrollbarColor": "auto",
+      	"selectionColor": "auto",
+      	"styleSystemControls": false,
+      	"lightColorScheme": "Default",
+      	"darkColorScheme": "Default",
+      	"immediateModify": false
+          },
+          "presets": [],
+          "customThemes": [],
+          "enabledByDefault": true,
+          "enabledFor": [],
+          "disabledFor": [],
+          "changeBrowserTheme": false,
+          "syncSettings": false,
+          "syncSitesFixes": true,
+          "automation": {
+      	"enabled": false,
+      	"mode": "",
+      	"behavior": "OnOff"
+          },
+          "time": {
+      	"activation": "18:00",
+      	"deactivation": "9:00"
+          },
+          "location": {
+      	"latitude": null,
+      	"longitude": null
+          },
+          "previewNewDesign": true,
+          "enableForPDF": true,
+          "enableForProtectedPages": true,
+          "enableContextMenus": false,
+          "detectDarkTheme": false,
+          "displayedNews": [
+      	"thanks-2023"
+          ]
+      }
+    '';
+  };
 }

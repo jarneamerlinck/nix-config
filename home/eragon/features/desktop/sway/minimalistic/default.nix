@@ -1,14 +1,9 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 let
   i_keyboard = "be";
   cfg = config.wayland.windowManager.sway.config;
 
-in
-{
+in {
   imports = [
     ../common
     ./shotman.nix
@@ -18,11 +13,7 @@ in
     ./swaylock.nix
   ];
 
-  home.packages = with pkgs; [
-    procps
-    jq
-    playerctl
-  ];
+  home.packages = with pkgs; [ procps jq playerctl ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -32,7 +23,8 @@ in
       bars = [ ];
       keybindings = {
         "${cfg.modifier}+t" = "exec ${cfg.terminal}";
-        "${cfg.modifier}+d" = "exec ${config.programs.wofi.package}/bin/wofi --show drun";
+        "${cfg.modifier}+d" =
+          "exec ${config.programs.wofi.package}/bin/wofi --show drun";
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
@@ -45,7 +37,8 @@ in
         "${cfg.modifier}+Shift+Down" = "move down";
         "${cfg.modifier}+Shift+Up" = "move up";
         "${cfg.modifier}+Shift+Right" = "move right";
-        "${cfg.modifier}+Escape" = "exec ${config.programs.swaylock.package}/bin/swaylock";
+        "${cfg.modifier}+Escape" =
+          "exec ${config.programs.swaylock.package}/bin/swaylock";
         "${cfg.modifier}+Shift+l" = "exec swaymsg exit";
         "${cfg.modifier}+Shift+r" = "exec swaymsg reload";
 
@@ -64,8 +57,10 @@ in
 
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
-        "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
-        "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
+        "XF86AudioRaiseVolume" =
+          "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
+        "XF86AudioLowerVolume" =
+          "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
         "XF86AudioMute" = "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
       };
     };

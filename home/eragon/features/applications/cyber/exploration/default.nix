@@ -1,6 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./nmap.nix
-  ];
-}
+{ ... }: { imports = [ ./nmap.nix ]; }

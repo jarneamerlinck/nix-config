@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }:
-{
+{ lib, pkgs, ... }: {
 
   sops.secrets."sealed-secrets/tls.crt" = {
     sopsFile = ./secrets.yml;

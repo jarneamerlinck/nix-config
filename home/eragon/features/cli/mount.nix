@@ -1,12 +1,4 @@
-{
-  outputs,
-  lib,
-  pkgs,
-  ...
-}:
-{
-  home.packages = with pkgs; [
-    cifs-utils
-  ];
+{ outputs, lib, pkgs, ... }: {
+  home.packages = with pkgs; [ cifs-utils ];
 
 }

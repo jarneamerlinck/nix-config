@@ -1,9 +1,1 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
-  services.tzupdate.enable = true;
-}
+{ config, lib, pkgs, ... }: { services.tzupdate.enable = true; }

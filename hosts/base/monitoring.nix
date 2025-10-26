@@ -1,11 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
+{ pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
-    powertop
-  ];
+  environment.systemPackages = with pkgs; [ powertop ];
 
 }

@@ -1,16 +1,10 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 let
   rmHash = lib.removePrefix "#";
   kittyColors = ''
     # Colors generated from nix-colors
   '';
-in
-{
+in {
   programs.kitty = {
     enable = true;
     keybindings = {

@@ -1,10 +1,7 @@
 # Example to create a bios compatible gpt partition
-{ lib, ... }:
-{
+{ lib, ... }: {
 
-  imports = [
-    ./btrfs.nix
-  ];
+  imports = [ ./btrfs.nix ];
 
   disko.devices = {
     disk = {
@@ -35,14 +32,9 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
-                  "/rootfs" = {
-                    mountpoint = "/";
-                  };
+                  "/rootfs" = { mountpoint = "/"; };
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/.snapshots";
                   };
                 };
@@ -66,41 +58,26 @@
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
                   "/home" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/home";
                   };
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/home/.snapshots";
                   };
 
                   "/var" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/var";
                   };
 
                   "/data" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/data";
                   };
 
                   "/nix" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
                 };

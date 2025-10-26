@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
-  home.packages = with pkgs; [
-    grype
-    syft
-  ];
+  home.packages = with pkgs; [ grype syft ];
 }

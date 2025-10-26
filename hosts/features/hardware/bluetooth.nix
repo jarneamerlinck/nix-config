@@ -1,10 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{ pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
-    bluetui
-  ];
+  environment.systemPackages = with pkgs; [ bluetui ];
 }

@@ -1,28 +1,16 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-{
+{ pkgs, lib, config, ... }: {
   services = {
     xserver = {
       enable = true;
-      desktopManager.pantheon = {
-        enable = true;
-      };
+      desktopManager.pantheon = { enable = true; };
       displayManager.lightdm = {
         enable = true;
         greeters.pantheon.enable = true;
       };
     };
-    pantheon = {
-      apps.enable = true;
-    };
+    pantheon = { apps.enable = true; };
   };
-  programs = {
-    pantheon-tweaks.enable = true;
-  };
+  programs = { pantheon-tweaks.enable = true; };
   # Fix shutdown taking a long time
   # https://gist.github.com/worldofpeace/27fcdcb111ddf58ba1227bf63501a5fe
   systemd.extraConfig = ''

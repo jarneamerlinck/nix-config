@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   wofiStyle = ''
     /* Wofi theme generated from nix-colors */
@@ -48,8 +44,7 @@ let
       outline: none;
     }
   '';
-in
-{
+in {
   programs.wofi = {
     enable = true;
     settings = {

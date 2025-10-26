@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [
-    xdg-desktop-portal
-  ];
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ xdg-desktop-portal ];
   services.xserver = {
     enable = true;
     excludePackages = [ pkgs.xterm ];
