@@ -29,9 +29,7 @@
     };
 
     # Hardware
-    hardware = {
-      url = "github:nixos/nixos-hardware";
-    };
+    hardware.url = "github:nixos/nixos-hardware";
     stylix.url = "github:nix-community/stylix/release-25.05";
 
     nur = {
@@ -41,31 +39,18 @@
     nvim.url = "github:jarneamerlinck/kickstart.nvim";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      disko,
-      ...
-    }@inputs:
+  outputs = { self, nixpkgs, home-manager, disko, ... }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+      systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (
-        system:
+      pkgsFor = lib.genAttrs systems (system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-        }
-      );
-    in
-    {
+        });
+    in {
       inherit lib;
 
       nixosModules = import ./modules/nixos;
@@ -123,9 +108,7 @@
           modules = [
             ./hosts/banshee
             disko.nixosModules.disko
-            {
-              disko.devices.disk.boot_disk.device = "/dev/nvme0n1";
-            }
+            { disko.devices.disk.boot_disk.device = "/dev/nvme0n1"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -134,9 +117,7 @@
           modules = [
             ./hosts/baruuk
             disko.nixosModules.disko
-            {
-              disko.devices.disk.boot_disk.device = "/dev/nvme0n1";
-            }
+            { disko.devices.disk.boot_disk.device = "/dev/nvme0n1"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };

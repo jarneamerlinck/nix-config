@@ -1,7 +1,1 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    upx
-    binwalk
-  ];
-}
+{ pkgs, ... }: { home.packages = with pkgs; [ upx binwalk ]; }

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ config, pkgs, lib, ... }: {
 
   sops.secrets."nix_cache/cache-priv-key.pem" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;

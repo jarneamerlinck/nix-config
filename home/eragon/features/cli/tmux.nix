@@ -24,18 +24,11 @@ let
   #     };
   #   };
 
-in
-{
+in {
 
-  home.packages = with pkgs; [
-    lsof
-  ];
+  home.packages = with pkgs; [ lsof ];
 
-  home = {
-    shellAliases = {
-      t = "tmux";
-    };
-  };
+  home = { shellAliases = { t = "tmux"; }; };
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";

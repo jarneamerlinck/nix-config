@@ -1,12 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-let
-  palette = config.lib.stylix.colors;
-in
-{
+{ config, pkgs, ... }:
+let palette = config.lib.stylix.colors;
+in {
 
   programs.swaylock = {
     enable = true;
@@ -30,18 +24,14 @@ in
 
   services.swayidle = {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "${config.programs.swaylock.package}/bin/swaylock";
-      }
-    ];
-    timeouts = [
-      {
-        timeout = 60 * 10;
-        command = "${config.programs.swaylock.package}/bin/swaylock";
-      }
-    ];
+    events = [{
+      event = "before-sleep";
+      command = "${config.programs.swaylock.package}/bin/swaylock";
+    }];
+    timeouts = [{
+      timeout = 60 * 10;
+      command = "${config.programs.swaylock.package}/bin/swaylock";
+    }];
   };
   stylix.targets.swaylock = {
     enable = true;

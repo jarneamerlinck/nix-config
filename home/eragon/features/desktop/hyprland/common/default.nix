@@ -1,16 +1,8 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  config,
-  outputs,
-  ...
-}:
+{ inputs, lib, pkgs, config, outputs, ... }:
 let
   monitor = lib.head (lib.filter (m: m.primary) config.monitors);
   i_modifier = "Mod4";
-in
-{
+in {
   imports = [
     ../../common
     ../../common/wayland-common.nix
@@ -25,7 +17,9 @@ in
     enable = true;
     settings = {
       monitor = [
-        ", ${toString monitor.width}x${toString monitor.height}@${toString monitor.refreshRate}, 0x0, 1"
+        ", ${toString monitor.width}x${toString monitor.height}@${
+          toString monitor.refreshRate
+        }, 0x0, 1"
       ];
       "$mainMod" = "SUPER";
       "$terminal" = "${pkgs.kitty}/bin/kitty";
@@ -106,9 +100,7 @@ in
         preserve_split = true;
       };
 
-      master = {
-        new_status = "master";
-      };
+      master = { new_status = "master"; };
 
       misc = {
         force_default_wallpaper = -1;
@@ -119,14 +111,10 @@ in
         kb_layout = "be";
         follow_mouse = 1;
         sensitivity = 0;
-        touchpad = {
-          natural_scroll = false;
-        };
+        touchpad = { natural_scroll = false; };
       };
 
-      gestures = {
-        workspace_swipe = false;
-      };
+      gestures = { workspace_swipe = false; };
 
       bind = [
         "$mainMod, T, exec, $terminal"
@@ -173,6 +161,6 @@ in
       ];
 
     };
-    extraConfig = '''';
+    extraConfig = "";
   };
 }

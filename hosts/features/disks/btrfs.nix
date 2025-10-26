@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
+{ lib, config, pkgs, ... }:
 {
   # services.snapper = {
   #   snapshotInterval = "hourly";

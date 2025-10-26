@@ -1,20 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
+{ config, lib, pkgs, ... }: {
 
-  home.packages = with pkgs; [
-    kubectl
-    kubernetes-helm
-    kubeseal
-  ];
+  home.packages = with pkgs; [ kubectl kubernetes-helm kubeseal ];
 
-  home.sessionVariables = {
-    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
-  };
+  home.sessionVariables = { KUBECONFIG = "/etc/rancher/k3s/k3s.yaml"; };
 
   programs.k9s = {
     enable = true;
@@ -28,15 +16,7 @@
         scopes = [ "po" ];
         command = "kubectl";
         background = false;
-        args = [
-          "logs"
-          "-f"
-          "$NAME"
-          "-n"
-          "$NAMESPACE"
-          "--context"
-          "$CLUSTER"
-        ];
+        args = [ "logs" "-f" "$NAME" "-n" "$NAMESPACE" "--context" "$CLUSTER" ];
       };
     };
 

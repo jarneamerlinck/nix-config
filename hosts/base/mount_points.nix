@@ -1,5 +1,4 @@
-{ pkgs, config, ... }:
-{
+{ pkgs, config, ... }: {
   systemd.services.ensureMntDir = {
     description = "Ensure /mnt directory exists";
     after = [ "network.target" ];

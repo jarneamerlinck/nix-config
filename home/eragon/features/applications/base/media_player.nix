@@ -1,6 +1,1 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    haruna
-  ];
-}
+{ pkgs, ... }: { home.packages = with pkgs; [ haruna ]; }

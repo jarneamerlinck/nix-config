@@ -1,7 +1,4 @@
-{ lib, pkgs, ... }:
-{
-  imports = [
-    ../base
-  ];
+{ lib, pkgs, ... }: {
+  imports = [ ../base ];
 
 }

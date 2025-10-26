@@ -1,7 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./cyberchef.nix
-    ./container_scanner.nix
-  ];
-}
+{ ... }: { imports = [ ./cyberchef.nix ./container_scanner.nix ]; }
