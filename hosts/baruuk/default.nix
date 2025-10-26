@@ -1,9 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}:
-{
+{ inputs, lib, ... }: {
   imports = [
 
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
@@ -24,6 +19,7 @@
     ../features/services/unattended-upgrades.nix
 
     ../features/services/google_coral.nix
+    ../features/services/wireguard_client.nix
 
     ## Display server
     ../features/desktop/wayland.nix
