@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
+{ lib, config, pkgs, ... }:
 # https://github.com/tiredofit/nixos-config/blob/da4b765d8d496e821828d173705fcef010dae10f/deploy-templates/disko/efi-btrfs-swap-raid1.nix
 # https://github.com/nix-community/disko/issues/543
 #https://github.com/elliottminns/dotfiles/blob/2985327b3fbd1d127df9cf0acb1e7b09a88b44ba/nix/machines/amaterasu/disko-config-raid.nix#L3
@@ -15,9 +10,7 @@
 
 {
 
-  imports = [
-    ./btrfs.nix
-  ];
+  imports = [ ./btrfs.nix ];
   disko.devices = {
     disk = {
       # Boot disk 1
@@ -47,21 +40,13 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
-                  "/rootfs" = {
-                    mountpoint = "/";
-                  };
+                  "/rootfs" = { mountpoint = "/"; };
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/.snapshots";
                   };
                   "/nix" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
                 };
@@ -85,17 +70,11 @@
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
                   "/home" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/home";
                   };
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/home/.snapshots";
                   };
                 };
@@ -118,17 +97,11 @@
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
                   "/var" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/var";
                   };
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/var/.snapshots";
                   };
                 };
@@ -152,43 +125,23 @@
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
                   ".snapshots" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                      "nofail"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data/.snapshots";
                   };
                   "/data" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                      "nofail"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data";
                   };
                   "/backup" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                      "nofail"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data/backup";
                   };
                   "/sync" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                      "nofail"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data/sync";
                   };
                   "/ml" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                      "nofail"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" "nofail" ];
                     mountpoint = "/data/ml";
                   };
                 };

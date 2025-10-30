@@ -1,12 +1,4 @@
-{
-  outputs,
-  lib,
-  pkgs,
-  ...
-}:
-{
-  home.packages = with pkgs; [
-    uv
-  ];
+{ outputs, lib, pkgs, ... }: {
+  home.packages = with pkgs; [ uv ];
 
 }

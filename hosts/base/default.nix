@@ -1,12 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
+{ inputs, outputs, lib, config, pkgs, ... }: {
 
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -22,10 +14,10 @@
     ./security.nix
     ./monitoring.nix
 
-  ]
-  ++ (builtins.attrValues outputs.nixosModules);
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
-  users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
+  users.mutableUsers =
+    true; # Only enable if you set password from sops or from nix-config
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
 
   nixpkgs = {
@@ -45,9 +37,7 @@
       #   });
       # })
     ];
-    config = {
-      allowUnfree = true;
-    };
+    config = { allowUnfree = true; };
   };
 
   # Fix for qt6 plugins

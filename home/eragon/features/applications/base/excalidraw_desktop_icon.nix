@@ -1,8 +1,5 @@
-{ pkgs, config, ... }:
-{
+{ pkgs, config, ... }: {
 
-  home.packages = with pkgs; [
-    excalidraw.excalidraw
-  ];
+  home.packages = with pkgs; [ excalidraw.excalidraw ];
 
 }

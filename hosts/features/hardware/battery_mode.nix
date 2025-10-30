@@ -1,10 +1,5 @@
-{
-  ...
-}:
-{
-  services.auto-cpufreq = {
-    enable = true;
-  };
+{ ... }: {
+  services.auto-cpufreq = { enable = true; };
 
   services.logind = {
     lidSwitchExternalPower = "sleep";

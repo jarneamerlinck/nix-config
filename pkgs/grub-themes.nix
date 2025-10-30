@@ -1,9 +1,4 @@
-{
-  stdenv,
-  fetchFromGitHub,
-  fetchzip,
-}:
-{
+{ stdenv, fetchFromGitHub, fetchzip, }: {
   # use nix-prefetch-git to get the hash
   fallout-grub-theme = stdenv.mkDerivation rec {
     pname = "fallout-grub-theme";
@@ -30,9 +25,11 @@
       cp -aR * $out/share/grub/themes/${pname}
     '';
     src = fetchzip {
-      url = "https://github.com/AdisonCavani/distro-grub-themes/releases/download/${version}/nixos.tar";
+      url =
+        "https://github.com/AdisonCavani/distro-grub-themes/releases/download/${version}/nixos.tar";
       sha256 = "10ai28hz5kivk2qbsv3866vl92cmx1bwvn7bq0apanmcmqs1f019";
-      stripRoot = false; # hint: Pass stripRoot=false; to fetchzip to assume flat list of files.
+      stripRoot =
+        false; # hint: Pass stripRoot=false; to fetchzip to assume flat list of files.
     };
   };
 

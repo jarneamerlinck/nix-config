@@ -2,9 +2,6 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    flatpak
-    appimage-run
-  ];
+  environment.systemPackages = with pkgs; [ flatpak appimage-run ];
 
 }

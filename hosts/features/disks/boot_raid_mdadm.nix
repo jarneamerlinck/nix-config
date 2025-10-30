@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   disko.devices = {
     disk = {
       boot_one = {

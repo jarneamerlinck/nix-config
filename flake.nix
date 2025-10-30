@@ -29,7 +29,7 @@
     };
 
     # Hardware
-    hardware = { url = "github:nixos/nixos-hardware"; };
+    hardware.url = "github:nixos/nixos-hardware";
     stylix.url = "github:nix-community/stylix/release-25.05";
 
     nur = {

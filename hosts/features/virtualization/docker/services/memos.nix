@@ -1,21 +1,12 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-let
-  url = "notes.ko0.net";
-in
+{ pkgs, lib, config, ... }:
+let url = "notes.ko0.net";
 
-{
+in {
 
   virtualisation.oci-containers.containers."memos-memos" = {
-    image = "docker.io/neosmemo/memos:0.25.0";
+    image = "docker.io/neosmemo/memos:0.25.2";
 
-    volumes = [
-      "/data/docker/docs/memos:/var/opt/memos"
-    ];
+    volumes = [ "/data/docker/docs/memos:/var/opt/memos" ];
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.memos-rtr.entrypoints" = "https";
@@ -26,10 +17,7 @@ in
       "traefik.http.services.memos-svc.loadbalancer.server.port" = "5230";
     };
     log-driver = "journald";
-    extraOptions = [
-      "--network-alias=frontend"
-      "--network=frontend"
-    ];
+    extraOptions = [ "--network-alias=frontend" "--network=frontend" ];
   };
 
   # Services
@@ -40,18 +28,10 @@ in
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
-    after = [
-      "docker-network-frontend.service"
-    ];
-    requires = [
-      "docker-network-frontend.service"
-    ];
-    partOf = [
-      "docker-compose-memos-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-memos-root-root.target"
-    ];
+    after = [ "docker-network-frontend.service" ];
+    requires = [ "docker-network-frontend.service" ];
+    partOf = [ "docker-compose-memos-root.target" ];
+    wantedBy = [ "docker-compose-memos-root-root.target" ];
   };
 
   # Root service

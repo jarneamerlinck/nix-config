@@ -1,11 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  inputs,
-  ...
-}:
-{
+{ pkgs, lib, config, inputs, ... }: {
   # environment.systemPackages = with pkgs; [
   #   piper
   #   solaar

@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    protonmail-desktop
-  ];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ protonmail-desktop ];
 
 }

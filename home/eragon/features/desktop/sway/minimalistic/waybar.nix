@@ -154,7 +154,7 @@ in {
         "custom/menu" = {
           exec = "echo ";
           on-click =
-            "exec'${config.programs.wofi.package}/bin/wofi --show drun'";
+            "$SHELL -lc '${config.programs.wofi.package}/bin/wofi --show drun'";
         };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";

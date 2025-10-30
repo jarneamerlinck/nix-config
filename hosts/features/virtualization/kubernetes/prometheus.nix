@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
 
   services.k3s = {
     manifests.prometheus = {
