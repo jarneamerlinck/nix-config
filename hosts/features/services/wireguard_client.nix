@@ -22,6 +22,7 @@ in {
     allowedUDPPorts =
       [ 51820 ]; # Clients and peers can use the same port, see listenport
   };
+  # you can disable this with `sudo systemctl stop wireguard-wg0.service`
   networking.wireguard = {
     enable = true;
     interfaces = {
