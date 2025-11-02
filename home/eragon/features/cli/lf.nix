@@ -17,8 +17,8 @@
       o = "";
       c = "mkdir";
       "." = "set hidden!";
-      "`" = "mark-load";
-      "\\'" = "mark-load";
+      # "`" = "mark-load";
+      # "\\'" = "mark-load";
       "<enter>" = "open";
 
       do = "dragon-out";
@@ -28,7 +28,7 @@
       "g/" = "/";
 
       ee = "editor-open";
-      V = ''$${pkgs.bat}/bin/bat --paging=always --theme=gruvbox "$f"'';
+      V = ''$${pkgs.bat}/bin/bat --paging=always "$f"'';
 
       # ...
     };
