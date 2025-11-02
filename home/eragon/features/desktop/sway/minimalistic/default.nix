@@ -54,6 +54,7 @@ in {
         "Ctrl+Alt+3" = "workspace 3";
         "Ctrl+Alt+4" = "workspace 4";
         "Print" = "exec ${pkgs.shotman}/bin/shotman -c output -C";
+        "F9" = "exec hexecute";
 
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";

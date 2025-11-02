@@ -106,8 +106,7 @@ in {
             # Others
             "browser.newtabpage.activity-stream.feeds.section.highlights" =
               false;
-            "browser.startup.homepage" =
-              "https://github.com/jarneamerlinck/nix-config";
+            "browser.startup.homepage" = "https://portal.ko0.net";
           };
           search = {
             default = "searxng"; # duckduckgo

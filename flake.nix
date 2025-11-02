@@ -37,6 +37,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvim.url = "github:jarneamerlinck/kickstart.nvim";
+    hexecute.url = "github:ThatOtherAndrew/Hexecute";
   };
 
   outputs = { self, nixpkgs, home-manager, disko, ... }@inputs:
