@@ -1,7 +1,14 @@
-{ pkgs, lib, config, ... }:
-let url = "chat.ko0.net";
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  url = "chat.ko0.net";
 
-in {
+in
+{
 
   sops.secrets."openwebui/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -39,12 +46,15 @@ in {
     };
     dependsOn = [ "ollama" ];
     log-driver = "journald";
-    extraOptions =
-      [ "--network-alias=chat" "--network=chat" "--network=frontend" ];
+    extraOptions = [
+      "--network-alias=chat"
+      "--network=chat"
+      "--network=frontend"
+    ];
   };
 
   virtualisation.oci-containers.containers."ollama" = {
-    image = "ollama/ollama:0.12.6";
+    image = "ollama/ollama:0.12.9";
     volumes = [ "/data/docker/chat/ollama/:/root/.ollama" ];
     environment = {
       "chat_HOST" = "0.0.0.0";
@@ -53,13 +63,15 @@ in {
       "chat_GIN_MODE" = "release";
     };
     log-driver = "journald";
-    extraOptions =
-      [ "--device=nvidia.com/gpu=all" "--network-alias=chat" "--network=chat" ];
+    extraOptions = [
+      "--device=nvidia.com/gpu=all"
+      "--network-alias=chat"
+      "--network=chat"
+    ];
   };
 
   virtualisation.oci-containers.containers."mcpo" = {
-    image =
-      "ghcr.io/jarneamerlinck/mcpo:main@sha256:e40e14e1f36ac3c137f27b15c5f2f5a9edee19fb3b2c044a12e48b4ef04d299d";
+    image = "ghcr.io/jarneamerlinck/mcpo:main@sha256:e40e14e1f36ac3c137f27b15c5f2f5a9edee19fb3b2c044a12e48b4ef04d299d";
     volumes = [ "${config.sops.secrets."mcpo/config.json".path}:/config.json" ];
     log-driver = "journald";
     extraOptions = [
