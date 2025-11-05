@@ -1,8 +1,7 @@
 {
-  inputs,
   lib,
   pkgs,
-  config,
+  inputs,
   outputs,
   ...
 }:
@@ -12,8 +11,6 @@
     inputs.stylix.homeModules.stylix
     inputs.nur.modules.homeManager.default
     inputs.sops-nix.homeManagerModule
-    ./home_config.nix
-    ../features/cli
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
@@ -35,7 +32,7 @@
     };
   };
 
-  systemd.user.startServices = "sd-switch";
+  # systemd.user.startServices = "sd-switch";
 
   programs = {
     home-manager.enable = true;
@@ -47,7 +44,8 @@
   stylix.enable = true;
   stylix.autoEnable = true;
 
-  stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
   stylix.polarity = lib.mkDefault "dark";
 
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
+  # stylix.image = "${pkgs.wallpapers.star-trails-5k-i0-16-10}";
 }
