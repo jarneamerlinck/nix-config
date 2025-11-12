@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
 
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -53,6 +54,7 @@
 
     # smart tools
     ../features/virtualization/docker/services/search.nix
+    ../features/services/samba.nix
 
   ];
 
