@@ -1,9 +1,12 @@
-{ inputs, ... }: {
+{ inputs, outputs, ... }:
+{
   imports = [
 
     ./hardware-configuration.nix
 
     ../features/disks/boot_1d_btrfs.nix
+
+    outputs.nixosModules.base
 
     ../base
     ../base/users/eragon
