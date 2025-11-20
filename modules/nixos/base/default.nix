@@ -19,4 +19,11 @@
     };
   };
 
+  config = lib.mkIf config.base.enable {
+
+    environment.systemPackages = with pkgs; [
+      lf
+    ];
+
+  };
 }
