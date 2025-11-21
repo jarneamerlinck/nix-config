@@ -5,7 +5,9 @@
   ...
 }:
 {
-
+  imports = [
+    ./hardware-packages.nix
+  ];
   options = {
 
     base = {
@@ -20,10 +22,6 @@
   };
 
   config = lib.mkIf config.base.enable {
-
-    environment.systemPackages = with pkgs; [
-      lf
-    ];
 
   };
 }
