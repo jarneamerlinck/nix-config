@@ -8,6 +8,7 @@
   imports = [
     ./hardware-packages.nix
     ./nvim.nix
+    ./openssh.nix
   ];
   options = {
 
