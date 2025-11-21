@@ -22,6 +22,7 @@
   };
 
   config = lib.mkIf config.base.enable {
+    config.base.neovim = lib.mkDefault true;
 
   };
 }
