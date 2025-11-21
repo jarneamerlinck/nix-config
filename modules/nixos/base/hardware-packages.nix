@@ -9,7 +9,11 @@
   options = {
 
     base."hardware-packages" = {
-      enable = lib.mkEnableOption "enables hardware packages module";
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "enables hardware packages module";
+      };
     };
   };
 
