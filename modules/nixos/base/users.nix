@@ -10,13 +10,12 @@ let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   homeBasePath = ../../../home;
   host = config.networking.hostName;
-  nixosLib = inputs.nixpkgs.lib;
-  lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
+  joinedLib = inputs.nixpkgs.lib // inputs.home-manager.lib;
   systems = [
     "x86_64-linux"
     "aarch64-linux"
   ];
-  pkgsFor = nixosLib.genAttrs systems (
+  pkgsFor = lib.genAttrs systems (
     system:
     import inputs.nixpkgs {
       inherit system;
@@ -57,7 +56,7 @@ let
   homeConfs = builtins.listToAttrs (
     builtins.map (username: {
       name = "${username}@${host}";
-      value = lib.homeManagerConfiguration {
+      value = joinedLib.homeManagerConfiguration {
         modules = [ ../../../../home/${username}/${host}.nix ];
         pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
         extraSpecialArgs = { inherit inputs outputs; };
@@ -167,7 +166,7 @@ in
     sops.secrets = perUserSecrets;
 
     # Home configuration creation
-    # lib.homeConfigurations = homeConfs;
+    # joinedLib.homeConfigurations = homeConfs;
 
     # Activate home manager rebuild
     home-manager.users = builtins.listToAttrs (
