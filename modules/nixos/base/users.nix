@@ -162,7 +162,7 @@ in
 
           value = {
             sopsFile = ../../../home/${username}/secrets.yml;
-            key = "password";
+            key = "${username}/password";
             neededForUsers = true;
           };
         };
