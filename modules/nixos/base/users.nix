@@ -131,7 +131,6 @@ in
   };
 
   config = lib.mkIf config.base.users.enable {
-
     users.mutableUsers = config.base.users.isMutableUsers;
 
     users.users = lib.mapAttrs (
