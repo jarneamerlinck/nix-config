@@ -147,7 +147,7 @@ in
         uid = userAttrs.uid;
         extraGroups = lib.mkDefault userAttrs.groups;
         openssh.authorizedKeys.keys = sshKeys;
-        hashedPasswordFile = config.sops.secrets."${username}/password".path;
+        hashedPasswordFile = config.sops.secrets.${username}.path;
         packages = [ pkgs.home-manager ];
       }
     ) config.base.users.usersConfiguration;
