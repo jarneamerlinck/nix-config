@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  outputs,
   ...
 }:
 {
@@ -38,5 +39,6 @@
   config = lib.mkIf config.base.enable {
 
     system.stateVersion = config.base."nixos-release";
+
   };
 }

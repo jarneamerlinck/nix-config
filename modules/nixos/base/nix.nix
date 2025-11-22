@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  outputs,
   ...
 }:
 {
@@ -57,7 +58,6 @@
 
     environment.systemPackages = with pkgs; [ nh ];
     nix = {
-
       settings = {
         substituters = config.base.nix.substituters;
         trusted-public-keys = config.base.nix."trusted-public-keys";
@@ -86,7 +86,39 @@
       registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
       # Add nixpkgs input to NIX_PATH
-      nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
+      nixPath = [
+        "nixpkgs=${inputs.nixpkgs.outPath}"
+        "/etc/nix/path" # Needed for legacy
+      ];
+
     };
+    nixpkgs = {
+      overlays = [
+        # Add overlays your own flake exports (from overlays and pkgs dir):
+        outputs.overlays.additions
+        outputs.overlays.modifications
+        # outputs.overlays.unstable-packages
+
+        # You can also add overlays exported from other flakes:
+        # neovim-nightly-overlay.overlays.default
+
+        # Or define it inline, for example:
+        # (final: prev: {
+        #   hi = final.hello.overrideAttrs (oldAttrs: {
+        #     patches = [ ./change-hello-to-hi.patch ];
+        #   });
+        # })
+      ];
+      config = {
+        allowUnfree = true;
+      };
+    };
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    environment.etc = lib.mapAttrs' (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    }) config.nix.registry;
   };
 }
