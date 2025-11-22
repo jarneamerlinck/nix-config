@@ -34,6 +34,12 @@
             ];
             description = "Set nameservers for the host";
           };
+
+          timesync = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "Enable the time sync";
+          };
         };
       };
 
@@ -48,5 +54,6 @@
       useDHCP = config.base.networking.dhcp;
       nameservers = config.base.networking.nameservers;
     };
+    services.tzupdate.enable = config.base.networking.timesync;
   };
 }

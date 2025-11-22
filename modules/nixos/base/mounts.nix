@@ -31,6 +31,10 @@
 
   config = lib.mkIf config.base.mounts.enable {
 
+    users.groups.mounts = {
+      name = "mounts";
+      gid = 1442; # Group ID, you can choose a suitable ID
+    };
     systemd.services = {
       ensureMntDir = {
         description = "Ensure /mnt directory exists";

@@ -13,7 +13,6 @@
 
     outputs.nixosModules.base
 
-    ../base
     ../base/users/eragon
 
     ../features/disks/wd-decrypt.nix

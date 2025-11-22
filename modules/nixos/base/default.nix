@@ -17,6 +17,7 @@
     ./networking.nix
     ./sops.nix
     ./security.nix
+    ./home-manager.nix
   ];
   options = {
 
@@ -37,7 +38,10 @@
   };
 
   config = lib.mkIf config.base.enable {
-
+    # Fix for qt6 plugins
+    environment.profileRelativeSessionVariables = {
+      QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
+    };
     system.stateVersion = config.base."nixos-release";
 
   };
