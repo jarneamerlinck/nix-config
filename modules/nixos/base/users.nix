@@ -145,20 +145,30 @@ in
         uid = userAttrs.uid;
         extraGroups = lib.mkDefault userAttrs.groups;
         openssh.authorizedKeys.keys = sshKeys;
-        hashedPasswordFile = config.sops.secrets.${username}.path;
+        hashedPasswordFile = config.sops.secrets."${username}/password".path;
         packages = [ pkgs.home-manager ];
       }
     ) config.base.users.usersConfiguration;
 
     # Sops
-    sops.secrets = builtins.map (username: {
-      name = "${username}/password";
-      value = lib.homeManagerConfiguration {
+    sops.secrets =
+      let
+        mkUserPasswordSecret = username: {
+          # The key name you want in NixOS:
+          #   config.sops.secrets."username/password"
+          #
+          # This is easy to read and behaves exactly as you want.
+          name = "${username}/password";
 
-        sopsFile = ../../../home/${username}/secrets.yml;
-        neededForUsers = true;
-      };
-    }) (enabledUsers);
+          value = {
+            sopsFile = ../../../home/${username}/${host}/secrets.yml;
+            key = "password";
+            neededForUsers = true;
+          };
+        };
+      in
+      builtins.listToAttrs (map mkUserPasswordSecret (builtins.attrNames defaultUsers));
+
     # Home configuration creation
     lib.homeConfigurations = homeConfs;
 
