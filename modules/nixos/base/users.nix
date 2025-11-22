@@ -45,10 +45,6 @@ let
       uid = 1442;
     };
   };
-  perUserSecrets = builtins.mapAttrs (username: _: {
-    sopsFile = ../../../home/${username}/secrets.yml;
-    neededForUsers = true;
-  }) defaultUsers;
   users = builtins.attrNames defaultUsers;
   enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
 
@@ -151,13 +147,16 @@ in
         uid = userAttrs.uid;
         extraGroups = lib.mkDefault userAttrs.groups;
         openssh.authorizedKeys.keys = sshKeys;
-        hashedPasswordFile = sops.secrets."${username}/password".path;
+        hashedPasswordFile = config.sops.secrets."${username}/password".path;
         packages = [ pkgs.home-manager ];
       }
     ) config.base.users.usersConfiguration;
 
     # Sops
-    sops.secrets = perUserSecrets;
+    sops.secrets = builtins.mapAttrs (username: _: {
+      sopsFile = ../../../home/${username}/secrets.yml;
+      neededForUsers = true;
+    }) defaultUsers;
 
     # Home configuration creation
     lib.homeConfigurations = homeConfs;
