@@ -39,5 +39,6 @@
 
     ../features/desktop/wireshark.nix
   ];
+  base.networking.hostname = "vm1";
 
 }
