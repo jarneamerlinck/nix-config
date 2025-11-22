@@ -1,7 +1,8 @@
-{ config, ... }: {
+{ config, ... }:
+{
 
   sops.secrets."wireless/env" = {
-    sopsFile = ../../base/users/eragon/secrets.yml;
+    sopsFile = ../../../home/eragon/secrets.yml;
     neededForUsers = false;
   };
 
@@ -17,7 +18,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto"; };
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOME_WIFI_SSID";
@@ -33,7 +36,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto"; };
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOME_DAD_SSID";
@@ -50,7 +55,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto"; };
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOME_MEP_SSID";
@@ -67,7 +74,9 @@
             permissions = "";
             type = "wifi";
           };
-          ipv4 = { method = "auto"; };
+          ipv4 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "$HOTSPOT_SSID";
@@ -81,7 +90,9 @@
 
     };
   };
-  networking.wireless = { enable = false; };
+  networking.wireless = {
+    enable = false;
+  };
   #
   # # Ensure group exists
   users.groups.network = { };
