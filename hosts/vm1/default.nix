@@ -39,12 +39,5 @@
 
     ../features/desktop/wireshark.nix
   ];
-  config.base.nix.gc = false;
-  networking = {
-    hostName = "vm1";
-    useDHCP = true;
-    nameservers = [ "1.1.1.1" ];
-  };
 
-  system.stateVersion = "25.05";
 }
