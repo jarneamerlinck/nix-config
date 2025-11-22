@@ -14,6 +14,7 @@
     ./package-list.nix
     ./mounts.nix
     ./networking.nix
+    ./sops.nix
   ];
   options = {
 

@@ -10,7 +10,6 @@
 
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./sops.nix
     ./security.nix
 
   ];
