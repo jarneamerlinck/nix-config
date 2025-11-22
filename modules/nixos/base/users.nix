@@ -46,7 +46,7 @@ let
     };
   };
   perUserSecrets = builtins.mapAttrs (username: _: {
-    sopsFile = ../../../home/${username}/${host}/secrets.yml;
+    sopsFile = ../../../home/${username}/secrets.yml;
     neededForUsers = true;
   }) defaultUsers;
   users = builtins.attrNames defaultUsers;
