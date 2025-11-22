@@ -84,7 +84,7 @@ in
             description = "Allow password changes outside of sops";
           };
           usersConfiguration = lib.mkOption {
-            type = lib.types.attrsOf (
+            type = lib.types.submodule (
               lib.types.attrsOf {
                 enable = lib.mkOption {
                   type = lib.types.bool;
