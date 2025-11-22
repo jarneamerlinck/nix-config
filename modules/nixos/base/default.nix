@@ -11,6 +11,7 @@
     ./openssh.nix
     ./zsh.nix
     ./package-list.nix
+    ./mounts.nix
   ];
   options = {
 
