@@ -44,6 +44,10 @@ let
       ];
       uid = 1442;
     };
+    john = {
+      shell = pkgs.fish;
+      uid = 1007;
+    };
   };
   users = builtins.attrNames defaultUsers;
   enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
