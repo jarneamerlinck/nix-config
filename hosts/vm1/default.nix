@@ -1,4 +1,9 @@
-{ inputs, outputs, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  ...
+}:
 {
   imports = [
 
@@ -34,7 +39,7 @@
 
     ../features/desktop/wireshark.nix
   ];
-
+  config.base.nix.gc = false;
   networking = {
     hostName = "vm1";
     useDHCP = true;
