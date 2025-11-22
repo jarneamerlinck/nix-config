@@ -10,13 +10,13 @@ let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   homeBasePath = ../../../home;
   host = config.networking.hostName;
-
-  joined_lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
+  nixosLib = inputs.nixpkgs.lib;
+  lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
   systems = [
     "x86_64-linux"
     "aarch64-linux"
   ];
-  pkgsFor = joined_lib.genAttrs systems (
+  pkgsFor = nixosLib.genAttrs systems (
     system:
     import inputs.nixpkgs {
       inherit system;
