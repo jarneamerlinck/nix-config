@@ -10,6 +10,7 @@
     ./nvim.nix
     ./openssh.nix
     ./zsh.nix
+    ./package-list.nix
   ];
   options = {
 
