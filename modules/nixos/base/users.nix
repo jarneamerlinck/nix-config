@@ -168,16 +168,14 @@ in
     sops.secrets = perUserSecrets;
 
     # Home configuration creation
-    lib.homeConfigurations = homeConfs;
+    # lib.homeConfigurations = homeConfs;
 
     # Activate home manager rebuild
-    home-manager.users = lib.genAttrs (builtins.attrNames enabledUsers) (
-      username:
-      lib.homeManagerConfiguration {
-        modules = [ ../../../../home/${username}/${host}.nix ];
-        pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
-        extraSpecialArgs = { inherit inputs outputs; };
-      }
+    home-manager.users = builtins.listToAttrs (
+      builtins.map (user: {
+        name = user.name;
+        value = user.value;
+      }) homeConfs
     );
 
   };
