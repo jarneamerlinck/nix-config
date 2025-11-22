@@ -11,12 +11,12 @@ let
   homeBasePath = ../../../home;
   host = config.networking.hostName;
 
-  lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
+  joined_lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
   systems = [
     "x86_64-linux"
     "aarch64-linux"
   ];
-  pkgsFor = lib.genAttrs systems (
+  pkgsFor = joined_lib.genAttrs systems (
     system:
     import inputs.nixpkgs {
       inherit system;
