@@ -85,33 +85,31 @@ in
           };
           usersConfiguration = lib.mkOption {
             type = lib.types.submodule (
-              lib.types.attrsOf {
-                enable = lib.mkOption {
-                  type = lib.types.bool;
-                  default = false;
-                };
-
-                useHomeManager = lib.mkOption {
-                  type = lib.types.bool;
-                  default = false;
-                };
-                groups = lib.mkOption {
-                  type = lib.types.listOf lib.types.str;
-                  default = [
-                    "video"
-                    "audio"
-                    "mounts"
-                  ];
-                };
-
-                shell = lib.mkOption {
-                  type = lib.types.str;
-                  default = pkgs.bash;
-                  description = "Default shell of the user";
-                };
-                uid = lib.mkOption {
-                  type = lib.types.int;
-                  description = "Unique ID of the user";
+              lib.types.submodule {
+                options = {
+                  enable = lib.mkOption {
+                    type = lib.types.bool;
+                    default = false;
+                  };
+                  useHomeManager = lib.mkOption {
+                    type = lib.types.bool;
+                    default = false;
+                  };
+                  groups = lib.mkOption {
+                    type = lib.types.listOf lib.types.str;
+                    default = [
+                      "video"
+                      "audio"
+                      "mounts"
+                    ];
+                  };
+                  shell = lib.mkOption {
+                    type = lib.types.str;
+                    default = pkgs.bash;
+                  };
+                  uid = lib.mkOption {
+                    type = lib.types.int;
+                  };
                 };
               }
             );
