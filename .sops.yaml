@@ -49,7 +49,7 @@ creation_rules:
       - *testing
 
 
-  - path_regex: hosts/base/users/eragon/secrets.ya?ml$
+  - path_regex: home/eragon/secrets.ya?ml$
     key_groups:
     - age:
       - *eragon
