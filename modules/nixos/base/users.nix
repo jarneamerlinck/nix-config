@@ -171,7 +171,14 @@ in
     lib.homeConfigurations = homeConfs;
 
     # Activate home manager rebuild
-    home-manager.users = hmUsers;
+    home-manager.users = lib.genAttrs (builtins.attrNames enabledUsers) (
+      username:
+      lib.homeManagerConfiguration {
+        modules = [ ../../../../home/${username}/${host}.nix ];
+        pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
+        extraSpecialArgs = { inherit inputs outputs; };
+      }
+    );
 
   };
 }
