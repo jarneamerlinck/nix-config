@@ -50,7 +50,7 @@ let
     sopsFile = ../../../home/${username}/${host}/secrets.yml;
     neededForUsers = true;
   }) defaultUsers;
-  users = [ "eragon" ];
+  users = builtins.attrNames defaultUsers;
   enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
 
   # Allow rebuild for home manager for a device
@@ -174,7 +174,8 @@ in
     home-manager.users = builtins.listToAttrs (
       map (username: {
         name = username;
-        value = import ../../../../home/${username}/${config.networking.hostName};
+        value = import ../../../home/${username}/${config.networking.hostName};
+
       }) users
     );
   };
