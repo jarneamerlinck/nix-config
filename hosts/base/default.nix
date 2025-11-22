@@ -11,7 +11,6 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./nix.nix
-    ./mdadm.nix
     ./mount_points.nix
     ./sops.nix
     ./security.nix
