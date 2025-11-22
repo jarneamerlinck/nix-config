@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-defaults.nix
+    ./nix.nix
     ./nvim.nix
     ./openssh.nix
     ./zsh.nix
