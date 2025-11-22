@@ -160,7 +160,7 @@ in
     sops.secrets = perUserSecrets;
 
     # Home configuration creation
-    # joinedLib.homeConfigurations = homeConfs;
+    joinedLib.homeConfigurations = homeConfs;
 
     # Activate home manager rebuild
     # home-manager.users = builtins.listToAttrs (
