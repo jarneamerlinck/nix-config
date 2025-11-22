@@ -10,8 +10,6 @@
 
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./security.nix
-
   ];
 
   users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
@@ -44,21 +42,6 @@
     QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
   };
 
-  # Increase open file limit for sudoers
-  security.pam.loginLimits = [
-    {
-      domain = "@wheel";
-      item = "nofile";
-      type = "soft";
-      value = "524288";
-    }
-    {
-      domain = "@wheel";
-      item = "nofile";
-      type = "hard";
-      value = "1048576";
-    }
-  ];
   users.groups.mounts = {
     name = "mounts";
     gid = 1442; # Group ID, you can choose a suitable ID
