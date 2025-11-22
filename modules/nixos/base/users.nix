@@ -169,12 +169,12 @@ in
     # joinedLib.homeConfigurations = homeConfs;
 
     # Activate home manager rebuild
-    home-manager.users = builtins.listToAttrs (
-      map (username: {
-        name = username;
-        value = import ../../../home/${username}/${config.networking.hostName};
-
-      }) users
-    );
+    # home-manager.users = builtins.listToAttrs (
+    #   map (username: {
+    #     name = username;
+    #     value = import ../../../home/${username}/${config.networking.hostName};
+    #
+    #   }) users
+    # );
   };
 }
