@@ -8,7 +8,7 @@
 
   options = {
 
-    base."hardware-packages" = {
+    base."hardware-defaults" = {
       enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
@@ -17,12 +17,15 @@
     };
   };
 
-  config = lib.mkIf config.base."hardware-packages".enable {
+  config = lib.mkIf config.base."hardware-defaults".enable {
 
     environment.systemPackages = with pkgs; [
       pciutils
       openssl
     ];
 
+    # Set default console keyboard
+    console.keyMap = "be-latin1";
+    hardware.enableRedistributableFirmware = true;
   };
 }

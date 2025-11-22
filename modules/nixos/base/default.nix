@@ -6,9 +6,10 @@
 }:
 {
   imports = [
-    ./hardware-packages.nix
+    ./hardware-defaults.nix
     ./nvim.nix
     ./openssh.nix
+    ./zsh.nix
   ];
   options = {
 

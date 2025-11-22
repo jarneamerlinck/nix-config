@@ -10,7 +10,6 @@
 
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./zsh.nix
     ./nix.nix
     ./package-list.nix
     ./mdadm.nix
@@ -51,11 +50,6 @@
   environment.profileRelativeSessionVariables = {
     QT_PLUGIN_PATH = [ "/lib/qt-6/plugins" ];
   };
-
-  # Set default console keyboard
-  console.keyMap = "be-latin1";
-
-  hardware.enableRedistributableFirmware = true;
 
   # Increase open file limit for sudoers
   security.pam.loginLimits = [
