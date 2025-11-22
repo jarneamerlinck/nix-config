@@ -146,13 +146,13 @@ in
         );
       in
       {
-        isNormalUser = true;
-        shell = userAttrs.shell;
-        uid = userAttrs.uid;
-        extraGroups = userAttrs.groups;
-        openssh.authorizedKeys.keys = sshKeys;
-        hashedPasswordFile = config.sops.secrets."${username}/password".path;
-        packages = [ pkgs.home-manager ];
+        isNormalUser = lib.mkDefault true;
+        shell = lib.mkDefault userAttrs.shell;
+        uid = lib.mkDefault userAttrs.uid;
+        extraGroups = lib.mkDefault userAttrs.groups;
+        openssh.authorizedKeys.keys = lib.mkDefault sshKeys;
+        hashedPasswordFile = lib.mkDefault config.sops.secrets."${username}/password".path;
+        packages = lib.mkDefault [ pkgs.home-manager ];
       }
     ) config.base.users.usersConfiguration;
 
