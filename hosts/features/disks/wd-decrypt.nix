@@ -3,7 +3,8 @@ let
   sops_decrypt_key = "wd-decrypt";
   sops_device_key = "wd-device-id";
   device_partition = "wwn-0x50014ee6094bb38a-part1";
-in {
+in
+{
 
   environment.systemPackages = with pkgs; [ sg3_utils ];
 
@@ -12,19 +13,24 @@ in {
   services.udisks2.enable = true;
 
   sops.secrets."${sops_decrypt_key}" = {
-    sopsFile = ../../base/users/eragon/secrets.yml;
+
+    sopsFile = ../../../home/eragon/secrets.yml;
     neededForUsers = true;
   };
 
   sops.secrets."${sops_device_key}" = {
-    sopsFile = ../../base/users/eragon/secrets.yml;
+    sopsFile = ../../../home/eragon/secrets.yml;
     neededForUsers = true;
   };
 
   fileSystems."/mnt/wd" = {
     device = "/dev/disk/by-id/${device_partition}";
     fsType = "ext4";
-    options = [ "noatime" "nofail" "noauto" ];
+    options = [
+      "noatime"
+      "nofail"
+      "noauto"
+    ];
   };
 
   environment.interactiveShellInit = ''
