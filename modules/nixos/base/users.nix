@@ -59,8 +59,6 @@ let
       };
     }) (builtins.attrNames enabledUsers)
   );
-  # Include home manager for user within the system build
-  hmUsers = builtins.mapAttrs (username: _: import ../../../../home/${username}/${host}) enabledUsers;
 in
 {
 
@@ -100,7 +98,7 @@ in
                     ];
                   };
                   shell = lib.mkOption {
-                    type = lib.types.path; # better than str for pkgs.shell
+                    type = lib.types.path;
                     default = pkgs.bash;
                   };
                   uid = lib.mkOption {
