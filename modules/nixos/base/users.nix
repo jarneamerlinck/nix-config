@@ -50,7 +50,7 @@ let
     sopsFile = ../../../home/${username}/${host}/secrets.yml;
     neededForUsers = true;
   }) defaultUsers;
-
+  users = [ "eragon" ];
   enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
 
   # Allow rebuild for home manager for a device
@@ -175,7 +175,7 @@ in
       map (username: {
         name = username;
         value = import ../../../../home/${username}/${config.networking.hostName};
-      }) enabledUsers
+      }) users
     );
   };
 }
