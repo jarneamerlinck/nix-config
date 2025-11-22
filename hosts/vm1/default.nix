@@ -2,6 +2,7 @@
   inputs,
   outputs,
   config,
+  pkgs,
   ...
 }:
 {
@@ -39,5 +40,9 @@
     ../features/desktop/wireshark.nix
   ];
   base.networking.hostname = "vm1";
+  base.users.usersConfiguration."john" = {
+    shell = pkgs.fish;
+    uid = 1007;
+  };
 
 }

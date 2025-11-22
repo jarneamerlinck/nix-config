@@ -59,3 +59,11 @@ creation_rules:
       - *banshee
       - *baruuk
       - *testing
+
+
+
+  - path_regex: home/john/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *vm1
