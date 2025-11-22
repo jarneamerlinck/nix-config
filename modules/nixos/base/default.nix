@@ -18,6 +18,8 @@
     ./sops.nix
     ./security.nix
     ./home-manager.nix
+    ./bootloader.nix
+    ./users.nix
   ];
   options = {
 

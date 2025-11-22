@@ -6,17 +6,21 @@
   outputs,
   ...
 }:
+let
+  grubEnabled = config.boot.loader.grub.enable;
+  grubTheme = "distro-grub-themes";
+  fullTheme = pkgs.grub-themes.${grubTheme};
+in
 {
 
   options = {
-
-    base."home-manager" = lib.mkOption {
+    base.bootloader = lib.mkOption {
       type = lib.types.submodule {
         options = {
           enable = lib.mkOption {
             type = lib.types.bool;
-            default = true;
-            description = "Enable the home manager module";
+            default = false;
+            description = "Enable the theme bootloader module";
           };
         };
       };
@@ -24,13 +28,19 @@
       default = { };
     };
   };
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
-  config = lib.mkIf config.base."home-manager".enable {
+  config = lib.mkIf config.base.bootloader.enable {
 
-    users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
-    home-manager.extraSpecialArgs = { inherit inputs outputs; };
-
+    environment.systemPackages = with pkgs; [
+      grub-themes.${grubTheme}
+      grub2
+    ];
+    boot.loader.grub = {
+      useOSProber = lib.mkDefault false;
+      extraConfig = lib.mkIf grubEnabled ''
+        set theme=${fullTheme}/share/grub/themes/${grubTheme}/theme.txt
+        GRUB_RECORDFAIL_TIMEOUT=0
+      '';
+      # splashImage = null;
+    };
   };
 }
