@@ -15,7 +15,7 @@
 
     # ../base/users/eragon
 
-    ../features/disks/wd-decrypt.nix
+    # ../features/disks/wd-decrypt.nix
 
     ## Display server
     ../features/desktop/wayland.nix
