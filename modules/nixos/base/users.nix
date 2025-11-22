@@ -84,7 +84,7 @@ in
             description = "Allow password changes outside of sops";
           };
           usersConfiguration = lib.mkOption {
-            type = lib.types.submodule (
+            type = lib.types.attrsOf (
               lib.types.submodule {
                 options = {
                   enable = lib.mkOption {
@@ -104,7 +104,7 @@ in
                     ];
                   };
                   shell = lib.mkOption {
-                    type = lib.types.str;
+                    type = lib.types.path; # better than str for pkgs.shell
                     default = pkgs.bash;
                   };
                   uid = lib.mkOption {
@@ -114,12 +114,8 @@ in
               }
             );
             default = defaultUsers;
-            description = ''
-              Dictionary of users keyed by username.
-              Each user must have:
-                - uid: string
-            '';
           };
+
         };
       };
 
