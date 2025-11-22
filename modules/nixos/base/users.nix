@@ -51,7 +51,7 @@ let
     neededForUsers = true;
   }) defaultUsers;
 
-  enabledUsers = builtins.filterAttrs (_: user: user.enable or false) defaultUsers;
+  enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
 
   # Allow rebuild for home manager for a device
   homeConfs = builtins.listToAttrs (
