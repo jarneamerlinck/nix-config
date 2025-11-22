@@ -171,12 +171,8 @@ in
     # lib.homeConfigurations = homeConfs;
 
     # Activate home manager rebuild
-    home-manager.users = builtins.listToAttrs (
-      builtins.map (user: {
-        name = user.name;
-        value = user.value;
-      }) homeConfs
+    home-manager.users = lib.genAttrs homeConfs (
+      username: import ../../../../home/${username}/${config.networking.hostName}
     );
-
   };
 }
