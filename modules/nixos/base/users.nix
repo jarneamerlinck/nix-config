@@ -151,11 +151,14 @@ in
     ) config.base.users.usersConfiguration;
 
     # Sops
-    sops.secrets = builtins.mapAttrs (username: _: {
-      sopsFile = ../../../home/${username}/secrets.yml;
-      neededForUsers = true;
-    }) defaultUsers;
+    sops.secrets = builtins.map (username: {
+      name = "${username}/password";
+      value = lib.homeManagerConfiguration {
 
+        sopsFile = ../../../home/${username}/secrets.yml;
+        neededForUsers = true;
+      };
+    }) (enabledUsers);
     # Home configuration creation
     lib.homeConfigurations = homeConfs;
 
