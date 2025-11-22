@@ -160,7 +160,7 @@ in
         hashedPasswordFile = config.sops.secrets."${username}/password".path;
         packages = [ pkgs.home-manager ];
       }
-    ) defaultUsers;
+    ) config.base.users.usersConfiguration;
 
     # Sops
     sops.secrets = perUserSecrets;
