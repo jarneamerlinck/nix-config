@@ -13,8 +13,7 @@
     ./sops.nix
     ./security.nix
 
-  ]
-  ++ (builtins.attrValues outputs.nixosModules);
+  ];
 
   users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
