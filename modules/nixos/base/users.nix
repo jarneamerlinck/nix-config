@@ -45,7 +45,7 @@ let
       uid = 1442;
     };
     john = {
-      shell = pkgs.fish;
+      shell = pkgs.bash;
       uid = 1007;
     };
   };
