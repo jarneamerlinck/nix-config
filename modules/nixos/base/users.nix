@@ -147,6 +147,7 @@ in
       in
       {
         isNormalUser = lib.mkDefault true;
+        enable = userAttrs.enable;
         shell = userAttrs.shell;
         uid = userAttrs.uid;
         extraGroups = lib.mkDefault userAttrs.groups;
