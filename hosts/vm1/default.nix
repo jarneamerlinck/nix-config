@@ -40,5 +40,6 @@
     ../features/desktop/wireshark.nix
   ];
   base.networking.hostname = "vm1";
+  base.users.usersConfiguration.john.enable = true;
 
 }
