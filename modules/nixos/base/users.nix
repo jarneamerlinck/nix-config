@@ -59,7 +59,7 @@ let
     builtins.map (username: {
       name = "${username}@${host}";
       value = lib.homeManagerConfiguration {
-        modules = [ ../../../../home/${username}/${host}.nix ];
+        modules = [ ../../../../home/${username}/${host} ];
         pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
         extraSpecialArgs = { inherit inputs outputs; };
       };
