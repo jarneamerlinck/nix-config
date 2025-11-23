@@ -51,8 +51,8 @@ let
       uid = 1007;
     };
   };
+  users = builtins.attrNames defaultUsers;
   enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
-  enabledUsersList = builtins.attrNames enabledUsers;
 
   # Allow rebuild for home manager for a device
   homeConfs = builtins.listToAttrs (
@@ -63,7 +63,7 @@ let
         pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
         extraSpecialArgs = { inherit inputs outputs; };
       };
-    }) (enabledUsersList)
+    }) (builtins.attrNames enabledUsers)
   );
 in
 {
@@ -174,7 +174,7 @@ in
           };
         };
       in
-      builtins.listToAttrs (map mkUserPasswordSecret (enabledUsersList));
+      builtins.listToAttrs (map mkUserPasswordSecret (builtins.attrNames defaultUsers));
 
     # Home configuration creation
     lib.homeConfigurations = homeConfs;
@@ -185,7 +185,7 @@ in
         name = username;
         value = import ../../../home/${username}/${config.networking.hostName};
 
-      }) enabledUsersList
+      }) users
     );
   };
 }
