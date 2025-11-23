@@ -25,6 +25,7 @@ let
   # Default users
   defaultUsers = {
     eragon = {
+      enable = true;
       shell = pkgs.zsh;
       groups = [
         "wheel"
@@ -45,6 +46,7 @@ let
       uid = 1442;
     };
     john = {
+      enable = false;
       shell = pkgs.bash;
       uid = 1007;
     };
