@@ -7,7 +7,7 @@
 let
   url = "photos.ko0.net";
 
-  version = "v2.1.0";
+  version = "v2.3.1";
   upload_dir = "/data/docker/immich/data";
   db_dir = "/data/docker/immich/postgress";
 in
