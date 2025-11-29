@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
 
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -50,6 +51,7 @@
     ../features/virtualization/docker/services/memos.nix
     ../features/virtualization/docker/services/zipline.nix
     ../features/virtualization/docker/services/openwebui.nix
+    ../features/virtualization/docker/services/immich.nix
 
     # smart tools
     ../features/virtualization/docker/services/search.nix
