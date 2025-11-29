@@ -82,6 +82,17 @@ in
       "--shm-size=134217728"
     ];
   };
+
+  virtualisation.oci-containers.containers."immich_redis" = {
+    image = "docker.io/valkey/valkey:8-bookworm@sha256:fea8b3e67b15729d4bb70589eb03367bab9ad1ee89c876f54327fc7c6e618571";
+    log-driver = "journald";
+    extraOptions = [
+      "--health-cmd=redis-cli ping || exit 1"
+      "--network-alias=redis"
+      "--network=immich"
+    ];
+  };
+
   # Networks
   systemd.services."docker-network-immich" = {
     path = [ pkgs.docker ];
