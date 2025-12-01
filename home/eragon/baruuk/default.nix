@@ -22,7 +22,7 @@
   stylix.image = "${pkgs.wallpapers.star-trails-5k-i0-16-10}";
 
   monitors = [{
-    name = "eDP-1";
+    name = "NV122WUM-N42";
     width = 1920;
     height = 1200;
     workspace = "1";
