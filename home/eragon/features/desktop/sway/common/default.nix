@@ -7,13 +7,16 @@ in {
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      output = {
-        "Virtual-1" = {
-          mode = "${toString monitor.width}x${toString monitor.height}@${
-              toString monitor.refreshRate
-            }Hz";
+      output = lib.listToAttrs (map (m: {
+        name = m.name; # <- key in the attribute set
+        value = {
+          # mode string – add @refreshRate only if it exists
+          mode = "${toString m.width}x${toString m.height}"
+            + (if m ? refreshRate then "@${toString m.refreshRate}Hz" else "");
+          # you can add other properties per‑monitor here (scale, transform, etc.)
         };
-      };
+      }) config.monitors);
+
     };
   };
 }
