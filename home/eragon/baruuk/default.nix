@@ -28,6 +28,8 @@
       height = 1200;
       workspace = "1";
       primary = true;
+      x = 0;
+      y = 0;
     }
     {
       name = "Microstep MAG 27CQ6F CD9M275204513";
@@ -36,6 +38,8 @@
       refreshRate = 144;
       workspace = "2";
       primary = false;
+      x = 1920;
+      y = 0;
     }
     {
       name = "Microstep MAG 27CQ6F CD9M275203628";
@@ -44,6 +48,8 @@
       refreshRate = 144;
       workspace = "3";
       primary = false;
+      x = 1920 + 2560;
+      y = 0;
     }
   ];
 
