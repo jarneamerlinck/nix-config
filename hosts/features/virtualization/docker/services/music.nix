@@ -14,7 +14,7 @@
 
     environment = {
       "ND_LISTENBRAINZ_BASEURL" =
-        "http://music-maloja-1:42010/apis/listenbrainz/1/";
+        "http://music-maloja:42010/apis/listenbrainz/1/";
     };
 
     volumes = [
@@ -35,7 +35,44 @@
     log-driver = "journald";
     extraOptions = [ "--network-alias=navidrome" "--network=frontend" ];
   };
+
+  virtualisation.oci-containers.containers."music-maloja" = {
+    image = "docker.io/krateng/maloja:3.2.4";
+
+    environment = {
+      "ND_LISTENBRAINZ_BASEURL" =
+        "http://music-maloja-1:42010/apis/listenbrainz/1/";
+      "MALOJA_DATA_DIRECTORY" = "/mljdata";
+      "MALOJA_SKIP_SETUP" = "false";
+    };
+
+    volumes = [ "/data/docker/lastfm:/mljdata:rw" ];
+    labels = {
+      "traefik.enable" = "true";
+      "traefik.http.routers.maloja-rtr.entrypoints" = "https";
+      "traefik.http.routers.maloja-rtr.rule" = "Host(`lastfm.ko0.net`)";
+      "traefik.http.routers.maloja-rtr.service" = "maloja-svc";
+      "traefik.http.routers.maloja-rtr.tls" = "true";
+      "traefik.http.routers.maloja-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.maloja-svc.loadbalancer.server.port" = "4533";
+    };
+    user = "1442:100";
+    log-driver = "journald";
+    extraOptions = [ "--network-alias=maloja" "--network=frontend" ];
+  };
+
   systemd.services."docker-music-navidrome" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    partOf = [ "docker-compose-music-root.target" ];
+    wantedBy = [ "docker-compose-music-root.target" ];
+  };
+
+  systemd.services."docker-music-maloja" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
       RestartMaxDelaySec = lib.mkOverride 90 "1m";
