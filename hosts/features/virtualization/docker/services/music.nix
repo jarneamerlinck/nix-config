@@ -54,7 +54,7 @@
       "traefik.http.routers.maloja-rtr.service" = "maloja-svc";
       "traefik.http.routers.maloja-rtr.tls" = "true";
       "traefik.http.routers.maloja-rtr.tls.certresolver" = "cloudflare";
-      "traefik.http.services.maloja-svc.loadbalancer.server.port" = "4533";
+      "traefik.http.services.maloja-svc.loadbalancer.server.port" = "42010";
     };
     log-driver = "journald";
     extraOptions = [ "--network-alias=maloja" "--network=frontend" ];
