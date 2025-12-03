@@ -6,12 +6,7 @@
     image = "excalidraw/excalidraw:sha-4bfc5bb";
     ports = [ "38080:80/tcp" ];
     log-driver = "journald";
-    extraOptions = [
-      "--cpus=0.5"
-      "--memory=500MB"
-      "--network-alias=excalidraw"
-      "--network=host"
-    ];
+    extraOptions = [ "--cpus=0.5" "--memory=500MB" "--network=host" ];
   };
   systemd.services."docker-excalidraw-excalidraw" = {
     serviceConfig = {
