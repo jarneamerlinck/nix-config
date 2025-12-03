@@ -6,7 +6,7 @@ in {
 
   # Containers
   virtualisation.oci-containers.containers."portainer" = {
-    image = "docker.io/portainer/portainer-ce:2.35.0";
+    image = "docker.io/portainer/portainer-ce:2.36.0";
     volumes = [
       "/var/run/docker.sock:/var/run/docker.sock:rw"
       "/data/docker/portainer:/data:rw"
