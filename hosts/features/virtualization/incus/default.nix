@@ -4,6 +4,7 @@
   # environment.systemPackages = with pkgs; [ distrobox ];
   virtualisation.incus = {
     enable = true;
+    ui.enable = true;
     preseed = { };
     # preseed = {
     #   networks = [{
