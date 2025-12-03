@@ -37,6 +37,7 @@ in {
       "libvirt-qemu"
       "deluge"
       "wireshark"
+      "incus-admin"
     ];
 
     openssh.authorizedKeys.keys = sshKeys;
