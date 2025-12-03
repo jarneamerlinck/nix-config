@@ -7,13 +7,16 @@ in {
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      output = {
-        "Virtual-1" = {
-          mode = "${toString monitor.width}x${toString monitor.height}@${
-              toString monitor.refreshRate
+      output = lib.listToAttrs (map (m: {
+        name = m.name; # <- key in the attribute set
+        value = {
+          mode = "${toString m.width}x${toString m.height}@${
+              toString m.refreshRate
             }Hz";
+          pos = "${toString m.x} ${toString m.y}";
         };
-      };
+      }) config.monitors);
+
     };
   };
 }
