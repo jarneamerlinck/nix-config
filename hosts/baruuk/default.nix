@@ -15,6 +15,7 @@
     ../features/desktop/hexecute.nix
 
     ## Services items
+    ../features/virtualization/incus
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidraw.nix
     ../features/services/unattended-upgrades.nix
