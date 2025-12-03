@@ -28,17 +28,17 @@ in {
     isNormalUser = true;
     shell = pkgs.zsh;
     uid = 1442;
-    extraGroups = [ "wheel" "video" "audio" "mounts" ] ++ ifTheyExist [
-      "network"
-      "i2c"
-      "docker"
-      "git"
-      "libvirtd"
-      "libvirt-qemu"
-      "deluge"
-      "wireshark"
-      "incus-admin"
-    ];
+    extraGroups = [ "wheel" "video" "audio" "mounts" "incus-admin" ]
+      ++ ifTheyExist [
+        "network"
+        "i2c"
+        "docker"
+        "git"
+        "libvirtd"
+        "libvirt-qemu"
+        "deluge"
+        "wireshark"
+      ];
 
     openssh.authorizedKeys.keys = sshKeys;
     hashedPasswordFile = config.sops.secrets."${username}/password".path;
