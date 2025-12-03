@@ -43,7 +43,7 @@
       "ND_LISTENBRAINZ_BASEURL" =
         "http://music-maloja-1:42010/apis/listenbrainz/1/";
       "MALOJA_DATA_DIRECTORY" = "/mljdata";
-      "MALOJA_SKIP_SETUP" = "false";
+      "MALOJA_SKIP_SETUP" = "yes";
     };
 
     volumes = [ "/data/docker/lastfm:/mljdata:rw" ];
@@ -56,7 +56,6 @@
       "traefik.http.routers.maloja-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.services.maloja-svc.loadbalancer.server.port" = "4533";
     };
-    user = "1442:100";
     log-driver = "journald";
     extraOptions = [ "--network-alias=maloja" "--network=frontend" ];
   };
