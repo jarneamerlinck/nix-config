@@ -7,10 +7,14 @@
   };
   programs.git = {
     enable = true;
-    aliases = { graph = "log --decorate --oneline --graph"; };
-    userName = "jarneamerlinck";
-    userEmail = "jarneamerlinck@pm.me";
-    extraConfig = {
+    settings = {
+
+      alias = { graph = "log --decorate --oneline --graph"; };
+      user = {
+        name = "jarneamerlinck";
+        email = "jarneamerlinck@pm.me";
+      };
+
       init.defaultBranch = "main";
 
       commit.verbose = true;
@@ -21,6 +25,7 @@
       # Reuse merge conflict fixes when rebasing
       rerere.enabled = true;
       pull.rebase = true;
+
     };
     lfs.enable = true;
     ignores = [ ".direnv" "result" ];
