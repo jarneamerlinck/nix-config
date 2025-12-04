@@ -11,7 +11,7 @@
       networks = [
         {
           config = {
-            "ipv4.address" = "10.200.100.1/24";
+            "ipv4.address" = "10.20.1.221/24";
             "ipv4.nat" = "true";
           };
           name = "incusbr0";
