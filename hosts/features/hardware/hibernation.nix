@@ -1,6 +1,6 @@
 { config, ... }: {
-  services.logind = {
-    lidSwitch =
+  services.logind.settings.Login = {
+    HandleLidSwitch =
       if config.powerManagement.enable then "hibernate" else "suspend";
   };
   boot.resumeDevice = "${config.disko.devices.disk.boot_disk.device}3";
