@@ -55,5 +55,6 @@
       nameservers = config.base.networking.nameservers;
     };
     services.tzupdate.enable = config.base.networking.timesync;
+    networking.nftables.enable = true;
   };
 }
