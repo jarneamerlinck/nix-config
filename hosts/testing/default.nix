@@ -1,4 +1,5 @@
-{ inputs, lib, ... }: {
+{ inputs, lib, ... }:
+{
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd

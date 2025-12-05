@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.fastfetch.enable = true;
   home.shellAliases = {
     fetch = "fastfetch";

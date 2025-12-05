@@ -1,1 +1,7 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ krita krita-plugin-gmic ]; }
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    krita
+    krita-plugin-gmic
+  ];
+}

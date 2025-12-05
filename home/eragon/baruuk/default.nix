@@ -1,4 +1,10 @@
-{ lib, pkgs, inputs, ... }: {
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     ../base
     ../features/desktop/sway/minimalistic

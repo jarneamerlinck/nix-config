@@ -1,3 +1,8 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [ kdePackages.kdenlive obs-studio glaxnimate ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    kdePackages.kdenlive
+    obs-studio
+    glaxnimate
+  ];
 }

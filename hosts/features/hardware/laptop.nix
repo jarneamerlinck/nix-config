@@ -1,1 +1,8 @@
-{ ... }: { imports = [ ./hibernation.nix ./battery_mode.nix ./bluetooth.nix ]; }
+{ ... }:
+{
+  imports = [
+    ./hibernation.nix
+    ./battery_mode.nix
+    ./bluetooth.nix
+  ];
+}

@@ -1,1 +1,7 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [ pciutils openssl ]; }
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    pciutils
+    openssl
+  ];
+}
