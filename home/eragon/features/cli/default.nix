@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./direnv.nix
     ./zsh.nix
@@ -23,6 +24,7 @@
       rebuild = "cd ~/nix-config &&  ./deploy.sh";
       rebuildf = "cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
       rebuildl = "cd ~/nix-config && ./deploy.sh";
+      wg-down = "sudo systemctl stop wireguard-wg0.service";
     };
 
     sessionVariables = {
