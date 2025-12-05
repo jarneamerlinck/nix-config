@@ -8,6 +8,33 @@
 }:
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+  adminGroups = [
+    "wheel"
+    "video"
+    "audio"
+    "mounts"
+    "incus-admin"
+  ]
+  ++ ifTheyExist [
+    "network"
+    "i2c"
+    "docker"
+    "git"
+    "libvirtd"
+    "libvirt-qemu"
+    "deluge"
+    "wireshark"
+  ];
+
+  normalGroups = [
+    "video"
+    "audio"
+    "mounts"
+  ]
+  ++ ifTheyExist [
+    "i2c"
+    "git"
+  ];
   homeBasePath = ../../../home;
   host = config.networking.hostName;
   lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
@@ -27,29 +54,14 @@ let
     eragon = {
       enable = true;
       shell = pkgs.zsh;
-      groups = [
-        "wheel"
-        "video"
-        "audio"
-        "mounts"
-        "incus-admin"
-      ]
-      ++ ifTheyExist [
-        "network"
-        "i2c"
-        "docker"
-        "git"
-        "libvirtd"
-        "libvirt-qemu"
-        "deluge"
-        "wireshark"
-      ];
+      groups = adminGroups;
       uid = 1442;
     };
     john = {
       enable = false;
       shell = pkgs.bash;
       uid = 1007;
+      groups = normalGroups;
     };
   };
   users = builtins.attrNames defaultUsers;
