@@ -3,9 +3,18 @@
   pkgs,
   inputs,
   config,
+  outputs,
   ...
 }:
 {
+
+  imports = [
+    inputs.nur.modules.homeManager.default
+    inputs.sops-nix.homeManagerModule
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
+
+  systemd.user.startServices = "sd-switch";
 
   home = {
     username = lib.mkDefault "john";
