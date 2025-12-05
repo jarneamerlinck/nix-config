@@ -186,7 +186,7 @@ in
         name = username;
         value = import ../../../home/${username}/${config.networking.hostName};
 
-      }) users
+      }) (builtins.attrNames enabledUsers)
     );
   };
 }
