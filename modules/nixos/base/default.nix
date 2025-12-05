@@ -32,7 +32,7 @@
 
       "nixos-release" = lib.mkOption {
         type = lib.types.str;
-        default = "25.05";
+        default = "25.11";
         description = "Set Nixos release version";
       };
 
