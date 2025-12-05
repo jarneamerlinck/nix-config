@@ -7,8 +7,8 @@
 {
   services.fail2ban = {
     enable = true;
-    extraPackages = [ pkgs.ipset ];
-    banaction = "iptables-ipset-proto6-allports";
+    extraPackages = [ pkgs.nftables ];
+    # banaction = "nftables-ipset-proto6";
     maxretry = 5;
     bantime = "24h"; # Ban IPs for one day on the first ban
     bantime-increment = {
@@ -17,6 +17,5 @@
       maxtime = "168h"; # Do not ban for more than 1 week
       overalljails = true; # Calculate the bantime based on all the violations
     };
-
   };
 }

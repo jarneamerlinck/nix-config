@@ -28,6 +28,7 @@ in
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     # See above
     # userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
     matchBlocks = {

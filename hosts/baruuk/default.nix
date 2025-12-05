@@ -11,11 +11,13 @@
 
     ../base
     ../base/users/eragon
+    ../base/networking.nix
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
     ../features/desktop/hexecute.nix
 
     ## Services items
+    ../features/virtualization/incus
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidraw.nix
     ../features/services/unattended-upgrades.nix
@@ -40,5 +42,5 @@
     useDHCP = lib.mkDefault true;
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
