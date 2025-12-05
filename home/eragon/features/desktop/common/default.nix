@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   imports = [
     ./dragon.nix
     ./xdg.nix
@@ -8,8 +9,7 @@
     ./dark_light_theme.nix
   ];
 
-  dconf.settings."org/gnome/desktop/interface".color-scheme =
-    lib.mkDefault "prefer-dark";
+  dconf.settings."org/gnome/desktop/interface".color-scheme = lib.mkDefault "prefer-dark";
 
   xdg.portal.enable = true;
 }

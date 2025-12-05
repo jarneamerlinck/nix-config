@@ -40,18 +40,31 @@
     hexecute.url = "github:ThatOtherAndrew/Hexecute";
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      disko,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system:
+      pkgsFor = lib.genAttrs systems (
+        system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-        });
-    in {
+        }
+      );
+    in
+    {
       inherit lib;
 
       nixosModules = import ./modules/nixos;

@@ -1,5 +1,15 @@
-{ outputs, lib, pkgs, ... }: {
-  home.packages = with pkgs; [ gh lazygit pre-commit ];
+{
+  outputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  home.packages = with pkgs; [
+    gh
+    lazygit
+    pre-commit
+  ];
 
   home.shellAliases = {
     d = "docker";
@@ -7,7 +17,9 @@
   };
   programs.git = {
     enable = true;
-    aliases = { graph = "log --decorate --oneline --graph"; };
+    aliases = {
+      graph = "log --decorate --oneline --graph";
+    };
     userName = "jarneamerlinck";
     userEmail = "jarneamerlinck@pm.me";
     extraConfig = {
@@ -23,6 +35,9 @@
       pull.rebase = true;
     };
     lfs.enable = true;
-    ignores = [ ".direnv" "result" ];
+    ignores = [
+      ".direnv"
+      "result"
+    ];
   };
 }

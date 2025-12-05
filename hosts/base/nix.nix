@@ -1,4 +1,10 @@
-{ inputs, lib, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
 
   environment.systemPackages = with pkgs; [ nh ];
   nix = {
@@ -10,11 +16,21 @@
       # trusted-public-keys = [
       #   "cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg="
       # ];
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
-      system-features = [ "kvm" "big-parallel" "nixos-test" ];
+      system-features = [
+        "kvm"
+        "big-parallel"
+        "nixos-test"
+      ];
       flake-registry = ""; # Disable global flake registry
     };
     gc = {

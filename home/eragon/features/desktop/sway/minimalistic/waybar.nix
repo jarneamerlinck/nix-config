@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
 
   cat = "${pkgs.coreutils}/bin/cat";
@@ -8,22 +13,27 @@ let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
 
   # Function to simplify making waybar outputs
-  jsonOutput = name:
-    { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "",
+  jsonOutput =
+    name:
+    {
+      pre ? "",
+      text ? "",
+      tooltip ? "",
+      alt ? "",
+      class ? "",
+      percentage ? "",
     }:
-    "${
-      pkgs.writeShellScriptBin "waybar-${name}" ''
-        set -euo pipefail
-        ${pre}
-        ${jq} -cn \
-          --arg text \"${text}\" \
-          --arg tooltip \"${tooltip}\" \
-          --arg alt \"${alt}\" \
-          --arg class \"${class}\" \
-          --arg percentage \"${percentage}\" \
-          '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
-      ''
-    }/bin/waybar-${name}";
+    "${pkgs.writeShellScriptBin "waybar-${name}" ''
+      set -euo pipefail
+      ${pre}
+      ${jq} -cn \
+        --arg text \"${text}\" \
+        --arg tooltip \"${tooltip}\" \
+        --arg alt \"${alt}\" \
+        --arg class \"${class}\" \
+        --arg percentage \"${percentage}\" \
+        '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+    ''}/bin/waybar-${name}";
 
   hasSway = config.wayland.windowManager.sway.enable;
   sway = config.wayland.windowManager.sway.package;
@@ -72,7 +82,8 @@ let
     #battery {
     }
   '';
-in {
+in
+{
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -85,13 +96,30 @@ in {
         height = 40;
         margin = "6";
         position = "top";
-        modules-left = [ "custom/menu" ]
-          ++ (lib.optionals hasSway [ "sway/workspaces" "sway/mode" ]);
+        modules-left = [
+          "custom/menu"
+        ]
+        ++ (lib.optionals hasSway [
+          "sway/workspaces"
+          "sway/mode"
+        ]);
 
-        modules-center = [ "cpu" ] ++ (lib.optionals hasGpu [ "custom/gpu" ])
-          ++ [ "memory" "clock" "pulseaudio" "battery" ];
+        modules-center = [
+          "cpu"
+        ]
+        ++ (lib.optionals hasGpu [ "custom/gpu" ])
+        ++ [
+          "memory"
+          "clock"
+          "pulseaudio"
+          "battery"
+        ];
 
-        modules-right = [ "tray" "network" "custom/hostname" ];
+        modules-right = [
+          "tray"
+          "network"
+          "custom/hostname"
+        ];
 
         clock = {
           interval = 1;
@@ -101,7 +129,9 @@ in {
             <tt><small>{calendar}</small></tt>'';
         };
 
-        cpu = { format = "  {usage}%"; };
+        cpu = {
+          format = "  {usage}%";
+        };
         "custom/gpu" = {
           interval = 5;
           exec = "${cat} /sys/class/drm/card0/device/gpu_busy_percent";
@@ -119,7 +149,11 @@ in {
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };
@@ -133,12 +167,25 @@ in {
         battery = {
           bat = "BAT1";
           interval = 10;
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           onclick = "";
         };
-        "sway/window" = { max-length = 20; };
+        "sway/window" = {
+          max-length = 20;
+        };
         network = {
           interval = 3;
           format-wifi = "   {essid}";
@@ -153,8 +200,7 @@ in {
         };
         "custom/menu" = {
           exec = "echo ";
-          on-click =
-            "$SHELL -lc '${config.programs.wofi.package}/bin/wofi --show drun'";
+          on-click = "$SHELL -lc '${config.programs.wofi.package}/bin/wofi --show drun'";
         };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";

@@ -5,7 +5,8 @@ let
   cloudflare-api-secret-name = "cloudflare-api-token-secret";
   cloudflare-api-secret-key = "api-token";
 
-in {
+in
+{
 
   sops.secrets."kubernetes/cloudflare-api-token.yaml" = {
     sopsFile = ./secrets.yml;
@@ -96,14 +97,16 @@ in {
               email = "jarneamerlinck@pm.me";
               server = "https://acme-v02.api.letsencrypt.org/directory";
               privateKeySecretRef.name = "letsencrypt-cloudflare";
-              solvers = [{
-                dns01 = {
-                  cloudflare.apiTokenSecretRef = {
-                    name = "${cloudflare-api-secret-name}";
-                    key = "${cloudflare-api-secret-key}";
+              solvers = [
+                {
+                  dns01 = {
+                    cloudflare.apiTokenSecretRef = {
+                      name = "${cloudflare-api-secret-name}";
+                      key = "${cloudflare-api-secret-key}";
+                    };
                   };
-                };
-              }];
+                }
+              ];
             };
           };
         }
@@ -123,7 +126,10 @@ in {
               name = "${tls-cert-name}";
               kind = "ClusterIssuer";
             };
-            dnsNames = [ "*.ko0.net" "*.85311442.xyz" ];
+            dnsNames = [
+              "*.ko0.net"
+              "*.85311442.xyz"
+            ];
           };
         }
 

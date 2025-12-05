@@ -1,1 +1,4 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ macchanger ]; }
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ macchanger ];
+}

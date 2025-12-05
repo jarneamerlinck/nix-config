@@ -1,6 +1,16 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   services = {
-    xserver = { desktopManager.gnome = { enable = true; }; };
+    xserver = {
+      desktopManager.gnome = {
+        enable = true;
+      };
+    };
     gnome.core-utilities.enable = false;
   };
   # Fix broken stuff

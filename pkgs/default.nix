@@ -1,9 +1,13 @@
 # TODO: Allow nix flake check to succeed
 
-{ pkgs ? import <nixpkgs> { config.allowUnfree = true; }, }:
+{
+  pkgs ? import <nixpkgs> { config.allowUnfree = true; },
+}:
 
-let wallpapers = import ./wallpapers { inherit pkgs; };
-in {
+let
+  wallpapers = import ./wallpapers { inherit pkgs; };
+in
+{
 
   sddm-themes = pkgs.callPackage ./sddm-themes.nix { };
   grub-themes = pkgs.callPackage ./grub-themes.nix { };
@@ -11,6 +15,5 @@ in {
   excalidraw = pkgs.callPackage ./excalidraw-kiosk.nix { };
 
   wallpapers = wallpapers;
-  allWallpapers =
-    pkgs.linkFarmFromDrvs "wallpapers" (pkgs.lib.attrValues wallpapers);
+  allWallpapers = pkgs.linkFarmFromDrvs "wallpapers" (pkgs.lib.attrValues wallpapers);
 }
