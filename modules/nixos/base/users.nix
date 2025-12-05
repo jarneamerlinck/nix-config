@@ -65,19 +65,6 @@ let
     };
   };
   users = builtins.attrNames defaultUsers;
-  enabledUsers = lib.attrsets.filterAttrs (_: user: user.enable or false) defaultUsers;
-
-  # Allow rebuild for home manager for a device
-  homeConfs = builtins.listToAttrs (
-    builtins.map (username: {
-      name = "${username}@${host}";
-      value = lib.homeManagerConfiguration {
-        modules = [ ../../../../home/${username}/${host} ];
-        pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
-        extraSpecialArgs = { inherit inputs outputs; };
-      };
-    }) (builtins.attrNames enabledUsers)
-  );
 in
 {
 
@@ -142,6 +129,20 @@ in
     users.users = lib.mapAttrs (
       username: userAttrs:
       let
+
+        # Allow rebuild for home manager for a device
+        homeConfs = builtins.listToAttrs (
+          builtins.map (username: {
+            name = "${username}@${host}";
+            value = lib.homeManagerConfiguration {
+              modules = [ ../../../../home/${username}/${host} ];
+              pkgs = pkgsFor.${config.nixpkgs.hostPlatform.system};
+              extraSpecialArgs = { inherit inputs outputs; };
+            };
+          }) (builtins.attrNames enabledUsers)
+        );
+
+        userAttrs = lib.recursiveUpdate defaultUsers.${username} userAttrs;
         homePath = "${homeBasePath}/${username}";
         entries = builtins.readDir homePath;
         subdirs = builtins.filter (
@@ -168,7 +169,7 @@ in
         hashedPasswordFile = config.sops.secrets."${username}/password".path;
         packages = [ pkgs.home-manager ];
       }
-    ) config.base.users.usersConfiguration;
+    ) lib.attrsets.filterAttrs (_: u: u.enable or false) config.base.users.usersConfiguration;
 
     # Sops
     sops.secrets =
@@ -194,11 +195,17 @@ in
 
     # Activate home manager rebuild
     home-manager.users = builtins.listToAttrs (
-      map (username: {
-        name = username;
-        value = import ../../../home/${username}/${config.networking.hostName};
+      map
+        (username: {
+          name = username;
+          value = import ../../../home/${username}/${config.networking.hostName};
 
-      }) (builtins.attrNames enabledUsers)
+        })
+        (
+          builtins.attrNames lib.attrsets.filterAttrs (
+            _: u: u.enable or false
+          ) config.base.users.usersConfiguration
+        )
     );
   };
 }
