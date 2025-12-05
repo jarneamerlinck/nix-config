@@ -54,7 +54,6 @@
 
     # smart tools
     ../features/virtualization/docker/services/search.nix
-    ../features/services/samba.nix
 
   ];
 
