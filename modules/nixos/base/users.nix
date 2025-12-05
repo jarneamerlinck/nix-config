@@ -47,7 +47,7 @@ let
       uid = 1442;
     };
     john = {
-      enable = true;
+      enable = false;
       shell = pkgs.bash;
       uid = 1007;
     };
