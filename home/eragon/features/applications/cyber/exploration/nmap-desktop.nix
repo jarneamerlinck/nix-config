@@ -1,1 +1,4 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ zenmap ]; }
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ zenmap ];
+}

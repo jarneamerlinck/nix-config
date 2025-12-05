@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-amd
@@ -19,5 +20,5 @@
     useDHCP = true;
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

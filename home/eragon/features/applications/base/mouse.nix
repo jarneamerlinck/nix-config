@@ -1,1 +1,7 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ piper solaar ]; }
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    piper
+    solaar
+  ];
+}

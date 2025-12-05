@@ -1,20 +1,25 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    plugins = [{
-      name = "shell-func-config";
-      src = lib.cleanSource ./shell_func.sh;
-      file = "shell_func.sh";
-    }];
+    plugins = [
+      {
+        name = "shell-func-config";
+        src = lib.cleanSource ./shell_func.sh;
+        file = "shell_func.sh";
+      }
+    ];
     initContent = ''
 
       eval "$(zoxide init zsh)"
       [[ ! -f ${./shell_func.sh} ]] || source ${./shell_func.sh}
     '';
   };
-  programs.starship = { enable = true; };
+  programs.starship = {
+    enable = true;
+  };
   programs.eza = {
     enable = true;
     enableZshIntegration = true;

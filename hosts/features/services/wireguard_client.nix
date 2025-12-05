@@ -1,8 +1,15 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 let
   publicKeyHome = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
   publicKeyHomeSafe = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI";
-in {
+in
+{
   sops.secrets."wireguard/privateKey" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -19,8 +26,7 @@ in {
   };
 
   networking.firewall = {
-    allowedUDPPorts =
-      [ 51820 ]; # Clients and peers can use the same port, see listenport
+    allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
   };
   # you can disable this with `sudo systemctl stop wireguard-wg0.service`
   networking.wireguard = {
@@ -33,12 +39,14 @@ in {
 
         privateKeyFile = config.sops.secrets."wireguard/privateKey".path;
 
-        peers = [{
-          publicKey = "${publicKeyHome}";
-          presharedKeyFile = config.sops.secrets."wireguard/presharedKey".path;
-          allowedIPs = [ "10.20.0.0/24" ];
-          persistentKeepalive = 25;
-        }];
+        peers = [
+          {
+            publicKey = "${publicKeyHome}";
+            presharedKeyFile = config.sops.secrets."wireguard/presharedKey".path;
+            allowedIPs = [ "10.20.0.0/24" ];
+            persistentKeepalive = 25;
+          }
+        ];
       };
     };
   };

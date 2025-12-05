@@ -1,4 +1,5 @@
-{ ... }: {
+{ pkgs, ... }:
+{
   programs.fastfetch.enable = true;
   home.shellAliases = {
     fetch = "fastfetch";
@@ -6,5 +7,6 @@
     fullfetch = "fastfetch -c all";
     hardware = "fastfetch -c hardware";
   };
+  home.packages = with pkgs; [ nvtopPackages.intel ];
 
 }

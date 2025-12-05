@@ -1,7 +1,14 @@
-{ pkgs, lib, config, ... }:
-let url = "notes.ko0.net";
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  url = "notes.ko0.net";
 
-in {
+in
+{
 
   virtualisation.oci-containers.containers."memos-memos" = {
     image = "docker.io/neosmemo/memos:0.25.2";
@@ -17,7 +24,10 @@ in {
       "traefik.http.services.memos-svc.loadbalancer.server.port" = "5230";
     };
     log-driver = "journald";
-    extraOptions = [ "--network-alias=frontend" "--network=frontend" ];
+    extraOptions = [
+      "--network-alias=frontend"
+      "--network=frontend"
+    ];
   };
 
   # Services

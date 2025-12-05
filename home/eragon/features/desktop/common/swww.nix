@@ -1,13 +1,20 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
 
   cfg = config.wayland.windowManager.sway.config;
   wallpaperListFile = "${config.xdg.configHome}/wallpaper_list.txt";
-in {
-  home.file."${wallpaperListFile}".text =
-    lib.concatStringsSep "\n" (config.wallpaper-list);
+in
+{
+  home.file."${wallpaperListFile}".text = lib.concatStringsSep "\n" (config.wallpaper-list);
 
-  services.swww = { enable = true; };
+  services.swww = {
+    enable = true;
+  };
 
   systemd.user.services.swww-random-wallpaper = {
     Unit = {
@@ -23,14 +30,15 @@ in {
       '';
     };
 
-    Install = { WantedBy = [ "default.target" ]; };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   wayland.windowManager.sway.config = rec {
 
     keybindings = {
-      "${cfg.modifier}+Shift+w" =
-        "exec systemctl --user restart swww-random-wallpaper";
+      "${cfg.modifier}+Shift+w" = "exec systemctl --user restart swww-random-wallpaper";
     };
   };
 

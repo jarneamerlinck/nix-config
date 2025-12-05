@@ -1,11 +1,20 @@
-{ inputs, lib, pkgs, config, outputs, ... }: {
+{
+  inputs,
+  lib,
+  pkgs,
+  config,
+  outputs,
+  ...
+}:
+{
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.stylix.homeModules.stylix
     inputs.nur.modules.homeManager.default
     inputs.sops-nix.homeManagerModule
     ../features/cli
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
@@ -17,7 +26,10 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
@@ -32,7 +44,7 @@
   home = {
     username = lib.mkDefault "eragon";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "25.05";
+    stateVersion = lib.mkDefault "25.11";
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       FLAKE = "$HOME/nix-config";

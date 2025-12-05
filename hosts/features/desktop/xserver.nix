@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [ xdg-desktop-portal ];
   services.xserver = {
     enable = true;
