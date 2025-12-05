@@ -1,10 +1,16 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  outputs,
+  ...
+}:
 {
   imports = [
 
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
+    outputs.nixosModules.base
+    outputs.nixosModules.hardware
     ./hardware-configuration.nix
-    ../features/hardware/laptop.nix
     ../features/disks/boot_btrfs_laptop.nix
 
     ../base/timezone.nix
@@ -37,10 +43,8 @@
     ../features/desktop/mouse.nix
     ../features/desktop/pipewire.nix
   ];
-  networking = {
-    hostName = "baruuk";
-    useDHCP = lib.mkDefault true;
-  };
 
-  system.stateVersion = "25.11";
+  base.networking.hostname = "baruuk";
+  base.networking.dhcp = lib.mkDefault true;
+  harware.laptop = true;
 }
