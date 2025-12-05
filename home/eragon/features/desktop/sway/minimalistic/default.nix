@@ -79,6 +79,7 @@ in {
       input "type:keyboard" {
         xkb_layout ${i_keyboard}
       }
+
     '';
   };
 }
