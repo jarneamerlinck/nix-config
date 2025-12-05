@@ -32,6 +32,7 @@ let
         "video"
         "audio"
         "mounts"
+        "incus-admin"
       ]
       ++ ifTheyExist [
         "network"
