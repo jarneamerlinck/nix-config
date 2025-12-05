@@ -1,4 +1,11 @@
-{ pkgs, lib, config, inputs, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+{
   services.zabbixServer = {
     enable = true;
     openFirewall = true;

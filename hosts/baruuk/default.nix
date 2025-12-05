@@ -1,4 +1,5 @@
-{ inputs, lib, ... }: {
+{ inputs, lib, ... }:
+{
   imports = [
 
     inputs.hardware.nixosModules.framework-12-13th-gen-intel

@@ -1,1 +1,7 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ nmap nmap-formatter ]; }
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    nmap
+    nmap-formatter
+  ];
+}

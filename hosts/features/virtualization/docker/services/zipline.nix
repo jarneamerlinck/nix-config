@@ -1,7 +1,14 @@
-{ pkgs, lib, config, ... }:
-let url = "share.ko0.net";
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  url = "share.ko0.net";
 
-in {
+in
+{
 
   sops.secrets."zipline/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -37,8 +44,11 @@ in {
     log-driver = "journald";
 
     dependsOn = [ "zipline-postgresql" ];
-    extraOptions =
-      [ "--network-alias=zipline" "--network=zipline" "--network=frontend" ];
+    extraOptions = [
+      "--network-alias=zipline"
+      "--network=zipline"
+      "--network=frontend"
+    ];
   };
 
   virtualisation.oci-containers.containers."zipline-postgresql" = {
@@ -47,7 +57,10 @@ in {
     log-driver = "journald";
 
     volumes = [ "/data/docker/zipline/db:/var/lib/postgresql/data" ];
-    extraOptions = [ "--network-alias=zipline" "--network=zipline" ];
+    extraOptions = [
+      "--network-alias=zipline"
+      "--network=zipline"
+    ];
   };
 
   # Networks
@@ -73,10 +86,14 @@ in {
       RestartSec = lib.mkOverride 500 "100ms";
       RestartSteps = lib.mkOverride 500 9;
     };
-    after =
-      [ "docker-network-zipline.service" "docker-network-frontend.service" ];
-    requires =
-      [ "docker-network-zipline.service" "docker-network-frontend.service" ];
+    after = [
+      "docker-network-zipline.service"
+      "docker-network-frontend.service"
+    ];
+    requires = [
+      "docker-network-zipline.service"
+      "docker-network-frontend.service"
+    ];
     partOf = [ "docker-compose-zipline-root.target" ];
     wantedBy = [ "docker-compose-zipline-root-root.target" ];
   };

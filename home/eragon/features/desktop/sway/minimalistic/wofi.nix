@@ -44,7 +44,8 @@ let
       outline: none;
     }
   '';
-in {
+in
+{
   programs.wofi = {
     enable = true;
     settings = {

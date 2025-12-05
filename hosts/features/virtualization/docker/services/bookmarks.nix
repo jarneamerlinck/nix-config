@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   url = "bookmarks.ko0.net";
   shared_env = {
@@ -11,7 +16,8 @@ let
   };
   karakeep_version = "0.26.0";
 
-in {
+in
+{
 
   sops.secrets."bookmarks/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -48,7 +54,10 @@ in {
     environmentFiles = [ "/run/secrets-for-users/bookmarks/env" ];
     environment = shared_env;
     log-driver = "journald";
-    extraOptions = [ "--network-alias=bookmarks" "--network=bookmarks" ];
+    extraOptions = [
+      "--network-alias=bookmarks"
+      "--network=bookmarks"
+    ];
 
     cmd = [
       "--no-sandbox"
@@ -66,7 +75,10 @@ in {
     environment = shared_env;
     volumes = [ "/data/docker/bookmarks/meilisearch/:/meili_data" ];
     log-driver = "journald";
-    extraOptions = [ "--network-alias=bookmarks" "--network=bookmarks" ];
+    extraOptions = [
+      "--network-alias=bookmarks"
+      "--network=bookmarks"
+    ];
 
   };
 
