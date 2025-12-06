@@ -13,6 +13,7 @@
     ../features/disks/boot_1d_btrfs.nix
 
     outputs.nixosModules.base
+    outputs.nixosModules.desktop
 
     # ../base/users/eragon
 
@@ -40,6 +41,9 @@
     ../features/desktop/wireshark.nix
   ];
   base.networking.hostname = "vm1";
+  desktop = {
+    enable = true;
+  };
   base.users.usersConfiguration.john.enable = true;
 
 }
