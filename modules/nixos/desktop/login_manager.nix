@@ -38,49 +38,47 @@
     };
   };
 
-  config = lib.mkIf config.desktop.loginManager.enable (
-    lib.mkMerge [
+  config = lib.mkMerge [
 
-      (lib.mkIf (config.desktop.loginManager.type == "greetd") {
+    (lib.mkIf (config.desktop.loginManager.type == "greetd") {
 
-        services.greetd = {
+      services.greetd = {
+        enable = true;
+        settings = {
+          default_session.command = ''
+            ${pkgs.tuigreet}/bin/tuigreet \
+              --time \
+              --asterisks \
+              --user-menu \
+              --cmd "/home/\$USER/.nix-profile/bin/greetd-session"
+          '';
+        };
+      };
+    })
+
+    (lib.mkIf (config.desktop.loginManager.type == "sddm") {
+
+      services = {
+        xserver.displayManager.sddm = {
           enable = true;
-          settings = {
-            default_session.command = ''
-              ${pkgs.tuigreet}/bin/tuigreet \
-                --time \
-                --asterisks \
-                --user-menu \
-                --cmd "/home/\$USER/.nix-profile/bin/greetd-session"
-            '';
-          };
+          autoNumlock = true;
+          settings.General.DisplayServer = "x11-user";
+          theme = "${config.desktop.loginManager.theme}";
         };
-      })
+      };
+      environment.systemPackages = with pkgs; [
+        sddm-themes."${config.desktop.loginManager.theme}"
+        libsForQt5.qt5.qtsvg
+        libsForQt5.qt5ct
+        libsForQt5.qt5.qtgraphicaleffects
+        libsForQt5.qt5.qtquickcontrols
+      ];
+    })
+    (lib.mkIf (config.desktop.loginManager.type == "gdm") {
 
-      (lib.mkIf (config.desktop.loginManager.type == "sddm") {
-
-        services = {
-          xserver.displayManager.sddm = {
-            enable = true;
-            autoNumlock = true;
-            settings.General.DisplayServer = "x11-user";
-            theme = "${config.desktop.loginManager.theme}";
-          };
-        };
-        environment.systemPackages = with pkgs; [
-          sddm-themes."${config.desktop.loginManager.theme}"
-          libsForQt5.qt5.qtsvg
-          libsForQt5.qt5ct
-          libsForQt5.qt5.qtgraphicaleffects
-          libsForQt5.qt5.qtquickcontrols
-        ];
-      })
-      (lib.mkIf (config.desktop.loginManager.type == "gdm") {
-
-        services.xserver.displayManager.gdm = {
-          enable = true;
-        };
-      })
-    ]
-  );
+      services.xserver.displayManager.gdm = {
+        enable = true;
+      };
+    })
+  ];
 }

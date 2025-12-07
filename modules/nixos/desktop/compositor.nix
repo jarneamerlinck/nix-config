@@ -31,50 +31,48 @@
     };
   };
 
-  config = lib.mkIf config.desktop.compositor.enable (
-    lib.mkMerge [
+  config = lib.mkMerge [
 
-      (lib.mkIf (config.desktop.compositor.enable) {
+    (lib.mkIf (config.desktop.compositor.enable) {
 
-        systemd.services."getty@tty1".enable = false;
-        systemd.services."autovt@tty1".enable = false;
-        programs.dconf.enable = true;
-      })
-      (lib.mkIf (config.desktop.compositor.compositorType == "x11") {
+      systemd.services."getty@tty1".enable = false;
+      systemd.services."autovt@tty1".enable = false;
+      programs.dconf.enable = true;
+    })
+    (lib.mkIf (config.desktop.compositor.compositorType == "x11") {
 
-        environment.systemPackages = with pkgs; [ xdg-desktop-portal ];
-        services.xserver = {
-          enable = true;
-          excludePackages = [ pkgs.xterm ];
-        };
+      environment.systemPackages = with pkgs; [ xdg-desktop-portal ];
+      services.xserver = {
+        enable = true;
+        excludePackages = [ pkgs.xterm ];
+      };
 
-      })
+    })
 
-      (lib.mkIf (config.desktop.compositor.compositorType == "wayland") {
+    (lib.mkIf (config.desktop.compositor.compositorType == "wayland") {
 
-        environment.sessionVariables.NIXOS_OZONE_WL = "1";
-        security.polkit.enable = true;
-        hardware.graphics.enable = true; # Only enable inside VM
-        programs.xwayland.enable = true;
-        services.xserver.enable = false;
+      environment.sessionVariables.NIXOS_OZONE_WL = "1";
+      security.polkit.enable = true;
+      hardware.graphics.enable = true; # Only enable inside VM
+      programs.xwayland.enable = true;
+      services.xserver.enable = false;
 
-        environment.systemPackages = with pkgs; [
-          xdg-desktop-portal
-          xdg-desktop-portal-gtk
-        ];
+      environment.systemPackages = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+      ];
 
-        # Keyrign
-        services.gnome.gnome-keyring.enable = true;
+      # Keyrign
+      services.gnome.gnome-keyring.enable = true;
 
-        # Keyboard lights
-        programs.light = {
-          enable = true;
-          brightnessKeys.enable = true;
-        };
+      # Keyboard lights
+      programs.light = {
+        enable = true;
+        brightnessKeys.enable = true;
+      };
 
-        # Securtiy
-        security.pam.services.swaylock = { };
-      })
-    ]
-  );
+      # Securtiy
+      security.pam.services.swaylock = { };
+    })
+  ];
 }
