@@ -9,26 +9,26 @@
 
   options = {
 
-    desktop.compositor = lib.mkOption {
-      type = lib.types.submodule {
-        options = {
-          enable = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Enable compositor module module";
-          };
-
-          compositorType = lib.mkOption {
-            type = lib.types.enum [
-              "x11"
-              "wayland"
-            ];
-            default = "wayland";
-            description = "Compositor to use";
-          };
-        };
-      };
-    };
+    # desktop.compositor = lib.mkOption {
+    #   type = lib.types.submodule {
+    #     options = {
+    #       enable = lib.mkOption {
+    #         type = lib.types.bool;
+    #         default = false;
+    #         description = "Enable compositor module module";
+    #       };
+    #
+    #       compositorType = lib.mkOption {
+    #         type = lib.types.enum [
+    #           "x11"
+    #           "wayland"
+    #         ];
+    #         default = "wayland";
+    #         description = "Compositor to use";
+    #       };
+    #     };
+    #   };
+    # };
   };
 
   config = lib.mkIf config.desktop.compositor.enable (
