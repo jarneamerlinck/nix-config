@@ -23,7 +23,6 @@
     ../features/desktop/gtk.nix
 
     ## Display Managers
-    ../features/desktop/greetd.nix
 
     ## Desktop environments / Window Managers
     ../features/desktop/mouse.nix
