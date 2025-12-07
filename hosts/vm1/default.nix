@@ -19,9 +19,6 @@
 
     # ../features/disks/wd-decrypt.nix
 
-    ## Display server
-    ../features/desktop/gtk.nix
-
     ## Display Managers
 
     ## Desktop environments / Window Managers
@@ -40,7 +37,7 @@
   ];
   base.networking.hostname = "vm1";
   desktop = {
-    enable = true;
+    enable = false;
   };
   base.users.usersConfiguration.john.enable = true;
 
