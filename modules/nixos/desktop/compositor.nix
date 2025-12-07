@@ -18,7 +18,7 @@
             description = "Enable compositor module module";
           };
 
-          type = lib.mkOption {
+          compositorType = lib.mkOption {
             type = lib.types.enum [
               "x11"
               "wayland"
@@ -40,7 +40,7 @@
         systemd.services."autovt@tty1".enable = false;
         programs.dconf.enable = true;
       })
-      (lib.mkIf (config.desktop.compositor.type == "x11") {
+      (lib.mkIf (config.desktop.compositor.compositorType == "x11") {
 
         environment.systemPackages = with pkgs; [ xdg-desktop-portal ];
         services.xserver = {
@@ -50,7 +50,7 @@
 
       })
 
-      (lib.mkIf (config.desktop.compositor.type == "wayland") {
+      (lib.mkIf (config.desktop.compositor.compositorType == "wayland") {
 
         environment.sessionVariables.NIXOS_OZONE_WL = "1";
         security.polkit.enable = true;
