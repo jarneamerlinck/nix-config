@@ -31,13 +31,10 @@
       };
     };
   };
-  config = lib.mkMerge [
+  config = lib.mkIf config.desktop.enable {
 
-    (lib.mkIf config.desktop.enable {
-      desktop."login-manager".enable = lib.mkForce true;
-      desktop.compositor.enable = lib.mkForce true;
+    desktop.loginManager.enable = lib.mkForce true;
+    desktop.compositor.enable = lib.mkForce true;
 
-    })
-
-  ];
+  };
 }
