@@ -34,14 +34,17 @@
   config = lib.mkIf config.desktop.compositor.enable (
     lib.mkMerge [
 
-      (lib.mkIf (config.desktop.compositor.enable) {
+      # (lib.mkIf (config.desktop.compositor.enable) {
+      #
+      #   systemd.services."getty@tty1".enable = false;
+      #   systemd.services."autovt@tty1".enable = false;
+      #   programs.dconf.enable = true;
+      # })
+      (lib.mkIf (config.desktop.compositor.type == "x11") {
 
         systemd.services."getty@tty1".enable = false;
         systemd.services."autovt@tty1".enable = false;
         programs.dconf.enable = true;
-      })
-      (lib.mkIf (config.desktop.compositor.type == "x11") {
-
         environment.systemPackages = with pkgs; [ xdg-desktop-portal ];
         services.xserver = {
           enable = true;
@@ -52,6 +55,9 @@
 
       (lib.mkIf (config.desktop.compositor.type == "wayland") {
 
+        systemd.services."getty@tty1".enable = false;
+        systemd.services."autovt@tty1".enable = false;
+        programs.dconf.enable = true;
         environment.sessionVariables.NIXOS_OZONE_WL = "1";
         security.polkit.enable = true;
         hardware.graphics.enable = true; # Only enable inside VM
