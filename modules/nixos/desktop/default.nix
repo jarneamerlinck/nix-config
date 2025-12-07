@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    ./login_manager.nix
+    # ./login_manager.nix
 
   ];
   options = {
@@ -27,7 +27,7 @@
   };
   config = lib.mkIf config.desktop.enable {
 
-    desktop.loginManager.enable = lib.mkForce true;
+    # desktop.loginManager.enable = lib.mkForce true;
 
   };
 }
