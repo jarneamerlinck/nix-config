@@ -3,4 +3,5 @@
 {
   # List your module files here
   base = import ./base/default.nix;
+  desktop = import ./desktop/default.nix;
 }

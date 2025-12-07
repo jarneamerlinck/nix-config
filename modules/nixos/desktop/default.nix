@@ -8,6 +8,7 @@
 {
   imports = [
     ./login_manager.nix
+    ./compositor.nix
   ];
   options = {
 
@@ -34,7 +35,7 @@
 
     (lib.mkIf config.desktop.enable {
       desktop."login-manager".enable = lib.mkForce true;
-      hardware.battery.enable = lib.mkForce true;
+      desktop.compositor.enable = lib.mkForce true;
 
     })
 

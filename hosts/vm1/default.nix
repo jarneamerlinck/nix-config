@@ -20,7 +20,6 @@
     # ../features/disks/wd-decrypt.nix
 
     ## Display server
-    ../features/desktop/wayland.nix
     ../features/desktop/gtk.nix
 
     ## Display Managers
