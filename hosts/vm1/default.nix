@@ -39,6 +39,5 @@
   desktop = {
     enable = false;
   };
-  base.users.usersConfiguration.john.enable = false;
 
 }
