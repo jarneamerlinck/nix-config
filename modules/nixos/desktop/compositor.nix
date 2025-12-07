@@ -56,6 +56,7 @@
         security.polkit.enable = true;
         hardware.graphics.enable = true; # Only enable inside VM
         programs.xwayland.enable = true;
+        services.xserver.enable = false;
 
         environment.systemPackages = with pkgs; [
           xdg-desktop-portal
