@@ -9,7 +9,7 @@
 
   options = {
 
-    desktop."login-manager" = lib.mkOption {
+    desktop.loginManager = lib.mkOption {
       type = lib.types.submodule {
         options = {
           enable = lib.mkOption {
@@ -38,10 +38,10 @@
     };
   };
 
-  config = lib.mkIf config.desktop."login-manager".enable (
+  config = lib.mkIf config.desktop.loginManager.enable (
     lib.mkMerge [
 
-      (lib.mkIf (config.desktop."login-manager".type == "greetd") {
+      (lib.mkIf (config.desktop.loginManager.type == "greetd") {
 
         services.greetd = {
           enable = true;
@@ -57,25 +57,25 @@
         };
       })
 
-      (lib.mkIf (config.desktop."login-manager".type == "sddm") {
+      (lib.mkIf (config.desktop.loginManager.type == "sddm") {
 
         services = {
           xserver.displayManager.sddm = {
             enable = true;
             autoNumlock = true;
             settings.General.DisplayServer = "x11-user";
-            theme = ''${config.desktop.login-manager.theme}'';
+            theme = "${config.desktop.loginManager.theme}";
           };
         };
         environment.systemPackages = with pkgs; [
-          sddm-themes."${config.desktop.login-manager.theme}"
+          sddm-themes."${config.desktop.loginManager.theme}"
           libsForQt5.qt5.qtsvg
           libsForQt5.qt5ct
           libsForQt5.qt5.qtgraphicaleffects
           libsForQt5.qt5.qtquickcontrols
         ];
       })
-      (lib.mkIf (config.desktop."login-manager".type == "gdm") {
+      (lib.mkIf (config.desktop.loginManager.type == "gdm") {
 
         services.xserver.displayManager.gdm = {
           enable = true;
