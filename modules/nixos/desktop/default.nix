@@ -12,11 +12,16 @@
   ];
   options = {
 
-    desktop = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "enables desktop module";
+    desktop = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          enable = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "enables desktop module";
+          };
+
+        };
       };
     };
   };
