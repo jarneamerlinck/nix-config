@@ -3,12 +3,11 @@
 with config.lib.stylix.colors.withHashtag;
 let
   chat_uri = "https://chat.ko0.net";
-  chat_options =
-    "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
-  file_path_darkreader =
-    ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
+  chat_options = "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
+  file_path_darkreader = ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
 
-in {
+in
+{
   home.packages = with pkgs; [ speechd ];
   programs = {
     firefox = {
@@ -31,10 +30,8 @@ in {
           OverrideFirstRunPage = "";
           OverridePostUpdatePage = "";
           DontCheckDefaultBrowser = true;
-          DisplayBookmarksToolbar =
-            "never"; # alternatives: "always" or "newtab"
-          DisplayMenuBar =
-            "default-off"; # alternatives: "always", "never" or "default-on"
+          DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+          DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
           SearchBar = "unified"; # alternative: "separate"
           SearchEngine = {
             Default = "DuckDuckGo";
@@ -91,8 +88,7 @@ in {
             "browser.formfill.enable" = false; # Disable form autofill
 
             # Disable saving payment methods
-            "payments.enabled" =
-              false; # Disable saving credit card/payment methods
+            "payments.enabled" = false; # Disable saving credit card/payment methods
 
             # ML integration
 
@@ -104,8 +100,7 @@ in {
             "browser.ml.chat.provider" = "${chat_uri}/${chat_options}";
 
             # Others
-            "browser.newtabpage.activity-stream.feeds.section.highlights" =
-              false;
+            "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             "browser.startup.homepage" = "https://portal.ko0.net";
           };
           search = {
@@ -114,13 +109,11 @@ in {
             engines = {
 
               "searxng" = {
-                urls =
-                  [{ template = "https://search.ko0.net/?q={searchTerms}"; }];
+                urls = [ { template = "https://search.ko0.net/?q={searchTerms}"; } ];
                 icon = "https://search.ko0.net/favicon.ico";
               };
               "ddg" = {
-                urls =
-                  [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
+                urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
                 icon = "https://duckduckgo.com/favicon.ico";
               };
             };

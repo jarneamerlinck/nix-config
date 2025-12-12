@@ -2,7 +2,8 @@
 let
   wallpaperList = pkgs.lib.importJSON ./list.json;
 
-  convertMp4ToGif = wallpaper:
+  convertMp4ToGif =
+    wallpaper:
     pkgs.stdenv.mkDerivation {
       name = "${wallpaper.name}.gif";
       src = pkgs.fetchurl {
@@ -20,17 +21,24 @@ let
       '';
     };
 
-in pkgs.lib.listToAttrs (map (wallpaper:
-  let
-    value = if wallpaper.ext == "mp4" then
-      convertMp4ToGif wallpaper
-    else
-      pkgs.fetchurl {
-        inherit (wallpaper) sha256;
-        name = "${wallpaper.name}.${wallpaper.ext}";
-        url = "https://${wallpaper.website}/${wallpaper.id}.${wallpaper.ext}";
-      };
-  in {
-    inherit (wallpaper) name;
-    value = value;
-  }) wallpaperList)
+in
+pkgs.lib.listToAttrs (
+  map (
+    wallpaper:
+    let
+      value =
+        if wallpaper.ext == "mp4" then
+          convertMp4ToGif wallpaper
+        else
+          pkgs.fetchurl {
+            inherit (wallpaper) sha256;
+            name = "${wallpaper.name}.${wallpaper.ext}";
+            url = "https://${wallpaper.website}/${wallpaper.id}.${wallpaper.ext}";
+          };
+    in
+    {
+      inherit (wallpaper) name;
+      value = value;
+    }
+  ) wallpaperList
+)

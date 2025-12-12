@@ -3,9 +3,14 @@ let
   i_keyboard = "be";
   cfg = config.wayland.windowManager.hyprland.config;
 
-in {
+in
+{
   imports = [ ../common ];
 
-  home.packages = with pkgs; [ procps jq playerctl ];
+  home.packages = with pkgs; [
+    procps
+    jq
+    playerctl
+  ];
 
 }

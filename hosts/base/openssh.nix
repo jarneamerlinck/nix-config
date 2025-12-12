@@ -1,4 +1,9 @@
-{ outputs, lib, config, ... }:
+{
+  outputs,
+  lib,
+  config,
+  ...
+}:
 
 let
   inherit (config.networking) hostName;
@@ -12,7 +17,8 @@ let
     extraHostNames = [ "${host}.ko0.net" ];
     publicKeyFile = ../${host}/ssh_host_ed25519_key.pub;
   }) hosts;
-in {
+in
+{
   services.openssh = {
     enable = true;
     settings = {
@@ -29,12 +35,12 @@ in {
       X11Forwarding = true;
     };
 
-    hostKeys = [{
-      path = "${
-          lib.optionalString hasOptinPersistence "/persist"
-        }/etc/ssh/ssh_host_ed25519_key";
-      type = "ed25519";
-    }];
+    hostKeys = [
+      {
+        path = "${lib.optionalString hasOptinPersistence "/persist"}/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
   };
   programs.ssh = {
     setXAuthLocation = true;

@@ -1,5 +1,8 @@
-{ ... }: {
-  services.auto-cpufreq = { enable = true; };
+{ ... }:
+{
+  services.auto-cpufreq = {
+    enable = true;
+  };
 
   services.logind.settings.Login = {
     HandleLidSwitchExternalPower = "sleep";

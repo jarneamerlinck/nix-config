@@ -1,1 +1,4 @@
-{ pkgs, ... }: { imports = [ ./exploration/nmap.nix ]; }
+{ pkgs, ... }:
+{
+  imports = [ ./exploration/nmap.nix ];
+}

@@ -1,4 +1,7 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
 
-  home = { packages = with pkgs; [ onlyoffice-desktopeditors ]; };
+  home = {
+    packages = with pkgs; [ onlyoffice-desktopeditors ];
+  };
 }
