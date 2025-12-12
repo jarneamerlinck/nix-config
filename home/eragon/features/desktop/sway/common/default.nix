@@ -15,6 +15,10 @@ in
     ../../common
     ../../common/wayland-common.nix
   ];
+
+  home.shellAliases = {
+    fsway = "fzf-sway-move-window";
+  };
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
