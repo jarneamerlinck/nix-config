@@ -17,6 +17,7 @@
     volumes = [
       "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
       "/var/run/docker.sock:/var/run/docker.sock:ro"
+      "/data/docker/traefik/dynamic:/dynamic:ro"
     ];
     ports = [
       # "80:80/tcp"
@@ -29,6 +30,8 @@
       "--api.insecure=true"
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
+      "--providers.file.directory=/dynamic"
+      "--providers.file.watch=true"
 
       "--entryPoints.web.address=:80"
       "--entrypoints.web.http.redirections.entrypoint.to=https"
