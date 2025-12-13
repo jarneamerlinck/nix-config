@@ -1,5 +1,7 @@
 { pkgs, ... }:
-
+# TODO: Setup webui behind traefik
+# https://github.com/osamuaoki/incus-ui-canonical
+# https://discuss.linuxcontainers.org/t/how-to-install-and-setup-the-incus-web-ui/19522
 {
   # for webui seee: https://blog.simos.info/how-to-install-and-setup-the-incus-web-ui/#prerequisites
   # environment.systemPackages = with pkgs; [ distrobox ];
