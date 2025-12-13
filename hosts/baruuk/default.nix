@@ -11,7 +11,6 @@
 
     ../base
     ../base/users/eragon
-    ../base/networking.nix
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
     ../features/desktop/hexecute.nix

@@ -21,6 +21,7 @@
     ./hardware-packages.nix
     ./security.nix
     ./monitoring.nix
+    ./networking.nix
 
   ]
   ++ (builtins.attrValues outputs.nixosModules);
