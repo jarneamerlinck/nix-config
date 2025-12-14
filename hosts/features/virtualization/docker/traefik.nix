@@ -64,7 +64,7 @@ in
       "traefik.http.routers.traefik-dash.tls.certresolver" = "cloudflare";
       "traefik.http.services.traefik-dash.loadbalancer.server.port" = "8080";
       # OIDC middleware
-      "traefik.http.routers.whisper-rtr.middlewares" = "oidc-auth@docker";
+      "traefik.http.routers.traefik-dash.middlewares" = "oidc-auth@docker";
       "${traefik_oidc_start}.secret" = "\${OIDC_SECRET}";
       "${traefik_oidc_start}.provider.url" = "\${OIDC_PROVIDER_URL}";
       "${traefik_oidc_start}.provider.clientId" = "\${
