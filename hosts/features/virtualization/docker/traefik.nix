@@ -46,6 +46,10 @@
       "--entryPoints.https.transport.respondingTimeouts.readTimeout=600s"
       "--entryPoints.https.transport.respondingTimeouts.idleTimeout=600s"
       "--entryPoints.https.transport.respondingTimeouts.writeTimeout=600s"
+
+      # Plugins
+      "--experimental.plugins.traefik-oidc-auth.modulename=github.com/sevensolutions/traefik-oidc-auth"
+      "--experimental.plugins.traefik-oidc-auth.version=v0.17.0"
     ];
 
     labels = {
