@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  traefik_oidc_start = "traefik.http.middlewares.oidc-auth.plugin.traefik-oidc-auth";
+in
 {
 
   sops.secrets."traefik/env" = {
@@ -60,6 +63,16 @@
       "traefik.http.routers.traefik-dash.tls" = "true";
       "traefik.http.routers.traefik-dash.tls.certresolver" = "cloudflare";
       "traefik.http.services.traefik-dash.loadbalancer.server.port" = "8080";
+      # OIDC middleware
+      "traefik.http.routers.whisper-rtr.middlewares" = "oidc-auth@docker";
+      "${traefik_oidc_start}.secret" = "\${OIDC_SECRET}";
+      "${traefik_oidc_start}.provider.url" = "\${OIDC_PROVIDER_URL}";
+      "${traefik_oidc_start}.provider.clientId" = "\${
+        OIDC_CLIENT_ID
+      }";
+      "${traefik_oidc_start}.provider.usePkce" = "true";
+      "${traefik_oidc_start}.scopes" = "openid,profile,email";
+
     };
     log-driver = "journald";
     extraOptions = [
