@@ -67,9 +67,7 @@ in
       "traefik.http.routers.traefik-dash.middlewares" = "oidc-auth@docker";
       "${traefik_oidc_start}.secret" = "\${OIDC_SECRET}";
       "${traefik_oidc_start}.provider.url" = "\${OIDC_PROVIDER_URL}";
-      "${traefik_oidc_start}.provider.clientId" = "\${
-        OIDC_CLIENT_ID
-      }";
+      "${traefik_oidc_start}.provider.clientId" = "\${OIDC_CLIENT_ID}";
       "${traefik_oidc_start}.provider.usePkce" = "true";
       "${traefik_oidc_start}.scopes" = "openid,profile,email";
 
