@@ -31,7 +31,6 @@
 
     ## Services items
     ../features/services/unattended-upgrades.nix
-    ../features/services/nix_cache_server.nix
 
     ../features/virtualization/incus
     ../features/virtualization/docker
