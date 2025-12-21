@@ -20,7 +20,6 @@ in
   #   XCURSOR_SIZE = 24;
   #   HYPRCURSOR_SIZE = 24;
   # };
-  config.lib.stylix.colors = true;
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -101,20 +100,20 @@ in
       #
       # };
 
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
+      # dwindle = {
+      #   pseudotile = true;
+      #   preserve_split = true;
+      # };
 
-      master = {
-        new_status = "master";
-      };
-
-      misc = {
-        force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
-      };
-
+      # master = {
+      #   new_status = "master";
+      # };
+      #
+      # misc = {
+      #   force_default_wallpaper = -1;
+      #   disable_hyprland_logo = false;
+      # };
+      #
       input = {
         kb_layout = "be";
         follow_mouse = 1;
@@ -124,9 +123,9 @@ in
         };
       };
 
-      gestures = {
-        workspace_swipe = false;
-      };
+      # gestures = {
+      #   workspace_swipe = false;
+      # };
 
       bind = [
         "$mainMod, T, exec, $terminal"
