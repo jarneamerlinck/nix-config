@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  traefik_oidc_start = "traefik.http.middlewares.oidc-auth.plugin.traefik-oidc-auth";
+in
 {
 
   sops.secrets."traefik/env" = {
@@ -17,6 +20,7 @@
     volumes = [
       "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
       "/var/run/docker.sock:/var/run/docker.sock:ro"
+      "/data/docker/traefik/dynamic:/dynamic:ro"
     ];
     ports = [
       # "80:80/tcp"
@@ -29,6 +33,8 @@
       "--api.insecure=true"
       "--providers.docker=true"
       "--providers.docker.exposedbydefault=false"
+      "--providers.file.directory=/dynamic"
+      "--providers.file.watch=true"
 
       "--entryPoints.web.address=:80"
       "--entrypoints.web.http.redirections.entrypoint.to=https"
@@ -43,6 +49,10 @@
       "--entryPoints.https.transport.respondingTimeouts.readTimeout=600s"
       "--entryPoints.https.transport.respondingTimeouts.idleTimeout=600s"
       "--entryPoints.https.transport.respondingTimeouts.writeTimeout=600s"
+
+      # Plugins
+      "--experimental.plugins.traefik-oidc-auth.modulename=github.com/sevensolutions/traefik-oidc-auth"
+      "--experimental.plugins.traefik-oidc-auth.version=v0.17.0"
     ];
 
     labels = {
@@ -53,6 +63,14 @@
       "traefik.http.routers.traefik-dash.tls" = "true";
       "traefik.http.routers.traefik-dash.tls.certresolver" = "cloudflare";
       "traefik.http.services.traefik-dash.loadbalancer.server.port" = "8080";
+      # OIDC middleware
+      "traefik.http.routers.traefik-dash.middlewares" = "oidc-auth@docker";
+      "${traefik_oidc_start}.secret" = "\${OIDC_SECRET}";
+      "${traefik_oidc_start}.provider.url" = "\${OIDC_PROVIDER_URL}";
+      "${traefik_oidc_start}.provider.clientId" = "\${OIDC_CLIENT_ID}";
+      "${traefik_oidc_start}.provider.usePkce" = "true";
+      "${traefik_oidc_start}.scopes" = "openid,profile,email";
+
     };
     log-driver = "journald";
     extraOptions = [
