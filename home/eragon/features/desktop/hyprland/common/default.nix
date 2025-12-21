@@ -20,7 +20,7 @@ in
   #   XCURSOR_SIZE = 24;
   #   HYPRCURSOR_SIZE = 24;
   # };
-
+  config.lib.stylix.colors = true;
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
