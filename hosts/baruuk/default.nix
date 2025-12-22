@@ -13,7 +13,7 @@
     ../base/users/eragon
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
-    # ../features/desktop/hexecute.nix
+    ../features/desktop/hexecute.nix
 
     ## Services items
     ../features/virtualization/incus

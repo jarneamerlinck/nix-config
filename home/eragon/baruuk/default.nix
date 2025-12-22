@@ -7,8 +7,7 @@
 {
   imports = [
     ../base
-    # ../features/desktop/sway/minimalistic
-    ../features/desktop/hyprland/minimalistic
+    ../features/desktop/sway/minimalistic
 
     # Apps
     ../features/applications/base
