@@ -25,6 +25,7 @@ in
   sops.secrets."immich/kiosk_config.yaml" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
+    mode = "0444";
     path = "/data/docker/immich/extentions/kiosk/config.yaml";
   };
   sops.secrets."immich/db.env" = {
