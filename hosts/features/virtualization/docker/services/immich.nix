@@ -10,6 +10,10 @@ let
   version = "v2.3.1";
   upload_dir = "/data/docker/immich/data";
   db_dir = "/data/docker/immich/postgress";
+
+  kiosk_url = "kiosk.ko0.net";
+  kiosk_version = "0.29.1";
+  kiosk_upload_dir = "/data/docker/immich/extentions/kiosk";
 in
 {
 
@@ -18,6 +22,11 @@ in
     neededForUsers = true;
   };
 
+  sops.secrets."immich/kiosk_config.yaml" = {
+    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+    path = "/data/docker/immich/extentions/kiosk/config.yaml";
+  };
   sops.secrets."immich/db.env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -89,6 +98,34 @@ in
     extraOptions = [
       "--health-cmd=redis-cli ping || exit 1"
       "--network-alias=redis"
+      "--network=immich"
+    ];
+  };
+  virtualisation.oci-containers.containers."immich_kiosk" = {
+    image = "ghcr.io/damongolding/immich-kiosk:${kiosk_version}";
+
+    environment = {
+      "LANG" = "en_GB";
+      "TZ" = "Europe/Brussels";
+    };
+    volumes = [ "${kiosk_upload_dir}:/config" ];
+    labels = {
+      "traefik.docker.network" = "frontend";
+      "traefik.enable" = "true";
+      "traefik.http.routers.immich_kiosk-rtr.entrypoints" = "https";
+      "traefik.http.routers.immich_kiosk-rtr.rule" = "Host(`${kiosk_url}`)";
+      "traefik.http.routers.immich_kiosk-rtr.service" = "immich_kiosk-svc";
+      "traefik.http.routers.immich_kiosk-rtr.tls" = "true";
+      "traefik.http.routers.immich_kiosk-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.immich_kiosk-svc.loadbalancer.server.port" = "3000";
+    };
+    # dependsOn = [
+    #   "immich_server"
+    # ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=immich-kiosk"
+      "--network=frontend"
       "--network=immich"
     ];
   };
@@ -166,6 +203,27 @@ in
     partOf = [ "docker-compose-immich-root.target" ];
     wantedBy = [ "docker-compose-immich-root.target" ];
   };
+  systemd.services."docker-immich_kiosk" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 500 "always";
+      RestartMaxDelaySec = lib.mkOverride 500 "1m";
+      RestartSec = lib.mkOverride 500 "100ms";
+      RestartSteps = lib.mkOverride 500 9;
+    };
+    after = [
+      "docker-network-immich.service"
+    ];
+    requires = [
+      "docker-network-immich.service"
+    ];
+    partOf = [
+      "docker-compose-immich-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-immich-root.target"
+    ];
+  };
+
   # Root service
   # When started, this will automatically create all resources and start
   # the containers. When stopped, this will teardown all resources.
