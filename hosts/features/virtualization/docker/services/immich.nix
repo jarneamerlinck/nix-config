@@ -124,7 +124,7 @@ in
     # ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=immich-kiosk"
+      "--network-alias=immich_kiosk"
       "--network=frontend"
       "--network=immich"
     ];
