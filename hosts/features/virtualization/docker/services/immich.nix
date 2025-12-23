@@ -13,7 +13,7 @@ let
 
   kiosk_url = "kiosk.ko0.net";
   kiosk_version = "0.29.1";
-  kiosk_upload_dir = "/data/docker/immich/extentions/kiosk";
+  kiosk_config_dir = "/data/docker/immich/extentions/kiosk";
 in
 {
 
@@ -104,12 +104,11 @@ in
   };
   virtualisation.oci-containers.containers."immich_kiosk" = {
     image = "ghcr.io/damongolding/immich-kiosk:${kiosk_version}";
-
     environment = {
       "LANG" = "en_GB";
       "TZ" = "Europe/Brussels";
     };
-    volumes = [ "${kiosk_upload_dir}:/config" ];
+    volumes = [ "/data/docker/immich/extentions/kiosk/config.yaml:/config/config.yaml" ];
     labels = {
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
@@ -127,7 +126,6 @@ in
     extraOptions = [
       "--network-alias=immich_kiosk"
       "--network=frontend"
-      "--network=immich"
     ];
   };
 
