@@ -9,9 +9,9 @@
 {
   imports = [
     # inputs.impermanence.nixosModules.home-manager.impermanence
-    inputs.stylix.homeModules.stylix
-    inputs.nur.modules.homeManager.default
-    inputs.sops-nix.homeManagerModule
+    # inputs.stylix.homeModules.stylix
+    # inputs.nur.modules.homeManager.default
+    # inputs.sops-nix.homeManagerModule
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);
   nixpkgs = {
@@ -53,10 +53,10 @@
 
   # Set default wallpaper and colorscheme
   # Available color schemes can be found at
-  stylix.enable = true;
-  stylix.autoEnable = true;
-
-  stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
-  stylix.polarity = lib.mkDefault "dark";
+  # stylix.enable = false;
+  # stylix.autoEnable = true;
+  #
+  # stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
+  # stylix.polarity = lib.mkDefault "dark";
 
 }
