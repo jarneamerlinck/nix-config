@@ -9,28 +9,28 @@
     ../base
     ../base/users/eragon
 
-    ../features/disks/wd-decrypt.nix
+    # ../features/disks/wd-decrypt.nix
 
     ## Display server
-    ../features/desktop/wayland.nix
-    ../features/desktop/gtk.nix
+    ../features/desktop/kodi.nix
+    # ../features/desktop/wayland.nix
+    # ../features/desktop/gtk.nix
 
     ## Display Managers
-    ../features/desktop/greetd.nix
+    # ../features/desktop/greetd.nix
 
     ## Desktop environments / Window Managers
-    ../features/desktop/mouse.nix
-    ../features/desktop/pipewire.nix
+    # ../features/desktop/mouse.nix
+    # ../features/desktop/pipewire.nix
 
     ## Services items
-    ../features/services/unattended-upgrades.nix
 
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
-    ../features/virtualization/docker/services/portainer.nix
+    # ../features/virtualization/docker/services/portainer.nix
     ../features/virtualization/qemu/qemu-guest.nix
 
-    ../features/desktop/wireshark.nix
+    # ../features/desktop/wireshark.nix
   ];
 
   networking = {
