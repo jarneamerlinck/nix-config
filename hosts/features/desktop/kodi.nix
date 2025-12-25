@@ -1,31 +1,37 @@
-{ pkgs, lib, ... }:
-let
-  kodi-with-addons = pkgs.kodi-wayland.withPackages (
-    kodiPkgs: with kodiPkgs; [
-      inputstream-adaptive
-      jellyfin
-      bluetooth-manager
-    ]
-  );
-in
 {
-  services.xserver.enable = false;
-  # Define a user account
-  services.cage.user = "kodi";
-  services.cage.extraArguments = [
-    "-m"
-    "last"
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  users.extraUsers.kodi.isNormalUser = true;
+  users.users.kodi.extraGroups = [
+    "data"
+    "video"
+    "audio"
+    "input"
   ];
-  services.getty.autologinUser = "kodi";
+  services.cage.user = "kodi";
   services.cage.program = "${pkgs.kodi-wayland}/bin/kodi-standalone";
-  users.users.kodi = {
-    isNormalUser = true;
-    extraGroups = [
-      "uucp"
-      "audio"
-      "input"
-      "video"
-      "render"
-    ];
-  };
+  services.cage.enable = true;
+
+  # hardware.opengl = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [ libva ];
+  # };
+
+  environment.systemPackages = [
+    (pkgs.kodi-wayland.passthru.withPackages (
+      kodiPkgs: with kodiPkgs; [
+        inputstreamhelper
+        inputstream-adaptive
+        inputstream-ffmpegdirect
+        inputstream-rtmp
+        vfs-libarchive
+        vfs-rar
+        youtube
+      ]
+    ))
+  ];
 }
