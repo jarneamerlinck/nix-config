@@ -9,13 +9,13 @@ let
   );
 in
 {
-
   # Define a user account
   services.cage.user = "kodi";
   services.cage.extraArguments = [
     "-m"
     "last"
   ];
+  services.getty.autologinUser = "kodi";
   services.cage.program = "${kodi-with-addons}/bin/kodi-standalone";
   services.cage.enable = true;
   users.users.kodi = {
@@ -24,6 +24,8 @@ in
       "uucp"
       "audio"
       "input"
+      "video"
+      "render"
     ];
   };
 }
