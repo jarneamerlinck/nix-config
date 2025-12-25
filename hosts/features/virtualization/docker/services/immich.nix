@@ -26,7 +26,7 @@ in
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
     mode = "0444";
-    path = "/data/docker/immich/extentions/kiosk/config.yaml";
+    path = "${kiosk_config_dir}/config.yaml";
   };
   sops.secrets."immich/db.env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -108,7 +108,7 @@ in
       "LANG" = "en_GB";
       "TZ" = "Europe/Brussels";
     };
-    volumes = [ "/data/docker/immich/extentions/kiosk/config.yaml:/config/config.yaml" ];
+    volumes = [ "${kiosk_config_dir}/config.yaml:/config/config.yaml" ];
     labels = {
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
