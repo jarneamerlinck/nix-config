@@ -59,3 +59,10 @@ creation_rules:
       - *banshee
       - *baruuk
       - *testing
+
+
+  - path_regex: hosts/base/users/kodi/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *eragon
+      - *vm1

@@ -8,6 +8,7 @@
 
     ../base
     ../base/users/eragon
+    ../base/users/kodi
 
     # ../features/disks/wd-decrypt.nix
 
