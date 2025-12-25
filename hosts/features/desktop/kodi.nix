@@ -9,6 +9,8 @@ let
   );
 in
 {
+  systemd.defaultUnit = "multi-user.target";
+  services.xserver.enable = false;
   # Define a user account
   services.cage.user = "kodi";
   services.cage.extraArguments = [
