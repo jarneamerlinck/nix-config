@@ -10,9 +10,9 @@
   ];
 
   services.xserver.enable = false;
-  services.xserver.desktopManager.kodi.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "kodi";
+  services.xserver.desktopManager.kodi.enable = false;
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "kodi";
 
   services.xserver.displayManager.lightdm.greeter.enable = false;
 
