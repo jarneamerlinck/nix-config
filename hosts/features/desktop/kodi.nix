@@ -9,12 +9,12 @@
     ))
   ];
 
-  services.xserver.enable = false;
-  services.xserver.desktopManager.kodi.enable = false;
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "kodi";
+  # services.xserver.enable = false;
+  # services.xserver.desktopManager.kodi.enable = false;
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "kodi";
 
-  services.xserver.displayManager.lightdm.greeter.enable = false;
+  # services.xserver.displayManager.lightdm.greeter.enable = false;
 
   # Define a user account
 
