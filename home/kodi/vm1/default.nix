@@ -7,11 +7,8 @@
 {
   imports = [
     ../base
+    ../kodi.nix
   ];
-  # wallpaper = pkgs.wallpapers.nixos-logo;
-  #
-  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-
   monitors = [
     {
       name = "eDP-1";
