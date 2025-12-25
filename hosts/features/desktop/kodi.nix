@@ -6,10 +6,7 @@
 }:
 {
 
-  services.cage.user = "kodi";
-  services.cage.program = "${pkgs.kodi-gbm}/bin/kodi-standalone";
-  services.cage.enable = true;
-
+  # Kodi package
   environment.systemPackages = [
     (pkgs.kodi-gbm.passthru.withPackages (
       kodiPkgs: with kodiPkgs; [
@@ -23,4 +20,15 @@
       ]
     ))
   ];
+
+  # Service for autostart
+  services.cage.user = "kodi";
+  services.cage.program = "${pkgs.kodi-gbm}/bin/kodi-standalone";
+  services.cage.enable = true;
+
+  # Allow kodi access from other devices
+  networking.firewall = {
+    allowedTCPPorts = [ 8080 ];
+    allowedUDPPorts = [ 8080 ];
+  };
 }
