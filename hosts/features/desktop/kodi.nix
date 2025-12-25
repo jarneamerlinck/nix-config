@@ -13,7 +13,7 @@
     "input"
   ];
   services.cage.user = "kodi";
-  services.cage.program = "${pkgs.kodi-wayland}/bin/kodi-standalone";
+  services.cage.program = "${pkgs.kodi}/bin/kodi-standalone";
   services.cage.enable = true;
 
   # hardware.opengl = {
@@ -22,7 +22,7 @@
   # };
 
   environment.systemPackages = [
-    (pkgs.kodi-wayland.passthru.withPackages (
+    (pkgs.kodi.passthru.withPackages (
       kodiPkgs: with kodiPkgs; [
         inputstreamhelper
         inputstream-adaptive
