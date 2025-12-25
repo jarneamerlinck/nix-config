@@ -17,6 +17,8 @@
         vfs-libarchive
         vfs-rar
         youtube
+
+        jellyfin
       ]
     ))
   ];
