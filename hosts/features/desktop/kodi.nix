@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   kodi-with-addons = pkgs.kodi-wayland.withPackages (
     kodiPkgs: with kodiPkgs; [
@@ -9,7 +9,6 @@ let
   );
 in
 {
-  systemd.defaultUnit = "multi-user.target";
   services.xserver.enable = false;
   # Define a user account
   services.cage.user = "kodi";
