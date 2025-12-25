@@ -17,8 +17,7 @@ in
     "last"
   ];
   services.getty.autologinUser = "kodi";
-  services.cage.program = "${kodi-with-addons}/bin/kodi-standalone";
-  services.cage.enable = true;
+  services.cage.program = "${pkgs.kodi-wayland}/bin/kodi-standalone";
   users.users.kodi = {
     isNormalUser = true;
     extraGroups = [
