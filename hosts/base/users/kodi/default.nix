@@ -26,7 +26,7 @@ in
   users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.bash;
-    uid = 1442;
+    # uid = 1003;
     extraGroups = [
       "data"
       "video"
