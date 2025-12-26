@@ -18,8 +18,12 @@ let
         vfs-rar
 
         jellyfin
+        web-viewer
       ]
     ))
+    ++ [
+      pkgs.kodiAddons-web-viewer
+    ]
   );
 in
 {
