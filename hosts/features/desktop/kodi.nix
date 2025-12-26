@@ -16,40 +16,13 @@ let
         inputstream-rtmp
         vfs-libarchive
         vfs-rar
-        youtube
 
         jellyfin
-        kodiAddons.web-viewer
       ]
     ))
   );
-  # kodi_with_extentions = (
-  #
-  #   with pkgs;
-  #   (kodi-gbm.withPackage (
-  #     p: with p; [
-  #       inputstreamhelper
-  #       inputstream-adaptive
-  #       inputstream-ffmpegdirect
-  #       inputstream-rtmp
-  #       vfs-libarchive
-  #       vfs-rar
-  #       youtube
-  #
-  #       jellyfin
-  #     ]
-  #   ))
-  # );
 in
 {
-
-  # Kodi package
-  # environment.systemPackages = [
-  #   (pkgs.kodi-gbm.passthru.withPackages (
-  #     kodiPkgs: with kodiPkgs; [
-  #     ]
-  #   ))
-  # ];
 
   # Service for autostart
   services.cage.user = "kodi";
