@@ -4,56 +4,30 @@
   buildKodiAddon,
   fetchFromGitHub,
   kodi,
-  requests,
-  dateutil,
-  six,
-  kodi-six,
-  signals,
-  websocket,
+  python3,
 }:
-let
-  python = kodi.pythonPackages.python.withPackages (p: with p; [ pyyaml ]);
-in
-{
-  kodiAddons.web-viewer = buildKodiAddon rec {
-    pname = "jellyfin";
-    namespace = "plugin.video.jellyfin";
-    version = "1.1.1";
 
-    src = fetchFromGitHub {
-      owner = "jellyfin";
-      repo = "jellyfin-kodi";
-      rev = "v${version}";
-      sha256 = "sha256-Pi8q64VykEfyIm9VlNOkWFeEhEhl7D6KLnNLpVsY+iU=";
-    };
+buildKodiAddon rec {
+  pname = "web-viewer";
+  namespace = "plugin.program.web.viewer";
+  version = "b7d7081936f93c1271972782a4045ce3a272cae3";
 
-    nativeBuildInputs = [ python ];
+  src = fetchFromGitHub {
+    owner = "xbmc";
+    repo = "plugin.program.web.viewer";
+    rev = "${version}";
+    sha256 = "sha256-6g/LorVHXYL+zyCdrZQpVl1jB6KcHkp6WwmI4GS1R5c=";
+  };
 
-    # ZIP does not support timestamps before 1980 - https://bugs.python.org/issue34097
-    patches = [ ./no-strict-zip-timestamp.patch ];
+  nativeBuildInputs = [
+    python3
+  ];
 
-    buildPhase = ''
-      ${python}/bin/python3 build.py --version=py3
-    '';
-
-    postInstall = ''
-      cp -v addon.xml $out${addonDir}/$namespace/
-    '';
-
-    propagatedBuildInputs = [
-      requests
-      dateutil
-      six
-      kodi-six
-      signals
-      websocket
-    ];
-
-    meta = {
-      homepage = "https://jellyfin.org/";
-      description = "Whole new way to manage and view your media library";
-      license = lib.licenses.gpl3Only;
-      teams = [ lib.teams.kodi ];
-    };
+  meta = {
+    homepage = "https://kodi.wiki/view/Add-on:Web_Viewer";
+    description = "View web pages directly inside Kodi";
+    license = lib.licenses.gpl2Only;
+    platforms = lib.platforms.all;
+    teams = [ lib.teams.kodi ];
   };
 }
