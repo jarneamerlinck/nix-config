@@ -19,6 +19,7 @@ let
         youtube
 
         jellyfin
+        kodiAddons.web-viewer
       ]
     ))
   );

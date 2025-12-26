@@ -13,6 +13,7 @@ in
   grub-themes = pkgs.callPackage ./grub-themes.nix { };
   lens = pkgs.callPackage ./lens.nix { };
   excalidraw = pkgs.callPackage ./excalidraw-kiosk.nix { };
+  kodiAddons.web-viewer = pkgs.callPackage ./kodiAddons/web-viewer.nix { };
 
   wallpapers = wallpapers;
   allWallpapers = pkgs.linkFarmFromDrvs "wallpapers" (pkgs.lib.attrValues wallpapers);
