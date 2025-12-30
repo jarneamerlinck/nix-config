@@ -22,6 +22,8 @@
     ../features/applications/cyber/analysis
     ../features/applications/cyber/exploration/nmap-desktop.nix
     ../features/applications/base/excalidraw_desktop_icon.nix
+
+    ../features/applications/games
   ];
 
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
