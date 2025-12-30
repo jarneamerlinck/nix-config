@@ -13,13 +13,15 @@
     ../base/users/eragon
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
-    ../features/desktop/hexecute.nix
+    # ../features/desktop/hexecute.nix
 
     ## Services items
     ../features/virtualization/incus
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidraw.nix
     ../features/services/unattended-upgrades.nix
+
+    ../features/services/games
 
     ../features/services/google_coral.nix
     # ../features/services/wireguard_client.nix
