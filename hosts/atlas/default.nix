@@ -43,13 +43,13 @@
     ../features/virtualization/docker/services/rss_feed.nix
 
     # Docker stacks
-    ../features/virtualization/docker/services/homebox.nix
+    # ../features/virtualization/docker/services/homebox.nix
     ../features/virtualization/docker/services/portainer.nix
-    ../features/virtualization/docker/services/calibre.nix
+    # ../features/virtualization/docker/services/calibre.nix
     ../features/virtualization/docker/services/music.nix
     # ../features/virtualization/docker/services/photoprism.nix
     ../features/virtualization/docker/services/memos.nix
-    ../features/virtualization/docker/services/zipline.nix
+    # ../features/virtualization/docker/services/zipline.nix
     ../features/virtualization/docker/services/openwebui.nix
     ../features/virtualization/docker/services/immich.nix
 

@@ -13,7 +13,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."searxng" = {
-    image = "docker.io/searxng/searxng:2025.11.28-20de10df4";
+    image = "docker.io/searxng/searxng:2025.12.26-fa9729226";
     environmentFiles = [ "/run/secrets-for-users/search/env" ];
 
     environment = { };

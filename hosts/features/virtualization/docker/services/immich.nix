@@ -41,6 +41,7 @@ in
       "IMMICH_VERSION" = "${version}";
       "UPLOAD_LOCATION" = "${upload_dir}";
       "DB_DATA_LOCATION" = "${db_dir}";
+      "IMMICH_TELEMETRY_INCLUDE" = "all";
     };
     volumes = [ "${upload_dir}:/data" ];
     labels = {
