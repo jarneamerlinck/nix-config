@@ -7,6 +7,7 @@
 {
 
   environment.systemPackages = with pkgs; [ nh ];
+  nixpkgs.config.allowUnfree = true;
   nix = {
 
     settings = {
