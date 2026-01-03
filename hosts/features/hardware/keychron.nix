@@ -4,11 +4,11 @@
   '';
 
   programs.bash.shellAliases = {
-    keychron = "nix shell nixpkgs#google-chrome --impure -c google-chrome-stable https://launcher.keychron.com";
+    keychron = "NIXPKGS_ALLOW_UNFREE=1 nix shell nixpkgs#google-chrome --impure -c google-chrome-stable https://launcher.keychron.com";
   };
 
   programs.zsh.shellAliases = {
-    keychron = "nix shell nixpkgs#google-chrome --impure -c google-chrome-stable https://launcher.keychron.com";
+    keychron = "NIXPKGS_ALLOW_UNFREE=1 nix shell nixpkgs#google-chrome --impure -c google-chrome-stable https://launcher.keychron.com";
   };
 
 }
