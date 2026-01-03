@@ -5,6 +5,7 @@
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
     ../features/hardware/laptop.nix
+    ../features/hardware/keychron.nix
     ../features/disks/boot_btrfs_laptop.nix
 
     ../base/timezone.nix
