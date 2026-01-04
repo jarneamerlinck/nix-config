@@ -1,11 +1,11 @@
 { pkgs, lib, ... }:
 {
-
-  # services.avahi = {
-  #   enable = true;
-  #   nssmdns4 = true;
-  #   openFirewall = true;
-  # };
+  # needed for printer discovery
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   services.printing = {
     enable = true;
