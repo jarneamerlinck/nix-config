@@ -20,7 +20,7 @@
     ../features/virtualization/incus
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidraw.nix
-    ../features/services/unattended-upgrades.nix
+    ../features/services/printing.nix
 
     ../features/services/games
 
