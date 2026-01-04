@@ -21,9 +21,13 @@
   home = {
     shellAliases = {
       v = "nvim";
-      rebuild = "cd ~/nix-config &&  ./deploy.sh";
-      rebuildf = "cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
-      rebuildl = "cd ~/nix-config && ./deploy.sh";
+      rebuild = "cd $NH_FLAKE &&  ./deploy.sh";
+      rebuildf = "cd $NH_FLAKE && git stash &&  git pull -f && ./deploy.sh";
+      rebuildl = "cd $NH_FLAKE && ./deploy.sh";
+      debug = ''
+        nix-inspect --expr "builtins.getFlake \"$(pwd)\""
+      '';
+      fldebug = "cd $NH_FLAKE && debug";
       wg-down = "sudo systemctl stop wireguard-wg0.service";
     };
 
@@ -46,6 +50,7 @@
       # nixfmt-classic # Prev formater
       nvd # Differ
       nix-output-monitor
+      nix-inspect
 
       feh
       ffmpeg
