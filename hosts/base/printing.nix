@@ -12,6 +12,9 @@
     drivers = with pkgs; [
       cups-filters
       cups-browsed
+      epson-escpr2
+      epson-escpr
+      brlaser
     ];
   };
 }
