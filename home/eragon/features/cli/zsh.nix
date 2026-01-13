@@ -69,7 +69,7 @@
 
       # Register them all
       # add-zsh-hook chpwd auto_venv
-      add-zsh-hook chpwd auto_nix
+      # add-zsh-hook chpwd auto_nix
       # add-zsh-hook chpwd auto_nvm
 
     '';
