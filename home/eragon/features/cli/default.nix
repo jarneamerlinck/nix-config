@@ -11,6 +11,7 @@
     ./ssh.nix
     ./docker.nix
     ./python.nix
+    ./secret_service.nix
   ];
 
   programs.btop.enable = true;
