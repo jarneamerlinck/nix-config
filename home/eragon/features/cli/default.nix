@@ -30,6 +30,7 @@
       '';
       fldebug = "cd $NH_FLAKE && debug";
       wg-down = "sudo systemctl stop wireguard-wg0.service";
+      wg-connect = "sudo su -c 'wg set wg0 peer WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI= endpoint $(cat /run/secrets-for-users/wireguard/endpoint )'";
     };
 
     sessionVariables = {
