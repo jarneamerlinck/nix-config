@@ -47,8 +47,8 @@
     stateVersion = lib.mkDefault "25.11";
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
-      FLAKE = "$HOME/nix-config";
-      NH_FLAKE = "$HOME/nix-config";
+      FLAKE = "${config.home.homeDirectory}/nix-config";
+      NH_FLAKE = "${config.home.homeDirectory}/nix-config";
     };
   };
 

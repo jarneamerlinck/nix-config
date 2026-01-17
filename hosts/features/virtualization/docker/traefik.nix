@@ -80,7 +80,10 @@ in
   };
   systemd.services."docker-traefik" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
+      Restart = lib.mkOverride 500 "always";
+      RestartMaxDelaySec = lib.mkOverride 500 "1m";
+      RestartSec = lib.mkOverride 500 "100ms";
+      RestartSteps = lib.mkOverride 500 9;
     };
     after = [ "docker-network-frontend.service" ];
     requires = [ "docker-network-frontend.service" ];

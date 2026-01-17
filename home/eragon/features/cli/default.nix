@@ -11,6 +11,7 @@
     ./ssh.nix
     ./docker.nix
     ./python.nix
+    ./secret_service.nix
   ];
 
   programs.btop.enable = true;
@@ -21,10 +22,15 @@
   home = {
     shellAliases = {
       v = "nvim";
-      rebuild = "cd ~/nix-config &&  ./deploy.sh";
-      rebuildf = "cd ~/nix-config && git stash &&  git pull -f && ./deploy.sh";
-      rebuildl = "cd ~/nix-config && ./deploy.sh";
+      rebuild = "cd $NH_FLAKE &&  ./deploy.sh";
+      rebuildf = "cd $NH_FLAKE && git stash &&  git pull -f && ./deploy.sh";
+      rebuildl = "cd $NH_FLAKE && ./deploy.sh";
+      debug = ''
+        nix-inspect --expr "builtins.getFlake \"$(pwd)\""
+      '';
+      fldebug = "cd $NH_FLAKE && debug";
       wg-down = "sudo systemctl stop wireguard-wg0.service";
+      wg-connect = "sudo su -c 'wg set wg0 peer WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI= endpoint $(cat /run/secrets-for-users/wireguard/endpoint )'";
     };
 
     sessionVariables = {
@@ -46,6 +52,7 @@
       # nixfmt-classic # Prev formater
       nvd # Differ
       nix-output-monitor
+      nix-inspect
 
       feh
       ffmpeg
