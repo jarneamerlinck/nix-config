@@ -15,7 +15,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."traefik" = {
-    image = "traefik:v3.6.2";
+    image = "traefik:v3.6.7";
     environmentFiles = [ "/run/secrets-for-users/traefik/env" ];
     volumes = [
       "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
