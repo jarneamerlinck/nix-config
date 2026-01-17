@@ -13,8 +13,9 @@ let
     "BROWSER_WEB_URL" = "http://bookmarks-chrome:9222";
     "DATA_DIR" = "/data";
     "OLLAMA_BASE_URL" = "http://ollama:11434";
+    "CRAWLER_STORE_PDF" = "true";
   };
-  karakeep_version = "0.26.0";
+  karakeep_version = "0.30.0";
 
 in
 {
