@@ -43,6 +43,8 @@ in
     # ];
     log-driver = "journald";
     extraOptions = [
+      "--cpus=0.1"
+      "--memory=500MB"
       "--network-alias=frontend"
       "--network=frontend"
     ];
