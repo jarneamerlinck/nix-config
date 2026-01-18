@@ -4,6 +4,10 @@
   config,
   ...
 }:
+let
+  port = "8080";
+  version = "2026.1.16-2d9f213ca";
+in
 
 {
   sops.secrets."search/env" = {
@@ -13,7 +17,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."searxng" = {
-    image = "docker.io/searxng/searxng:2026.1.16-2d9f213ca";
+    image = "docker.io/searxng/searxng:${version}";
     environmentFiles = [ "/run/secrets-for-users/search/env" ];
 
     environment = { };
@@ -25,7 +29,7 @@
       "traefik.http.routers.search-rtr.service" = "search-svc";
       "traefik.http.routers.search-rtr.tls" = "true";
       "traefik.http.routers.search-rtr.tls.certresolver" = "cloudflare";
-      "traefik.http.services.search-svc.loadbalancer.server.port" = "8080";
+      "traefik.http.services.search-svc.loadbalancer.server.port" = "${port}";
     };
     log-driver = "journald";
     extraOptions = [
@@ -36,6 +40,10 @@
       "--network-alias=searxng"
       "--network=frontend"
       "--network=search_searxng"
+      "--health-cmd=wget --spider -q http://localhost:${port}/healthz"
+      "--health-interval=30s"
+      "--health-retries=3"
+      "--health-timeout=10s"
     ];
   };
   systemd.services."docker-searxng" = {
