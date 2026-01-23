@@ -1,12 +1,14 @@
 {
   inputs,
-  outputs,
-  lib,
   config,
   pkgs,
   ...
 }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+  nixvim-package = inputs.nixvim-config.packages.${system}.default;
+  extended-nixvim = nixvim-package.extend config.stylix.targets.nixvim.exportedModule;
+in
 {
-  environment.systemPackages = [ inputs.nvim.packages.${pkgs.stdenv.hostPlatform.system}.default ];
-
+  environment.systemPackages = [ extended-nixvim ];
 }
