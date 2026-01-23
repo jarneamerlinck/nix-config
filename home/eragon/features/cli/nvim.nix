@@ -10,5 +10,5 @@ let
   extended-nixvim = nixvim-package.extend config.stylix.targets.nixvim.exportedModule;
 in
 {
-  environment.systemPackages = [ nixvim-package ];
+  home.packages = [ extended-nixvim ];
 }
