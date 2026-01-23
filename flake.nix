@@ -36,7 +36,7 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim-config.url = "github:jarneamerlinck/kickstart.nixvim";
+    nixvim-config.url = "github:jarneamerlinck/kickstart.nvim";
     hexecute.url = "github:ThatOtherAndrew/Hexecute";
   };
 

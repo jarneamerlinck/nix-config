@@ -585,16 +585,16 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1769208455,
-        "narHash": "sha256-DfxXqAK2Hv4gkZJZLlDl3iha/ZBYlwUsHtsxcsfW6Zo=",
+        "lastModified": 1769208834,
+        "narHash": "sha256-izc6qd/syMfhijJ2ZELs5X8l1HGm6LYbY7qJO3otpbI=",
         "owner": "jarneamerlinck",
-        "repo": "kickstart.nixvim",
-        "rev": "6a3227d787ca3f11fb96b92573d3e2bec9281355",
+        "repo": "kickstart.nvim",
+        "rev": "7e326894c821c3fd5f4873556ba24cf86c6630c7",
         "type": "github"
       },
       "original": {
         "owner": "jarneamerlinck",
-        "repo": "kickstart.nixvim",
+        "repo": "kickstart.nvim",
         "type": "github"
       }
     },
