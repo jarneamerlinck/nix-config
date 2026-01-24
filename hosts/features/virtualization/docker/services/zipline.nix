@@ -21,7 +21,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."zipline-zipline" = {
-    image = "ghcr.io/diced/zipline:4.3.2";
+    image = "ghcr.io/diced/zipline:4.4.0";
     environmentFiles = [
       "/run/secrets-for-users/zipline/env"
       "/run/secrets-for-users/zipline/env_zipline"
