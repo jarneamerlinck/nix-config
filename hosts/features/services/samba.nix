@@ -1,5 +1,4 @@
 # Auto-generated using compose2nix v0.2.3-pre.
-{ pkgs, lib, ... }:
 
 {
   services.samba = {

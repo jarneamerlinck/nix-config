@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 # TODO: Setup webui behind traefik
 # https://github.com/osamuaoki/incus-ui-canonical
 # https://discuss.linuxcontainers.org/t/how-to-install-and-setup-the-incus-web-ui/19522

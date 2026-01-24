@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 {
   nix.settings = {
     substituters = [

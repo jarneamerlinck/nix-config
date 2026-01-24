@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
