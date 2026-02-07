@@ -241,7 +241,7 @@ in
     serviceConfig = {
       Type = "oneshot";
       User = "eragon";
-      ExecStart = "/data/docker/immich/sync_hetzner.sh";
+      ExecStart = "${pkgs.bash}/bin/bash  /data/docker/immich/sync_hetzner.sh";
     };
   };
 
