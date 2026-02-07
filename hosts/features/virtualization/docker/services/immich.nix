@@ -14,6 +14,15 @@ let
   kiosk_url = "kiosk.ko0.net";
   kiosk_version = "0.29.1";
   kiosk_config_dir = "/data/docker/immich/extentions/kiosk";
+
+  syncEnv = pkgs.buildEnv {
+    name = "sync-script-env";
+    paths = [
+      pkgs.bash
+      pkgs.rsync
+    ];
+  };
+
 in
 {
 
@@ -242,6 +251,12 @@ in
       Type = "oneshot";
       User = "eragon";
       ExecStart = "${pkgs.bash}/bin/bash  /data/docker/immich/sync_hetzner.sh";
+      Environment = ''
+          PATH=${syncEnv}/bin
+        HOME=/home/eragon
+        SSH_AUTH_SOCK=/run/user/$(id -u eragon)/keyring/ssh
+
+      '';
     };
   };
 
