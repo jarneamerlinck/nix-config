@@ -248,15 +248,12 @@ in
     description = "Daily remote backup for immich.";
     serviceConfig = {
       Type = "oneshot";
-      User = "eragon";
+      User = config.users.users.eragon.name;
       ExecStart = ''
-        ${pkgs.rsync}/bin/rsync -avh --bwlimit=1.5m --progress -e 'ssh -i /home/eragon/.ssh/id_ed25519 -p 23' /data/docker/immich/data  "$(cat ${
+        ${pkgs.rsync}/bin/rsync -avh --bwlimit=1.5m --progress -e 'ssh -i ${config.users.users.eragon.home}/.ssh/id_ed25519 -p 23' /data/docker/immich/data  "$(cat ${
           config.sops.secrets."immich/backup_dest".path
         })"
       '';
-      # Environment = ''
-      #   SSH_AUTH_SOCK=/run/user/$(id -u eragon)/keyring/ssh
-      # '';
     };
   };
 
