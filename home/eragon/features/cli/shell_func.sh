@@ -217,6 +217,7 @@ function fzf-sway-move-window() {
             --preview-window=down:10% \
             --color=bg:#222222,preview-bg:#333333 \
             --layout=reverse-list \
+            --print-query \
             --prompt="Move window to workspace: ")
 
     [[ -z $ws ]] && return
