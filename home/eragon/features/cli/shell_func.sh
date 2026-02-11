@@ -222,6 +222,17 @@ function fzf-sway-move-window() {
 
     [[ -z $ws ]] && return
 
+    query=$(printf "%s" "$ws" | sed -n '1p')
+    selection=$(printf "%s" "$ws" | sed -n '2p')
+
+    # If a workspace was selected → use it
+    if [[ -n "$selection" ]]; then
+        ws="$selection"
+    else
+        # No options left; use typed query
+        ws="$query"
+    fi
+
     # 5) Move the window
     echo "Moving window $win_id ($win_name) to workspace $ws …"
     # swaymsg "move node to workspace $ws" 1>/dev/null
