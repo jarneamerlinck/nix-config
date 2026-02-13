@@ -21,7 +21,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."chat-openwebui" = {
-    image = "ghcr.io/open-webui/open-webui:0.7.2";
+    image = "ghcr.io/open-webui/open-webui:0.8.0";
     environmentFiles = [ "/run/secrets-for-users/openwebui/env" ];
 
     environment = {
