@@ -1,7 +1,7 @@
 { config, ... }:
 {
 
-  xdg.configFile."quickshell/SystemStatus.qml".text = ''
+  xdg.configFile."quickshell/SessionStatus.qml".text = ''
     import Quickshell
     import Quickshell.Wayland
     import Quickshell.Io
