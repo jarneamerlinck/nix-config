@@ -7,7 +7,7 @@
     ./gtk.nix
     ./audio.nix
     ./dark_light_theme.nix
-    ./quickshell.nix
+    ./quickshell
   ];
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = lib.mkDefault "prefer-dark";
