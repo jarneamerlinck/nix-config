@@ -38,6 +38,10 @@
     };
     nixvim-config.url = "github:jarneamerlinck/kickstart.nvim";
     hexecute.url = "github:ThatOtherAndrew/Hexecute";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

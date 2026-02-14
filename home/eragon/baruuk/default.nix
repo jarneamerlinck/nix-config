@@ -1,11 +1,13 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.noctalia.homeModules.default
     ../base
-    ../features/desktop/sway/minimalistic
+    ../features/desktop/sway/noctalia
 
     # Apps
     ../features/applications/base
