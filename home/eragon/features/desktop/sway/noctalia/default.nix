@@ -10,7 +10,6 @@ in
     ./shotman.nix
     ./wofi.nix
     ./noctalia.nix
-    ./notifications.nix
     ../common/swaylock.nix
   ];
 
