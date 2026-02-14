@@ -3,11 +3,12 @@
   # configure options
   programs.noctalia-shell = {
     enable = true;
+    systemd.enable = true;
     settings = {
       # configure noctalia here
       bar = {
         density = "compact";
-        position = "right";
+        position = "top";
         showCapsule = false;
         widgets = {
           left = [
@@ -45,6 +46,7 @@
           ];
         };
       };
+      dock.enabled = false;
       colorSchemes.predefinedScheme = "Monochrome";
       # general = {
       #   avatarImage = "/home/drfoobar/.face";
