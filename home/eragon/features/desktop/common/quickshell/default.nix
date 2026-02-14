@@ -7,7 +7,7 @@
 
   xdg.configFile."quickshell/shell.qml".text =
     let
-      fontSize = toString config.stylix.fonts.sizes.terminal;
+      fontSize = toString config.stylix.fonts.sizes.desktop;
       fontFamily = toString config.stylix.fonts.sansSerif.name;
       colors = config.lib.stylix.colors.withHashtag;
     in
