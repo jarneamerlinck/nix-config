@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
 
   imports = [
@@ -18,9 +23,9 @@
     enable = true;
     systemd.enable = true;
   };
-  home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "gtk3";
-  };
+  # home.sessionVariables = {
+  #   QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
+  # };
 
   # Shell and Bar.qml need to be in the same file to help imports
   xdg.configFile = {
@@ -93,6 +98,7 @@
                   Text {
                       id: cpuText
                       text: "  " + cpuUsage + "%"
+                      color: colFg
                       font.family: fontFamily
                       font.pixelSize: fontSize
                       font.bold: true
@@ -108,6 +114,7 @@
                   Text {
                       id: memText
                       text: "  " + memUsage + "%"
+                      color: colFg
                       font.family: fontFamily
                       font.pixelSize: fontSize
                       font.bold: true
@@ -122,6 +129,7 @@
                   // Clock
                   Text {
                       id: clock
+                      color: colFg
                       font.family: fontFamily
                       font.pixelSize: fontSize
                       font.bold: true
@@ -190,6 +198,7 @@
 
                   Text {
                       id: whoami
+                      color: colFg
                       font {
                           family: root.fontFamily
                           pixelSize: root.fontSize
