@@ -3,7 +3,7 @@
   # configure options
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       # configure noctalia here
       bar = {
@@ -47,11 +47,10 @@
         };
       };
       dock.enabled = false;
-      colorSchemes.predefinedScheme = "Monochrome";
-      # general = {
-      #   avatarImage = "/home/drfoobar/.face";
-      #   radiusRatio = 0.2;
-      # };
+      general = {
+        avatarImage = "/home/drfoobar/.face";
+        radiusRatio = 0.2;
+      };
       location = {
         monthBeforeDay = false;
         name = "Brussels, Belgium";
