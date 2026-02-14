@@ -1,8 +1,4 @@
 { config, ... }:
-with config.lib.stylix.colors.withHashtag;
-let
-  fontSize = toString config.stylix.fonts.sizes.desktop;
-in
 {
   programs.quickshell = {
     enable = true;
@@ -11,9 +7,9 @@ in
 
   xdg.configFile."quickshell/shell.qml".text =
     let
-      # Pull all stylix colors and fonts
-      fontFamily = config.lib.stylix.font.family;
-      fontSize = config.lib.stylix.font.size;
+      fontSize = toString config.stylix.fonts.sizes.terminal;
+      fontFamily = toString config.stylix.fonts.sansSerif.name;
+      colors = config.lib.stylix.colors.withHashtag;
     in
     ''
       import Quickshell
@@ -27,12 +23,12 @@ in
           id: root
 
           // Theme
-        property color colBg: "${base00}"
-        property color colFg: "${base05}"
-        property color colMuted: "${base03}"
-        property color colCyan: "${base0C}"
-        property color colBlue: "${base0D}"
-        property color colYellow: "${base0A}"
+        property color colBg: "${colors.base00}"
+        property color colFg: "${colors.base05}"
+        property color colMuted: "${colors.base03}"
+        property color colCyan: "${colors.base0C}"
+        property color colBlue: "${colors.base0D}"
+        property color colYellow: "${colors.base0A}"
         property string fontFamily: "${fontFamily}"
         property int fontSize: ${toString fontSize}
 
@@ -112,7 +108,7 @@ in
                   Text {
                       property bool isActive: modelData.focused
                       text: modelData.name
-                      color: isActive ? "${base0C}" : (modelData.visible ? "${base0D}" : "${base03}")
+                      color: isActive ? "${colors.base0C}" : (modelData.visible ? "${colors.base0D}" : "${colors.base03}")
                       font { pixelSize: 14; bold: true }
 
                       MouseArea {
