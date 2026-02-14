@@ -18,7 +18,10 @@
     enable = true;
     systemd.enable = true;
   };
-  # QT_QPA_PLATFORMTHEME=gtk3
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "gtk3";
+  };
+
   # Shell and Bar.qml need to be in the same file to help imports
   xdg.configFile = {
     "quickshell/shell.qml".text =
@@ -68,7 +71,7 @@
                       Text {
                           property bool isActive: modelData.focused
                           text: modelData.name
-                          color: isActive ? colCyan : (modelData.visible ? colBlue : colMuted)
+                          color: isActive ? colFg : colMuted
                           font {
                               pixelSize: 14
                               bold: true
@@ -90,7 +93,6 @@
                   Text {
                       id: cpuText
                       text: "  " + cpuUsage + "%"
-                      color: colYellow
                       font.family: fontFamily
                       font.pixelSize: fontSize
                       font.bold: true
@@ -106,7 +108,6 @@
                   Text {
                       id: memText
                       text: "  " + memUsage + "%"
-                      color: colCyan
                       font.family: fontFamily
                       font.pixelSize: fontSize
                       font.bold: true
@@ -121,7 +122,6 @@
                   // Clock
                   Text {
                       id: clock
-                      color: colBlue
                       font.family: fontFamily
                       font.pixelSize: fontSize
                       font.bold: true
@@ -131,7 +131,7 @@
                   // --- Processes ---
                   Process {
                       id: memProc
-                      command: ["sh", "-c", "free | grep Mem"]
+                      command: ["${pkgs.bash}/bin/sh", "-c", "free | grep Mem"]
                       stdout: SplitParser {
                           onRead: data => {
                               if (!data)
@@ -147,7 +147,7 @@
 
                   Process {
                       id: cpuProc
-                      command: ["sh", "-c", "head -1 /proc/stat"]
+                      command: ["${pkgs.bash}/bin/sh", "-c", "head -1 /proc/stat"]
                       stdout: SplitParser {
                           onRead: data => {
                               if (!data)
@@ -190,7 +190,6 @@
 
                   Text {
                       id: whoami
-                      color: root.colBlue
                       font {
                           family: root.fontFamily
                           pixelSize: root.fontSize
