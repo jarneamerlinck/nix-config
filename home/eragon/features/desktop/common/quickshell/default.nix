@@ -8,37 +8,172 @@ in
     systemd.enable = true;
   };
 
-  xdg.configFile."quickshell/shell.qml".text = with config.lib.stylix.colors.withHashtag; ''
-    import Quickshell
-    # import "file:${config.home.homeDirectory}/.config/quickshell/components"
+  xdg.configFile."quickshell/shell.qml".text =
+    let
+      # Pull all stylix colors and fonts
+      colors = config.lib.stylix.colors.withHashtag;
+      fontFamily = config.lib.stylix.font.family;
+      fontSize = config.lib.stylix.font.size;
+    in
+    ''
+      import Quickshell
+      import Quickshell.Wayland
+      import Quickshell.Io
+      import Quickshell.I3
+      import QtQuick
+      import QtQuick.Layouts
 
-    Scope {
-      id: root
+      PanelWindow {
+          id: root
 
-      property var theme: ({
-        base00: "${base00}",
-        base01: "${base01}",
-        base03: "${base03}",
-        base05: "${base05}",
-        base0C: "${base0C}",
-        base08: "${base08}",
+          // Theme
+        property color colBg: "${colors.bg}"
+        property color colFg: "${colors.fg}"
+        property color colMuted: "${colors.muted}"
+        property color colCyan: "${colors.cyan}"
+        property color colBlue: "${colors.blue}"
+        property color colYellow: "${colors.yellow}"
+        property string fontFamily: "${fontFamily}"
+        property int fontSize: ${toString fontSize}
 
-        monospaceFont: ${builtins.toJSON config.stylix.fonts.monospace.name},
-        emojiFont: ${builtins.toJSON config.stylix.fonts.emoji.name},
-        fontSize: ${fontSize},
+          // System data
+          property int cpuUsage: 0
+          property int memUsage: 0
+          property var lastCpuIdle: 0
+          property var lastCpuTotal: 0
 
-        barHeight: 40,
-        radius: 5,
+          // Processes
+          Process {
+              id: whoamiProc
+              command: ["sh", "-c", "echo $USER@$HOST"]
+              Component.onCompleted: running = false
 
-        widgetBg: "${base01}",
-        widgetBorder: "${base03}",
-        fg: "${base05}",
-        danger: "${base08}"
-      })
+          }
 
-      Bar {
-        theme: root.theme
+          Process {
+              id: memProc
+              command: ["sh", "-c", "free | grep Mem"]
+              stdout: SplitParser {
+                  onRead: data => {
+                      if (!data) return
+                      var parts = data.trim().split(/\s+/)
+                      var total = parseInt(parts[1]) || 1
+                      var used = parseInt(parts[2]) || 0
+                      memUsage = Math.round(100 * used / total)
+                  }
+              }
+              Component.onCompleted: running = true
+          }
+
+          Process {
+              id: cpuProc
+              command: ["sh", "-c", "head -1 /proc/stat"]
+              stdout: SplitParser {
+                  onRead: data => {
+                      if (!data) return
+                      var p = data.trim().split(/\s+/)
+                      var idle = parseInt(p[4]) + parseInt(p[5])
+                      var total = p.slice(1, 8).reduce((a, b) => a + parseInt(b), 0)
+                      if (lastCpuTotal > 0) {
+                          cpuUsage = Math.round(100 * (1 - (idle - lastCpuIdle) / (total - lastCpuTotal)))
+                      }
+                      lastCpuTotal = total
+                      lastCpuIdle = idle
+                  }
+              }
+              Component.onCompleted: running = true
+          }
+
+          // Timers
+          Timer {
+              interval: 2000
+              running: true
+              repeat: true
+              onTriggered: {
+                  cpuProc.running = true
+                  memProc.running = true
+              }
+          }
+
+          anchors.top: true
+          anchors.left: true
+          anchors.right: true
+          implicitHeight: 30
+          color: root.colBg
+
+          RowLayout {
+              anchors.fill: parent
+              anchors.margins: 8
+
+              // Workspaces
+              Repeater {
+                  model: I3.workspaces
+
+                  Text {
+                      property bool isActive: modelData.focused
+                      text: modelData.name
+                      color: isActive ? "${colors.cyan}" : (modelData.visible ? "${colors.blue}" : "${colors.muted}")
+                      font { pixelSize: 14; bold: true }
+
+                      MouseArea {
+                          anchors.fill: parent
+                          onClicked: I3.dispatch("workspace " + modelData.name)
+                      }
+                  }
+              }
+
+              Item { Layout.fillWidth: true }
+
+              // CPU
+              Text {
+                  text: "  " + cpuUsage + "%"
+                  color: root.colYellow
+                  font { family: root.fontFamily; pixelSize: root.fontSize; bold: true }
+              }
+
+              Rectangle { width: 1; height: 16; color: root.colMuted }
+
+              // Memory
+              Text {
+                  text: "  " + memUsage + "%"
+                  color: root.colCyan
+                  font { family: root.fontFamily; pixelSize: root.fontSize; bold: true }
+              }
+
+              Rectangle { width: 1; height: 16; color: root.colMuted }
+
+              // Clock
+              Text {
+                  id: clock
+                  color: root.colBlue
+                  font { family: root.fontFamily; pixelSize: root.fontSize; bold: true }
+                  text: Qt.formatDateTime(new Date(), "dd/MM/yyyy - HH:mm:ss")
+                  Timer {
+                      interval: 1000
+                      running: true
+                      repeat: true
+                      onTriggered: clock.text = Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
+                  }
+              }
+              Item { Layout.fillWidth: true }
+
+              Text {
+                  id: whoami
+                  color: root.colBlue
+                  font { family: root.fontFamily; pixelSize: root.fontSize; bold: true }
+                  text: "eragon@baruuk"
+
+                  MouseArea {
+                      anchors.fill: parent
+                      onClicked: {
+                          whoami.opacity = 0.5
+                          Quickshell.reload(true) // Reload full quickshell
+                      }
+                  }
+              }
+          }
       }
-    }
-  '';
+
+
+    '';
 }
