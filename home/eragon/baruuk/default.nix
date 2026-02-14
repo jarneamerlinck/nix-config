@@ -5,7 +5,7 @@
 {
   imports = [
     ../base
-    ../features/desktop/sway/quickshell
+    ../features/desktop/sway/minimalistic
 
     # Apps
     ../features/applications/base
