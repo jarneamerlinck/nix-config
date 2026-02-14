@@ -12,7 +12,6 @@ in
     ./waybar.nix
     ./notifications.nix
     ../common/swaylock.nix
-    ./quickshell.nix
   ];
 
   home.packages = with pkgs; [
