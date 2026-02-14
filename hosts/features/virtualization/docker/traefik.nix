@@ -15,7 +15,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."traefik" = {
-    image = "traefik:v3.6.2";
+    image = "traefik:v3.6.7";
     environmentFiles = [ "/run/secrets-for-users/traefik/env" ];
     volumes = [
       "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
@@ -28,6 +28,7 @@ in
     ];
     # When updating this also update ../../services/nix_cache_server.nix
     cmd = [
+      "--ping=true"
       "--accesslog=true"
       "--accesslog.filePath=/logs/access.log"
       "--api.insecure=true"
@@ -76,6 +77,11 @@ in
     extraOptions = [
       "--network-alias=traefik"
       "--network=frontend"
+      # "--health-cmd=wget --spider -q http://localhost:${port}/healthz"
+      # "--health-interval=30s"
+      # "--health-retries=3"
+      # "--health-timeout=10s"
+
     ];
   };
   systemd.services."docker-traefik" = {

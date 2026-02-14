@@ -1,7 +1,5 @@
 {
-  pkgs,
   lib,
-  config,
   ...
 }:
 let
@@ -11,7 +9,7 @@ in
 {
 
   virtualisation.oci-containers.containers."memos-memos" = {
-    image = "docker.io/neosmemo/memos:0.25.2";
+    image = "docker.io/neosmemo/memos:0.25.3";
 
     volumes = [ "/data/docker/docs/memos:/var/opt/memos" ];
     labels = {

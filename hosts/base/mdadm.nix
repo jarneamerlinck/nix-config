@@ -1,6 +1,4 @@
 {
-  outputs,
-  lib,
   pkgs,
   ...
 }:

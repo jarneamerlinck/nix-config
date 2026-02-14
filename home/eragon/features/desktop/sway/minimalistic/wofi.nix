@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 let
   wofiStyle = ''
     /* Wofi theme generated from nix-colors */

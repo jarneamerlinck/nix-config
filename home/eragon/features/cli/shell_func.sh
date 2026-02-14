@@ -217,9 +217,21 @@ function fzf-sway-move-window() {
             --preview-window=down:10% \
             --color=bg:#222222,preview-bg:#333333 \
             --layout=reverse-list \
+            --print-query \
             --prompt="Move window to workspace: ")
 
     [[ -z $ws ]] && return
+
+    query=$(printf "%s" "$ws" | sed -n '1p')
+    selection=$(printf "%s" "$ws" | sed -n '2p')
+
+    # If a workspace was selected → use it
+    if [[ -n "$selection" ]]; then
+        ws="$selection"
+    else
+        # No options left; use typed query
+        ws="$query"
+    fi
 
     # 5) Move the window
     echo "Moving window $win_id ($win_name) to workspace $ws …"
