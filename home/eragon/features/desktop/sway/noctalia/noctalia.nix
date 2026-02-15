@@ -1,6 +1,9 @@
-{ ... }:
+{ config, ... }:
 {
   # configure options
+  wayland.windowManager.sway.systemd.extraCommands = [
+    "noctalia-shell"
+  ];
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = false;
@@ -47,8 +50,9 @@
         };
       };
       dock.enabled = false;
+      wallpaper.enabled = false;
       general = {
-        avatarImage = "/home/drfoobar/.face";
+        avatarImage = "/home/${config.home.username}/.face";
         radiusRatio = 0.2;
       };
       location = {
