@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.prismlauncher-qt5 ];
+  home.packages = [ pkgs.prismlauncher ];
 
 }
