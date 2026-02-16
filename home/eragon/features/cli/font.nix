@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
 
   home.packages = with pkgs; [ dconf ];
@@ -22,6 +22,12 @@
     emoji = {
       package = pkgs.noto-fonts-color-emoji;
       name = "Noto Color Emoji";
+    };
+    sizes = {
+      desktop = lib.mkDefault 14;
+      terminal = lib.mkDefault 12;
+      popups = lib.mkDefault 14;
+      applications = lib.mkDefault 12;
     };
   };
 }

@@ -50,6 +50,8 @@
       FLAKE = "${config.home.homeDirectory}/nix-config";
       NH_FLAKE = "${config.home.homeDirectory}/nix-config";
     };
+    file.".face".source = lib.cleanSource ./face;
+
   };
 
   # Set default wallpaper and colorscheme

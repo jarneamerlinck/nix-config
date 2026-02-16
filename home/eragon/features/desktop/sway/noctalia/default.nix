@@ -9,8 +9,7 @@ in
     ../common
     ./shotman.nix
     ./wofi.nix
-    # ./waybar.nix
-    ./notifications.nix
+    ./noctalia.nix
     ../common/swaylock.nix
   ];
 

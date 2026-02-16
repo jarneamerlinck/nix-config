@@ -1,11 +1,13 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.noctalia.homeModules.default
     ../base
-    ../features/desktop/sway/minimalistic
+    ../features/desktop/sway/noctalia
 
     # Apps
     ../features/applications/base
@@ -20,10 +22,14 @@
     ../features/applications/cyber/analysis
     ../features/applications/cyber/exploration/nmap-desktop.nix
     ../features/applications/base/excalidraw_desktop_icon.nix
+    ../features/applications/games/prism-launcher.nix
   ];
 
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";
   stylix.image = "${pkgs.wallpapers.star-trails-5k-i0-16-10}";
+  stylix.cursor.package = pkgs.bibata-cursors;
+  stylix.cursor.name = "Bibata-Modern-Ice";
+  stylix.cursor.size = 24;
 
   monitors = [
     {
