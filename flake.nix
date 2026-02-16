@@ -38,11 +38,6 @@
     # Nvim config
     nixvim-config.url = "github:jarneamerlinck/kickstart.nvim";
 
-    # Optional
-    compose2nix = {
-      url = "github:aksiksi/compose2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Magic pen drawing
     hexecute.url = "github:ThatOtherAndrew/Hexecute";
   };
