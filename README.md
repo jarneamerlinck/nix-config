@@ -15,7 +15,7 @@
 ### CLI
 
 - kitty
-- neovim (from nixCats template see: [kickstart.nvim](https://github.com/jarneamerlinck/kickstart.nvim))
+- neovim (from nixvim template see: [kickstart.nvim](https://github.com/jarneamerlinck/kickstart.nvim))
 - fzf
 - zoxide
 - tmux
@@ -25,9 +25,9 @@
 
 - greetd
 - sway + swaylock / swayidle
-- waybar
+- waybar or noctalia shell
 - wofi
-- stylix (or swww)
+- stylix
 
 ### Applications
 
@@ -40,6 +40,10 @@
 ### Sway minimal
 
 ![sway minimal](./docs/images/sway-minimal.png)
+
+### Sway noctalia
+
+![sway noctalia](./docs/images/sway-noctalia.png)
 
 
 
