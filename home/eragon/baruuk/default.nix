@@ -8,6 +8,7 @@
     inputs.noctalia.homeModules.default
     ../base
     ../features/desktop/sway/noctalia
+    ../features/cli/aws.nix
 
     # Apps
     ../features/applications/base
