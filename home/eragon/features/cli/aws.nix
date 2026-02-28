@@ -9,4 +9,8 @@
       };
     };
   };
+  home.shellAliases = {
+    s3 = "aws s3";
+  };
+
 }
