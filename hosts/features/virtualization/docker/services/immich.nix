@@ -7,12 +7,12 @@
 let
   url = "photos.ko0.net";
 
-  version = "v2.5.5";
+  version = "v2.5.6";
   upload_dir = "/data/docker/immich/data";
   db_dir = "/data/docker/immich/postgress";
 
   kiosk_url = "kiosk.ko0.net";
-  kiosk_version = "0.29.1";
+  kiosk_version = "0.33.3";
   kiosk_config_dir = "/data/docker/immich/extentions/kiosk";
 
 in

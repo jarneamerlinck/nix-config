@@ -15,7 +15,7 @@ let
     "OLLAMA_BASE_URL" = "http://ollama:11434";
     "CRAWLER_STORE_PDF" = "true";
   };
-  karakeep_version = "0.30.0";
+  karakeep_version = "0.31.0";
 
 in
 {
