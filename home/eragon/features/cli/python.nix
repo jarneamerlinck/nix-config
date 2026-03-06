@@ -3,6 +3,9 @@
   ...
 }:
 {
-  home.packages = with pkgs; [ uv ];
+  home.packages = with pkgs; [
+    uv
+    cookiecutter
+  ];
 
 }
