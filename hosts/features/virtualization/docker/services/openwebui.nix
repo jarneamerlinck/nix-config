@@ -21,7 +21,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."chat-openwebui" = {
-    image = "ghcr.io/open-webui/open-webui:0.8.0";
+    image = "ghcr.io/open-webui/open-webui:0.8.8";
     environmentFiles = [ "/run/secrets-for-users/openwebui/env" ];
 
     environment = {
@@ -54,7 +54,7 @@ in
   };
 
   virtualisation.oci-containers.containers."ollama" = {
-    image = "ollama/ollama:0.16.0";
+    image = "ollama/ollama:0.17.7";
     volumes = [ "/data/docker/chat/ollama/:/root/.ollama" ];
     environment = {
       "chat_HOST" = "0.0.0.0";

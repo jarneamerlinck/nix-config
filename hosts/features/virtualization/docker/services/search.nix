@@ -6,7 +6,7 @@
 }:
 let
   port = "8080";
-  version = "2026.1.16-2d9f213ca";
+  version = "2026.3.6-68ff08f22";
 in
 
 {
