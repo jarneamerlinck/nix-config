@@ -54,6 +54,7 @@
       nvd # Differ
       nix-output-monitor
       nix-inspect
+      devenv
 
       feh
       ffmpeg
