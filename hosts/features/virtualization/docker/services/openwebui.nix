@@ -43,6 +43,7 @@ in
       "traefik.http.routers.chat-rtr.tls" = "true";
       "traefik.http.routers.chat-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.services.chat-svc.loadbalancer.server.port" = "8080";
+      "traefik.docker.network" = "frontend";
     };
     dependsOn = [ "ollama" ];
     log-driver = "journald";
