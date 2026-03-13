@@ -54,7 +54,7 @@ in
   };
 
   virtualisation.oci-containers.containers."ollama" = {
-    image = "ollama/ollama:0.17.8";
+    image = "ollama/ollama:0.17.7";
     volumes = [ "/data/docker/chat/ollama/:/root/.ollama" ];
     environment = {
       "chat_HOST" = "0.0.0.0";
