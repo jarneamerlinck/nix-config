@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  imports = [ ./channels/zoxide.nix ];
+  imports = [
+    ./channels/zoxide.nix
+    ./channels/nix-packages.nix
+    ./channels/incus.nix
+  ];
 
   programs.nix-search-tv = {
     enable = true;
@@ -9,6 +13,8 @@
   home = {
     shellAliases = {
       tvc = "tv channels";
+      nix-options = "tv nix-search-tv";
+      nshell = "tv nixpkgs";
     };
     packages = with pkgs; [
       bat

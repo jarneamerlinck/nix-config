@@ -1,13 +1,6 @@
 { pkgs, config, ... }:
 {
-  programs.nix-search-tv = {
-    enable = true;
-    enableTelevisionIntegration = true;
-  };
   home = {
-    shellAliases = {
-      tvc = "tv channels";
-    };
     packages = with pkgs; [
       bat
       fd
