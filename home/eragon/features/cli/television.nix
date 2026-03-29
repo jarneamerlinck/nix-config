@@ -4,6 +4,9 @@
     enable = true;
     enableTelevisionIntegration = true;
   };
+  home.shellAliases = {
+    tvc = "tv channels";
+  };
   programs.television = {
     enable = true;
     enableBashIntegration = true;
