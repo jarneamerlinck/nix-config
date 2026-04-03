@@ -94,7 +94,7 @@
     # dfl="fzf-docker-full-log";
     # dll="fzf-docker-live-log";
     gl = "fzf-git-log";
-    fssh = "fzf-ssh";
+    fssh = "tv ssh-hosts";
     hms = "fzf-hm-specialisation";
     l = "eza -l";
     ll = "eza -ahl";
