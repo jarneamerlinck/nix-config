@@ -37,7 +37,7 @@
 
       keybindings = {
         ctrl-s = "actions:start";
-        f2 = "actions:stop";
+        ctrl-k = "actions:stop";
         ctrl-r = "actions:restart";
         ctrl-l = "actions:logs";
         ctrl-e = "actions:exec";
