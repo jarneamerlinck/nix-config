@@ -26,7 +26,7 @@
     ../features/services/games
 
     ../features/services/google_coral.nix
-    ../features/services/wireguard_client.nix
+    # ../features/services/wireguard_client.nix
 
     ## Display server
     ../features/desktop/wayland.nix
