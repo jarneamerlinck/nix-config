@@ -30,7 +30,7 @@
     ../features/desktop/pipewire.nix
 
     ## Services items
-    ../features/services/unattended-upgrades.nix
+    # ../features/services/unattended-upgrades.nix
 
     ../features/virtualization/incus
     ../features/virtualization/docker
