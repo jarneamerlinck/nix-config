@@ -4,6 +4,8 @@
     ./channels/zoxide.nix
     ./channels/nix-packages.nix
     ./channels/incus.nix
+    ./channels/ssh.nix
+    ./channels/docker-containers.nix
   ];
 
   programs.nix-search-tv = {
