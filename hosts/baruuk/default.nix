@@ -18,6 +18,7 @@
 
     ## Services items
     ../features/virtualization/incus
+    ../features/virtualization/qemu
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidraw.nix
     ../features/services/unattended-upgrades.nix

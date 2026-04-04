@@ -89,12 +89,13 @@
   home.shellAliases = {
     de = "fzf-docker-exec";
     dl = "fzf-docker-live-log";
-    kn = "fzf-kube-namespace";
-    kc = "fzf-kube-context";
+    dc = "tv docker-containers";
+    # kn = "fzf-kube-namespace";
+    # kc = "fzf-kube-context";
     # dfl="fzf-docker-full-log";
     # dll="fzf-docker-live-log";
     gl = "fzf-git-log";
-    fssh = "fzf-ssh";
+    fssh = "tv ssh-hosts";
     hms = "fzf-hm-specialisation";
     l = "eza -l";
     ll = "eza -ahl";

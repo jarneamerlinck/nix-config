@@ -14,6 +14,7 @@
     ./python.nix
     ./secret_service.nix
     ./opencode.nix
+    ./television
   ];
 
   programs.btop.enable = true;
