@@ -32,7 +32,7 @@
       actions = {
         connect = {
           description = "SSH into the selected host";
-          command = "ssh '{}' {args}";
+          command = "ssh '{}'";
           mode = "execute";
         };
       };
