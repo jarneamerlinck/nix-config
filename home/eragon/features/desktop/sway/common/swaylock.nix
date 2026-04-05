@@ -34,6 +34,11 @@
         timeout = 60 * 10;
         command = "${config.programs.swaylock.package}/bin/swaylock";
       }
+      {
+        timeout = 60 * 15;
+        command = "${config.wayland.windowManager.sway.package}/bin/swaymsg \"output * dpms off\"";
+        resumeCommand = "${config.wayland.windowManager.sway.package}/bin/swaymsg \"output * dpms on\"";
+      }
     ];
   };
   stylix.targets.swaylock = {
