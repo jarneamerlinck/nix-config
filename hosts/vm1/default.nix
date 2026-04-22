@@ -22,20 +22,40 @@
     ../features/desktop/pipewire.nix
 
     ## Services items
-    ../features/services/unattended-upgrades.nix
 
-    ../features/virtualization/docker
-    ../features/virtualization/docker/traefik.nix
-    ../features/virtualization/docker/services/portainer.nix
-    ../features/virtualization/qemu/qemu-guest.nix
+    # ../features/virtualization/docker
+    # ../features/virtualization/docker/traefik.nix
+    # ../features/virtualization/docker/services/portainer.nix
+    # ../features/virtualization/qemu/qemu-guest.nix
 
-    ../features/desktop/wireshark.nix
   ];
 
   networking = {
     hostName = "vm1";
     useDHCP = true;
-    nameservers = [ "1.1.1.1" ];
+
+    # networking.useNetworkd = true; # recommended for VLAN setups
+    #
+    # networking.vlans = {
+    #   vlan11 = {
+    #     id = 11;
+    #     interface = "enp1s0";
+    #   };
+    #   vlan17 = {
+    #     id = 17;
+    #     interface = "enp1s0";
+    #   };
+    # };
+    #
+    # networking.interfaces = {
+    #   vlan11 = {
+    #     useDHCP = true;
+    #   };
+    #
+    #   vlan17 = {
+    #     # No IP assigned → stays L2 only
+    #   };
+    # };
   };
 
   system.stateVersion = "25.11";
