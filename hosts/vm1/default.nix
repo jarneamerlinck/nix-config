@@ -35,11 +35,11 @@
   networking.vlans = {
     vlan11 = {
       id = 11;
-      interface = "enp2s0";
+      interface = "enp7s0";
     };
     vlan18 = {
       id = 18;
-      interface = "enp2s0";
+      interface = "enp7s0";
     };
   };
 
