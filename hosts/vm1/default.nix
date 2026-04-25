@@ -29,44 +29,36 @@
     # ../features/virtualization/qemu/qemu-guest.nix
 
   ];
-  services.resolved.enable = true;
-  networking = {
-    hostName = "vm1";
-    useDHCP = false;
-    firewall.enable = false;
-    nameservers = [ ];
-    # useNetworkd = true; # recommended for VLAN setups
-    #
-    vlans = {
-      vlan11 = {
-        id = 11;
-        interface = "enp1s0";
-      };
-      vlan18 = {
-        id = 18;
-        interface = "enp1s0";
-      };
-    };
-    dhcpcd.extraConfig = ''
-      interface vlan18
-        nogateway
-    '';
-    interfaces = {
-      enp1s0 = {
-        useDHCP = false;
-        ipv4.addresses = [ ]; # ensure no IP
-      };
-      vlan11 = {
-        useDHCP = true;
-      };
 
-      vlan18 = {
-        # No IP assigned → stays L2 only
-        useDHCP = false;
-        ipv4.addresses = [ ]; # ensure no IP
+  networking.useNetworkd = true;
+
+  networking.vlans = {
+    vlan11 = {
+      id = 11;
+      interface = "enp2s0";
+    };
+    vlan18 = {
+      id = 18;
+      interface = "enp2s0";
+    };
+  };
+
+  systemd.network.networks = {
+    "vlan11" = {
+      matchConfig.Name = "vlan11";
+      networkConfig.DHCP = "ipv4";
+    };
+
+    "vlan18" = {
+      matchConfig.Name = "vlan18";
+      networkConfig.DHCP = "ipv4";
+      dhcpV4Config = {
+        UseRoutes = false; # equivalent of ipv4.never-default
       };
     };
   };
+  services.resolved.enable = true;
+  networking.hostName = "vm1";
 
   system.stateVersion = "25.11";
 }
