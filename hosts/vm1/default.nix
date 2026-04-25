@@ -51,7 +51,7 @@
 
     "vlan18" = {
       matchConfig.Name = "vlan18";
-      networkConfig.DHCP = "ipv4";
+      # networkConfig.DHCP = "ipv4";
       dhcpV4Config = {
         UseRoutes = false; # equivalent of ipv4.never-default
       };
