@@ -18,7 +18,7 @@
     ./mount_points.nix
     ./sops.nix
     ./hardware-packages.nix
-    ./security.nix
+    # ./security.nix
     ./monitoring.nix
     ./networking.nix
 
