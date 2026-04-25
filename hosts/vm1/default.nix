@@ -46,7 +46,15 @@
   systemd.network.networks = {
     "vlan11" = {
       matchConfig.Name = "vlan11";
-      networkConfig.DHCP = "ipv4";
+      # networkConfig.DHCP = "ipv4";
+      networkConfig = {
+        Address = [ "10.25.11.99/24" ]; # your static IP
+        Gateway = "10.25.11.1"; # your gateway
+        DNS = [
+          "10.25.11.1"
+          # "8.8.8.8"
+        ]; # your DNS servers
+      };
     };
 
     "vlan18" = {
