@@ -42,13 +42,13 @@
         id = 11;
         interface = "enp1s0";
       };
-      vlan17 = {
-        id = 17;
+      vlan18 = {
+        id = 18;
         interface = "enp1s0";
       };
     };
     dhcpcd.extraConfig = ''
-      interface vlan17
+      interface vlan18
         nogateway
     '';
     interfaces = {
@@ -60,7 +60,7 @@
         useDHCP = true;
       };
 
-      vlan17 = {
+      vlan18 = {
         # No IP assigned → stays L2 only
         useDHCP = false;
         ipv4.addresses = [ ]; # ensure no IP
