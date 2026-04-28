@@ -160,7 +160,6 @@
       "website": "www.desktophut.com/files",
       "sha256": "f232c4e98c762b10b11a135169df3524b21c39aad2a67624816576dd8e437a25"
    },
-
    {
       "name": "lone-samurai-silhouette-gif",
       "ext": "mp4",
@@ -181,5 +180,33 @@
       "id": "1654796866-1654796866-pc-disturbed-live-wallpaper-free",
       "website": "www.desktophut.com/files",
       "sha256": "737d8453094ec8a559b6d3b12af36b402d89ff59098279e10a26b5f06bb0f210"
+   },
+   {
+      "name": "framework-13-pro-pixel-logo",
+      "ext": "png",
+      "id": "FW%2013%20Pro%20Wallpaper%207",
+      "website": "https://raw.githubusercontent.com/jarneamerlinck/fw-wallpapers/refs/heads/main/Framework%20Laptop%2013%20Pro%20Wallpapers",
+      "sha256": "2ca37f158b87625ea46e614c32f6bae4fb00a5ce8397b1c64e7761281b742f7b"
+   },
+   {
+      "name": "framework-13-pro-pixel-hand",
+      "ext": "png",
+      "id": "FW%2013%20Pro%20Wallpaper%206",
+      "website": "https://raw.githubusercontent.com/jarneamerlinck/fw-wallpapers/refs/heads/main/Framework%20Laptop%2013%20Pro%20Wallpapers",
+      "sha256": "2ca37f158b87625ea46e614c32f6bae4fb00a5ce8397b1c64e7761281b742f7b"
+   },
+   {
+      "name": "framework-13-pro-laptop-open",
+      "ext": "png",
+      "id": "FW%2013%20Pro%20Wallpaper%202",
+      "website": "https://raw.githubusercontent.com/jarneamerlinck/fw-wallpapers/refs/heads/main/Framework%20Laptop%2013%20Pro%20Wallpapers",
+      "sha256": "2ca37f158b87625ea46e614c32f6bae4fb00a5ce8397b1c64e7761281b742f7b"
+   },
+   {
+      "name": "framework-13-pro-linux",
+      "ext": "png",
+      "id": "FW%2013%20Pro%20Wallpaper%201",
+      "website": "https://raw.githubusercontent.com/jarneamerlinck/fw-wallpapers/refs/heads/main/Framework%20Laptop%2013%20Pro%20Wallpapers",
+      "sha256": "2ca37f158b87625ea46e614c32f6bae4fb00a5ce8397b1c64e7761281b742f7b"
    }
 ]
