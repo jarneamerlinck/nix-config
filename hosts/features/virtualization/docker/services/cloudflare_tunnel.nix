@@ -4,7 +4,7 @@
 {
   # Containers
   virtualisation.oci-containers.containers."cloudflare-tunnel" = {
-    image = "cloudflare/cloudflared:2026.3.0";
+    image = "docker.io/cloudflare/cloudflared:2026.3.0";
     environmentFiles = [ "/data/docker/envs/.env_cf_tunnel" ];
     cmd = [
       "tunnel"
