@@ -13,7 +13,7 @@
       configuration = {
         imports = [ ../features/virtualization/docker/services/drawio.nix ];
         system.nixos.tags = [ "tablet" ];
-        services.cage.enable = true;
+        # services.cage.enable = true;
       };
     };
   };

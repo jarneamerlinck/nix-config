@@ -3,8 +3,6 @@ export NIX_SSHOPTS="-A"
 
 build_remote=false
 
-# hosts="$1"
-shift
 
 if [ -z "$host" ]; then
     # read -p "Host name: " hosts
