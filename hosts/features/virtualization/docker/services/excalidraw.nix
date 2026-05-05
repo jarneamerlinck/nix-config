@@ -7,7 +7,7 @@
   # Containers
   virtualisation.oci-containers.containers."excalidraw-excalidraw" = {
     image = "excalidraw/excalidraw:sha-4bfc5bb";
-    ports = [ "38080:80/tcp" ];
+    ports = [ "127.0.0.1:38080:80/tcp" ];
     log-driver = "journald";
     extraOptions = [
       "--cpus=0.5"
