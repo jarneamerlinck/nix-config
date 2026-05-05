@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -9,12 +10,13 @@
   services.cage = {
     enable = true;
     user = "eragon";
-    program = "${pkgs.firefox}/bin/firefox -kiosk https://music.ko0.net";
+    program = "${pkgs.firefox}/bin/firefox --no-remote  --kiosk https://music.ko0.net";
   };
   systemd.services."cage-tty1".after = [
     "network-online.target"
     "systemd-resolved.service"
   ];
+  services.greetd.enable = lib.mkForce false;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # security.polkit.enable = true;
