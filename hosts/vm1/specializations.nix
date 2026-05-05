@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 {
   specialisation = {
     # default = {
@@ -9,13 +14,17 @@
     # };
 
     tablet = {
-      inheritParentConfig = false;
+      inheritParentConfig = true;
       configuration = {
+        # modules = [
+        #   inputs.disko.nixosModules.disko
+        #   { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+        # ];
         imports = [
 
           ./hardware-configuration.nix
 
-          ../features/disks/boot_1d_btrfs.nix
+          # ../features/disks/boot_1d_btrfs.nix
 
           ../base
           ../base/users/eragon
