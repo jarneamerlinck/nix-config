@@ -7,12 +7,12 @@
   # Containers
   virtualisation.oci-containers.containers."excalidraw-excalidraw" = {
     image = "excalidraw/excalidraw:sha-4bfc5bb";
-    ports = [ "38080:80/tcp" ];
+    ports = [ "38080:80" ];
     log-driver = "journald";
     extraOptions = [
       "--cpus=0.5"
       "--memory=500MB"
-      "--network=host"
+      "--network=frontend"
     ];
   };
   systemd.services."docker-excalidraw-excalidraw" = {
