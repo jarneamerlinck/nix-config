@@ -10,7 +10,7 @@
   services.cage = {
     enable = true;
     user = "eragon";
-    program = "${pkgs.firefox}/bin/firefox --no-remote  --kiosk https://music.ko0.net";
+    program = "${pkgs.firefox}/bin/firefox --no-remote  --kiosk http://127.0.0.1:38080";
   };
   systemd.services."cage-tty1".after = [
     "network-online.target"
