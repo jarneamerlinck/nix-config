@@ -2,6 +2,7 @@
   imports = [
 
     ./hardware-configuration.nix
+    ./specializations.nix
 
     ../features/disks/boot_1d_btrfs.nix
 
