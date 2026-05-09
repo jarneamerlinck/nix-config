@@ -1,9 +1,11 @@
 { pkgs, ... }:
 {
-  environment.etc."framework-mode.sh" = {
-    mode = "0755";
+  systemd.services.framework-tablet-mode = {
 
-    text = ''
+    enable = true;
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    script = ''
       #!/usr/bin/env bash
 
       STATE_FILE="/tmp/buffer_tablet_mode"
@@ -49,17 +51,10 @@
         sleep 2
       done
     '';
-  };
-  systemd.services.framework-tablet-mode = {
-    description = "Framework Tablet Mode Switcher";
-
-    wantedBy = [ "multi-user.target" ];
-    after = [ "multi-user.target" ];
-
     serviceConfig = {
-      Type = "simple";
-      ExecStart = "/etc/framework-mode.sh";
-      Restart = "always";
+      # Type = "simple";
+      # ExecStart = "/etc/framework-mode.sh";
+      # Restart = "always";
       RestartSec = 2;
     };
   };
