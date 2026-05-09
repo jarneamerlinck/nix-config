@@ -5,6 +5,12 @@
     enable = true;
     wantedBy = [ "multi-user.target" ];
     after = [ "multi-user.target" ];
+    path = [
+      pkgs.bash
+      pkgs.framework-tool
+      pkgs.gawk
+      pkgs.gnugrep
+    ];
     script = ''
       STATE_FILE="/tmp/buffer_tablet_mode"
 
@@ -16,7 +22,7 @@
       LAST_STATE=$(cat "$STATE_FILE")
 
 
-      ANGLE=$(${pkgs.framework-tool}/bin/framework_tool --sensors | grep "Lid Angle" | awk '{print $3}')
+      ANGLE=$(framework_tool --sensors | grep "Lid Angle" | awk '{print $3}')
       if [[ -z "$ANGLE" ]]; then
           sleep 2
           continue
