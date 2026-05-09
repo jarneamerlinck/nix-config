@@ -1,0 +1,66 @@
+{ pkgs, ... }:
+{
+  environment.etc."framework-mode.sh" = {
+    mode = "0755";
+
+    text = ''
+      #!/usr/bin/env bash
+
+      STATE_FILE="/tmp/buffer_tablet_mode"
+
+
+
+      # Initialize state file if missing
+      if [[ ! -f "$STATE_FILE" ]]; then
+          echo "default" > "$STATE_FILE"
+      fi
+
+      LAST_STATE=$(cat "$STATE_FILE")
+
+      while 1; do
+
+      	ANGLE=$(${pkgs.framework-tool}/bin/framework_tool --sensors | grep "Lid Angle" | awk '{print $3}')
+      	if [[ -z "$ANGLE" ]]; then
+      	    sleep 2
+      	    continue
+      	fi
+
+      	# Higher than 260
+      	if (( ANGLE > 260 )); then
+      	    if [[ "$LAST_STATE" == "default" ]]; then
+      	        echo Switch specialization
+      	        /nix/var/nix/profiles/system/specialisation/tablet/bin/switch-to-configuration switch
+      		echo "tablet" > "$STATE_FILE"
+      	    else
+      	        echo $ANGLE
+      	    fi
+      	fi
+
+      	# Lower than 250
+      	if (( ANGLE < 250 )); then
+      	    if [[ "$LAST_STATE" == "tablet" ]]; then
+      	        echo Switch specialization
+      	        /nix/var/nix/profiles/system/specialisation/default/bin/switch-to-configuration switch
+      		echo "default" > "$STATE_FILE"
+      	    else
+      	        echo $ANGLE
+      	    fi
+      	fi
+        sleep 2
+      done
+    '';
+    systemd.services.framework-tablet-mode = {
+      description = "Framework Tablet Mode Switcher";
+
+      wantedBy = [ "multi-user.target" ];
+      after = [ "multi-user.target" ];
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "/etc/framework-mode.sh";
+        Restart = "always";
+        RestartSec = 2;
+      };
+    };
+  };
+}
