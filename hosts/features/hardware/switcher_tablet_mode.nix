@@ -6,11 +6,9 @@
     wantedBy = [ "multi-user.target" ];
     after = [ "multi-user.target" ];
     script = ''
-      #!/usr/bin/env bash
+      #!${pkgs.bash}/bin/bash
 
       STATE_FILE="/tmp/buffer_tablet_mode"
-
-
 
       # Initialize state file if missing
       if [[ ! -f "$STATE_FILE" ]]; then
