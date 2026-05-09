@@ -45,6 +45,7 @@
       fi
     '';
     serviceConfig = {
+      enable = true;
       Type = "simple";
       User = "root";
       Restart = "always";
