@@ -3,16 +3,11 @@ export NIX_SSHOPTS="-A"
 
 build_remote=false
 
-hosts="$1"
-shift
 
-if [ -z "$hosts" ]; then
+if [ -z "$host" ]; then
     # read -p "Host name: " hosts
-    hosts=$(cat /etc/hostname)
+    # hosts=$(cat /etc/hostname)
+    host="$(hostnamectl hostname)"
 fi
 
-for host in ${hosts//,/ }; do
-    # nixos-rebuild --flake .\#$host switch --target-host $host --use-remote-sudo --use-substitutes $@
-    nh os switch -H $host .
-
-done
+nh os switch "$@" -H "$host" .

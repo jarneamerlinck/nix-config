@@ -1,0 +1,70 @@
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+{
+  specialisation = {
+    default = {
+      inheritParentConfig = true;
+      configuration = {
+        system.nixos.tags = [ "default" ];
+      };
+    };
+
+    tablet = {
+      inheritParentConfig = true;
+      configuration = {
+        # modules = [
+        #   inputs.disko.nixosModules.disko
+        #   { disko.devices.disk.boot_disk.device = "/dev/vda"; }
+        # ];
+        imports = [
+
+          ../features/desktop/cage.nix
+          inputs.hardware.nixosModules.framework-12-13th-gen-intel
+          ./hardware-configuration.nix
+          ../features/hardware/laptop.nix
+          ../features/hardware/keychron.nix
+          ../features/disks/boot_btrfs_laptop.nix
+
+          ../base/timezone.nix
+
+          ../base
+          ../base/users/eragon
+          ../features/disks/wd-decrypt.nix
+          ../features/desktop/wireless.nix
+          ../features/hardware/switcher_tablet_mode.nix
+          # ../features/desktop/hexecute.nix
+
+          ## Services items
+          ../features/virtualization/incus
+          ../features/virtualization/qemu
+          ../features/virtualization/docker
+          ../features/virtualization/docker/services/excalidraw.nix
+          ../features/services/unattended-upgrades.nix
+
+          ../features/services/games
+
+          ../features/services/google_coral.nix
+
+          # ../features/services/wireguard_client.nix
+
+          ## Display server
+          ../features/desktop/wayland.nix
+          ../features/desktop/gtk.nix
+          ../features/desktop/krita.nix
+
+          ## Display Managers
+          ../features/desktop/greetd.nix
+
+          ## Desktop environments / Window Managers
+          ../features/desktop/mouse.nix
+          ../features/desktop/pipewire.nix
+        ];
+        system.nixos.tags = [ "tablet" ];
+      };
+    };
+  };
+}

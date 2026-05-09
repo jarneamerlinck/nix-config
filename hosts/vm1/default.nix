@@ -2,6 +2,7 @@
   imports = [
 
     ./hardware-configuration.nix
+    ./specializations.nix
 
     ../features/disks/boot_1d_btrfs.nix
 
@@ -26,7 +27,6 @@
 
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
-    ../features/virtualization/docker/services/portainer.nix
     ../features/virtualization/qemu/qemu-guest.nix
 
     ../features/desktop/wireshark.nix
