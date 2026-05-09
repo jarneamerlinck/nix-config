@@ -1,6 +1,7 @@
 { inputs, lib, ... }:
 {
   imports = [
+    ./specializations.nix
 
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
