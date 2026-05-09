@@ -17,42 +17,39 @@
 
       LAST_STATE=$(cat "$STATE_FILE")
 
-      while 1; do
 
-      	ANGLE=$(${pkgs.framework-tool}/bin/framework_tool --sensors | grep "Lid Angle" | awk '{print $3}')
-      	if [[ -z "$ANGLE" ]]; then
-      	    sleep 2
-      	    continue
-      	fi
+      ANGLE=$(${pkgs.framework-tool}/bin/framework_tool --sensors | grep "Lid Angle" | awk '{print $3}')
+      if [[ -z "$ANGLE" ]]; then
+          sleep 2
+          continue
+      fi
 
-      	# Higher than 260
-      	if (( ANGLE > 260 )); then
-      	    if [[ "$LAST_STATE" == "default" ]]; then
-      	        echo Switch specialization
-      	        /nix/var/nix/profiles/system/specialisation/tablet/bin/switch-to-configuration switch
-      		echo "tablet" > "$STATE_FILE"
-      	    else
-      	        echo $ANGLE
-      	    fi
-      	fi
+      # Higher than 260
+      if (( ANGLE > 260 )); then
+          if [[ "$LAST_STATE" == "default" ]]; then
+              echo Switch specialization
+              /nix/var/nix/profiles/system/specialisation/tablet/bin/switch-to-configuration switch
+      	echo "tablet" > "$STATE_FILE"
+          else
+              echo $ANGLE
+          fi
+      fi
 
-      	# Lower than 250
-      	if (( ANGLE < 250 )); then
-      	    if [[ "$LAST_STATE" == "tablet" ]]; then
-      	        echo Switch specialization
-      	        /nix/var/nix/profiles/system/specialisation/default/bin/switch-to-configuration switch
-      		echo "default" > "$STATE_FILE"
-      	    else
-      	        echo $ANGLE
-      	    fi
-      	fi
-        sleep 2
-      done
+      # Lower than 250
+      if (( ANGLE < 250 )); then
+          if [[ "$LAST_STATE" == "tablet" ]]; then
+              echo Switch specialization
+              /nix/var/nix/profiles/system/specialisation/default/bin/switch-to-configuration switch
+      	echo "default" > "$STATE_FILE"
+          else
+              echo $ANGLE
+          fi
+      fi
     '';
     serviceConfig = {
-      # Type = "simple";
-      # ExecStart = "/etc/framework-mode.sh";
-      # Restart = "always";
+      Type = "simple";
+      User = "root";
+      Restart = "always";
       RestartSec = 2;
     };
   };
