@@ -50,17 +50,17 @@
       done
     '';
   };
-  # systemd.services.framework-tablet-mode = {
-  #   description = "Framework Tablet Mode Switcher";
-  #
-  #   wantedBy = [ "multi-user.target" ];
-  #   after = [ "multi-user.target" ];
-  #
-  #   serviceConfig = {
-  #     Type = "simple";
-  #     ExecStart = "/etc/framework-mode.sh";
-  #     Restart = "always";
-  #     RestartSec = 2;
-  #   };
-  # };
+  systemd.services.framework-tablet-mode = {
+    description = "Framework Tablet Mode Switcher";
+
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "/etc/framework-mode.sh";
+      Restart = "always";
+      RestartSec = 2;
+    };
+  };
 }

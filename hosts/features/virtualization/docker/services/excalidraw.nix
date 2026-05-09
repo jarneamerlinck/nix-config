@@ -11,7 +11,7 @@
     log-driver = "journald";
     extraOptions = [
       "--cpus=0.5"
-      "--memory=500MB"
+      "--memory=100MB"
       "--network=frontend"
     ];
   };
