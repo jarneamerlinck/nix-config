@@ -15,6 +15,7 @@
     ../base/users/eragon
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
+    ../features/hardware/switcher_tablet_mode.nix
     # ../features/desktop/hexecute.nix
 
     ## Services items
