@@ -10,9 +10,12 @@
       pkgs.framework-tool
       pkgs.gawk
       pkgs.gnugrep
+      pkgs.util-linux
+      pkgs.firefox
     ];
     script = ''
       STATE_FILE="/tmp/buffer_tablet_mode"
+      FIREFOX_PID_FILE="/tmp/tablet_kiosk_firefox.pid"
 
       # Initialize state file if missing
       if [[ ! -f "$STATE_FILE" ]]; then
@@ -32,7 +35,9 @@
       if (( ANGLE > 260 )); then
           if [[ "$LAST_STATE" == "default" ]]; then
               echo Switch specialization
-              /nix/var/nix/profiles/system/specialisation/tablet/bin/switch-to-configuration switch
+              # /nix/var/nix/profiles/system/specialisation/tablet/bin/switch-to-configuration switch
+              runuser -u eragon -- \
+                    firefox --new-window --kiosk http://localhost:6767 &
       	echo "tablet" > "$STATE_FILE"
           else
               echo $ANGLE
@@ -43,7 +48,18 @@
       if (( ANGLE < 250 )); then
           if [[ "$LAST_STATE" == "tablet" ]]; then
               echo Switch specialization
-              /nix/var/nix/profiles/system/specialisation/default/bin/switch-to-configuration switch
+              # /nix/var/nix/profiles/system/specialisation/default/bin/switch-to-configuration switch
+
+
+              if [[ -f "$FIREFOX_PID_FILE" ]]; then
+                  PID=$(cat "$FIREFOX_PID_FILE")
+
+                  if kill -0 "$PID" 2>/dev/null; then
+                      kill "$PID"
+                  fi
+
+                  rm -f "$FIREFOX_PID_FILE"
+              fi
       	echo "default" > "$STATE_FILE"
           else
               echo $ANGLE

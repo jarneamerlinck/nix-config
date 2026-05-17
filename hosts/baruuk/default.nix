@@ -1,7 +1,6 @@
 { inputs, lib, ... }:
 {
   imports = [
-
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
     ../features/hardware/laptop.nix
@@ -14,7 +13,7 @@
     ../base/users/eragon
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
-    # ../features/hardware/switcher_tablet_mode.nix
+    ../features/hardware/switcher_tablet_mode.nix
     # ../features/desktop/hexecute.nix
 
     ## Services items
