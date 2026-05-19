@@ -24,6 +24,7 @@
     ../features/services/unattended-upgrades.nix
 
     ../features/services/games
+    ../features/services/obs-studio.nix
 
     ../features/services/google_coral.nix
     # ../features/services/wireguard_client.nix
