@@ -1,8 +1,6 @@
 { inputs, lib, ... }:
 {
   imports = [
-    ./specializations.nix
-
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
     ./hardware-configuration.nix
     ../features/hardware/laptop.nix
@@ -22,7 +20,7 @@
     ../features/virtualization/incus
     ../features/virtualization/qemu
     ../features/virtualization/docker
-    ../features/virtualization/docker/services/excalidraw.nix
+    ../features/virtualization/docker/services/excalidash_local.nix
     ../features/services/unattended-upgrades.nix
 
     ../features/services/games
