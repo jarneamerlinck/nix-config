@@ -17,9 +17,9 @@
         "map to guest" = "bad user";
       };
       "public" = {
-        "path" = "/data/docker";
+        "path" = "/data/docker/samba";
         "browseable" = "yes";
-        "read only" = "yes";
+        "read only" = "false";
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";

@@ -13,6 +13,7 @@
 
     ../features/disks/boot_custom_nas.nix
 
+    ../features/services/samba.nix
     # ../common/disko/boot_custom_nas.nix
 
     ../base

@@ -49,6 +49,7 @@ in
       "audio"
       "mounts"
       "incus-admin"
+      "samba"
     ]
     ++ ifTheyExist [
       "network"
