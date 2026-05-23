@@ -4,7 +4,7 @@
 {
   # Containers
   virtualisation.oci-containers.containers."freshrss" = {
-    image = "lscr.io/linuxserver/freshrss:1.28.1";
+    image = "lscr.io/linuxserver/freshrss:1.29.1";
     environment = {
       "PGID" = "100";
       "PUID" = "1442";

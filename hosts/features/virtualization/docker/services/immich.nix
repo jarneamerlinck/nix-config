@@ -12,7 +12,7 @@ let
   db_dir = "/data/docker/immich/postgress";
 
   kiosk_url = "kiosk.ko0.net";
-  kiosk_version = "0.37.0";
+  kiosk_version = "0.38.1";
   kiosk_config_dir = "/data/docker/immich/extentions/kiosk";
 
 in
