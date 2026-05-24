@@ -17,6 +17,7 @@
     ../features/applications/base/media_player.nix
     ../features/applications/base/image_editing.nix
     ../features/applications/base/hexecute.nix
+    ../features/applications/base/obsidian.nix
     ../features/applications/music
     ../features/applications/base/proton.nix
     ../features/applications/cyber/default.nix
