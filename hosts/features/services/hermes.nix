@@ -6,7 +6,7 @@
 {
 
   sops.secrets."hermes-env" = {
-    sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
+    sopsFile = /../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
   imports = [ inputs.hermes-agent.nixosModules.default ];
