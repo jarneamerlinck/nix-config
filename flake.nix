@@ -40,6 +40,9 @@
 
     # Magic pen drawing
     hexecute.url = "github:ThatOtherAndrew/Hexecute";
+
+    # AI agent
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs =

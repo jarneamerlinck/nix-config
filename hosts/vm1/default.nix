@@ -24,6 +24,7 @@
 
     ## Services items
     ../features/services/unattended-upgrades.nix
+    ../features/services/hermes.nix
 
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
