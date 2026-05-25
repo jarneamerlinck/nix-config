@@ -5,10 +5,10 @@
 }:
 {
 
-  sops.secrets."hermes-env" = {
-    sopsFile = /../../${config.networking.hostName}/secrets.yml;
-    neededForUsers = false;
-  };
+  # sops.secrets."hermes" = {
+  #   sopsFile = /../../${config.networking.hostName}/secrets.yml;
+  #   neededForUsers = false;
+  # };
   imports = [ inputs.hermes-agent.nixosModules.default ];
   # services.hermes-agent = {
   #   enable = true;
