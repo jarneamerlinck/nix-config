@@ -16,6 +16,7 @@
       model = {
         default = "gpt-oss:20b";
         base_url = "https://chat.ko0.net/api";
+        provider = "custom";
       };
     };
 
