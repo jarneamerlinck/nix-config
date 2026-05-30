@@ -58,10 +58,9 @@ in
     image = "ollama/ollama:0.24.0";
     volumes = [ "/data/docker/chat/ollama/:/root/.ollama" ];
     environment = {
-      "chat_HOST" = "0.0.0.0";
-      "chat_KEEP_ALIVE" = "5m";
-      "chat_FLASH_ATTENTION" = "0";
-      "chat_GIN_MODE" = "release";
+      "OLLAMA_HOST" = "0.0.0.0";
+      "OLLAMA_KEEP_ALIVE" = "10m";
+      "OLLAMA_CONTEXT_LENGTH" = "64000";
     };
     log-driver = "journald";
     extraOptions = [
