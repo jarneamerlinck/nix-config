@@ -27,7 +27,7 @@
       v = "nvim";
       rebuild = "cd $NH_FLAKE &&  ./deploy.sh";
       rebuildf = "cd $NH_FLAKE && git stash &&  git pull -f && ./deploy.sh";
-      rebuildl = "cd $NH_FLAKE && ./deploy.sh";
+      rebuildl = "cd $NH_FLAKE && ./deploy.sh --offline";
       debug = ''
         nix-inspect --expr "builtins.getFlake \"$(pwd)\""
       '';
