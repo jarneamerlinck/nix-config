@@ -14,7 +14,6 @@
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
     ../features/hardware/switcher_tablet_mode.nix
-    # ../features/desktop/hexecute.nix
 
     ## Services items
     ../features/virtualization/incus
@@ -28,6 +27,7 @@
 
     ../features/services/google_coral.nix
     ../features/services/wireguard_client.nix
+    ../features/services/hermes.nix
 
     ## Display server
     ../features/desktop/wayland.nix
