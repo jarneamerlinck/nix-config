@@ -28,16 +28,18 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    # See above
-    # userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.d/hosts";
-    matchBlocks = {
-      net = {
-        host = lib.concatStringsSep " " (lib.flatten (map (host: [ "${host}.ko0.net" ]) hostnames));
-        forwardAgent = true;
-        forwardX11 = true;
-        forwardX11Trusted = true;
-        setEnv.WAYLAND_DISPLAY = "wayland-waypipe";
-        extraOptions.StreamLocalBindUnlink = "yes";
+
+    settings = {
+      "Host ${lib.concatStringsSep " " (map (host: "${host}.ko0.net") hostnames)}" = {
+        ForwardAgent = true;
+        ForwardX11 = true;
+        ForwardX11Trusted = true;
+
+        SetEnv = {
+          WAYLAND_DISPLAY = "wayland-waypipe";
+        };
+
+        StreamLocalBindUnlink = "yes";
       };
     };
   };
