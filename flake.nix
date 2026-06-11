@@ -133,7 +133,7 @@
           modules = [
             ./hosts/baruuk
             disko.nixosModules.disko
-            { disko.devices.disk.boot_disk.device = "/dev/nvme0n1"; }
+            { disko.devices.disk.boot_disk.device = "/dev/disk/by-id/nvme-WD_BLACK_SN770M_1TB_25164J800202"; }
           ];
           specialArgs = { inherit inputs outputs; };
         };
