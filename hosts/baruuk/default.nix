@@ -17,7 +17,6 @@
     # ../features/desktop/hexecute.nix
 
     ## Services items
-    ../features/virtualization/incus
     ../features/virtualization/qemu
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidash_local.nix
@@ -27,7 +26,7 @@
     ../features/services/obs-studio.nix
 
     ../features/services/google_coral.nix
-    ../features/services/wireguard_client.nix
+    # ../features/services/wireguard_client.nix
 
     ## Display server
     ../features/desktop/wayland.nix
