@@ -4,7 +4,7 @@
 
   imports = [
     ./btrfs.nix
-    ./clevis.nix
+    # ./clevis.nix
   ];
 
   disko.devices = {

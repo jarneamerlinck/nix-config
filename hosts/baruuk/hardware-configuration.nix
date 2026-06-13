@@ -24,6 +24,7 @@
         "virtio_pci" # PCI for virtio, only needed if VM is needed
         "virtio_blk" # Block for virtio, only needed if VM is needed
         "sr_mod" # Used for CD-ROM
+        "nvme" # nvme
       ];
       kernelModules = [ ];
     };
