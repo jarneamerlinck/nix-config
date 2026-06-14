@@ -44,6 +44,7 @@
                 settings = {
                   crypttabExtraOpts = [
                     "fido2-device=auto"
+                    "tpm2-device=auto"
                     "token-timeout=10"
                   ];
                 };
