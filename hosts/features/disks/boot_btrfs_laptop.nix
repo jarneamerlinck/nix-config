@@ -4,7 +4,7 @@
 
   imports = [
     ./btrfs.nix
-    ./clevis.nix
+    # ./clevis.nix
   ];
 
   disko.devices = {
@@ -38,12 +38,11 @@
                 type = "swap";
               };
             };
-            lusk = {
+            luks = {
               size = "100%";
               content = {
                 settings = {
                   crypttabExtraOpts = [
-                    "fido2-device=auto"
                     "token-timeout=10"
                   ];
                 };
@@ -51,11 +50,11 @@
                 type = "luks";
                 name = "crypted";
                 # disable settings.keyFile if you want to use interactive password entry
-                passwordFile = "/tmp/disk.key"; # Interactive
-                # settings = {
-                #   allowDiscards = true;
-                #   keyFile = "/tmp/disk-1.key";
-                # };
+                passwordFile = "/tmp/disk.key"; # Interactiveµ
+                settings = {
+                  allowDiscards = true;
+                  # keyFile = "/tmp/disk-1.key";
+                };
                 content = {
                   type = "btrfs";
                   extraArgs = [ ];
@@ -85,6 +84,14 @@
                       ];
                       mountpoint = "/nix";
                     };
+                    "/data" = {
+                      mountpoint = "/data";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+
                   };
                 };
               };
