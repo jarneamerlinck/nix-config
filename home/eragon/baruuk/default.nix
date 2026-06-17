@@ -15,16 +15,16 @@
     ../features/applications/base/discord.nix
     ../features/applications/base/office.nix
     ../features/applications/base/media_player.nix
-    ../features/applications/base/image_editing.nix
-    ../features/applications/base/hexecute.nix
+    # ../features/applications/base/image_editing.nix
+    # ../features/applications/base/hexecute.nix
     ../features/applications/base/obsidian.nix
     ../features/applications/music
-    ../features/applications/base/proton.nix
-    ../features/applications/cyber/default.nix
-    ../features/applications/cyber/analysis
-    ../features/applications/cyber/exploration/nmap-desktop.nix
-    ../features/applications/base/excalidraw_desktop_icon.nix
-    ../features/applications/games/prism-launcher.nix
+    # ../features/applications/base/proton.nix
+    # ../features/applications/cyber/default.nix
+    # ../features/applications/cyber/analysis
+    # ../features/applications/cyber/exploration/nmap-desktop.nix
+    # ../features/applications/base/excalidraw_desktop_icon.nix
+    # ../features/applications/games/prism-launcher.nix
   ];
 
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml";

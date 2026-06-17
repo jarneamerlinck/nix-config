@@ -14,12 +14,11 @@
     systemd.enable = true;
     clevis.enable = true;
   };
-  boot.initrd.systemd.services.cryptsetup.enable = true;
+  # boot.initrd.systemd.services.cryptsetup.enable = true;
   environment.systemPackages = with pkgs; [
     clevis
     tpm2-tools
     cryptsetup
-    libfido2
     tpm2-tss
   ];
 }

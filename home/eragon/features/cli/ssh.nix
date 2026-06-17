@@ -6,14 +6,14 @@
 let
   nixosConfigs = builtins.attrNames outputs.nixosConfigurations;
   # homeConfigs = map (n: lib.last (lib.splitString "@" n)) (builtins.attrNames config.homeConfigurations);
-  homeConfigs = [
+  sshAvailableHosts = [
     "testing"
     "vm1"
     "atlas"
     "banshee"
     "ash"
   ];
-  hostnames = lib.unique (homeConfigs ++ nixosConfigs);
+  hostnames = lib.unique (sshAvailableHosts ++ nixosConfigs);
 in
 {
   # Persisting known_hosts with impermance is wonky, as SSH sometimes
