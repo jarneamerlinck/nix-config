@@ -2,7 +2,7 @@
 {
   # configure options
   wayland.windowManager.sway.systemd.extraCommands = [
-    "noctalia-shell"
+    "noctalia"
   ];
   programs.noctalia = {
     enable = true;
