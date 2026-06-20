@@ -91,7 +91,7 @@
     };
   };
   networking.wireless = {
-    enable = lib.mkForce false;
+    enable = lib.mkForce true;
   };
   #
   # # Ensure group exists
