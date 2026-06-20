@@ -5,7 +5,6 @@
 [Sops](https://github.com/getsops/sops) can be used to encrypt secrets
 with the nixos module called: [sops-nix](https://github.com/Mic92/sops-nix).
 
-
 Deploying a new machine with sops: [nixos with sops](https://nix-community.github.io/nixos-anywhere/howtos/secrets.html).
 
 Opening a sops file is possible if you have generated the sops secret (see [generating secrets](./sops.md#generating-secrets))
