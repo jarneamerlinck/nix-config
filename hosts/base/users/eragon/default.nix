@@ -38,7 +38,7 @@ let
 
 in
 {
-  users.mutableUsers = true; # Only enable if you set password from sops or from nix-config
+  users.mutableUsers = true; # Only enable if you set password outisde sops or from nix-config
   users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
