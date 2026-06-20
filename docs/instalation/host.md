@@ -123,3 +123,5 @@ Rebuild host
 ```bash
 rebuildf
 ```
+
+Reboot host to validate boot
