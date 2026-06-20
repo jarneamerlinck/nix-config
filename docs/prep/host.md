@@ -80,9 +80,6 @@ traefik:
         CF_DNS_API_TOKEN=token
 ```
 
-
-
-
 ## 5. Allow other hosts to ssh into it.
 
 If the host is a server that others need to ssh into you need to add it to the list in `../home/eragon/features/cli/ssh.nix`

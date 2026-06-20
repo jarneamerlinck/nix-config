@@ -73,9 +73,53 @@ nix run github:nix-community/nixos-anywhere -- --extra-files "$TEMP" --disk-encr
 
 After the nixos anywhere has completed the live boot will automaticly reboot
 
-## 3. New host after reboot (Only for luks + tpm)
+## 3. New host after reboot
+### Luks + tmp2 (Only if required)
 
 
 ```bash
 sudo systemd-cryptenroll --wipe-slot=tpm2 --tpm2-device=auto --tpm2-pcrs=0 /dev/disk/by-id/nvme-WD_BLACK_SN770M_1TB_000000000000-part4
+```
+
+### Create folders for age keys
+
+```bash
+mkdir -p ~/.config/sops/age
+```
+
+## 4. Copy ssh/age keys to host
+
+Next you'll need to copy the ssh pub and priv key to the host for the correct user.
+Same for the age key
+
+- ssh (~/.ssh)
+
+    ```text
+    [drwx------]  .ssh
+    ├── [-rw-r--r--]  authorized_keys
+    ├── [lrwxrwxrwx]  config -> /nix/store/9lwp57aw2ac7j1yjygga9aq5zd67mkzd-home-manager-files/.ssh/config
+    ├── [-rw-------]  id_ed25519
+    ├── [-rw-r--r--]  id_ed25519.pub
+    ```
+- age (~/.config/sops/age/keys.txt)
+
+    ```text
+    [drwxr-xr-x]  .config/sops/age
+    └── [-rw-r--r--]  keys.txt
+    ```
+
+## 5. Clone repo and rebuild
+
+Clone this repo and rebuild it
+
+```bash
+git clone git@github.com:jarneamerlinck/nix-config.git ~/nix-config
+cd nix-config
+# git checkout feature/new-host
+```
+
+Rebuild host
+
+```bash
+rebuildf
 ```
