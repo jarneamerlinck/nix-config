@@ -17,21 +17,21 @@
     # ../features/desktop/hexecute.nix
 
     ## Services items
-    # ../features/virtualization/qemu
+    ../features/virtualization/qemu
     ../features/virtualization/docker
-    # ../features/virtualization/docker/services/excalidash_local.nix
+    ../features/virtualization/docker/services/excalidash_local.nix
     # ../features/services/unattended-upgrades.nix
 
-    # ../features/services/games
-    # ../features/services/obs-studio.nix
+    ../features/services/games
+    ../features/services/obs-studio.nix
 
-    # ../features/services/google_coral.nix
+    ../features/services/google_coral.nix
     # ../features/services/wireguard_client.nix
 
     ## Display server
     ../features/desktop/wayland.nix
     ../features/desktop/gtk.nix
-    # ../features/desktop/krita.nix
+    ../features/desktop/krita.nix
 
     ## Display Managers
     ../features/desktop/greetd.nix
