@@ -6,20 +6,18 @@ Add user to the nix flake and fix sops
 
 ## 1. Create config for user
 
-
 ### Password
 
-the password can be set depending if you want to fully manage the password with nix or just the inital password
+the password can be set depending if you want to fully manage
+the password with nix or just the inital password.
 
 for inital password use: `users.users.<name>.initialHashedPassword`1
-
 
 for fully managed passwords: `users.users.<name>.hashedPasswordFile`
 
 > Important: for inital it's the password itself
 > for `users.users.<name>.hashedPasswordFile` it's the path to the sops file
-> `  users.mutableUsers = true; # Only enable if you set password outside sops or from nix-config
-`
+> `users.mutableUsers = true;` if you set password outside sops or from nix-config
 
 ### Without home manager
 
@@ -46,7 +44,7 @@ Adding an new user without home manager is simple.
       username = "<name>";
     in
     {
-      users.mutableUsers = true; # Only enable if you set password outisde sops or from nix-config
+      users.mutableUsers = true; # Enable to configure users outside of nix
       users.users."${username}" = {
         isNormalUser = true;
         shell = pkgs.bash;
@@ -92,9 +90,7 @@ Adding an new user without home manager is simple.
 
     ```
 
-
 ### With Home manager
-
 
 Adding an new user with home manager is a bit more complex
 
@@ -151,7 +147,7 @@ Adding an new user with home manager is a bit more complex
 
     in
     {
-      users.mutableUsers = true; # Only enable if you set password outside sops or from nix-config
+      users.mutableUsers = true; # Enable to configure users outside of nix
       users.users."${username}" = {
         isNormalUser = true;
         shell = pkgs.bash;
@@ -189,24 +185,24 @@ Adding an new user with home manager is a bit more complex
 
 2. Include the file in the host
 
-```nix
-{ inputs, lib, ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
+    ```nix
+    { inputs, lib, ... }:
+    {
+      imports = [
+        ./hardware-configuration.nix
 
-    ../base
-    ../base/users/<name>
-  ];
-  networking = {
-    hostName = "<hostname>";
-    useDHCP = lib.mkDefault true;
-  };
+        ../base
+        ../base/users/<name>
+      ];
+      networking = {
+        hostName = "<hostname>";
+        useDHCP = lib.mkDefault true;
+      };
 
-  system.stateVersion = "26.05";
-}
+      system.stateVersion = "26.05";
+    }
 
-```
+    ```
 
 3. Create the home manager file `home/<username>/<hostname>/default.nix`
 
