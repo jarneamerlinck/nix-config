@@ -10,6 +10,16 @@ Deploying a new machine with sops: [nixos with sops](https://nix-community.githu
 Opening a sops file is possible if you have generated the sops secret
 (see [generating secrets](#generating-secrets)) and added it to the host machine
 
+## New Host
+
+1. Get host ssh key
+
+    The ssh key should be `$TEMP/etc/ssh/ssh_host_ed25519_key`.
+
+2. Create the sops secret with the ssh key (see [generating secrets](#generating-secrets))
+
+3. Add the sops public key to `.sops.yaml` (see [add age key to sops](#add-age-key-to-sops))
+
 ## New user
 
 1. Create the sops secret with the ssh key (see [generating secrets](#generating-secrets))
@@ -92,16 +102,6 @@ To add the key to sops there are a few steps we need to do.
     > If on a new host you get the message key is not accepted to decrypt `/nix/store/**-secrets.yml`,
     > validate that file can be opend with the user that needs to read it
     > and rebuild on the host.
-
-## New Host
-
-1. Get host ssh key
-
-    The ssh key should be `$TEMP/etc/ssh/ssh_host_ed25519_key`.
-
-2. Create the sops secret with the ssh key (see [generating secrets](#generating-secrets))
-
-3. Add the sops public key to `.sops.yaml`
 
 ## Generating secrets
 
