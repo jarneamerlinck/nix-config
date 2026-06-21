@@ -7,7 +7,7 @@ Copy ssh keys and other remaining items to the newly setup host
 
 1. Copy the age key to the user dir for sops
 
-see [sops](./sops.md#new-device-user)
+see [sops](../sops.md#new-device-user)
 
 2. Rebuild to apply the ssh keys
 

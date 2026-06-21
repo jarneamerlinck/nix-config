@@ -12,7 +12,7 @@ Opening a sops file is possible if you have generated the sops secret
 
 ## New user
 
-1. Create the sops secret with the ssh key (see [generating secrets](./sops.md#generating-secrets))
+1. Create the sops secret with the ssh key (see [generating secrets](#generating-secrets))
 
 2. Add the sops public key to `.sops.yaml`
 
@@ -99,7 +99,7 @@ To add the key to sops there are a few steps we need to do.
 
     The ssh key should be `$TEMP/etc/ssh/ssh_host_ed25519_key`.
 
-2. Create the sops secret with the ssh key (see [generating secrets](./sops.md#generating-secrets))
+2. Create the sops secret with the ssh key (see [generating secrets](#generating-secrets))
 
 3. Add the sops public key to `.sops.yaml`
 

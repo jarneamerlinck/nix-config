@@ -22,7 +22,7 @@ with the ssh key for the user.
 
 The admin will add the key to `../../.sops.yaml`
 
-see [sops add key](./sops.md#add-age-key-to-sops)
+see [sops add key](../sops.md#add-age-key-to-sops)
 
 ## 4. Generate user password
 
