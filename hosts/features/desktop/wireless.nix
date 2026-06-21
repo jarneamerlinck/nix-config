@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
 
   sops.secrets."wireless/env" = {
@@ -91,7 +91,7 @@
     };
   };
   networking.wireless = {
-    enable = false;
+    enable = lib.mkForce true;
   };
   #
   # # Ensure group exists

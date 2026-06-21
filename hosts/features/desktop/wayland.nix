@@ -19,9 +19,5 @@
   ];
 
   programs.dconf.enable = true;
-  programs.light = {
-    enable = true;
-    brightnessKeys.enable = true;
-  };
   security.pam.services.swaylock = { };
 }

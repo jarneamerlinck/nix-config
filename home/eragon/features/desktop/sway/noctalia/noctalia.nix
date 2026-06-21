@@ -2,9 +2,11 @@
 {
   # configure options
   wayland.windowManager.sway.systemd.extraCommands = [
-    "noctalia-shell"
+    "noctalia"
   ];
-  programs.noctalia-shell = {
+
+  stylix.targets.noctalia.colorTheme.enable = true;
+  programs.noctalia = {
     enable = true;
     systemd.enable = false;
     settings = {

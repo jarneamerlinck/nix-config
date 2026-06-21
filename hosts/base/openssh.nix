@@ -31,7 +31,7 @@ in
       # Allow forwarding ports to everywhere
       GatewayPorts = "clientspecified";
       # Let WAYLAND_DISPLAY be forwarded
-      AcceptEnv = "WAYLAND_DISPLAY";
+      AcceptEnv = [ "WAYLAND_DISPLAY" ];
       X11Forwarding = true;
     };
 

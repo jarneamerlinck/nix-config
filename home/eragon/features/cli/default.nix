@@ -51,7 +51,7 @@
       dig
 
       nil # Nix LSP
-      nixfmt-rfc-style # Nix formatter
+      nixfmt # Nix formatter
       # nixfmt-classic # Prev formater
       nvd # Differ
       nix-output-monitor

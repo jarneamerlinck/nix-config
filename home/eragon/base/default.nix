@@ -44,7 +44,7 @@
   home = {
     username = lib.mkDefault "eragon";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "25.11";
+    stateVersion = lib.mkDefault "26.05";
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       FLAKE = "${config.home.homeDirectory}/nix-config";
