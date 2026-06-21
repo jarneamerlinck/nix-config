@@ -61,7 +61,7 @@ Final result should be
 
     4. add the `ssh_host_ed25519_key.pub` in `hosts/{hostname}/ssh_host_ed25519_key.pub`
 
-    5. [sops new host](./sops.md#new-host)
+    5. [sops config for new host](./sops.md#new-host)
 
 2. Copy the harware config and adjust
 
