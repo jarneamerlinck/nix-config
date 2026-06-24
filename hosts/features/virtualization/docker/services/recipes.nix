@@ -79,7 +79,7 @@
     wantedBy = [ "docker-compose-tandoor-root.target" ];
   };
   virtualisation.oci-containers.containers."tandoor-web_recipes" = {
-    image = "vabene1111/recipes:1.5.24";
+    image = "vabene1111/recipes:2.6.11"; # imgupdate https://hub.docker.com/r/vabene1111/recipes/tags
     volumes = [
       "/data/docker/tandoor/mediafiles:/opt/recipes/mediafiles:rw"
       "tandoor_nginx_config:/opt/recipes/nginx/conf.d:rw"
