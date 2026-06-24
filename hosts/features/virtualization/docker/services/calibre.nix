@@ -7,7 +7,7 @@
   # Containers
 
   virtualisation.oci-containers.containers."calibre-server" = {
-    image = "lscr.io/linuxserver/calibre:8.9.0";
+    image = "lscr.io/linuxserver/calibre:8.9.0"; # imgupdate https://github.com/linuxserver/docker-calibre/releases
     environment = {
       "TZ" = "Europe/Brussels";
       "UMASK" = "022";
@@ -53,7 +53,7 @@
   };
 
   virtualisation.oci-containers.containers."calibre-web" = {
-    image = "lscr.io/linuxserver/calibre-web:0.6.24";
+    image = "lscr.io/linuxserver/calibre-web:0.6.24"; # imgupdate https://github.com/linuxserver/docker-calibre-web/releases/
     environment = {
       "TZ" = "Europe/Brussels";
       "DOCKER_MODS" = "linuxserver/calibre-web:calibre";

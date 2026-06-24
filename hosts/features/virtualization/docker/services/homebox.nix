@@ -4,7 +4,7 @@
 {
   # Runtime
   virtualisation.oci-containers.containers."homebox-homebox" = {
-    image = "ghcr.io/sysadminsmedia/homebox:0.18.0";
+    image = "ghcr.io/sysadminsmedia/homebox:0.26.2"; # imgupdate https://github.com/sysadminsmedia/homebox/releases
     environment = {
       "HBOX_LOG_FORMAT" = "text";
       "HBOX_LOG_LEVEL" = "info";
