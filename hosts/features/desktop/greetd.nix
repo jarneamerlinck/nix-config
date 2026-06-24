@@ -21,14 +21,7 @@
 {
   services.greetd = {
     enable = true;
-    settings = {
-      default_session.command = ''
-        ${pkgs.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd "/home/\$USER/.nix-profile/bin/greetd-session"
-      '';
-    };
+    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd greetd-session";
   };
+
 }
