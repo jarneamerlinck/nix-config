@@ -38,6 +38,8 @@
     ../features/virtualization/qemu
     ../features/virtualization/wine
 
+    ../features/virtualization/docker/services/dockhand.nix
+    ../features/virtualization/docker/services/hawser.nix
     ../features/virtualization/docker/services/cloudflare_tunnel.nix
     ../features/virtualization/docker/services/syncthing.nix
     ../features/virtualization/docker/services/rss_feed.nix
