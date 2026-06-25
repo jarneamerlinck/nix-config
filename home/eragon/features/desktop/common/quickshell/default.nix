@@ -5,9 +5,9 @@
 {
 
   home.packages = with pkgs; [
-    libsForQt5.qt5.qtbase
-    libsForQt5.qt5.qtdeclarative
-    libsForQt5.qt5.qtgraphicaleffects
+    qt5.qtbase
+    qt5.qtdeclarative
+    qt5.qtgraphicaleffects
     kdePackages.qt5compat
   ];
 

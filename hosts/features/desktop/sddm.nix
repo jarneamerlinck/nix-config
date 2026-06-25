@@ -13,9 +13,9 @@
   };
   environment.systemPackages = with pkgs; [
     sddm-themes.sddm-tokyo-night
-    libsForQt5.qt5.qtsvg
-    libsForQt5.qt5ct
-    libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qt5.qtquickcontrols
+    qt5.qtsvg
+    qt5ct
+    qt5.qtgraphicaleffects
+    qt5.qtquickcontrols
   ];
 }

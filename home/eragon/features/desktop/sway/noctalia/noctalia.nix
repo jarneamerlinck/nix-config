@@ -5,7 +5,6 @@
     "noctalia"
   ];
 
-  stylix.targets.noctalia.colorTheme.enable = true;
   programs.noctalia = {
     enable = true;
     systemd.enable = false;
