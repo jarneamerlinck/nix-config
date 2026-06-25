@@ -49,15 +49,15 @@
 
 ## Devices
 
-| Hostname  | Board          | CPU                                                 |  RAM  | Primary GPU                                    | Secondary GPU | Role  |  OS   | State |
-| :-------- | :------------- | :-------------------------------------------------- | :---: | :--------------------------------------------- | :------------ | :---: | :---: | :---: |
-| `ash`     | Raspberry pi 4 | BCM2835 (4) @ 1.800GHz                              |  8GB  |                                                |               |   🖥️   |   ❄️   |   ✅   |
-| `atlas`   | ZimaCube       | 12th Gen Intel(R) Core(TM) i5-1235U (12) @ 4.40 GHz |  64G  | Intel Iris Xe Graphics @ 1.20 GHz [Integrated] |               |   🖥️   |   ❄️   |   ✅   |
-| `banshee` | Zimaboard 832  | Intel Celeron N3450 (4) @ 2.200GHz                  |  8GB  | Intel HD Graphics 500                          |               |   🖥️   |   ❄️   |   ✅   |
-| `baruuk`  | Framework 12   | Intel Core - i5-1334U (10) @ 3.40GHz                | 16GB  | Intel Core - i5-1334U                          |               |   💻️   |   ❄️   |   ✅   |
+| Hostname  | Board          | CPU                                                 |  RAM  | Primary GPU                                    | Secondary GPU | Role   |  OS    | Release branch |
+| :-------- | :------------- | :-------------------------------------------------- | :---: | :--------------------------------------------- | :------------ | :----: | :---:  | :------------ |
+| `ash`     | Raspberry pi 4 | BCM2835 (4) @ 1.800GHz                              |  8GB  |                                                |               |   🖥️   |   ❄️   |   main         |
+| `atlas`   | ZimaCube       | 12th Gen Intel(R) Core(TM) i5-1235U (12) @ 4.40 GHz |  64G  | Intel Iris Xe Graphics @ 1.20 GHz [Integrated] |               |   🖥️   |   ❄️   |   stable       |
+| `banshee` | Zimaboard 832  | Intel Celeron N3450 (4) @ 2.200GHz                  |  8GB  | Intel HD Graphics 500                          |               |   🖥️   |   ❄️   |   stable       |
+| `baruuk`  | Framework 12   | Intel Core - i5-1334U (10) @ 3.40GHz                | 16GB  | Intel Core - i5-1334U                          |               |   💻️   |   ❄️   |   main         |
 |           |
-| `vm1`     |                |                                                     |       |                                                |               |   📦   |   ❄️   |   ✅   |
-| `testing` |                |                                                     |       |                                                |               |   📦   |   ❄️   |   ✅   |
+| `vm1`     |                |                                                     |       |                                                |               |   📦   |   ❄️   |   main         |
+| `testing` |                |                                                     |       |                                                |               |   📦   |   ❄️   |   main         |
 
 
 Virtual machine: 📦
@@ -127,3 +127,16 @@ nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/pr
 
 sudo nix-collect-garbage --delete-older-than 20d
 ```
+
+## Git workflow
+
+
+Trunk based development where we have 1 main branch and 1 release branch
+
+The release branch is called stable and has the devices on it that are used for "production".
+
+The main branch is for VM's personal laptops and main development.
+
+The main branch is on nixos unstalbe and the stable branch is on the latest release
+
+Features will be merged in to main first and then with a cherry-pick merged to stable
