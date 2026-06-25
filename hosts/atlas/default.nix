@@ -44,6 +44,7 @@
     ../features/virtualization/docker/services/cloudflare_tunnel.nix
     ../features/virtualization/docker/services/syncthing.nix
     ../features/virtualization/docker/services/rss_feed.nix
+    ../features/virtualization/docker/services/wiki.nix
 
     ../features/virtualization/docker/services/music.nix
     ../features/virtualization/docker/services/memos.nix
