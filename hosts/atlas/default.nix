@@ -38,6 +38,7 @@
     ../features/virtualization/qemu
     ../features/virtualization/wine
 
+    ../features/virtualization/docker/services/s3.nix
     ../features/virtualization/docker/services/dockhand.nix
     ../features/virtualization/docker/services/hawser.nix
     ../features/virtualization/docker/services/cloudflare_tunnel.nix
