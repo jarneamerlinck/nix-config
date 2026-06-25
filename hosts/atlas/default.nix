@@ -38,9 +38,14 @@
     ../features/virtualization/qemu
     ../features/virtualization/wine
 
+    ../features/virtualization/docker/services/s3.nix
+    ../features/virtualization/docker/services/dockhand.nix
+    ../features/virtualization/docker/services/hawser.nix
     ../features/virtualization/docker/services/cloudflare_tunnel.nix
     ../features/virtualization/docker/services/syncthing.nix
     ../features/virtualization/docker/services/rss_feed.nix
+    ../features/virtualization/docker/services/wiki.nix
+    ../features/virtualization/docker/services/firefly.nix
 
     ../features/virtualization/docker/services/music.nix
     ../features/virtualization/docker/services/memos.nix
@@ -49,6 +54,7 @@
 
     # smart tools
     ../features/virtualization/docker/services/search.nix
+    ../features/virtualization/docker/services/bookmarks.nix
 
   ];
 
