@@ -4,7 +4,7 @@ with config.lib.stylix.colors.withHashtag;
 let
   chat_uri = "https://chat.ko0.net";
   chat_options = "?model=firefox-side-bar&temporary-chat=false&tools=jina_web_scrape";
-  file_path_darkreader = ".mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
+  file_path_darkreader = "~/.config/mozilla/firefox/base_profile/browser-extension-data/addon@darkreader.org/storage.js";
 
 in
 {
