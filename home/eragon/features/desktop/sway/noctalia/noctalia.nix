@@ -11,57 +11,90 @@
     systemd.enable = false;
     settings = {
       # configure noctalia here
-      bar = {
-        density = "compact";
-        position = "top";
-        showCapsule = false;
-        widgets = {
-          left = [
-            {
-              id = "ControlCenter";
-              useDistroLogo = true;
-            }
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
-          ];
-          center = [
-            {
-              hideUnoccupied = false;
-              id = "Workspace";
-              labelMode = "none";
-            }
-          ];
-          right = [
-            {
-              alwaysShowPercentage = false;
-              id = "Battery";
-              warningThreshold = 30;
-            }
-            {
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
-              id = "Clock";
-              useMonospacedFont = true;
-              usePrimaryColor = true;
-            }
-          ];
-        };
-      };
+      desktop_widgets.enabled = false;
+      idle.pre_action_fade_seconds = 0;
       dock.enabled = false;
-      wallpaper.enabled = false;
       general = {
         avatarImage = "/home/${config.home.username}/.face";
         radiusRatio = 0.2;
       };
-      location = {
-        monthBeforeDay = false;
-        name = "Brussels, Belgium";
+      location.auto_locate = true;
+      lockscreen_widgets.enable = false;
+      theme.source = "community";
+      wallpaper.enabled = false;
+      bar = {
+
+        density = "compact";
+        position = "top";
+        showCapsule = false;
+        widgets = {
+          center = [
+            {
+
+              id = "clock";
+            }
+            {
+
+              id = "date";
+            }
+          ];
+          end = [
+            "media"
+            "tray"
+            "notifications"
+            "network"
+            "bluetooth"
+            "volume"
+            "brightness"
+            "battery"
+            "control-center"
+            "session"
+          ];
+          shadow = false;
+          start = [
+            {
+              id = "workspaces";
+            }
+          ];
+          left = [
+            {
+
+              id = "ControlCenter";
+              useDistroLogo = true;
+            }
+            {
+
+              id = "Network";
+            }
+            {
+
+              id = "Bluetooth";
+            }
+
+            {
+
+              alwaysShowPercentage = false;
+              id = "Battery";
+              warningThreshold = 20;
+            }
+          ];
+        };
       };
+      control_center.shortcuts = [
+        {
+          type = "wifi";
+        }
+        {
+          type = "bluetooth";
+        }
+        {
+          type = "nightlight";
+        }
+        {
+          type = "power_profile";
+        }
+
+      ];
     };
-    # this may also be a string or a path to a JSON file.
   };
 }
