@@ -20,7 +20,7 @@
     ../features/virtualization/qemu
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidash_local.nix
-    # ../features/services/unattended-upgrades.nix
+    ../features/services/protonmail_bridge.nix
 
     ../features/services/games
     ../features/services/obs-studio.nix
