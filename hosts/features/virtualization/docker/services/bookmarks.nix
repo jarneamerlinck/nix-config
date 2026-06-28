@@ -119,9 +119,9 @@ in
       "--cpus=1"
       "--memory=1GB"
       "--network-alias=web"
-      "--network=bookmarks_hoarder"
       "--network=chat"
       "--network=frontend"
+      "--network=bookmarks_hoarder"
     ];
   };
   systemd.services."docker-bookmarks_web" = {
