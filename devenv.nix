@@ -44,10 +44,10 @@
   # https://devenv.sh/tasks/
   tasks = {
     "nix-update:flake" = {
-      exec = "nix flake update";
+      exec = "nix flake update && git reset && git add ./flake.lock && git commit -m 'chore: nix flake update'";
     };
     "nix-update:devenv" = {
-      exec = "devenv update";
+      exec = "devenv update && git reset && git add ./devenv.lock && git commit -m 'chore: devenv flake update'";
       # after = [ "nix:flake-update" ];
     };
     "git:precommit" = {
