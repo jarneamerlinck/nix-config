@@ -53,6 +53,17 @@
     "git:precommit" = {
       exec = "pre-commit run --all";
     };
+    "git:branch-cleanup-main" = {
+      exec = "git branch --merged main   | sed 's/^[* ]*//'   | sort -u   | grep -vE '^(main|stable)$'   | xargs -r git branch -d";
+    };
+
+    "git:branch-cleanup-stable" = {
+      exec = "git branch --merged stable | grep -vE '^\*|^\s*(stable|main)$' | xargs -r git branch -D";
+    };
+    "git:remote-branch-cleanup" = {
+      exec = "git fetch --prune";
+    };
+
   };
 
   # https://devenv.sh/tests/
