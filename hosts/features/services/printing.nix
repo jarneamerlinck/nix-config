@@ -4,6 +4,7 @@
     cups
     avahi
   ];
+  services.ipp-usb.enable = true;
   # needed for printer discovery
   services.avahi = {
     enable = true;
