@@ -16,11 +16,16 @@
     enable = true;
     browsing = true;
     drivers = with pkgs; [
+      # see https://wiki.nixos.org/wiki/Printing#Adding_printers
       cups-filters
       cups-browsed
       epson-escpr2
       epson-escpr
-      brlaser
+      brlaser # brother printers
+      gutenprint # general drivers
+      gutenprintBin # general but in bin format
+      hplip # hp printers
+      splix # printers supporting SPL (Samsung Printer Language)
     ];
   };
 }
