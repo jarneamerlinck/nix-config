@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   # configure options
   wayland.windowManager.sway.systemd.extraCommands = [
@@ -19,7 +19,7 @@
       };
       location.auto_locate = true;
       lockscreen_widgets.enable = false;
-      theme.source = "community";
+      theme.source = lib.mkForce "community";
       wallpaper.enabled = false;
       bar = {
 
