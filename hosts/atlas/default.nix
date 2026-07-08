@@ -55,6 +55,7 @@
     # smart tools
     ../features/virtualization/docker/services/search.nix
     ../features/virtualization/docker/services/bookmarks.nix
+    ../features/virtualization/docker/services/releases.nix
 
   ];
 
