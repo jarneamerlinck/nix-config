@@ -1,0 +1,239 @@
+settings:
+  log:
+    level: INFO       # Log level, DEBUG/VERBOSE/INFO/WARNING/ERROR
+    timestamps: true # Log with timestamps
+  data:
+    database_file: /app/data/argus.db # SQLite DB file used to track the state of services
+    readonly: true              # Disable writes to the config.yml
+                                 # (create/edit/delete on the UI will not persist restarts)
+  web:
+    listen_host: 0.0.0.0  # IP address to listen on
+    listen_port: 8080     # Port to listen on
+    route_prefix: /       # Web route prefix, e.g. /demo means http://IP:PORT/demo to access
+    cert_file: ''         # HTTPS Cert path, e.g. `cert.pem`
+    pkey_file: ''         # HTTPS PrivKey path, e.g. `privkey.pem`
+    basic_auth:
+      username: ''        # Basic auth username, e.g. `admin`
+      password: ''        # Basic auth password, e.g. `test123`
+    disabled_routes: []   # API Routes to disable (see below)
+    favicon:
+      png: ''  # Override /apple-touch-icon.png (e.g. https://example.com/apple-touch-icon.png)
+      svg: ''  # Override /favicon.svg (e.g. https://example.com/favicon.svg)
+defaults:
+  service:
+    options:
+      interval: 60m
+
+service:
+  budget:
+    latest_version:
+      type: github
+      url: firefly-iii/firefly-iii
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      url: http://firefly_iii_core:8080/api/v1/about
+      json: data.version
+      headers:
+        - key: Authorization
+          value: ${FIREFLY_TOKEN}
+    dashboard:
+      icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/public/images/logo.png
+      web_url: https://github.com/firefly-iii/firefly-iii/releases/tag/v{{ version }}
+  git:
+    latest_version:
+      type: url
+      url: https://code.forgejo.org/api/v1/repos/forgejo/forgejo/releases
+      url_commands:
+        - type: regex
+          regex: "['\"]tag_name['\"]: *['\"]v?([0-9.]+)['\"]"
+    deployed_version:
+      type: url
+      url: ${GIT_SERVER}
+      regex: Powered by Forgejo.*\s+Version:\s+([0-9.]+)
+    dashboard:
+      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/forgejo.png
+      web_url: https://codeberg.org/forgejo/forgejo/releases/tag/v{{ version }}
+
+  rss:
+    latest_version:
+      type: github
+      url: FreshRSS/FreshRSS
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/rss_feed.nix
+      regex: 'linuxserver/freshrss:([0-9.]+)'
+    dashboard:
+      icon: https://raw.githubusercontent.com/FreshRSS/FreshRSS/edge/p/themes/icons/favicon-256.png
+      web_url: https://github.com/FreshRSS/FreshRSS/releases/tag/{{ version }}
+
+  photos:
+    latest_version:
+      type: github
+      url: immich-app/immich
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      require:
+        docker:
+          type: ghcr
+          image: immich-app/immich-server
+          tag: 'v{{ version }}'
+    deployed_version:
+      url: http://immich_server:2283/api/server/about
+      json: version
+      regex: ^v([0-9.]+)$
+      headers:
+        - key: x-api-key
+          value: ${IMMICH_API_KEY}
+    dashboard:
+      icon: https://raw.githubusercontent.com/immich-app/immich/refs/heads/main/design/immich-logo.svg
+      web_url: https://github.com/immich-app/immich/releases/tag/v{{ version }}
+  bookmarks:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: hoarder-app/hoarder
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: http://bookmarks_web:3000/
+      regex: \\"serverVersion\\":\\"([0-9.]+)\\"
+    dashboard:
+      icon: https://raw.githubusercontent.com/hoarder-app/hoarder/main/apps/web/public/icons/logo-128.png
+      web_url: https://github.com/hoarder-app/hoarder/releases/v{{ version }}
+  # paperless:
+  #   latest_version:
+  #     type: github
+  #     url: paperless-ngx/paperless-ngx
+  #     require:
+  #       docker:
+  #         type: ghcr
+  #         image: paperless-ngx/paperless-ngx
+  #         tag: '{{ version }}'
+  #   deployed_version:
+  #     type: url
+  #     url: http://paperless_webserver:8000/api/status/
+  #     json: pngx_version
+  #     headers:
+  #       - key: Authorization
+  #         value: Token ${PAPERLESS_NGX_API_KEY}
+  #   dashboard:
+  #     icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/paperless-ngx.png
+  #     icon_link_to: https://papers.nanode.su
+  #     web_url: https://github.com/paperless-ngx/paperless-ngx/releases/tag/v{{ version }}
+      #
+  chat:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: open-webui/open-webui
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/openwebui.nix
+      regex: 'open-webui/open-webui:([0-9.]+)'
+    dashboard:
+      icon: https://raw.githubusercontent.com/open-webui/open-webui/refs/heads/main/static/static/favicon.svg
+      web_url: https://github.com/open-webui/open-webui/releases/v{{ version }}
+
+  S3:
+    latest_version:
+      type: url
+      url: https://git.deuxfleurs.fr/api/v1/repos/Deuxfleurs/garage/releases
+      url_commands:
+        - type: regex
+          regex: "['\"]tag_name['\"]: *['\"]v?([0-9.]+)['\"]"
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/s3.nix
+      regex: version = "v([^"]+)"
+    dashboard:
+      icon: https://git.deuxfleurs.fr/Deuxfleurs/garage/raw/branch/main-v2/doc/logo/garage.svg
+      web_url: https://git.deuxfleurs.fr/Deuxfleurs/garage/releases/tag/v{{ version }}
+
+  dockhand:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: Finsys/dockhand
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/dockhand.nix
+      regex: version = "v([^"]+)"
+    dashboard:
+      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/dockhand.webp
+      web_url: https://github.com/Finsys/dockhand/releases/v{{ version }}
+
+  hawser:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: Finsys/hawser
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/hawser.nix
+      regex: version = "([^"]+)"
+    dashboard:
+      icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/hawser.webp
+      web_url: https://github.com/Finsys/hawser/releases/{{ version }}
+
+  wiki:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: requarks/wiki
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+      require:
+        regex_version: ^[0-9.]+$
+    deployed_version:
+      url: http://wiki-wikijs:3000/graphql?query=%7Bsystem%7Binfo%7BcurrentVersion%7D%7D%7D
+      headers:
+        - key: Authorization
+          value: ${WIKIJS_TOKEN}
+      json: data.system.info.currentVersion
+    dashboard:
+      web_url: https://github.com/requarks/wiki/releases/tag/v{{ version }}
+      icon: https://static.requarks.io/logo/wikijs-butterfly.svg
+
+
+  music:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: navidrome/navidrome
+      url_commands:
+        - type: regex
+          regex: ([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/music.nix
+      regex: 'deluan/navidrome:([0-9.]+)'
+    dashboard:
+      icon: https://raw.githubusercontent.com/navidrome/navidrome/refs/heads/master/ui/public/internet-radio-icon.svg
+      web_url: https://github.com/navidrome/navidrome/releases/{{ version }}
+
+
+  argus:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: release-argus/argus
+    deployed_version:
+      url: http://localhost:8080/api/v1/version
+      json: version
+    dashboard:
+      web_url: https://github.com/release-argus/Argus/blob/master/CHANGELOG.md
+      icon: https://github.com/release-argus/Argus/raw/master/web/ui/react-app/public/favicon.svg
