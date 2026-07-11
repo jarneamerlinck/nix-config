@@ -63,7 +63,7 @@ service:
       url: FreshRSS/FreshRSS
     deployed_version:
       method: GET
-      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/rss_feed.nix
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/rss_feed.nix
       regex: 'linuxserver/freshrss:([0-9.]+)'
     dashboard:
       icon: https://raw.githubusercontent.com/FreshRSS/FreshRSS/edge/p/themes/icons/favicon-256.png
@@ -135,7 +135,7 @@ service:
           regex: v([0-9.]+)$
     deployed_version:
       method: GET
-      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/openwebui.nix
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/openwebui.nix
       regex: 'open-webui/open-webui:([0-9.]+)'
     dashboard:
       icon: https://raw.githubusercontent.com/open-webui/open-webui/refs/heads/main/static/static/favicon.svg
@@ -150,7 +150,7 @@ service:
           regex: "['\"]tag_name['\"]: *['\"]v?([0-9.]+)['\"]"
     deployed_version:
       method: GET
-      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/s3.nix
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/s3.nix
       regex: version = "v([^"]+)"
     dashboard:
       icon: https://git.deuxfleurs.fr/Deuxfleurs/garage/raw/branch/main-v2/doc/logo/garage.svg
@@ -166,7 +166,7 @@ service:
           regex: v([0-9.]+)$
     deployed_version:
       method: GET
-      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/dockhand.nix
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/dockhand.nix
       regex: version = "v([^"]+)"
     dashboard:
       icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/dockhand.webp
@@ -182,7 +182,7 @@ service:
           regex: v([0-9.]+)$
     deployed_version:
       method: GET
-      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/hawser.nix
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/hawser.nix
       regex: version = "([^"]+)"
     dashboard:
       icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/hawser.webp
@@ -219,7 +219,7 @@ service:
           regex: ([0-9.]+)$
     deployed_version:
       method: GET
-      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/music.nix
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/music.nix
       regex: 'deluan/navidrome:([0-9.]+)'
     dashboard:
       icon: https://raw.githubusercontent.com/navidrome/navidrome/refs/heads/master/ui/public/internet-radio-icon.svg
@@ -237,3 +237,21 @@ service:
     dashboard:
       web_url: https://github.com/release-argus/Argus/blob/master/CHANGELOG.md
       icon: https://github.com/release-argus/Argus/raw/master/web/ui/react-app/public/favicon.svg
+
+
+
+  portal:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: homarr-labs/homarr
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/${GIT_BRANCH}/hosts/features/virtualization/docker/services/portal.nix
+      regex: version = "([^"]+)"
+    dashboard:
+      icon: https://raw.githubusercontent.com/homarr-labs/homarr/refs/heads/dev/apps/docs/static/img/logo.svg
+      web_url: https://github.com/homarr-labs/homarr/releases/v{{ version }}

@@ -7,12 +7,12 @@
 let
   url = "photos.ko0.net";
 
-  version = "v3.0.1"; # imgupdate https://github.com/immich-app/immich/releases/
+  version = "v3.0.2"; # imgupdate https://github.com/immich-app/immich/releases/
   upload_dir = "/data/docker/immich/data";
   db_dir = "/data/docker/immich/postgress";
 
   kiosk_url = "kiosk.ko0.net";
-  kiosk_version = "0.40.1 "; # imgupdate https://github.com/damongolding/immich-kiosk/releases
+  kiosk_version = "0.41.0"; # imgupdate https://github.com/damongolding/immich-kiosk/releases
   kiosk_config_dir = "/data/docker/immich/extentions/kiosk";
 
 in
