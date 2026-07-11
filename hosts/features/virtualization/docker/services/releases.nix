@@ -8,7 +8,7 @@ let
   version = "0.32.0"; # imgupdate https://github.com/Finsys/hawser/releases
   gid = 100;
   uid = 1442;
-  git_branch = "port/docker-compose-migration";
+  git_branch = "stable";
 in
 {
   sops.secrets."releases/env" = {
