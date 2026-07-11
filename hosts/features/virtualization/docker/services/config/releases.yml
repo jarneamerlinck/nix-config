@@ -237,3 +237,21 @@ service:
     dashboard:
       web_url: https://github.com/release-argus/Argus/blob/master/CHANGELOG.md
       icon: https://github.com/release-argus/Argus/raw/master/web/ui/react-app/public/favicon.svg
+
+
+
+  portal:
+    latest_version:
+      type: github
+      access_token: ${GITHUB_ACCESS_TOKEN}
+      url: Finsys/hawser
+      url_commands:
+        - type: regex
+          regex: v([0-9.]+)$
+    deployed_version:
+      method: GET
+      url: ${GIT_SERVER}/jarneamerlinck/nix-config/raw/branch/main/hosts/features/virtualization/docker/services/portal.nix
+      regex: version = "([^"]+)"
+    dashboard:
+      icon: https://raw.githubusercontent.com/homarr-labs/homarr/refs/heads/dev/apps/docs/static/img/logo.svg
+      web_url: https://github.com/homarr-labs/homarr/releases/{{ version }}
