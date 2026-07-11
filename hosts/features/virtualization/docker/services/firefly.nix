@@ -18,7 +18,7 @@
   };
   # Containers
   virtualisation.oci-containers.containers."firefly_iii_core" = {
-    image = "fireflyiii/core:version-6.5.9";
+    image = "fireflyiii/core:version-6.6.6";
     environmentFiles = [ config.sops.secrets."firefly/env".path ];
     volumes = [
       "/data/docker/firefly/upload:/var/www/html/storage/upload:rw"

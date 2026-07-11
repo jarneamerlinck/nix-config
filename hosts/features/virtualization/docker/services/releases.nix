@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   ...
@@ -9,6 +8,7 @@ let
   version = "0.32.0"; # imgupdate https://github.com/Finsys/hawser/releases
   gid = 100;
   uid = 1442;
+  git_branch = "stable";
 in
 {
   sops.secrets."releases/env" = {
@@ -22,6 +22,7 @@ in
     environment = {
       "ARGUS_GID" = toString gid;
       "ARGUS_UID" = toString uid;
+      "GIT_BRANCH" = git_branch;
     };
     volumes = [
       "/data/docker/releases/db/:/app/data"
