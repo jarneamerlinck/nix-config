@@ -254,4 +254,4 @@ service:
       regex: version = "([^"]+)"
     dashboard:
       icon: https://raw.githubusercontent.com/homarr-labs/homarr/refs/heads/dev/apps/docs/static/img/logo.svg
-      web_url: https://github.com/homarr-labs/homarr/releases/{{ version }}
+      web_url: https://github.com/homarr-labs/homarr/releases/v{{ version }}
