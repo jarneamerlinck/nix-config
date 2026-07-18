@@ -13,6 +13,7 @@
     ../base/users/eragon
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
+    ../features/desktop/flatpak.nix
     ../features/hardware/switcher_tablet_mode.nix
     ../features/services/printing.nix
 
@@ -26,7 +27,7 @@
     ../features/services/obs-studio.nix
 
     ../features/services/google_coral.nix
-    ../features/services/wireguard_client.nix
+    # ../features/services/wireguard_client.nix
 
     ## Display server
     ../features/desktop/wayland.nix
