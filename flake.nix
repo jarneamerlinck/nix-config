@@ -40,6 +40,7 @@
 
     # Magic pen drawing
     hexecute.url = "github:ThatOtherAndrew/Hexecute";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
