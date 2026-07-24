@@ -36,7 +36,6 @@
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
     ../features/virtualization/qemu
-    ../features/virtualization/wine
 
     ../features/virtualization/docker/services/s3.nix
     ../features/virtualization/docker/services/dockhand.nix
