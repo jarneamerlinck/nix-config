@@ -21,6 +21,7 @@
     ../features/applications/base/obsidian.nix
     ../features/applications/music
     ../features/applications/base/proton.nix
+    ../features/applications/base/dolphin.nix
     ../features/applications/cyber/default.nix
     ../features/applications/cyber/analysis
     ../features/applications/cyber/exploration/nmap-desktop.nix
