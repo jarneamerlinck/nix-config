@@ -22,6 +22,10 @@ in
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
+  sops.secrets."wireguard/allowedIps" = {
+    sopsFile = ../../${config.networking.hostName}/secrets.yml;
+    neededForUsers = true;
+  };
 
   networking.firewall = {
     allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
@@ -41,7 +45,6 @@ in
           {
             publicKey = "${publicKeyHome}";
             presharedKeyFile = config.sops.secrets."wireguard/presharedKey".path;
-            allowedIPs = [ "10.20.0.0/24" ];
             persistentKeepalive = 25;
           }
         ];
@@ -54,12 +57,20 @@ in
     after = [ "wireguard-wg0-peer-${publicKeyHomeSafe}\\x3d.service" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ''
-        ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} endpoint "$$(tr -d '\n' <  ${
-          config.sops.secrets."wireguard/endpoint".path
-        })"
+      RemainAfterExit = true;
+      ExecStop = ''
+        ip route del 10.20.0.0/24 dev wg0 || true
       '';
     };
+    script = ''
+      ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} \
+        endpoint "$(cat /run/secrets-for-users/wireguard/endpoint)"
+
+      ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} \
+        allowed-ips "$(cat /run/secrets-for-users/wireguard/allowedIps)"
+
+      ${pkgs.iproute2}/bin/ip route add 10.20.0.0/24 dev wg0
+    '';
   };
 
 }
