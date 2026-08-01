@@ -32,8 +32,9 @@
         nix-inspect --expr "builtins.getFlake \"$(pwd)\""
       '';
       fldebug = "cd $NH_FLAKE && debug";
-      wg-down = "sudo systemctl stop wireguard-wg0.service";
-      wg-connect = "sudo su -c 'wg set wg0 peer WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI= endpoint $(cat /run/secrets-for-users/wireguard/endpoint )'";
+      wg-down = "sudo systemctl stop wireguard-wg0.service && sudo systemctl stop wg-set-endpoint";
+      wg-connect = "sudo systemctl start wireguard-wg0.service && sudo systemctl start wg-set-endpoint";
+      # wg-connect = "sudo su -c 'wg set wg0 peer WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI= endpoint $(cat /run/secrets-for-users/wireguard/endpoint ) && wg set wg0 peer WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI= allowed-ips $(cat /run/secrets-for-users/wireguard/allowedIps )'";
       gw = "curl wttr.in";
     };
 
