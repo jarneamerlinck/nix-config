@@ -18,9 +18,12 @@ in
     jq
     playerctl
   ];
-
+  stylix.targets.sway.enable = true;
   wayland.windowManager.sway = {
     enable = true;
+    # wrapperFeatures = {
+    #   gtk = true;
+    # };
     config = rec {
       modifier = "Mod4"; # super key
       terminal = "${pkgs.kitty}/bin/kitty";
