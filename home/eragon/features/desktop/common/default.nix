@@ -12,5 +12,5 @@
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = lib.mkDefault "prefer-dark";
   home.pointerCursor.enable = true;
-  xdg.portal.enable = true;
+  # xdg.portal.enable = true;
 }

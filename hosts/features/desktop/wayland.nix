@@ -20,5 +20,16 @@
 
   programs.dconf.enable = true;
   security.pam.services.swaylock = { };
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    config = {
+      common = {
+        default = [
+          "gtk"
+          "kde"
+        ];
+      };
+    };
+  };
 }
