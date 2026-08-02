@@ -4,6 +4,7 @@
 {
   lib,
   modulesPath,
+  config,
   ...
 }:
 
@@ -28,7 +29,7 @@
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [ ];
   };
   hardware.graphics = {
     enable = true;
