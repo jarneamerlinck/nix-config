@@ -18,9 +18,12 @@ in
     jq
     playerctl
   ];
-
+  stylix.targets.sway.enable = true;
   wayland.windowManager.sway = {
     enable = true;
+    # wrapperFeatures = {
+    #   gtk = true;
+    # };
     config = rec {
       modifier = "Mod4"; # super key
       terminal = "${pkgs.kitty}/bin/kitty";
@@ -30,6 +33,7 @@ in
         "${cfg.modifier}+d" = "exec ${config.programs.wofi.package}/bin/wofi --show drun";
         "${cfg.modifier}+q" = "kill";
         "${cfg.modifier}+b" = "exec ${pkgs.firefox}/bin/firefox";
+        "${cfg.modifier}+e" = "exec ${pkgs.kdePackages.dolphin}/bin/dolphin";
 
         "${cfg.modifier}+Left" = "focus left";
         "${cfg.modifier}+Down" = "focus down";
