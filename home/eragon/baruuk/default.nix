@@ -29,9 +29,12 @@
   ];
 
   stylix.image = "${pkgs.wallpapers.star-trails-5k-i0-16-10}";
-  stylix.cursor.package = pkgs.bibata-cursors;
-  stylix.cursor.name = "Bibata-Modern-Ice";
-  stylix.cursor.size = 24;
+  home.pointerCursor.enable = true;
+  stylix.cursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
+  };
 
   monitors = [
     {
