@@ -4,6 +4,7 @@
 {
   lib,
   modulesPath,
+  config,
   ...
 }:
 
@@ -29,7 +30,7 @@
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [ ];
   };
   hardware.sensor.iio.enable = true;
 

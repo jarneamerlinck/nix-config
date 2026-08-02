@@ -29,7 +29,7 @@
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [ ];
   };
 
   swapDevices = [ ];
