@@ -32,6 +32,7 @@
     ## Services items
     # ../features/services/unattended-upgrades.nix
 
+    ../features/services/pangolin_tunnel.nix
     ../features/virtualization/incus
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
