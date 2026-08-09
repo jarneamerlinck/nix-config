@@ -32,11 +32,11 @@
     ## Services items
     # ../features/services/unattended-upgrades.nix
 
-    ../features/services/pangolin_tunnel.nix
     ../features/virtualization/incus
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
     ../features/virtualization/qemu
+    ../features/virtualization/docker/services/pangolin_tunnel.nix
 
     ../features/virtualization/docker/services/s3.nix
     ../features/virtualization/docker/services/dockhand.nix
