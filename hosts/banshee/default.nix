@@ -12,7 +12,7 @@
 
     ## Services items
     ../features/services/unattended-upgrades.nix
-    ../features/services/pangolin_tunnel.nix
+    # ../features/services/pangolin_tunnel.nix
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
     ../features/virtualization/docker/services/hawser.nix
