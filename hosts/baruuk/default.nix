@@ -22,6 +22,7 @@
     ../features/virtualization/docker
     ../features/virtualization/docker/services/excalidash_local.nix
     ../features/services/protonmail_bridge.nix
+    ../features/services/pangolin_client.nix
 
     ../features/services/games
     ../features/services/obs-studio.nix
