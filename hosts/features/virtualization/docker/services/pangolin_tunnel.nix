@@ -10,11 +10,6 @@
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
   };
 
-  services.newt = {
-    enable = true;
-    environmentFile = config.sops.secrets."newt/env".path;
-  };
-
   # Containers
   virtualisation.oci-containers.containers."newt" = {
     image = "fosrl/newt:latest";
