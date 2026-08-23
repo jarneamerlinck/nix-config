@@ -19,7 +19,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."music-navidrome" = {
-    image = "docker.io/deluan/navidrome:0.62.0"; # imgupdate https://github.com/navidrome/navidrome/releases
+    image = "docker.io/deluan/navidrome:0.63.2"; # imgupdate https://github.com/navidrome/navidrome/releases
 
     environmentFiles = [ "/run/secrets-for-users/music/env" ];
 

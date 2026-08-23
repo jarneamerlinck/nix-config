@@ -6,6 +6,7 @@
 }:
 let
   traefik_oidc_start = "traefik.http.middlewares.oidc-auth.plugin.traefik-oidc-auth";
+  version = "3.7.11";
 in
 {
 
@@ -15,7 +16,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."traefik" = {
-    image = "docker.io/traefik:3.7.5"; # imgupdate https://hub.docker.com/_/traefik
+    image = "docker.io/traefik:${version}"; # imgupdate https://hub.docker.com/_/traefik
     environmentFiles = [ "/run/secrets-for-users/traefik/env" ];
     volumes = [
       "/data/docker/traefik/letsencrypt:/letsencrypt:rw"
