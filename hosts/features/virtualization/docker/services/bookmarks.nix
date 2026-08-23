@@ -7,7 +7,7 @@
   ...
 }:
 let
-  version = "0.32.0"; # imgupdate https://github.com/karakeep-app/karakeep/releases/
+  version = "0.33.1"; # imgupdate https://github.com/karakeep-app/karakeep/releases/
 in
 
 {
