@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  version = "15.0.1"; # imgupdate https://forgejo.org/releases/
+  version = "16.0.3"; # imgupdate https://forgejo.org/releases/
   url = "git.ko0.net";
 in
 {

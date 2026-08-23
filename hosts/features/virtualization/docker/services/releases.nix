@@ -5,7 +5,7 @@
 }:
 
 let
-  version = "0.32.0"; # imgupdate https://github.com/Finsys/hawser/releases
+  version = "0.35.0"; # imgupdate https://github.com/Finsys/hawser/releases
   gid = 100;
   uid = 1442;
   git_branch = "stable";
