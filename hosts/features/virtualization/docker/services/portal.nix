@@ -4,7 +4,7 @@
   ...
 }:
 let
-  version = "1.73.5";
+  version = "1.76.0";
 in
 {
 
@@ -14,7 +14,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."portal-homarr" = {
-    image = "ghcr.io/homarr-labs/homarr:${version}";
+    image = "ghcr.io/homarr-labs/homarr:v${version}";
     environmentFiles = [ config.sops.secrets."portal/env".path ];
     environment = {
       "BASE_URL" = "portal.ko0.net";
