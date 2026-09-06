@@ -86,6 +86,26 @@
             psk = "$HOTSPOT_PSK";
           };
         };
+
+        slade = {
+          connection = {
+            id = "slade";
+            permissions = "";
+            type = "wifi";
+          };
+          ipv4 = {
+            method = "auto";
+          };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "$SLADE_SSID";
+            hidden = true;
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = "$SLADE_PSK";
+          };
+        };
       };
 
     };
