@@ -3,7 +3,7 @@
   services.gnome-keyring.enable = true;
 
   home.packages = with pkgs; [
-    gcr
+    gcr_4
     seahorse
   ];
 }
