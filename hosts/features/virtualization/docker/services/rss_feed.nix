@@ -1,10 +1,12 @@
 # Auto-generated using compose2nix v0.2.3-pre.
 { pkgs, lib, ... }:
-
+let
+  version = "1.30.0";
+in
 {
   # Containers
   virtualisation.oci-containers.containers."freshrss" = {
-    image = "lscr.io/linuxserver/freshrss:1.29.1"; # imgupdate https://github.com/FreshRSS/FreshRSS/releases
+    image = "lscr.io/linuxserver/freshrss:${version}"; # imgupdate https://github.com/FreshRSS/FreshRSS/releases
     environment = {
       "PGID" = "100";
       "PUID" = "1442";
