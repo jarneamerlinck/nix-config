@@ -15,6 +15,7 @@
     ../features/virtualization/docker
     ../features/virtualization/docker/traefik.nix
     ../features/virtualization/docker/services/hawser.nix
+    ../features/virtualization/docker/services/pangolin_tunnel.nix
 
   ];
 

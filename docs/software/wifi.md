@@ -20,7 +20,7 @@ Connecting with wifi through cli
     ```
 
     ```bash
-    sudo nmcli wifi connect $SSID password "$PASSWORD"
+    sudo nmcli d wifi connect $SSID password "$PASSWORD"
     ```
 
 3. Extra options / usefull commands

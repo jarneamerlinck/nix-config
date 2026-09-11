@@ -7,7 +7,7 @@
   ...
 }:
 let
-  version = "v2.3.0"; # imgupdate https://git.deuxfleurs.fr/Deuxfleurs/garage/tags
+  version = "v2.4.1"; # imgupdate https://git.deuxfleurs.fr/Deuxfleurs/garage/tags
 in
 {
   # Containers
