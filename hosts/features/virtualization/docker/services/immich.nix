@@ -7,7 +7,7 @@
 let
   url = "photos.ko0.net";
 
-  version = "v3.1.0"; # imgupdate https://github.com/immich-app/immich/releases/
+  version = "v3.2.0"; # imgupdate https://github.com/immich-app/immich/releases/
   upload_dir = "/data/docker/immich/data";
   db_dir = "/data/docker/immich/postgress";
 

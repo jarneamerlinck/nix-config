@@ -4,7 +4,9 @@
   pkgs,
   ...
 }:
-
+let
+  version = "0.63.2";
+in
 {
   sops.secrets."music/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -19,7 +21,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."music-navidrome" = {
-    image = "docker.io/deluan/navidrome:0.63.2"; # imgupdate https://github.com/navidrome/navidrome/releases
+    image = "docker.io/deluan/navidrome:${version}"; # imgupdate https://github.com/navidrome/navidrome/releases
 
     environmentFiles = [ "/run/secrets-for-users/music/env" ];
 
