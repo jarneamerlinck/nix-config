@@ -31,6 +31,7 @@
 
     ## Services items
     # ../features/services/unattended-upgrades.nix
+    ../features/services/syncthing_server.nix
 
     ../features/virtualization/incus
     ../features/virtualization/docker
@@ -42,7 +43,6 @@
     ../features/virtualization/docker/services/dockhand.nix
     ../features/virtualization/docker/services/hawser.nix
     ../features/virtualization/docker/services/cloudflare_tunnel.nix
-    ../features/virtualization/docker/services/syncthing.nix
     ../features/virtualization/docker/services/rss_feed.nix
     ../features/virtualization/docker/services/wiki.nix
     ../features/virtualization/docker/services/firefly.nix
