@@ -63,7 +63,6 @@
       unzip
       zip
 
-
       feh
       ffmpeg
 
