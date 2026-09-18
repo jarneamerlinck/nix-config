@@ -4,7 +4,9 @@
   config,
   ...
 }:
-
+let
+  version = "6.7.3";
+in
 {
 
   sops.secrets."firefly/env" = {
@@ -18,7 +20,7 @@
   };
   # Containers
   virtualisation.oci-containers.containers."firefly_iii_core" = {
-    image = "fireflyiii/core:version-6.6.6";
+    image = "fireflyiii/core:version-${version}";
     environmentFiles = [ config.sops.secrets."firefly/env".path ];
     volumes = [
       "/data/docker/firefly/upload:/var/www/html/storage/upload:rw"
