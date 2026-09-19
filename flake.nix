@@ -39,7 +39,7 @@
     nixvim-config.url = "github:jarneamerlinck/kickstart.nvim";
 
     # Magic pen drawing
-    hexecute.url = "github:ThatOtherAndrew/Hexecute";
+    # hexecute.url = "github:ThatOtherAndrew/Hexecute";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
@@ -139,6 +139,14 @@
           specialArgs = { inherit inputs outputs; };
         };
 
+        caliban = lib.nixosSystem {
+          modules = [
+            ./hosts/caliban
+            disko.nixosModules.disko
+            { disko.devices.disk.boot_disk.device = "/dev/disk/by-id/nvme-CT2000P310SSD8_254253D215E1"; }
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
       # Standalone home-manager configuration entrypoint
