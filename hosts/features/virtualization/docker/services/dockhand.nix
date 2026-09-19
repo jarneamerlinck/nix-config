@@ -5,7 +5,7 @@
   ...
 }:
 let
-  version = "v1.0.40"; # imgupdate https://github.com/Finsys/dockhand/releases
+  version = "v1.0.48"; # imgupdate https://github.com/Finsys/dockhand/releases
 in
 
 {
