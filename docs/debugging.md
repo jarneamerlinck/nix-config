@@ -29,3 +29,7 @@ When you have issues with builds breaking caused by CVE's you can fix it with
     };
 
     ```
+
+## SSH not working
+
+Validate that no other users can write to `/etc/ssh`
