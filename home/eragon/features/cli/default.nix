@@ -59,6 +59,10 @@
       nix-output-monitor
       nix-inspect
       devenv
+      tree
+      unzip
+      zip
+
 
       feh
       ffmpeg
