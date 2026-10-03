@@ -15,6 +15,7 @@
     ../features/desktop/wireless.nix
     ../features/desktop/flatpak.nix
     ../features/services/printing.nix
+    ../features/services/finger_print.nix
 
     ## Services items
     ../features/virtualization/qemu
