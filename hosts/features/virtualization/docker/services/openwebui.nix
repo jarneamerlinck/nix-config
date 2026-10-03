@@ -6,8 +6,8 @@
 }:
 let
   url = "chat.ko0.net";
-  ollama_version = "0.34.1";
-  openwebui_version = "0.11.3";
+  ollama_version = "0.35.1";
+  openwebui_version = "0.11.4";
 
 in
 {

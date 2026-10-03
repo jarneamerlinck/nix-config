@@ -4,7 +4,7 @@
   ...
 }:
 let
-  version = "1.77.1";
+  version = "2.1.2";
 in
 {
 
@@ -17,7 +17,7 @@ in
     image = "ghcr.io/homarr-labs/homarr:v${version}";
     environmentFiles = [ config.sops.secrets."portal/env".path ];
     environment = {
-      "BASE_URL" = "portal.ko0.net";
+      "BASE_URL" = "https://portal.ko0.net";
     };
     volumes = [
       "/data/docker/homarr:/appdata:rw"
