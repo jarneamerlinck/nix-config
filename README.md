@@ -49,15 +49,16 @@
 
 ## Devices
 
-| Hostname  | Board          | CPU                                                 |  RAM  | Primary GPU                                    | Secondary GPU | Role   |  OS    | Release branch |
-| :-------- | :------------- | :-------------------------------------------------- | :---: | :--------------------------------------------- | :------------ | :----: | :---:  | :------------ |
-| `ash`     | Raspberry pi 4 | BCM2835 (4) @ 1.800GHz                              |  8GB  |                                                |               |   🖥️   |   ❄️   |   main         |
-| `atlas`   | ZimaCube       | 12th Gen Intel(R) Core(TM) i5-1235U (12) @ 4.40 GHz |  64G  | Intel Iris Xe Graphics @ 1.20 GHz [Integrated] |               |   🖥️   |   ❄️   |   stable       |
-| `banshee` | Zimaboard 832  | Intel Celeron N3450 (4) @ 2.200GHz                  |  8GB  | Intel HD Graphics 500                          |               |   🖥️   |   ❄️   |   stable       |
-| `baruuk`  | Framework 12   | Intel Core - i5-1334U (10) @ 3.40GHz                | 16GB  | Intel Core - i5-1334U                          |               |   💻️   |   ❄️   |   main         |
+| Hostname  | Board            | CPU                                                 |  RAM  | Primary GPU                                    | Secondary GPU | Role   |  OS    | Release branch |
+| :-------- | :--------------- | :-------------------------------------------------- | :---: | :--------------------------------------------- | :------------ | :----: | :---:  | :------------- |
+| `ash`     | Raspberry pi 4   | BCM2835 (4) @ 1.800GHz                              |  8GB  |                                                |               |   🖥️   |   ❄️   |   main         |
+| `atlas`   | ZimaCube         | 12th Gen Intel(R) Core(TM) i5-1235U (12) @ 4.40 GHz |  64G  | Intel Iris Xe Graphics @ 1.20 GHz [Integrated] |               |   🖥️   |   ❄️   |   stable       |
+| `banshee` | Zimaboard 832    | Intel Celeron N3450 (4) @ 2.200GHz                  |  8GB  | Intel HD Graphics 500                          |               |   🖥️   |   ❄️   |   stable       |
+| `baruuk`  | Framework 12     | Intel Core - i5-1334U (10) @ 3.40GHz                | 16GB  | Intel Core - i5-1334U                          |               |   💻️   |   ❄️   |   main         |
+| `caliban` | Framework 13 Pro | Intel Core™ Ultra X7 358H                           | 16GB  | Intel Arc  B390 GPU                            |               |   💻️   |   ❄️   |   main         |
 |           |
-| `vm1`     |                |                                                     |       |                                                |               |   📦   |   ❄️   |   main         |
-| `testing` |                |                                                     |       |                                                |               |   📦   |   ❄️   |   main         |
+| `vm1`     |                  |                                                     |       |                                                |               |   📦   |   ❄️   |   main         |
+| `testing` |                  |                                                     |       |                                                |               |   📦   |   ❄️   |   main         |
 
 
 Virtual machine: 📦

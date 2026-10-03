@@ -160,7 +160,6 @@
       "website": "www.desktophut.com/files",
       "sha256": "f232c4e98c762b10b11a135169df3524b21c39aad2a67624816576dd8e437a25"
    },
-
    {
       "name": "lone-samurai-silhouette-gif",
       "ext": "mp4",
@@ -174,6 +173,20 @@
       "id": "up3D2fxY9A-Wallpaper62Prob4",
       "website": "www.desktophut.com/files",
       "sha256": "9aa450d335cfd3fb22e18bc48a459c3be573d42d44a9c48aede50afd4e87e120"
+   },
+   {
+      "name": "fw13p-pixelart-hand-3-2",
+      "ext": "png",
+      "id": "FW%2013%20Pro%20Wallpaper%206",
+      "website": "raw.githubusercontent.com/jarneamerlinck/fw-wallpapers/refs/heads/main/Framework%20Laptop%2013%20Pro%20Wallpapers",
+      "sha256": "sha256-zlW4EyjBJpFUMECRAcCYzeM/nuCQ0+lvFkYiTB6gsIk="
+   },
+   {
+      "name": "fw13p-pixelart-3-2",
+      "ext": "png",
+      "id": "FW%2013%20Pro%20Wallpaper%207",
+      "website": "raw.githubusercontent.com/jarneamerlinck/fw-wallpapers/refs/heads/main/Framework%20Laptop%2013%20Pro%20Wallpapers",
+      "sha256": "sha256-vKOUE67pTeQJQ7LTC2ZvhTZrsQntDycvUUnKjljhdwo="
    },
    {
       "name": "disturbed-gif",

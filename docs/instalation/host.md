@@ -39,6 +39,15 @@ sudo dd bs=4M conv=fsync oflag=direct status=progress if=<path-to-image> of=/dev
     lsblk -f
     ```
 
+3. Get the display information
+
+    ```bash
+    nix shell -p edid-decode
+    edid-decode -s /sys/class/drm/card0-eDP-1/edid | grep -Ei 'Manufacturer|Product Name|Serial Number'
+    ```
+    Then use `Manufacturer ProductName SerialNumber`
+
+
 ## 2. Nixos anywhere
 
 On another computer you'll need
@@ -50,7 +59,7 @@ On another computer you'll need
 Add `$TEMP` and validate content
 
 ```bash
-export TEMP=~/Documents/back/ssh-keys/baruuk
+export TEMP=~/Documents/back/ssh-keys/caliban
 tree -p $TEMP
 ```
 
@@ -68,7 +77,7 @@ The output should be
 > Start installation
 
 ```bash
-nix run github:nix-community/nixos-anywhere -- --extra-files "$TEMP" --disk-encryption-keys /tmp/disk.key <(cat "$TEMP/disk.key") --flake .#hostname  nixos@10.20.0.133
+nix run github:nix-community/nixos-anywhere -- --extra-files "$TEMP" --disk-encryption-keys /tmp/disk.key <(cat "$TEMP/disk.key") --flake .#caliban  nixos@10.20.0.59
 ```
 
 After the nixos anywhere has completed the live boot will automaticly reboot
