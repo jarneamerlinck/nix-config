@@ -5,9 +5,9 @@
 }:
 {
 
-  # TODO: add systemctl to restore back to default
-  # TODO: after boot default should always be default and not tablet
-  # TODO: allow ctrl+alt+f4 to work
+  # TODO add systemctl to restore back to default
+  # TODO after boot default should always be default and not tablet
+  # TODO allow ctrl+alt+f4 to work
   # Test on baruuk
 
   systemd.services."getty@tty1".enable = false;
