@@ -2,7 +2,9 @@
 keys:
   # Users
   - &users:
-    - &eragon age1683w3al5uvzfg4jn6jzmuwtcxjq0vrmlhzs8k90khta5ahcuvpvqg6fqky
+    - &eragon_pulsar age1683w3al5uvzfg4jn6jzmuwtcxjq0vrmlhzs8k90khta5ahcuvpvqg6fqky
+    - &eragon_caliban age1taalhptlc693sv6gua88tztw9v7asjlse5z0fefcyyvtdqk5nvrqu2t5l7
+
   - &hosts:
     - &ash age1r0qn4lklaq0zcrc0wqrsw9fjzw835ag6spp5pjh8zz7sds5rcfqs94wt2f
     - &atlas age1zsurvq9f9jkfgmx5w38pl3g94m894azexnjgd5pynhj2m7mntpeqrzwcfj
@@ -10,52 +12,70 @@ keys:
     - &vm1 age1aykstl5ugcl5u5gwwvllq3ysgdhxs6zv4hp62v42j93tfu9nycsq0z04vt
     - &banshee age1jcap04zvw47k2c4ekl3wrl98nthnuhelhrrp7zx4en5mc7azkapq2davel
     - &baruuk age16nx032ql9c3qmlddq2nyls0vvdww2mthfpv8pqcnp7ym8gd5tvmsrujcm0
+    - &caliban age1zyxft9txhxlaynjq83dm4sk6gykpx8zew7gy946e9mxujdxdrgqq2yv9z7
+
+
 
 creation_rules:
   - path_regex: hosts/vm1/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
       - *vm1
+      - *eragon_pulsar
+      - *eragon_caliban
 
   - path_regex: hosts/ash/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
       - *ash
+      - *eragon_pulsar
+      - *eragon_caliban
 
   - path_regex: hosts/atlas/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
       - *atlas
+      - *eragon_pulsar
+      - *eragon_caliban
 
   - path_regex: hosts/banshee/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
       - *banshee
+      - *eragon_pulsar
+      - *eragon_caliban
 
   - path_regex: hosts/baruuk/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
       - *baruuk
+      - *eragon_pulsar
+      - *eragon_caliban
+
+  - path_regex: hosts/caliban/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *caliban
+      - *eragon_pulsar
+      - *eragon_caliban
 
   - path_regex: hosts/testing/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
       - *testing
+      - *eragon_pulsar
+      - *eragon_caliban
 
 
   - path_regex: hosts/base/users/eragon/secrets.ya?ml$
     key_groups:
     - age:
-      - *eragon
+      - *eragon_pulsar
+      - *eragon_caliban
       - *ash
       - *atlas
       - *vm1
       - *banshee
       - *baruuk
+      - *caliban
       - *testing

@@ -15,6 +15,16 @@
 
   home.shellAliases = {
     fsway = "fzf-sway-move-window";
+    displays = ''
+      swaymsg -t get_outputs | jq -r '
+        .[] | select(.active == true) |
+        "Output: \(.name)
+        Resolution: \(.rect.width)x\(.rect.height)
+        Position:   X=\(.rect.x), Y=\(.rect.y)
+        Scale:      \(.scale)
+        -----------------------------------"
+      '
+    '';
   };
   wayland.windowManager.sway = {
     enable = true;
@@ -25,6 +35,7 @@
           value = {
             mode = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
             pos = "${toString m.x} ${toString m.y}";
+            scale = "${toString m.scale}";
           };
         }) config.monitors
       );
