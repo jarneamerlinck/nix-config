@@ -6,7 +6,7 @@
 }:
 let
   traefik_oidc_start = "traefik.http.middlewares.oidc-auth.plugin.traefik-oidc-auth";
-  version = "3.7.11";
+  version = "3.7.13";
 in
 {
 
