@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 {
-
+  # security.pam.services.swaylock = {
+  #   fprintAuth = true;
+  #   # Ensures swaylock doesn't block waiting for password if fingerprint is scanned first
+  #   text = ''
+  #     auth sufficient pam_unix.so try_first_pass likeauth nullok
+  #     auth sufficient pam_fprintd.so
+  #     auth include login
+  #   '';
+  # };
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;

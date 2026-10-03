@@ -1,6 +1,5 @@
 { config, lib, ... }:
 {
-  # configure options
   wayland.windowManager.sway.systemd.extraCommands = [
     "noctalia"
   ];
@@ -8,35 +7,62 @@
   programs.noctalia = {
     enable = true;
     systemd.enable = false;
-    settings = {
-      # configure noctalia here
-      desktop_widgets.enabled = false;
-      idle.pre_action_fade_seconds = 0;
-      dock.enabled = false;
-      general = {
-        avatarImage = "/home/${config.home.username}/.face";
-        radiusRatio = 0.2;
-      };
-      location.auto_locate = true;
-      lockscreen_widgets.enable = false;
-      theme.source = lib.mkForce "community";
-      wallpaper.enabled = false;
-      bar = {
 
+    settings = {
+      desktop_widgets.enabled = false;
+
+      idle.pre_action_fade_seconds = 0;
+
+      dock = {
+        background_opacity = 1.0;
+        enabled = false;
+      };
+
+      location.auto_locate = true;
+
+      lockscreen = {
+        enabled = false;
+      };
+
+      nightlight = {
+        enabled = true;
+      };
+
+      notification = {
+        background_opacity = 1.0;
+      };
+
+      osd = {
+        background_opacity = 1.0;
+      };
+
+      shell = {
+        font_family = lib.mkForce config.stylix.fonts.monospace.name;
+        avatar_path = "/home/${config.home.username}/.face";
+      };
+
+      theme = lib.mkForce {
+        custom_palette = "stylix";
+        mode = "dark";
+        source = lib.mkForce "community";
+      };
+
+      wallpaper = {
+        enabled = false;
+
+      };
+
+      bar = {
         density = "compact";
         position = "top";
         showCapsule = false;
+
         widgets = {
           center = [
-            {
-
-              id = "clock";
-            }
-            {
-
-              id = "date";
-            }
+            "date"
+            "clock"
           ];
+
           end = [
             "media"
             "tray"
@@ -49,51 +75,34 @@
             "control-center"
             "session"
           ];
+
           shadow = false;
+
           start = [
-            {
-              id = "workspaces";
-            }
+            "workspaces"
           ];
-          left = [
-            {
 
-              id = "ControlCenter";
-              useDistroLogo = true;
-            }
-            {
-
-              id = "Network";
-            }
-            {
-
-              id = "Bluetooth";
-            }
-
-            {
-
-              alwaysShowPercentage = false;
-              id = "Battery";
-              warningThreshold = 20;
-            }
-          ];
         };
       };
+
       control_center.shortcuts = [
         {
           type = "wifi";
         }
+
         {
           type = "bluetooth";
         }
+
         {
           type = "nightlight";
         }
+
         {
           type = "power_profile";
         }
-
       ];
+      widget.date.format = "{:%H:%M  %a %d %b}";
     };
   };
 }
