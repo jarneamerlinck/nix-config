@@ -5,7 +5,7 @@
   ...
 }:
 let
-  version = "0.64.0";
+  version = "0.64.2";
 in
 {
   sops.secrets."music/env" = {

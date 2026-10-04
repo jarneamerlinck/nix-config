@@ -5,7 +5,7 @@
   ...
 }:
 let
-  version = "6.7.3";
+  version = "6.7.7";
 in
 {
 
