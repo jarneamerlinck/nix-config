@@ -11,6 +11,7 @@
 
     ../base
     ../base/users/eragon
+    ../base/users/guest
     ../features/disks/wd-decrypt.nix
     ../features/desktop/wireless.nix
     ../features/desktop/flatpak.nix
