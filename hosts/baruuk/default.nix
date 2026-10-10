@@ -41,6 +41,7 @@
 
     ## Desktop environments / Window Managers
     ../features/desktop/mouse.nix
+    ../features/desktop/kde.nix
     ../features/desktop/pipewire.nix
   ];
   networking = {
