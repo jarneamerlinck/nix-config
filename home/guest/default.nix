@@ -7,7 +7,7 @@ let
     else if config.wayland.windowManager.sway.enable then
       "sway"
     else
-      "sway";
+      "startplasma-wayland";
 in
 {
   home = {
@@ -17,4 +17,13 @@ in
       '')
     ];
   };
+  dconf.settings = {
+    "org/gnome/desktop/input-sources" = {
+      sources = [
+        "xkb"
+        "be"
+      ];
+    };
+  };
+
 }
