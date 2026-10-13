@@ -5,7 +5,7 @@
   ...
 }:
 let
-  version = "6.7.7";
+  version = "6.7.9"; # imgupdate https://github.com/firefly-iii/firefly-iii/releases/
 in
 {
 
