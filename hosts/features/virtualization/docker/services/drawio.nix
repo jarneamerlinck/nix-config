@@ -6,7 +6,7 @@
 {
   # Containers
   virtualisation.oci-containers.containers."drawio-drawio" = {
-    image = "docker.io/jgraph/drawio:30.2.5"; # imgupdate https://hub.docker.com/r/jgraph/drawio/tags
+    image = "docker.io/jgraph/drawio:32.4.1"; # imgupdate https://hub.docker.com/r/jgraph/drawio/tags
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.drawio-rtr.entrypoints" = "https";
