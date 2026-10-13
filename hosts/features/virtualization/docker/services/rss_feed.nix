@@ -1,7 +1,7 @@
 # Auto-generated using compose2nix v0.2.3-pre.
 { pkgs, lib, ... }:
 let
-  version = "1.30.0";
+  version = "1.30.1";
 in
 {
   # Containers

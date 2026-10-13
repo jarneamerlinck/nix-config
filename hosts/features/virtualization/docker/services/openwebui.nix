@@ -6,8 +6,8 @@
 }:
 let
   url = "chat.ko0.net";
-  ollama_version = "0.35.1";
-  openwebui_version = "0.11.4";
+  ollama_version = "0.40.3"; # imgupdate https://github.com/ollama/ollama/releases
+  openwebui_version = "0.12.0"; # imgupdate https://github.com/open-webui/open-webui/releases/
 
 in
 {
@@ -23,7 +23,7 @@ in
   };
   # Containers
   virtualisation.oci-containers.containers."chat-openwebui" = {
-    image = "ghcr.io/open-webui/open-webui:${openwebui_version}"; # imgupdate https://github.com/open-webui/open-webui/releases/
+    image = "ghcr.io/open-webui/open-webui:${openwebui_version}";
     environmentFiles = [ "/run/secrets-for-users/openwebui/env" ];
 
     environment = {
@@ -57,7 +57,7 @@ in
   };
 
   virtualisation.oci-containers.containers."ollama" = {
-    image = "ollama/ollama:${ollama_version}"; # imgupdate https://github.com/ollama/ollama/releases
+    image = "docker.io/ollama/ollama:${ollama_version}";
     volumes = [ "/data/docker/chat/ollama/:/root/.ollama" ];
     environment = {
       "OLLAMA_HOST" = "0.0.0.0";
