@@ -4,7 +4,7 @@
   ...
 }:
 let
-  version = "2.1.2";
+  version = "2.5.2"; # imgupdate https://github.com/homarr-labs/homarr/releases
 in
 {
 
