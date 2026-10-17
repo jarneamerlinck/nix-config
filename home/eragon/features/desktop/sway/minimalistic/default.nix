@@ -7,7 +7,7 @@ in
 {
   imports = [
     ../common
-    ./shotman.nix
+    ../../common/screenshot_tool.nix
     ./wofi.nix
     # ./waybar.nix
     ./notifications.nix
