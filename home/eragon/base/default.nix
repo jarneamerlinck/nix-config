@@ -56,10 +56,16 @@
 
   # Set default wallpaper and colorscheme
   # Available color schemes can be found at
-  stylix.enable = true;
-  stylix.autoEnable = true;
-
-  stylix.image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
-  stylix.polarity = lib.mkDefault "dark";
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    image = lib.mkDefault "${pkgs.wallpapers.sci-fi-holographic-abstract}";
+    polarity = lib.mkDefault "dark";
+    cursor = lib.mkDefault {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+  };
 
 }
