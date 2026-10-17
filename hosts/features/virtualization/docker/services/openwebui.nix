@@ -6,8 +6,8 @@
 }:
 let
   url = "chat.ko0.net";
-  ollama_version = "0.40.3"; # imgupdate https://github.com/ollama/ollama/releases
-  openwebui_version = "0.12.0"; # imgupdate https://github.com/open-webui/open-webui/releases/
+  ollama_version = "0.40.5"; # imgupdate https://github.com/ollama/ollama/releases
+  openwebui_version = "0.12.3"; # imgupdate https://github.com/open-webui/open-webui/releases/
 
 in
 {

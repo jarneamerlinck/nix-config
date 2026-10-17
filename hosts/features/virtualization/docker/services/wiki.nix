@@ -7,7 +7,7 @@
   ...
 }:
 let
-  version = "2"; # imgupdate https://docs.requarks.io/releases
+  version = "2.5.316"; # imgupdate https://docs.requarks.io/releases
 in
 {
 
