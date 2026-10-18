@@ -14,7 +14,7 @@
   ];
 
   home.shellAliases = {
-    fsway = "fzf-sway-move-window";
+    wmove = "fzf-sway-move-window";
     displays = ''
       swaymsg -t get_outputs | jq -r '
         .[] | select(.active == true) |
