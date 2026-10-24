@@ -19,9 +19,30 @@
 #   # ''}";
 # in
 {
+
+  services.displayManager.regreet = {
+    enable = true;
+
+    settings = {
+      # Specifies the default command to execute upon logging in
+      commands = {
+        default = "de-session";
+      };
+    };
+  };
+  # services.greetd = {
+  #   enable = false;
+  #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd de-session";
+  # };
   services.greetd = {
     enable = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd de-session";
+    settings = {
+      default_session = {
+        # Cage launches ReGreet as a single-app Wayland compositor
+        command = "${pkgs.cage}/bin/cage -s -mlast -- ${config.programs.regreet.package}/bin/regreet";
+        user = "greeter";
+      };
+    };
   };
 
 }
