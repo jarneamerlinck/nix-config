@@ -19,40 +19,12 @@
 #   # ''}";
 # in
 {
-  services.displayManager.sessionPackages = [
-    (pkgs.makeDesktopItem {
-      name = "de-session";
-      desktopName = "DE Session";
-      exec = "de-session";
-      destination = "/share/wayland-sessions/de-session.desktop";
-    })
-  ];
-  services.displayManager.regreet = {
+  services.greetd = {
     enable = true;
-
-    settings = {
-      # Specifies the default command to execute upon logging in
-      commands = {
-        default = "de-session";
-      };
-    };
+    settings.default_session.command = "${pkgs.qtgreet}/bin/qtgreet --time --asterisks --user-menu --cmd de-session";
   };
+
   systemd.tmpfiles.rules = [
     ''f+ /var/lib/regreet/state.toml 0644 greeter greeter - {"last_user":"","last_session":"de-session"}''
   ];
-  # services.greetd = {
-  #   enable = false;
-  #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd de-session";
-  # };
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        # Cage launches ReGreet as a single-app Wayland compositor
-        command = "${pkgs.coreutils}/bin/env XKB_DEFAULT_LAYOUT=be ${pkgs.cage}/bin/cage -s -mlast -- ${config.services.displayManager.regreet.package}/bin/regreet";
-        user = "greeter";
-      };
-    };
-  };
-
 }
