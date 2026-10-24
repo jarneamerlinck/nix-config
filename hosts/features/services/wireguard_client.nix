@@ -6,6 +6,14 @@
 let
   publicKeyHome = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI=";
   publicKeyHomeSafe = "WkVNNITeeTyUnTLrjfDYwNI4rqpquZ5rkWlffvQwJmI";
+
+  ips =
+    if config.networking.hostName == "baruuk" then
+      [ "10.5.5.7/32" ]
+    else if config.networking.hostName == "caliban" then
+      [ "10.5.5.10/32" ]
+    else
+      [ ];
 in
 {
   sops.secrets."wireguard/privateKey" = {
@@ -22,6 +30,7 @@ in
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
   };
+
   sops.secrets."wireguard/allowedIps" = {
     sopsFile = ../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -36,7 +45,7 @@ in
     interfaces = {
 
       wg0 = {
-        ips = [ "10.5.5.7/32" ];
+        ips = ips;
         listenPort = 51820;
 
         privateKeyFile = config.sops.secrets."wireguard/privateKey".path;
@@ -69,7 +78,7 @@ in
       ${pkgs.wireguard-tools}/bin/wg set wg0 peer ${publicKeyHome} \
         allowed-ips "$(cat /run/secrets-for-users/wireguard/allowedIps)"
 
-      ${pkgs.iproute2}/bin/ip route add 10.20.0.0/24 dev wg0
+      ${pkgs.iproute2}/bin/ip route replace 10.20.0.0/24 dev wg0
     '';
   };
 
