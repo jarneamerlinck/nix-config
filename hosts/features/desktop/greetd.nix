@@ -19,7 +19,14 @@
 #   # ''}";
 # in
 {
-
+  services.displayManager.sessionPackages = [
+    (pkgs.makeDesktopItem {
+      name = "de-session";
+      desktopName = "DE Session";
+      exec = "de-session";
+      destination = "/share/wayland-sessions/de-session.desktop";
+    })
+  ];
   services.displayManager.regreet = {
     enable = true;
 
