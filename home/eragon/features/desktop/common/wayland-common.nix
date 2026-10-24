@@ -12,7 +12,7 @@ in
   home = {
     packages = with pkgs; [
       wl-clipboard
-      (pkgs.writeShellScriptBin "greetd-session" ''
+      (pkgs.writeShellScriptBin "de-session" ''
         exec "$SHELL" -l -c 'exec ${session}'
       '')
     ];
