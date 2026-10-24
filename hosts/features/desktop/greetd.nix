@@ -30,6 +30,9 @@
       };
     };
   };
+  systemd.tmpfiles.rules = [
+    ''f+ /var/lib/regreet/state.toml 0644 greeter greeter - {"last_user":"","last_session":"de-session"}''
+  ];
   # services.greetd = {
   #   enable = false;
   #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd de-session";
