@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 # let
 #   homeCfgs = config.home-manager.users;
 #   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
@@ -39,7 +39,7 @@
     settings = {
       default_session = {
         # Cage launches ReGreet as a single-app Wayland compositor
-        command = "${pkgs.cage}/bin/cage -s -mlast -- ${config.programs.regreet.package}/bin/regreet";
+        command = "${pkgs.coreutils}/bin/env XKB_DEFAULT_LAYOUT=be ${pkgs.cage}/bin/cage -s -mlast -- ${config.services.displayManager.regreet.package}/bin/regreet";
         user = "greeter";
       };
     };
