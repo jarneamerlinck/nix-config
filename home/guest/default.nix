@@ -12,7 +12,7 @@ in
 {
   home = {
     packages = with pkgs; [
-      (pkgs.writeShellScriptBin "greetd-session" ''
+      (pkgs.writeShellScriptBin "de-session" ''
         exec "$SHELL" -l -c 'exec ${session}'
       '')
     ];
