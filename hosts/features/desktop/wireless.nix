@@ -56,6 +56,7 @@
             type = "wifi";
           };
           ipv4 = {
+            dns = "1.1.1.1";
             method = "auto";
           };
           wifi = {
