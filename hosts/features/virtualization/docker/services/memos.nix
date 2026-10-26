@@ -8,6 +8,7 @@ let
 in
 {
 
+  networkAliases = [ url ];
   virtualisation.oci-containers.containers."memos-memos" = {
     image = "docker.io/neosmemo/memos:0.31.0"; # imgupdate https://github.com/usememos/memos/releases/
 
