@@ -5,9 +5,11 @@
 }:
 let
   version = "2.5.2"; # imgupdate https://github.com/homarr-labs/homarr/releases
+  url = "portal.ko0.net";
 in
 {
 
+  networkAliases = [ url ];
   sops.secrets."portal/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -26,7 +28,7 @@ in
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
       "traefik.http.routers.portal-rtr.entrypoints" = "https";
-      "traefik.http.routers.portal-rtr.rule" = "Host(`portal.ko0.net`)";
+      "traefik.http.routers.portal-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.portal-rtr.service" = "portal-svc";
       "traefik.http.routers.portal-rtr.tls" = "true";
       "traefik.http.routers.portal-rtr.tls.certresolver" = "cloudflare";

@@ -8,9 +8,11 @@
 }:
 let
   version = "0.33.2"; # imgupdate https://github.com/karakeep-app/karakeep/releases/
+  url = "bookmarks.ko0.net";
 in
 
 {
+  networkAliases = [ url ];
   # Runtime
   sops.secrets."bookmarks/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
@@ -108,7 +110,7 @@ in
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
       "traefik.http.routers.bookmarks-rtr.entrypoints" = "https";
-      "traefik.http.routers.bookmarks-rtr.rule" = "Host(`bookmarks.ko0.net`)";
+      "traefik.http.routers.bookmarks-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.bookmarks-rtr.service" = "bookmarks-svc";
       "traefik.http.routers.bookmarks-rtr.tls" = "true";
       "traefik.http.routers.bookmarks-rtr.tls.certresolver" = "cloudflare";

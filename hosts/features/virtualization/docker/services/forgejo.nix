@@ -1,10 +1,17 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   version = "16.0.6"; # imgupdate https://forgejo.org/releases/
   url = "git.ko0.net";
 in
 {
+  networkAliases = [ url ];
+
   # Runtime
   virtualisation.docker = {
     enable = true;

@@ -8,8 +8,10 @@
 }:
 let
   version = "v2.4.1"; # imgupdate https://git.deuxfleurs.fr/Deuxfleurs/garage/tags
+  url = "storage.ko0.net";
 in
 {
+  networkAliases = [ url ];
   # Containers
   virtualisation.oci-containers.containers."garaged" = {
     image = "dxflrs/garage:${version}";
@@ -27,7 +29,7 @@ in
       "traefik.http.routers.demo-rtr.tls" = "true";
       "traefik.http.routers.demo-rtr.tls.certresolver" = "cloudflare";
       "traefik.http.routers.s3-store-rtr.entrypoints" = "https";
-      "traefik.http.routers.s3-store-rtr.rule" = "Host(`storage.ko0.net`)";
+      "traefik.http.routers.s3-store-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.s3-store-rtr.service" = "s3-store-svc";
       "traefik.http.routers.s3-store-rtr.tls" = "true";
       "traefik.http.routers.s3-store-rtr.tls.certresolver" = "cloudflare";

@@ -9,8 +9,10 @@ let
   gid = 100;
   uid = 1442;
   git_branch = "stable";
+  url = "releases.ko0.net";
 in
 {
+  networkAliases = [ url ];
   sops.secrets."releases/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -32,7 +34,7 @@ in
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
       "traefik.http.routers.releases-rtr.entrypoints" = "https";
-      "traefik.http.routers.releases-rtr.rule" = "Host(`releases.ko0.net`)";
+      "traefik.http.routers.releases-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.releases-rtr.service" = "releases-svc";
       "traefik.http.routers.releases-rtr.tls" = "true";
       "traefik.http.routers.releases-rtr.tls.certresolver" = "cloudflare";

@@ -7,9 +7,11 @@
 let
   port = "8080";
   version = "latest";
+  url = "search.ko0.net";
 in
 
 {
+  networkAliases = [ url ];
   sops.secrets."search/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -25,7 +27,7 @@ in
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.search-rtr.entrypoints" = "https";
-      "traefik.http.routers.search-rtr.rule" = "Host(`search.ko0.net`)";
+      "traefik.http.routers.search-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.search-rtr.service" = "search-svc";
       "traefik.http.routers.search-rtr.tls" = "true";
       "traefik.http.routers.search-rtr.tls.certresolver" = "cloudflare";
