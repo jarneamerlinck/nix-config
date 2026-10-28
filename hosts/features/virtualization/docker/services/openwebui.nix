@@ -12,6 +12,7 @@ let
 in
 {
 
+  networkAliases = [ url ];
   sops.secrets."openwebui/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;

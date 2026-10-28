@@ -7,6 +7,10 @@
 let
   traefik_oidc_start = "traefik.http.middlewares.oidc-auth.plugin.traefik-oidc-auth";
   version = "3.7.15"; # imgupdate https://hub.docker.com/_/traefik
+
+  network_aliases = [
+    "${config.networking.hostName}.ko0.net"
+  ];
 in
 {
 
@@ -76,14 +80,16 @@ in
     };
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=traefik"
-      "--network=frontend"
       # "--health-cmd=wget --spider -q http://localhost:${port}/healthz"
       # "--health-interval=30s"
       # "--health-retries=3"
       # "--health-timeout=10s"
+      "--network-alias=traefik"
+      "--network=frontend"
+    ]
+    ++ (map (alias: "--network-alias=${alias}") network_aliases)
+    ++ (map (alias: "--network-alias=${alias}") config.networkAliases);
 
-    ];
   };
   systemd.services."docker-traefik" = {
     serviceConfig = {

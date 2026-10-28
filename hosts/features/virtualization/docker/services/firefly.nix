@@ -6,9 +6,11 @@
 }:
 let
   version = "6.7.9"; # imgupdate https://github.com/firefly-iii/firefly-iii/releases/
+  url = "budget.ko0.net";
 in
 {
 
+  networkAliases = [ url ];
   sops.secrets."firefly/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -29,7 +31,7 @@ in
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
       "traefik.http.routers.firefly-rtr.entrypoints" = "https";
-      "traefik.http.routers.firefly-rtr.rule" = "Host(`budget.ko0.net`)";
+      "traefik.http.routers.firefly-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.firefly-rtr.service" = "firefly-svc";
       "traefik.http.routers.firefly-rtr.tls" = "true";
       "traefik.http.routers.firefly-rtr.tls.certresolver" = "cloudflare";

@@ -8,9 +8,11 @@
 }:
 let
   version = "2.5.316"; # imgupdate https://docs.requarks.io/releases
+  url = "wiki.ko0.net";
 in
 {
 
+  networkAliases = [ url ];
   sops.secrets."wiki/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
     neededForUsers = true;
@@ -29,7 +31,7 @@ in
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
       "traefik.http.routers.notes-rtr.entrypoints" = "https";
-      "traefik.http.routers.notes-rtr.rule" = "Host(`wiki.ko0.net`)";
+      "traefik.http.routers.notes-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.notes-rtr.service" = "notes-svc";
       "traefik.http.routers.notes-rtr.tls" = "true";
       "traefik.http.routers.notes-rtr.tls.certresolver" = "cloudflare";

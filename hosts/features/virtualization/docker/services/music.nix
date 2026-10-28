@@ -5,9 +5,11 @@
   ...
 }:
 let
-  version = "0.64.2";
+  version = "0.64.2"; # imgupdate https://github.com/navidrome/navidrome/releases
+  url = "music.ko0.net";
 in
 {
+  networkAliases = [ url ];
   sops.secrets."music/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
 
@@ -21,7 +23,7 @@ in
 
   # Containers
   virtualisation.oci-containers.containers."music-navidrome" = {
-    image = "docker.io/deluan/navidrome:${version}"; # imgupdate https://github.com/navidrome/navidrome/releases
+    image = "docker.io/deluan/navidrome:${version}";
 
     environmentFiles = [ "/run/secrets-for-users/music/env" ];
 
@@ -37,7 +39,7 @@ in
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.navidrome-rtr.entrypoints" = "https";
-      "traefik.http.routers.navidrome-rtr.rule" = "Host(`music.ko0.net`)";
+      "traefik.http.routers.navidrome-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.navidrome-rtr.service" = "navidrome-svc";
       "traefik.http.routers.navidrome-rtr.tls" = "true";
       "traefik.http.routers.navidrome-rtr.tls.certresolver" = "cloudflare";
