@@ -32,7 +32,7 @@
     ## Services items
     # ../features/services/unattended-upgrades.nix
     ../features/services/syncthing_server.nix
-    ../features/services/forgejo-runner.nix
+    # ../features/services/forgejo-runner.nix
 
     ../features/virtualization/incus
     ../features/virtualization/docker
