@@ -9,9 +9,15 @@
 let
   version = "v2.4.1"; # imgupdate https://git.deuxfleurs.fr/Deuxfleurs/garage/tags
   url = "storage.ko0.net";
+  url_demo = "demo.ko0.net";
+  url_blog = "blog.ko0.net";
 in
 {
-  networkAliases = [ url ];
+  networkAliases = [
+    url
+    url_demo
+    url_blog
+  ];
   # Containers
   virtualisation.oci-containers.containers."garaged" = {
     image = "dxflrs/garage:${version}";
@@ -23,17 +29,23 @@ in
     labels = {
       "traefik.docker.network" = "frontend";
       "traefik.enable" = "true";
+      "traefik.http.routers.blog-rtr.entrypoints" = "https";
+      "traefik.http.routers.blog-rtr.rule" = "Host(`${url_blog}`)";
+      "traefik.http.routers.blog-rtr.service" = "blog-svc";
+      "traefik.http.routers.blog-rtr.tls" = "true";
+      "traefik.http.routers.blog-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.blog-svc.loadbalancer.server.port" = "3902";
       "traefik.http.routers.demo-rtr.entrypoints" = "https";
-      "traefik.http.routers.demo-rtr.rule" = "Host(`demo.ko0.net`)";
+      "traefik.http.routers.demo-rtr.rule" = "Host(`${url_demo}`)";
       "traefik.http.routers.demo-rtr.service" = "demo-svc";
       "traefik.http.routers.demo-rtr.tls" = "true";
       "traefik.http.routers.demo-rtr.tls.certresolver" = "cloudflare";
+      "traefik.http.services.demo-svc.loadbalancer.server.port" = "3902";
       "traefik.http.routers.s3-store-rtr.entrypoints" = "https";
       "traefik.http.routers.s3-store-rtr.rule" = "Host(`${url}`)";
       "traefik.http.routers.s3-store-rtr.service" = "s3-store-svc";
       "traefik.http.routers.s3-store-rtr.tls" = "true";
       "traefik.http.routers.s3-store-rtr.tls.certresolver" = "cloudflare";
-      "traefik.http.services.demo-svc.loadbalancer.server.port" = "3902";
       "traefik.http.services.s3-store-svc.loadbalancer.server.port" = "3900";
     };
     log-driver = "journald";
