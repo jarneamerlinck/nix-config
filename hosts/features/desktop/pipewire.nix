@@ -7,5 +7,12 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    extraConfig.client = {
+      "99-disable-bell" = {
+        "stream.properties" = {
+          "accessibility.bell" = false;
+        };
+      };
+    };
   };
 }
