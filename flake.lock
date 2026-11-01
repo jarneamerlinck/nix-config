@@ -521,11 +521,11 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1793259054,
-        "narHash": "sha256-r4+IyGDHdjn/6mmRUFCKB5jHQFQCB/VU081vGcw8M1E=",
+        "lastModified": 1793532967,
+        "narHash": "sha256-cjhzf7dUuGCceZ+H6GyS1rrbKMeXvP/0Jzt1A7U1Dk4=",
         "owner": "jarneamerlinck",
         "repo": "kickstart.nvim",
-        "rev": "d17c2c04f6c7e12e0b06208ea3db111f33d51696",
+        "rev": "1fee12b3a2d42438896f73eac0ff6fb594e24996",
         "type": "github"
       },
       "original": {
@@ -589,11 +589,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793519447,
-        "narHash": "sha256-73nUUJrbsvvJg6wz4w98aX7PmxvCHtAYUUflaNqxl7Y=",
+        "lastModified": 1793532878,
+        "narHash": "sha256-Xi2Sh/W7dozTmtBdUrOePrj/jz1AaDbpX1xPSGHKY1w=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f1afb5c691b7bb45d9324baf32ee7701b5277621",
+        "rev": "43dd959b370ea1272456feac3014a9befa8f338f",
         "type": "github"
       },
       "original": {
