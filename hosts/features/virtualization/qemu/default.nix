@@ -3,9 +3,15 @@
 {
   environment.systemPackages = with pkgs; [
     qemu
-    virt-manager
+    dnsmasq
   ];
   virtualisation.libvirtd.enable = true;
-  # programs.virt-manager.enable = true; # for 23.11 or after
+  programs.virt-manager.enable = true;
   services.spice-vdagentd.enable = true;
+  networking.nat = {
+    enable = true;
+    internalInterfaces = [ "virbr0" ];
+  };
+
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 }
