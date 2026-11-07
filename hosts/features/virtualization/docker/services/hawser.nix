@@ -5,7 +5,7 @@
   ...
 }:
 let
-  version = "0.2.50"; # imgupdate https://github.com/Finsys/hawser/releases
+  version = "0.2.53"; # imgupdate https://github.com/Finsys/hawser/releases
 in
 
 {

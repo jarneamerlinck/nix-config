@@ -7,7 +7,7 @@
   ...
 }:
 let
-  version = "v2.4.1"; # imgupdate https://git.deuxfleurs.fr/Deuxfleurs/garage/tags
+  version = "v2.5.0"; # imgupdate https://git.deuxfleurs.fr/Deuxfleurs/garage/tags
   url = "storage.ko0.net";
   url_demo = "demo.ko0.net";
   url_blog = "blog.ko0.net";
