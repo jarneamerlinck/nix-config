@@ -7,11 +7,14 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    extraConfig.client = {
-      "99-disable-bell" = {
-        "stream.properties" = {
-          "accessibility.bell" = false;
-        };
+    extraConfig.pipewire = {
+      "99-disable-x11-bell" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-x11-bell";
+            flags = [ "disabled" ];
+          }
+        ];
       };
     };
   };
