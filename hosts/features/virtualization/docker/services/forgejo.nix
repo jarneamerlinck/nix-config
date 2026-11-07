@@ -6,7 +6,7 @@
 }:
 
 let
-  version = "16.0.6"; # imgupdate https://forgejo.org/releases/
+  version = "17.0.1"; # imgupdate https://forgejo.org/releases/
   url = "git.ko0.net";
 in
 {

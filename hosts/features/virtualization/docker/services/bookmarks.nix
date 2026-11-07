@@ -7,7 +7,7 @@
   ...
 }:
 let
-  version = "0.33.2"; # imgupdate https://github.com/karakeep-app/karakeep/releases/
+  version = "0.34.1"; # imgupdate https://github.com/karakeep-app/karakeep/releases/
   url = "bookmarks.ko0.net";
 in
 
