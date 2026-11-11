@@ -7,9 +7,13 @@
 let
   version = "0.64.2"; # imgupdate https://github.com/navidrome/navidrome/releases
   url = "music.ko0.net";
+  url_lastfm = "lastfm.ko0.net";
 in
 {
-  networkAliases = [ url ];
+  networkAliases = [
+    url
+    url_lastfm
+  ];
   sops.secrets."music/env" = {
     sopsFile = ../../../../${config.networking.hostName}/secrets.yml;
 
@@ -66,7 +70,7 @@ in
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.maloja-rtr.entrypoints" = "https";
-      "traefik.http.routers.maloja-rtr.rule" = "Host(`lastfm.ko0.net`)";
+      "traefik.http.routers.maloja-rtr.rule" = "Host(`${url_lastfm}`)";
       "traefik.http.routers.maloja-rtr.service" = "maloja-svc";
       "traefik.http.routers.maloja-rtr.tls" = "true";
       "traefik.http.routers.maloja-rtr.tls.certresolver" = "cloudflare";
