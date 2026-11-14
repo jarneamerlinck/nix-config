@@ -32,7 +32,7 @@ let
   ## Update Git and Channel Script
   updateGitScript = pkgs.writeScript "update-git.sh" ''
     set -eu
-    ${pkgs.git}/bin/git -C /etc/nix-config pull --rebase
+    # ${pkgs.git}/bin/git -C /etc/nix-config pull --rebase
   '';
 
   buildAndBoot = pkgs.writeScript "rebuild-and-boot.sh" ''
@@ -47,7 +47,7 @@ in
     "d /etc/nix-config 2775 eragon users -"
   ];
   # Auto update config and channel
-  systemd.timers."auto-update-config" = {
+  systemd.timers."auto-upgrade-config" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "Mon";
@@ -59,15 +59,16 @@ in
   systemd.services."auto-upgrade" = {
     script = ''
       set -eu
-      export PATH=${pkgs.nh}/bin:${pkgs.nix}/bin:${pkgs.systemd}/bin:${pkgs.util-linux}/bin:${pkgs.coreutils-full}/bin:$PATH
+      # Ensure /run/wrappers/bin comes first so sudo works with proper setuid permissions
+      export PATH=/run/wrappers/bin:${pkgs.nixos-rebuild}/bin:${pkgs.nh}/bin:${pkgs.nix}/bin:${pkgs.openssh}/bin:${pkgs.systemd}/bin:${pkgs.util-linux}/bin:${pkgs.coreutils-full}/bin:$PATH
 
       ${updateGitScript}
 
-      ${notifyUsersScript} "Starting System Updates" "System updates are installing in the background.  You can continue to use your computer while these are running."
-      ${buildAndBoot}
+      ${notifyUsersScript} "Starting System Updates" "System updates are installing in the background. You can continue to use your computer while these are running."
 
+      nixos-rebuild boot --flake /etc/nix-config#$HOSTNAME
 
-      ${notifyUsersScript} "System Updates Complete" "Updates are complete!  Simply reboot the computer whenever is convenient to apply updates."
+      ${notifyUsersScript} "System Updates Complete" "Updates are complete! Simply reboot the computer whenever is convenient to apply updates."
     '';
     serviceConfig = {
       Type = "oneshot";
