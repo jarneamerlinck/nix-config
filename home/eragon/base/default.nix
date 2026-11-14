@@ -47,8 +47,8 @@
     stateVersion = lib.mkDefault "26.05";
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
-      FLAKE = "${config.home.homeDirectory}/nix-config";
-      NH_FLAKE = "${config.home.homeDirectory}/nix-config";
+      FLAKE = "/etc/nix-config";
+      NH_FLAKE = "/etc/nix-config";
     };
     file.".face".source = lib.cleanSource ./face;
 

@@ -3,6 +3,17 @@
   ...
 }:
 {
+  security.sudo.extraRules = [
+    {
+      users = [ "eragon" ];
+      commands = [
+        {
+          command = "${pkgs.nh}/bin/nh";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
   services.fail2ban = {
     enable = true;
     extraPackages = [ pkgs.nftables ];
