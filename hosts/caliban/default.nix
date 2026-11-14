@@ -6,6 +6,7 @@
     ../features/hardware/laptop.nix
     ../features/hardware/keychron.nix
     ../features/disks/boot_btrfs_laptop.nix
+    ../features/services/unattended-upgrades.nix
 
     ../base/timezone.nix
 
