@@ -28,6 +28,8 @@ jobs:
       - name: Update main branch
         run: |
           nix flake update
+          git add flake.lock
+          git commit -m "chore: update flake"
 
       - name: Create or update pull request
         uses: peter-evans/create-pull-request@v7
