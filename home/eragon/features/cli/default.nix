@@ -25,9 +25,9 @@
   home = {
     shellAliases = {
       v = "nvim";
-      rebuild = "cd $NH_FLAKE &&  ./deploy.sh";
-      rebuildf = "cd $NH_FLAKE && git stash &&  git pull -f && ./deploy.sh";
-      rebuildl = "cd $NH_FLAKE && ./deploy.sh --offline";
+      rebuild = "nh os switch";
+      rebuildf = "cd $NH_FLAKE && git stash &&  git pull -f && nh os switch";
+      rebuildl = "nh os switch --offline";
       debug = ''
         nix-inspect --expr "builtins.getFlake \"$(pwd)\""
       '';
