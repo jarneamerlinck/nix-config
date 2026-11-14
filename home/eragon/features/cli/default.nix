@@ -13,7 +13,6 @@
     ./docker.nix
     ./python.nix
     ./secret_service.nix
-    ./opencode.nix
     ./television
   ];
 
