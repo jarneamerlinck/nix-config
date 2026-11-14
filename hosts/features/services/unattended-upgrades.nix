@@ -32,7 +32,7 @@ let
   ## Update Git and Channel Script
   updateGitScript = pkgs.writeScript "update-git.sh" ''
     set -eu
-    # ${pkgs.git}/bin/git -C /etc/nix-config pull --rebase
+    ${pkgs.git}/bin/git -C /etc/nix-config pull --rebase
   '';
 
   buildAndBoot = pkgs.writeScript "rebuild-and-boot.sh" ''
@@ -56,13 +56,36 @@ in
     };
   };
 
-  systemd.services."auto-upgrade" = {
+  systemd.services."auto-update" = {
     script = ''
       set -eu
       # Ensure /run/wrappers/bin comes first so sudo works with proper setuid permissions
       export PATH=/run/wrappers/bin:${pkgs.nixos-rebuild}/bin:${pkgs.nh}/bin:${pkgs.nix}/bin:${pkgs.openssh}/bin:${pkgs.systemd}/bin:${pkgs.util-linux}/bin:${pkgs.coreutils-full}/bin:$PATH
 
       ${updateGitScript}
+
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "eragon";
+      Restart = "on-failure";
+      RestartSec = "30s";
+      CPUWeight = "20";
+      IOWeight = "20";
+      MemoryHigh = "500M";
+    };
+
+    after = [
+      "network-online.target"
+      "graphical.target"
+    ];
+    wants = [ "network-online.target" ];
+  };
+  systemd.services."auto-upgrade" = {
+    script = ''
+      set -eu
+      # Ensure /run/wrappers/bin comes first so sudo works with proper setuid permissions
+      export PATH=/run/wrappers/bin:${pkgs.nixos-rebuild}/bin:${pkgs.nh}/bin:${pkgs.nix}/bin:${pkgs.openssh}/bin:${pkgs.systemd}/bin:${pkgs.util-linux}/bin:${pkgs.coreutils-full}/bin:$PATH
 
       ${notifyUsersScript} "Starting System Updates" "System updates are installing in the background. You can continue to use your computer while these are running."
 
@@ -77,12 +100,15 @@ in
       RestartSec = "30s";
       CPUWeight = "20";
       IOWeight = "20";
-      MemoryHigh = "500M";
+      MemoryHigh = "900M";
     };
-
+    requires = [
+      "auto-update.service"
+    ];
     after = [
       "network-online.target"
       "graphical.target"
+      "auto-update.service"
     ];
     wants = [ "network-online.target" ];
   };
