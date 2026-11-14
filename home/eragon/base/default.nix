@@ -48,7 +48,7 @@
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       FLAKE = "${config.home.homeDirectory}/nix-config";
-      NH_FLAKE = "${config.home.homeDirectory}/nix-config";
+      NH_FLAKE = "/etc/nix-config";
     };
     file.".face".source = lib.cleanSource ./face;
 
