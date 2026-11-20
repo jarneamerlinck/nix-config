@@ -5,7 +5,7 @@
   ...
 }:
 let
-  version = "2.7.2"; # imgupdate https://hub.docker.com/r/vabene1111/recipes/tags
+  version = "2.7.<F18>"; # imgupdate https://hub.docker.com/r/vabene1111/recipes
 in
 {
   sops.secrets."recipes/env" = {

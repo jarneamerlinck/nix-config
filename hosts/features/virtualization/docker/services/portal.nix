@@ -4,7 +4,7 @@
   ...
 }:
 let
-  version = "v26.08.3"; # imgupdate https://github.com/homarr-labs/homarr/releases
+  version = "v26.11.4"; # imgupdate https://hub.docker.com/r/b4bz/homer
   url = "beta.ko0.net";
   extractSubdomain =
     url:
@@ -65,7 +65,7 @@ in
 
   # Containers
   virtualisation.oci-containers.containers."homer" = {
-    image = "b4bz/homer:${version}";
+    image = "docker.io/b4bz/homer:${version}";
     environment = {
       "INIT_ASSETS" = "1";
     };
