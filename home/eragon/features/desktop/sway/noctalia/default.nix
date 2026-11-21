@@ -72,6 +72,7 @@ in
       };
     };
     extraConfig = ''
+      for_window [title=".*Steam.*"] move to workspace 0
       for_window [app_id="firefox"] move to workspace 2
       for_window [app_id="code"] move to workspace 3
       for_window [app_id="vesktop"] move to workspace 4
