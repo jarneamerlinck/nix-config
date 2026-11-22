@@ -14,7 +14,6 @@
   packages = [
     pkgs.git
     pkgs.sops
-    pkgs.pre-commit
   ];
 
   # https://devenv.sh/languages/
@@ -71,9 +70,13 @@
   #   echo "Running tests"
   #   git --version | grep --color=auto "${pkgs.git.version}"
   # '';
-
   # https://devenv.sh/git-hooks/
-  # git-hooks.hooks.shellcheck.enable = true;
+  git-hooks.hooks = {
+    # Example hooks from pre-commit-hooks:
+    end-of-file-fixer.enable = true;
+    trailing-whitespace.enable = true;
+    check-added-large-files.enable = true;
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
