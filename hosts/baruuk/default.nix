@@ -1,4 +1,9 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.hardware.nixosModules.framework-12-13th-gen-intel
@@ -44,6 +49,8 @@
     ../features/desktop/kde.nix
     ../features/desktop/pipewire.nix
   ];
+  services.displayManager.regreet.settings.background.path =
+    lib.mkForce "${pkgs.wallpapers.cyberpunk-city-16-10}";
   networking = {
     hostName = "baruuk";
     useDHCP = lib.mkDefault true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   deSessionPackage =
     pkgs.writeTextDir "share/wayland-sessions/de-session.desktop" ''
@@ -13,7 +13,20 @@ let
     };
 in
 {
-  programs.regreet.enable = true;
+  services.displayManager.regreet = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    settings = {
+      background = {
+        path = lib.mkDefault "${pkgs.wallpapers.nixos-logo}";
+        # Optional: "Fill", "Contain", "Cover", or "Scale"
+        fit = "Cover";
+      };
+    };
+  };
   environment.variables = {
     XKB_DEFAULT_LAYOUT = "be";
   };
