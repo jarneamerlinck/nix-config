@@ -67,13 +67,26 @@
   };
 
   # https://devenv.sh/tests/
-  # enterTest = ''
-  #   echo "Running tests"
-  #   git --version | grep --color=auto "${pkgs.git.version}"
-  # '';
-
+  enterTest = ''
+    echo "Running tests"
+    pre-commit run --all
+  '';
   # https://devenv.sh/git-hooks/
-  # git-hooks.hooks.shellcheck.enable = true;
+  git-hooks = {
+    enable = true;
+    hooks = {
+      # Example hooks from pre-commit-hooks:
+      nixfmt.enable = true;
+      trim-trailing-whitespace.enable = true;
+      detect-private-keys.enable = true;
+      end-of-file-fixer.enable = true;
+      action-validator.enable = true;
+      check-xml.enable = true;
+      check-json.enable = true;
+      check-yaml.enable = true;
+      check-added-large-files.enable = true;
+    };
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
