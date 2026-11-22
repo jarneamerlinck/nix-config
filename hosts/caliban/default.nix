@@ -1,4 +1,9 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.hardware.nixosModules.framework-intel-core-ultra-series3
@@ -46,5 +51,7 @@
     useDHCP = lib.mkDefault true;
   };
 
+  services.displayManager.regreet.settings.background.path =
+    lib.mkForce "${pkgs.wallpapers.fw13p-pixelart-3-2}";
   system.stateVersion = "26.05";
 }

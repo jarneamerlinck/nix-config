@@ -10,14 +10,4 @@
       ];
     })
   ];
-
-  home.persistence = {
-    "/persist/home/misterio" = {
-      allowOther = true;
-      directories = [
-        ".config/lutris"
-        ".local/share/lutris"
-      ];
-    };
-  };
 }

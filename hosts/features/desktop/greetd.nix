@@ -1,27 +1,36 @@
-{ pkgs, ... }:
-# let
-#   homeCfgs = config.home-manager.users;
-#   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
-#   vars = ''XDG_DATA_DIRS="$XDG_DATA_DIRS:${lib.concatStringsSep ":" homeSharePaths}" GTK_USE_PORTAL=0'';
-#
-#   # misterioCfg = homeCfgs.misterio;
-#   # gtkTheme = misterioCfg.gtk.theme;
-#   # iconTheme = misterioCfg.gtk.iconTheme;
-#   # wallpaper = misterioCfg.wallpaper;
-#
-#   # sway-kiosk = command: "${lib.getExe pkgs.sway} --config ${pkgs.writeText "kiosk.config" ''
-#   #   output * bg #000000 solid_color
-#   #   xwayland disable
-#   #   input "type:touchpad" {
-#   #     tap enabled
-#   #   }
-#   #   exec '${vars} ${command}; ${pkgs.sway}/bin/swaymsg exit'
-#   # ''}";
-# in
+{ pkgs, lib, ... }:
+let
+  deSessionPackage =
+    pkgs.writeTextDir "share/wayland-sessions/de-session.desktop" ''
+      [Desktop Entry]
+      Name=User Desktop (de-session)
+      Comment=Launch user-configured desktop session
+      Exec=de-session
+      Type=Application
+    ''
+    // {
+      providedSessions = [ "de-session" ];
+    };
+in
 {
-  services.greetd = {
+  services.displayManager.regreet = {
     enable = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd greetd-session";
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    settings = {
+      background = {
+        path = lib.mkDefault "${pkgs.wallpapers.nixos-logo}";
+        # Optional: "Fill", "Contain", "Cover", or "Scale"
+        fit = "Cover";
+      };
+    };
+  };
+  environment.variables = {
+    XKB_DEFAULT_LAYOUT = "be";
   };
 
+  # Register the Wayland session so ReGreet finds de-session.desktop
+  services.displayManager.sessionPackages = [ deSessionPackage ];
 }
