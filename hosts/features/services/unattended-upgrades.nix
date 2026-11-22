@@ -50,7 +50,7 @@ in
   systemd.timers."auto-upgrade-config" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "Mon";
+      OnCalendar = "Mon,Thu";
       Persistent = true;
       Unit = "auto-upgrade.service";
     };

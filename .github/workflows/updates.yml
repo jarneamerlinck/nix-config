@@ -2,8 +2,8 @@ name: Update Nix Flakes
 
 on:
   schedule:
-    # Runs every Sunday at 08:00 UTC
-    - cron: "0 8 * * 0"
+    # Runs every Wednesday and Sunday at 08:00 UTC
+    - cron: "0 8 * * 0,3"
   workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
 
 permissions:
