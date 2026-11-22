@@ -21,7 +21,7 @@
     ## Services items
     ../features/virtualization/qemu
     ../features/virtualization/docker
-    ../features/virtualization/docker/services/excalidash_local.nix
+    # ../features/virtualization/docker/services/excalidash_local.nix
     ../features/services/protonmail_bridge.nix
     ../features/services/pangolin_client.nix
 
