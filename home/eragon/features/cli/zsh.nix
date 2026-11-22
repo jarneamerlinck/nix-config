@@ -14,6 +14,7 @@
     initContent = ''
 
       eval "$(zoxide init zsh)"
+      eval "$(devenv hook zsh)"
       [[ ! -f ${./shell_func.sh} ]] || source ${./shell_func.sh}
 
       autoload -Uz add-zsh-hook

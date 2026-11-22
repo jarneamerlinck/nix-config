@@ -2,7 +2,6 @@
 {
   imports = [
     ./nvim.nix
-    ./direnv.nix
     ./zsh.nix
     ./git.nix
     ./kitty.nix
